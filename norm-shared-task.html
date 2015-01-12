@@ -72,20 +72,26 @@
 <li>Non-standard words may be Out-of-Vocabulary (OOV) tokens (e.g., <i>tmrw</i> for <i>tomorrow</i>) or In-Vocabulary (IV) tokens (e.g., <i>wit</i> for <i>with</i> in <i>I will come wit you</i>).</li>
 <li>Only alphanumeric tokens are considered for normalisation (e.g., <i>2</i>, <i>4eva</i> and <i>tmrw</i>). Tokens involved with hyphens, single quotes and contractions are ignored.</li>
 <li>Domain specific entities are ignored even if they are in non-standard forms, e.g., <i>#ttyl</i>, <i>@nyc</i></li>
-<li>The output would be two lines: The first line is the input tweet ID and the second line consists of tokenised word sequences with OOV tokens normalised as canonical forms.</li>
-<li>The output shall be in lowercase.</li>
 <li>It is possible a tweet has no non-standard words, however, your system shall still output a tokenised tweet without any changes in the second line.</li>
 <li>Proper nouns shall be kept untouched even if they are not in the given lexicon, e.g., <i>Twitter</i>.</li>
+<li>Your normalisations shall be in American spelling, e.g., <i>tokenize</i> rather than <i>tokenise</i>.</li>
 </ol>
 
 <p>Note: Annotators are trained to offer normalisations if they are confident. In some corner cases, it is hard to judge whether a token is a non-standard word or its normalised form is hard to be determined, then your system shall keep it untouched.</p>
 
-<p>
-An example:
+<p>Your output format shall be in JSON format and lowercased. For a given tweet ID, the output shall contain two fields: tweet ID and tokenised word sequences with OOV tokens normalised as canonical forms. An example is given as follows.
+<ol>
+    <li>You will be given a list of Tweet IDs, e.g., <i>553400468387295233</i>.</li>
+    <li>You then use the provided script to download tweet data, tokenize tweet text using the given tokeniser and produce the real input as:</br>
+<i>["ur","parents","don't","need","VIP","if","you","are","at","an","age","restricted","venue.","They","can","come","in","wit","u","if","you","have","VIP."]</i>
+    </li>
+    <li>
+    The expected output is:
 </br>
-Input: <i>btw don't tlk 2 me anymor, cuz norml ppl tlk things out they don't sub</i>
-</br>
-Output: <i>by the way don't talk to me any more , because normal people talk things out they don't sub</i>
+<i>["553400468387295233", ["your","parents","don't","need","vip","if","you","are","at","an","age","restricted","venue.","they","can","come","in","with","you","if","you","have","vip."]]</i>
+
+    </li>
+</ol>
 </p>
 
 <p>The evaluation metrics are Precision, Recall and F1 score, and the submissions will be evaluated in two modes separately.</p>
@@ -127,7 +133,7 @@ Participants can use any publicly accessible data and tools to perform the text 
 <hr>
 <a id="date" > <h2 style="padding-top:50px; margin-top:-50px;">Important Dates</h2></a>
 <ul>
-    <li>Trial data released: Jan 12, 2015</li>
+    <li><a href="/files/trail_data.json" target="_blank">Trial data</a> released: Jan 12, 2015 (Both tokenised tweets and normalisations are included for this small amount of data)</li>
     <li>Training data and annotations released: Mar 1, 2015</li>
     <li>Test data released: March 31, 2015</li>
     <li>Result submission: April 7, 2015</li>
