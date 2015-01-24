@@ -1,0 +1,166 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Named Entity Recognition in Twitter</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  <style>
+ 
+  </style>
+  </head>
+
+  <body >
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">W-NUT</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#task">Tasks</a></li>
+            <li><a href="#resource">Resources</a></li>
+            <li><a href="#date">Important Dates</a></li>
+            <li><a href="#committee">Organizer</a></li>
+            <li><a href="#reference">References</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron" >
+        <h2>Named Entity Recognition in Twitter</h2>
+        <p> Named entity recognition is one of the first steps in most IE pipelines.  The diverse and noisy style of user-generated social media text presents serious
+	  challenges, however.  Performance still lags far behind that on formal text genres such as newswire.
+	  The goal of this shared evaluation is to promote research on NER in noisy text and also help to provide a standardized dataset and methodology for evaluation.
+	</p>
+      </div>
+
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Timeline</div>
+
+  <div class="panel-body">
+    <list>
+    <li>Training and dev data released: Mar 1, 2015</li>
+    <li>Test data released: April 14, 2015</li>
+    <li>Result submission: April 21, 2015</li>
+    <li>Shared-task results and gold annotations for test data: May 1, 2015</li>
+    <li>System Description Papers Due: May 21, 2015</li>
+    <li>Reviews Returned: June 4, 2015</li>
+    <li>Camera Ready Deadline: June 21, 2015</li>
+    <li>Workshop Date: June 31, 2015</li>
+    </list>
+</ul>
+</hr>
+  </div>
+</div>
+
+<!--
+<div class="panel panel-default">
+  <div class="panel-heading">Data</div>
+
+  <div class="panel-body">
+    The data will be...
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Evaluation Metrics</div>
+
+  <div class="panel-body">
+    The data will be...
+  </div>
+</div>
+-->
+
+<a id="committee" >	<h2  style="padding-top:50px; margin-top:-50px;">Shared Task Organizers</h2></a>
+	<ul class="list-unstyled">
+	<li><a href="http://pages.cs.wisc.edu/~ybkim/">Young-Bum Kim</a> (University of Wisconsin)  </li>
+	<li><a href="http://aritter.github.io/">Alan Ritter</a> (The Ohio State University)  </li>
+	</ul>
+</hr>
+
+<!--
+<hr>
+<a id="reference" ><h2 style="padding-top:50px; margin-top:-50px;">References</h2></a>
+<ol>
+    <li>Aw, AiTi, Min Zhang, Juan Xiao, and Jian Su. 2006. A phrase-based statistical model for SMS text normalization. In Proceedings of COLING/ACL 2006 , 33–40, Sydney, Australia.</li>
+    <li>Richard Beaufort, Sophie Roekhaut, Louise-Amélie Cougnon, and Cédrick Fairon. 2010. A hybrid rule/model-based finite-state framework for normalizing SMS messages. In Proceedings of the 48th Annual Meeting of the ACL (ACL 2010), 770–779, Uppsala, Sweden.</li>
+    <li>Choudhury, Monojit, Rahul Saraf, Vijit Jain, Animesh Mukherjee, Sudeshna Sarkar, and Anupam Basu. 2007. Investigation and modeling of the structure of texting language. International Journal on Document Analysis and Recognition 10.157–174.</li>
+    <li>Chrupala, Grzegorz. 2014. Normalizing tweets with edit scripts and recurrent neural embeddings. In Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics (ACL 2014), 680–686, Baltimore, USA.</li>
+    <li>Contractor, Danish, Tanveer A. Faruquie, and L. Venkata Subramaniam. 2010. Unsupervised cleansing of noisy text. In Proceedings of the 23rd International Conference on Computational Linguistics (COLING 2010), 189– 196, Beijing, China.</li>
+    <li>Cook, Paul, and Suzanne Stevenson. 2009. An unsupervised model for text message normalization. In Proceedings of the Workshop on Computational Approaches to Linguistic Creativity (CALC ’09), 71–78, Boulder, USA.</li>
+    <li>Foster, Jennifer. 2010. “cba to check the spelling” investigating parser performance on discussion forum posts. In Proceedings of Human Language Technologies: The 11th Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL HLT 2010), 381–384, Los Angeles, USA.</li>
+    <li>Gouws, Stephan, Dirk Hovy, and Donald Metzler. 2011a. Unsupervised mining of lexical variants from noisy text. In Proceedings of the First Workshop on Unsupervised Learning in NLP , 82–90, Edinburgh, UK.</li>
+    <li>Bo Han and Timothy Baldwin. 2011. Lexical normalisation of short text messages: Makn sens a #twitter. In Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies (ACL-HLT 2011), pages 368– 378, Portland, USA.</li>
+    <li>Bo Han, Paul Cook and Timothy Baldwin. 2012. Automatically constructing a normalisation dictionary for microblogs. In Proceedings of the 2012 Joint Conference on Empirical Methods in Natural Language Processing and Computational Natural Language Learning (EMNLP-CoNLL 2012), pages 421–432, Jeju, Republic of Korea.</li>
+    <li>Bo Han, Paul Cook and Timothy Baldwin. 2013. Lexical Normalisation of Short Text Messages. In ACM Transactions on Intelligent Systems and Technology (TIST 2013) , 4(1), pages 5:1{27}.</li>
+    <li>Hassan, Hany, and Arul Menezes. 2013. Social text normalization using contextual graph random walks. In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (ACL 2013), 1577–1586, Sofia, Bulgaria.</li>
+    <li>Catherine Kobus, François Yvon, and Géraldine Damnati. 2008. Normalizing SMS: are two metaphors better than one? In Proceedings of the 22nd International Conference on Computational Linguistics (COLING 2008), 441– 448, Manchester, UK.</li>
+    <li>Li, Chen, and Yang Liu. 2012. Improving text normalization using character-blocks based models and system combination. In Proceedings of the 24th International Conference on Computational Linguistics (COLING 2012), 1587–1602, Mumbai, India.</li>
+    <li>Ling, Wang, Chris Dyer, Alan W Black, and Isabel Trancoso. 2013. Paraphrasing 4 microblog normalization. In Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing (EMNLP 2013), 73–84, Seattle, USA.</li>
+    <li>Liu, Fei, Fuliang Weng, and Xiao Jiang. 2012. A broad-coverage normalization system for social media language. In Proceedings of the 50th Annual Meeting of the Association for Computational Linguistics (ACL 2012), 1035–1044, Jeju Island, Korea.</li>
+    <li>Liu, Fei, Fuliang Weng, Bingqing Wang, and Yang Liu. 2011a. Insertion, dele- tion, or substitution? Normalizing text messages without pre-categorization nor supervision. In Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies (ACL HLT 2011), 71–76, Portland, USA.</li>
+    <li>Pennell, Deana, and Yang Liu. 2011a. A character-level machine translation approach for normalization of SMS abbreviations. In Proceedings of the 5th International Joint Conference on Natural Language Processing (IJCNLP 2011), 974–982, Chiang Mai, Thailand.</li>
+    <li>Pennell, Deana, and Yang Liu. 2011b. Toward text message normalization: Modeling abbreviation generation. In Proceedings of 2011 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP ’11), 5364–5367, Prague, Czech Republic.</li>
+    <li>Porta, Jordi, and Jos e using finite-state transducers. In Proceedings of the Tweet Normalization Workshop co-located with 29th Conference of the Spanish Society for Natural Language Processing (SEPLN 2013), volume 1086, 49–53, Madrid, Spain.</li>
+    <li>Sproat, Richard, Alan W. Black, Stanley Chen, Shankar Kumar, Mari Ostendorf, and Christopher Richards. 2001. Normalization of non-standard words. Computer Speech and Language 15.287–333.</li>
+    <li>Wang, Pidong, and Hwee Tou Ng. 2013. A beam-search decoder for normalization of social media text with application to machine translation. In Proceedings of the 2013 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL HLT 2013), 471–481, Atlanta, USA.</li>
+    <li>Xu, Wei, Alan Ritter, and Ralph Grishman. 2013. Gathering and generating paraphrases from Twitter with application to normalization. In Proceedings of the Sixth Workshop on Building and Using Comparable Corpora, 121–128, Sofia, Bulgaria.</li>
+    <li>Xue, Zhenzhen, Dawei Yin, and Brian D. Davison. 2011. Normalizing micro- text. In Proceedings of the AAAI-11 Workshop on Analyzing Microtext, 74–79, San Francisco, USA.</li>
+    <li>Yang, Yi, and Jacob Eisenstein. 2013. A log-linear model for unsupervised text normalization. In Proceedings of the 2013 Conference on Empirical Methods in Natural Language Processing (EMNLP 2013), 61–72, Seattle, USA.</li>
+    <li>Zhang, Congle, Tyler Baldwin, Howard Ho, Benny Kimelfeld, and Yun- yao Li. 2013. Adaptive parser-centric text normalization. In Proceedings of the 51st Annual Meeting of the Association for Computational Linguistics (ACL 2013), 1159–1168, Sofia, Bulgaria.</li>
+    <li>Zhu, Conghui, Jie Tang, Hang Li, Hwee Tou Ng, and Tiejun Zhao. 2007. A unified tagging approach to text normalization. In Proceedings of the 45th Annual Meeting of the Association for Computational Linguistics (ACL 2007), 688–695, Prague, Czech Republic.</li>
+<ol>
+</hr>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+    </div>
+-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
