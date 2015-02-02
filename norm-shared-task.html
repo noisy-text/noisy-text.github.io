@@ -72,14 +72,14 @@
 <li>Non-standard words may be Out-of-Vocabulary (OOV) tokens (e.g., <i>tmrw</i> for <i>tomorrow</i>) or In-Vocabulary (IV) tokens (e.g., <i>wit</i> for <i>with</i> in <i>I will come wit you</i>).</li>
 <li>Only alphanumeric tokens are considered for normalisation (e.g., <i>2</i>, <i>4eva</i> and <i>tmrw</i>). Tokens involved with hyphens, single quotes and contractions are ignored.</li>
 <li>Domain specific entities are ignored even if they are in non-standard forms, e.g., <i>#ttyl</i>, <i>@nyc</i></li>
-<li>It is possible a tweet has no non-standard words, however, your system shall still output a tokenised tweet without any changes in the second line.</li>
+<li>It is possible a tweet has no non-standard words, however, your system shall still output a tokenised tweet without any changes.</li>
 <li>Proper nouns shall be kept untouched even if they are not in the given lexicon, e.g., <i>Twitter</i>.</li>
 <li>Your normalisations shall be in American spelling, e.g., <i>tokenize</i> rather than <i>tokenise</i>.</li>
 </ol>
 
 <p>Note: Annotators are trained to offer normalisations if they are confident. In some corner cases, it is hard to judge whether a token is a non-standard word or its normalised form is hard to be determined, then your system shall keep it untouched.</p>
 
-<p>Your output format shall be in JSON format and lowercased. For a given tweet ID, the output shall contain two fields: tweet ID and tokenised word sequences with OOV tokens normalised as canonical forms. An example is given as follows.
+<p>Your output shall be in JSON format and lowercased. For a given tweet ID, the output shall contain two fields: tweet ID and tokenised word sequences with OOV tokens normalised as canonical forms. An example is given as follows.
 <ol>
     <li>You will be given a list of Tweet IDs, e.g., <i>553400468387295233</i>.</li>
     <li>You then use the provided script to download tweet data, tokenize tweet text using the given tokeniser and produce the real input as:</br>
@@ -124,8 +124,8 @@ Participants can use any publicly accessible data and tools to perform the text 
 
 <p>Some optional tools and data:</p>
 <ul>
-    <li>Existing lexical normalisation dictionary: <a href="http://people.eng.unimelb.edu.au/tbaldwin/etc/emnlp2012-lexnorm.tgz" target="_blank">UniMelb</a>, <a href="http://www.hlt.utdallas.edu/~yangl/data/Text_Norm_Data_Release_Fei_Liu/" target="_blank">UTDallas</a></li>
-    <li>Existing normalisation dataset:  <a href="http://people.eng.unimelb.edu.au/tbaldwin/etc/lexnorm_v1.2.tgz" target="_blank">UniMelb</a>  </li>
+    <li>Lexical normalisation dictionary: <a href="http://people.eng.unimelb.edu.au/tbaldwin/etc/emnlp2012-lexnorm.tgz" target="_blank">UniMelb</a>, <a href="http://www.hlt.utdallas.edu/~yangl/data/Text_Norm_Data_Release_Fei_Liu/" target="_blank">UTDallas</a></li>
+    <li>Normalisation dataset:  <a href="http://people.eng.unimelb.edu.au/tbaldwin/etc/lexnorm_v1.2.tgz" target="_blank">UniMelb</a>  </li>
     <li>Tweet POS taggers: <a href="http://code.google.com/p/ark-tweet-nlp/downloads/list" target="_blank">CMU</a>, <a href="https://gate.ac.uk/wiki/twitter-postagger.html" target="_blank">Sheffield</a></li>
     <li>Tweet Dependency parsers:<a href="https://sourceforge.net/p/tweeboparser/" target="_blank">CMU</a></li>
 </ul>
