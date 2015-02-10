@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Lexical Normalisation for English Tweets</title>
+    <title>Named Entity Recognition in Twitter</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
@@ -60,95 +60,60 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron" >
-        <h2>Lexical Normalisation for English Tweets</h2>
-        <p>Social media data such as Twitter messages is notoriously noisy user generated contents (UGC). It often contains ungrammatical sentence structures, non-standard words and domain-specific entities. Accuracy declines have been observed in many NLP tasks and applications operating on UGC data (Gimpel et al. 2011, Liu et al. 2011). This shared-task aims to normalise non-standard words to their canonical forms for English Twitter messages. After text normalisation, misspelling are corrected (e.g., <i>toook</i> for <i>took</i>), informal abbreviation are expanded (e.g., <i>tmrw</i> for <i>tomorrow</i>) and phonetic substitutions are recovered (e.g., <i>4eva</i> for <i>forever</i>). Recently research communities have embraced many text normalisation methods to alleviate the negative impact of non-standard words. This shared task aims to advance the research on text normalisation in social media by comparing and evaluating various approaches using the same large dataset.</p>
+        <h2>Named Entity Recognition in Twitter</h2>
+        <p> Named entity recognition is one of the first steps in most IE pipelines.  The diverse and noisy style of user-generated social media text presents serious
+	  challenges, however.  Performance still lags far behind that on formal text genres such as newswire.
+	  The goal of this shared evaluation is to promote research on NER in noisy text and also help to provide a standardized dataset and methodology for evaluation.
+	</p>
       </div>
 
 
-<a id="task" ><h2  style="padding-top:50px; margin-top:-50px;">Tasks</h2></a>
-<p>To make the evaluation tractable, this task focuses on context-sensitive lexical normalisation of English Twitter messages with following constraints:</p>
-<ol>
-    <li>Non-standard words (NSWs) are normalised to one or more canonical English words relative to the given lexicon. For instance, <i>l o v e</i> is normalised to <i>love</i>, <i>tmrw</i> is normalised to <i>tomorrow</i> and <i>cu</i> is normalised to <i>see you</i>. Additionally, <i>IBM</i> is kept untouched as it is in the lexicon and a informal </i>lol</i> shall be expanded to <i>laughing out loud</i>.</li>
-<li>Non-standard words may be Out-of-Vocabulary (OOV) tokens (e.g., <i>tmrw</i> for <i>tomorrow</i>) or In-Vocabulary (IV) tokens (e.g., <i>wit</i> for <i>with</i> in <i>I will come wit you</i>).</li>
-<li>Only alphanumeric tokens are considered for normalisation (e.g., <i>2</i>, <i>4eva</i> and <i>tmrw</i>). Tokens involved with hyphens, single quotes and contractions are ignored.</li>
-<li>Domain specific entities are ignored even if they are in non-standard forms, e.g., <i>#ttyl</i>, <i>@nyc</i></li>
-<li>It is possible a tweet has no non-standard words, however, your system shall still output a tokenised tweet without any changes in the second line.</li>
-<li>Proper nouns shall be kept untouched even if they are not in the given lexicon, e.g., <i>Twitter</i>.</li>
-<li>Your normalisations shall be in American spelling, e.g., <i>tokenize</i> rather than <i>tokenise</i>.</li>
-</ol>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Timeline</div>
 
-<p>Note: Annotators are trained to offer normalisations if they are confident. In some corner cases, it is hard to judge whether a token is a non-standard word or its normalised form is hard to be determined, then your system shall keep it untouched.</p>
-
-<p>Your output format shall be in JSON format and lowercased. For a given tweet ID, the output shall contain two fields: tweet ID and tokenised word sequences with OOV tokens normalised as canonical forms. An example is given as follows.
-<ol>
-    <li>You will be given a list of Tweet IDs, e.g., <i>553400468387295233</i>.</li>
-    <li>You then use the provided script to download tweet data, tokenize tweet text using the given tokeniser and produce the real input as:</br>
-<i>["ur","parents","don't","need","VIP","if","you","are","at","an","age","restricted","venue.","They","can","come","in","wit","u","if","you","have","VIP."]</i>
-    </li>
-    <li>
-    The expected output is:
-</br>
-<i>["553400468387295233", ["your","parents","don't","need","vip","if","you","are","at","an","age","restricted","venue.","they","can","come","in","with","you","if","you","have","vip."]]</i>
-
-    </li>
-</ol>
-</p>
-
-<p>The evaluation metrics are Precision, Recall and F1 score, and the submissions will be evaluated in two modes separately.</p>
-<ul>
-<li>
-Task 1: Constrained mode
-</br>
-Participants can only use provided training data to perform the text normalisation task. Participants can use any off-the-shelf tools (e.g., Twitter POS tagger).
-</li>
-<li>
-Task 2: Unconstrained mode
-</br>
-Participants can use any publicly accessible data and tools to perform the text normalisation task.
-</li>
-</ul>
-
-<p>Submission of results: <a href="" target="_blank">TBD</a></p>
-
-
-<hr>
-<a id="resource" > <h2 style="padding-top:50px; margin-top:-50px;">Resources</h2></a>
-<p>Due to Twitter term restrictions, only Twitter data ids will be accessible to participants. All participants are required to download the data themselves using the provided scripts. If you have issues in downloading the data, please contact us.</p>
-
-<p>Required tools:</p>
-<ul>
-    <li>Canonical English lexicon: <a href="" target="_blank">TBD</a></li>
-    <li>Tweet download scripts: <a href="" target="_blank">TBD</a></li>
-    <li>Tweet tokeniser: <a href="https://github.com/myleott/ark-twokenize-py" target="_blank">CMU</a></li>
-</ul>
-
-<p>Some optional tools and data:</p>
-<ul>
-    <li>Existing lexical normalisation dictionary: <a href="http://people.eng.unimelb.edu.au/tbaldwin/etc/emnlp2012-lexnorm.tgz" target="_blank">UniMelb</a>, <a href="http://www.hlt.utdallas.edu/~yangl/data/Text_Norm_Data_Release_Fei_Liu/" target="_blank">UTDallas</a></li>
-    <li>Existing normalisation dataset:  <a href="http://people.eng.unimelb.edu.au/tbaldwin/etc/lexnorm_v1.2.tgz" target="_blank">UniMelb</a>  </li>
-    <li>Tweet POS taggers: <a href="http://code.google.com/p/ark-tweet-nlp/downloads/list" target="_blank">CMU</a>, <a href="https://gate.ac.uk/wiki/twitter-postagger.html" target="_blank">Sheffield</a></li>
-    <li>Tweet Dependency parsers:<a href="https://sourceforge.net/p/tweeboparser/" target="_blank">CMU</a></li>
-</ul>
-
-<hr>
-<a id="date" > <h2 style="padding-top:50px; margin-top:-50px;">Important Dates</h2></a>
-<ul>
-    <li><a href="/files/trail_data.json" target="_blank">Trial data</a> released: Jan 12, 2015 (Both tokenised tweets and normalisations are included for this small amount of data)</li>
-    <li>Training data and annotations released: Mar 1, 2015</li>
-    <li>Test data released: March 31, 2015</li>
-    <li>Result submission: April 7, 2015</li>
-    <li>Shared-task results and gold annotations for test data: April 17, 2015</li>
+  <div class="panel-body">
+    <list>
+    <li>Training and dev data to be released: Febuary, 2015</li>
+    <li>Test data released: April 14, 2015</li>
+    <li>Result submission: April 21, 2015</li>
+    <li>Shared-task results and gold annotations for test data: May 1, 2015</li>
+    <li>System Description Papers Due: May 21, 2015</li>
+    <li>Reviews Returned: June 4, 2015</li>
+    <li>Camera Ready Deadline: June 21, 2015</li>
+    <li>Workshop Date: June 31, 2015</li>
+    </list>
 </ul>
 </hr>
+  </div>
+</div>
 
+<!--
+<div class="panel panel-default">
+  <div class="panel-heading">Data</div>
 
-<hr>
-<a id="committee" >	<h2  style="padding-top:50px; margin-top:-50px;">Organizer</h2></a>
+  <div class="panel-body">
+    The data will be...
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Evaluation Metrics</div>
+
+  <div class="panel-body">
+    The data will be...
+  </div>
+</div>
+-->
+
+<a id="committee" >	<h2  style="padding-top:50px; margin-top:-50px;">Shared Task Organizers</h2></a>
 	<ul class="list-unstyled">
-	<li><a href="http://tq010or.github.io/index.html">Bo Han</a> (IBM Research)  </li>
+	<li><a href="http://pages.cs.wisc.edu/~ybkim/">Young-Bum Kim</a> (University of Wisconsin)  </li>
+	<li><a href="http://aritter.github.io/">Alan Ritter</a> (The Ohio State University)  </li>
 	</ul>
 </hr>
 
+<!--
 <hr>
 <a id="reference" ><h2 style="padding-top:50px; margin-top:-50px;">References</h2></a>
 <ol>
@@ -187,8 +152,8 @@ Participants can use any publicly accessible data and tools to perform the text 
 <br/>
 <br/>
 
-    </div> <!-- /container -->
-
+    </div>
+-->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
