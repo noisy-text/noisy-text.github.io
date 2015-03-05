@@ -6,6 +6,8 @@ Description:
 Usage example (in linux):
     clear;python tweet_downloader.py --credentials ../data/credentials.txt --inputfile ../data/input.tids --outputtype IdTweetTok
 
+Inputfile contains training data IDs and will be provided later
+
 credentials.txt stores the Twitter API keys and secrects in the following order:
 consumer_key
 consumer_secret
