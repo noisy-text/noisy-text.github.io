@@ -69,72 +69,91 @@
 <p>To make the evaluation tractable, this task focuses on context-sensitive lexical normalisation of English Twitter messages with following constraints:</p>
 <ol>
     <li>Non-standard words (NSWs) are normalised to one or more canonical English words relative to the given lexicon. For instance, <i>l o v e</i> is normalised to <i>love</i>, <i>tmrw</i> is normalised to <i>tomorrow</i> and <i>cu</i> is normalised to <i>see you</i>. Additionally, <i>IBM</i> is kept untouched as it is in the lexicon and a informal </i>lol</i> shall be expanded to <i>laughing out loud</i>.</li>
-<li>Non-standard words may be Out-of-Vocabulary (OOV) tokens (e.g., <i>tmrw</i> for <i>tomorrow</i>) or In-Vocabulary (IV) tokens (e.g., <i>wit</i> for <i>with</i> in <i>I will come wit you</i>).</li>
-<li>Only alphanumeric tokens are considered for normalisation (e.g., <i>2</i>, <i>4eva</i> and <i>tmrw</i>). Tokens involved with hyphens, single quotes and contractions are ignored.</li>
-<li>Domain specific entities are ignored even if they are in non-standard forms, e.g., <i>#ttyl</i>, <i>@nyc</i></li>
-<li>It is possible a tweet has no non-standard words, however, your system shall still output a tokenised tweet without any changes.</li>
-<li>Proper nouns shall be kept untouched even if they are not in the given lexicon, e.g., <i>Twitter</i>.</li>
-<li>Your normalisations shall be in American spelling, e.g., <i>tokenize</i> rather than <i>tokenise</i>.</li>
+    <li>Non-standard words may be Out-of-Vocabulary (OOV) tokens (e.g., <i>tmrw</i> for <i>tomorrow</i>) or In-Vocabulary (IV) tokens (e.g., <i>wit</i> for <i>with</i> in <i>I will come wit you</i>).</li>
+    <li>Only alphanumeric tokens (e.g., <i>2</i>, <i>4eva</i> and <i>tmrw</i>) and apostrophes used in contraction forms (e.g. <i>yoou've</i>) are considered for normalisation. Tokens involved with hyphens, single quotes and other contractions are ignored.</li>
+    <li>Domain specific entities are ignored even if they are in non-standard forms, e.g., <i>#ttyl</i>, <i>@nyc</i></li>
+    <li>It is possible a tweet has no non-standard words, however, your system shall still output a tokenised tweet without any changes.</li>
+    <li>Proper nouns shall be kept untouched even if they are not in the given lexicon, e.g., <i>Twitter</i>.</li>
+    <li>Your normalisations shall be in American spelling, e.g., <i>tokenize</i> rather than <i>tokenise</i>.</li>
+    <li>In some corner cases, it is hard to judge whether a token is a non-standard word or its normalised form is hard to be determined, then your system shall keep it untouched.</li>
 </ol>
+<p>A more detailed annotation guideline is also provided <a href="/files/annotation_guideline_v1.1.pdf" target="_blank">here</a></p>
 
-<p>Note: Annotators are trained to offer normalisations if they are confident. In some corner cases, it is hard to judge whether a token is a non-standard word or its normalised form is hard to be determined, then your system shall keep it untouched.</p>
+<p>For your conventinence and the consistency of evaluation, we pre-tokenised tweets and provided them in JSON format. A training data file is a JSON list in which each item represents a tweet. A tweet is a JSON dict containing four fields: index (the index in the annotation), tid (tweet id), input (a list of case sensitive tokens to be normalised), and output (a list of lowercased tokens that are normalised). 
+The test data for evaluation follows the same format as the training data, but it does NOT have output fields, your task is to add output fields in the test data from your normalisation system.
+Note the output fields are lowercased.
+</p>
 
-<p>Your output shall be in JSON format and lowercased. For a given tweet ID, the output shall contain two fields: tweet ID and tokenised word sequences with OOV tokens normalised as canonical forms. An example is given as follows.
-<ol>
-    <li>You will be given a list of Tweet IDs, e.g., <i>553400468387295233</i>.</li>
-    <li>You then use the provided script to download tweet data, tokenize tweet text using the given tokeniser and produce the real input as:</br>
-<i>["ur","parents","don't","need","VIP","if","you","are","at","an","age","restricted","venue.","They","can","come","in","wit","u","if","you","have","VIP."]</i>
-    </li>
-    <li>
-    The expected output is:
+<p>
+A mock-up example is shown for demonstration. <i>Jst</i>, <i>lol</i> and <i>l o v e</i> are normalised to <i>just</i>, <i>laughing out loud</i> and <i>love</i>, respectively.
 </br>
-<i>["553400468387295233", ["your","parents","don't","need","vip","if","you","are","at","an","age","restricted","venue.","they","can","come","in","with","you","if","you","have","vip."]]</i>
 
-    </li>
-</ol>
+{
+  'tid': '971011879910802432',
+  'index': '1064',
+  'input': [
+    'Jst',
+    'read',
+    'a',
+    'tweet',
+    'lol',
+    'and',
+    'l',
+    'o',
+    'v',
+    'e',
+    'it'
+  ],
+  'output': [
+    'just',
+    'read',
+    'a',
+    'tweet',
+    'laughing out loud',
+    'and',
+    'love',
+    '',
+    '',
+    '',
+    'it'
+  ]
+}
 </p>
 
 <p>The evaluation metrics are Precision, Recall and F1 score, and the submissions will be evaluated in two modes separately.</p>
 <ul>
 <li>
-Task 1: Constrained mode
+Task 1: Constrained mode (cm)
 </br>
 Participants can only use provided training data to perform the text normalisation task. Participants can use any off-the-shelf tools (e.g., Twitter POS tagger).
 </li>
 <li>
-Task 2: Unconstrained mode
+Task 2: Unconstrained mode (um)
 </br>
 Participants can use any publicly accessible data and tools to perform the text normalisation task.
 </li>
 </ul>
 
-<p>Submission of results: <a href="" target="_blank">TBD</a></p>
+<p>Please submit your results to <b>lexnorm2015@gmail.com</b> by attachments. The attachments shall be plain JSON files and are named by team and mode. For instance, if my registered team name is "demo", and I competed in both models, I shall have the following two files as attachments: "demo.cm.json" and "demo.um.json".
+You may submit multiple times, but your last submission before the deadline will be used for evaluation.
+</p>
 
 
 <hr>
 <a id="resource" > <h2 style="padding-top:50px; margin-top:-50px;">Resources</h2></a>
-<p>Due to Twitter term restrictions, only Twitter data ids will be accessible to participants. All participants are required to download the data themselves using the provided scripts. If you have issues in downloading the data, please contact us.</p>
 
-<p>Required tools:</p>
 <ul>
     <li>Canonical English lexicon: <a href="/files/scowl.american.70" target="_blank">English lexicon</a></li>
-    <li>Tweet download scripts: <a href="/files/tweet_downloader.py" target="_blank">script</a></li>
-    <li>Tweet tokeniser: <a href="https://github.com/myleott/ark-twokenize-py" target="_blank">CMU</a></li>
-</ul>
-
-<p>Some optional tools and data:</p>
-<ul>
     <li>Lexical normalisation dictionary: <a href="http://people.eng.unimelb.edu.au/tbaldwin/etc/emnlp2012-lexnorm.tgz" target="_blank">UniMelb</a>, <a href="http://www.hlt.utdallas.edu/~yangl/data/Text_Norm_Data_Release_Fei_Liu/" target="_blank">UTDallas</a></li>
-    <li>Normalisation dataset:  <a href="http://people.eng.unimelb.edu.au/tbaldwin/etc/lexnorm_v1.2.tgz" target="_blank">UniMelb</a>  </li>
     <li>Tweet POS taggers: <a href="http://code.google.com/p/ark-tweet-nlp/downloads/list" target="_blank">CMU</a>, <a href="https://gate.ac.uk/wiki/twitter-postagger.html" target="_blank">Sheffield</a></li>
-    <li>Tweet Dependency parsers:<a href="https://sourceforge.net/p/tweeboparser/" target="_blank">CMU</a></li>
+    <li>Tweet Dependency parsers: <a href="https://sourceforge.net/p/tweeboparser/" target="_blank">CMU</a></li>
 </ul>
 
 <hr>
-<a id="date" > <h2 style="padding-top:50px; margin-top:-50px;">Important Dates (Deadline extended)</h2></a>
+<a id="date" > <h2 style="padding-top:50px; margin-top:-50px;">Important Dates </h2></a>
+Note: All deadlines are 11:59PM Pacific Time
 <ul>
-    <li><a href="/files/trail_data.json" target="_blank">Trial data</a> released: Jan 12, 2015 (Both tokenised tweets and normalisations are included for this small amount of data)</li>
-    <li>Training data and annotations released: April 7, 2015</li>
+    <li>Training data and annotations released: April 7, 2015 <a href="https://drive.google.com/file/d/0B_GHVBlQcSWHcld6a2FrNGJfS00/view?usp=sharing" target="_blank">(available now)</a></li>
     <li>Test data released: May 7, 2015</li>
     <li>Result submission: May 11, 2015</li>
     <li>Shared-task results and annotations for test data: May 14, 2015</li>
