@@ -107,8 +107,13 @@
 <!-- <ul class="list-unstyled">  -->
 
 <table cellspacing="0" cellpadding="5" border="0">
+<tr><td valign=top width=100>&nbsp;</td><td valign=top align=left>9:00</td><td valign=top align=left><b>Opening</b></td></tr>
 <tr><td valign=top style="padding-top: 14px;">&nbsp;</td><td></td><td valign=top style="padding-top: 14px;"><b>Invited talk:</b></td></tr>
+<<<<<<< HEAD
+<tr><td valign=top width=100>&nbsp;</td><td valign=top align=left>9:10</td><td valign=top align=left><a href="pdf/WNUT03.pdf"><i>DISAANA and D-SUMM: Large-scale Real Time NLP Systems for Analyzing Disaster Related Reports in Tweets</i></a><br>Kentaro Torisawa</td></tr>
+=======
 <tr><td valign=top width=100>&nbsp;</td><td valign=top align=left>9:00</td><td valign=top align=left><a href="pdf/WNUT03.pdf"><i class="citation_title">DISAANA and D-SUMM: Large-scale Real Time NLP Systems for Analyzing Disaster Related Reports in Tweets</i></a><br>Kentaro Torisawa</td></tr>
+>>>>>>> c943c691c54fdf24e9de98ea25c0c4f38670fee9
 <tr><td valign=top style="padding-top: 14px;">&nbsp;</td><td></td><td valign=top style="padding-top: 14px;"><b>Research presentations</b></td></tr>
 <tr><td valign=top width=100>&nbsp;</td><td valign=top align=left>9:55</td><td valign=top align=left><a href="pdf/WNUT08.pdf"><i class="citation_title">Private or Corporate? Predicting User Types on Twitter</i></a><br>Nikola Ljube&#353;i&#263; and Darja Fi&#353;er</td></tr>
 <tr><td valign=top width=100>&nbsp;</td><td valign=top align=left>10:05</td><td valign=top align=left><a href="pdf/WNUT18.pdf"><i class="citation_title">From Noisy Questions to Minecraft Texts: Annotation Challenges in Extreme Syntax Scenario</i></a><br>H&eacute;ctor Mart&iacute;nez Alonso, Djam&eacute; Seddah and Beno&icirc;t Sagot</td></tr>
