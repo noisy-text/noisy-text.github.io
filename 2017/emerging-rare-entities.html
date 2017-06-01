@@ -49,7 +49,7 @@
            <li><a href="../2016/index.html">2016</a></li>
            <li><a href="../2015/index.html">2015</a></li>
            <li><a href="#call">Call</a></li>
-           <li><a href="#tasks">Shared-tasks</a></li>
+           <li><a href="">Shared-tasks</a></li>
            <li><a href="#committee">Committee</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -65,6 +65,28 @@
         <p>The goal of this task is to provide a definition of emerging and of rare entities, and based on that, also datasets for detecting these entities.</p>
       </div>
 
+<h2>Goals</h2>
+<p>Detecting commonly-mentioned entities tends to be easier than the rarer, more unusual surface forms. Similarly, entities with unusual surface forms, or that are simply rare, tend to be tougher to detect (<a href="https://arxiv.org/pdf/1701.02877.pdf">Augenstein et al 2017</a>), with recall being a significant problem in rapidly-changing text types (<a href="http://www.eurecom.fr/~troncy/Publications/Derczynski_Troncy-ipm15.pdf">Derczynski et al 2015</a>). However, the entities that are common in newly-emerging texts such as newswire or social media are often new, not having been mentioned in prior datasets. This poses a challenge to NER systems, where in many deployments, unusual, previously-unseen entities need to be detected reliably and with high recall. The WNUT 2017 shared task poses this challenge directly to participants, with turbulent data containing few repeated entities, drawn from rapidly-changing text types or sources of non-mainstream entities.</p>
+
+<h2>Evaluation</h2>
+<p>The shared task evaluates against two measures. As well as classical entity-level precision, recall and their harmonic mean, F1, surface forms found in the emerging entities task are evaluated. The set of unique surface forms in the gold data and the submission are compared, and the precision, recall and F1 of these measured too. This latter measure measures how good systems are at correctly recognizing a diverse range of entities, rather than just the very frequent surface forms. For example, the classical measure would reward a system that always recognizes "London" accurately, and so such a system would get a high score on a corpus where 50% of the Location entities are just "London". The second measure, though, would reward "London" just once, regardless of how many times it appeared in the text.</p>
+<p>Systems are evaluated using a modified version of conlleval.py, downloadable here: <a href="files/wnuteval.py">wnuteval.py</a>.</p>
+<p>Input is via stdin or filename parameter; try something like: ./wnuteval.py <i>datafilename</i></p>
+<p>The system output data file takes the format <i>token gold-label predicted-label</i>.</p>
+
+<h2>Entity classes</h2>
+<ol>
+<li>Person</li>
+<li>Location (including GPE, facility)</li>
+<li>Corporation</li>
+<li>Consumer good (tangible goods, or well-defined services)</li>
+<li>Creative work (song, movie, book, and so on)</li>
+<li>Group (subsuming music band, sports team, and non-corporate organisations)</li>
+</ol>
+
+<h2>Downloads</h2>
+<p>Training data: <a href="files/wnut17train.conll">wnut17train.conll</a></p>
+
 <div class="panel panel-default">
   <b></b>
 </div>
@@ -75,7 +97,7 @@
 
   <div class="panel-body">
     <list>
-      <li>Training and dev data to be released: April 2017</li>
+      <li>Training and dev data to be released: May 2017</li>
       <li>Test data released: June 2017</li>
       <li>Result submission: June 2017</li>
       <li>Shared-task results and gold annotations for test data: June 2017</li>
@@ -85,9 +107,11 @@
       <li>Workshop Date: Sep 7 2017</li>
     </list>
 </ul>
+
 </hr>
   </div>
 </div>
+<p>Data will be downloaded directly. Links are given out via the <a href="https://groups.google.com/forum/#!forum/wnut">WNUT mailing list</a> and this page. All the data will be made available after the task has finished, as well as the team submissions. The data's in CONLL format; see the README files in the downloads for more details.</p>
 
 <!--
 <div class="panel panel-default">
