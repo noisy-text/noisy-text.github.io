@@ -146,7 +146,7 @@ def evaluate(iterable, options=None):
         if end_guessed and len(current_phrase_guessed):
             surface_forms_guessed.add(current_phrase_guessed.strip())
             current_phrase_guessed = ""
-            in_guessed = False
+            in_guessed = start_guessed
 
         if in_guessed:
             current_phrase_guessed += first_item + " "
