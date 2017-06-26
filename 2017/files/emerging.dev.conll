@@ -1865,7 +1865,7 @@ to	O
 become	O
 best	O
 than	O
-Bollywood	B-place
+Bollywood	B-location
 due	O
 to	O
 their	O
@@ -1986,7 +1986,7 @@ Movie	I-creative-work
 
 Come	O
 to	O
-Ireland	B-place
+Ireland	B-location
 again	O
 pleeeeease	O
 !	O
@@ -4960,7 +4960,7 @@ better	O
 than	O
 butler	B-person
 and	O
-klay	P-person
+klay	B-person
 LOL	O
 
 Did	O
@@ -12306,7 +12306,7 @@ movies	O
 I	O
 need	O
 those	O
-AirPods	B-people
+AirPods	B-person
 lol	O
 
 What	O
@@ -15666,7 +15666,7 @@ when	O
 he	O
 talks	O
 bout	O
-trump	S-person
+trump	B-person
 ah	O
 weak	O
 
@@ -16265,7 +16265,7 @@ there	O
 you	O
 should	O
 summon	O
-ldshadowlady	b-person
+ldshadowlady	B-person
 aka	O
 Lizzie	B-person
 and	O
