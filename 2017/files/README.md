@@ -11,6 +11,10 @@ There are six classes of entity in this task:
 
 Below are guidelines for each of these.
 
+If you use this dataset, please cite the task paper:
+
+> Leon Derczynski, Eric Nichols, Marieke van Erp, Nut Limsopatham (2017) "Results of the WNUT2017 Shared Task on Novel and Emerging Entity Recognition", in Proceedings of the 3rd Workshop on Noisy, User-generated Text.
+
 
 ## 1. Person
 
