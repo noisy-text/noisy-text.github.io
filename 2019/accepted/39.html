@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Preliminary Program</TITLE>
+
+<style>
+
+BODY {
+   MARGIN-TOP: 15pt;
+   MARGIN-LEFT: 15pt;
+   MARGIN-RIGHT: 15pt;
+   MARGIN-BOTTOM: 15pt;
+   FONT-SIZE: 10pt;
+   FONT-FAMILY: "Times New Roman";
+   BACKGROUND-COLOR: #ffffff;
+   COLOR: #000000;
+}
+
+P {
+   FONT-SIZE: 10pt;
+}
+
+TD {
+   FONT-SIZE: 10pt;
+}
+
+TH {
+   FONT-SIZE: 10pt;
+}
+
+
+A {
+   COLOR: #32426c;
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+A:visited {
+   COLOR: #32426c;
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+A:active {
+   COLOR: #32426c;
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+   TEXT-DECORATION: none
+}
+A:hover {
+   COLOR: #32426c;
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+   TEXT-DECORATION: underline
+}
+H4 {
+   FONT-SIZE: 10pt;
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+
+H3 {
+   FONT-SIZE: 11pt;
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+
+H2 {
+   FONT-SIZE: 12pt;
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+
+H1 {
+   FONT-SIZE: 14pt;
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+
+</style>
+
+<p>
+
+<h4>Identifying Linguistic Areas for Geolocation</h4>
+
+<em>Tommaso Fornaciari and Dirk Hovy</em><br>
+Bocconi University
+
+<p>
+
+<hr>
+
+
+<h4>Abstract</h4>
+
+<blockquote>
+    <p>Geolocation of social media users relies on the assumption that language carries sufficient geographic information.
+Preliminarily, we need to identify discrete geographic regions, since location is usually given as continuous latitude/longitude tuples.
+Most studies use some form of clustering to discretize the continuous coordinates (Han et al., 2016). 
+However, the resulting regions do not always correspond to existing linguistic areas. 
+Consequently, accuracy at 100 miles tends to be good, but degrades for finer-grained distinctions, when different linguistic regions  get lumped together.
+We describe a new algorithm, Point-to-City (P2C), an iterative k-means-based method for clustering geographic coordinates and associating them with towns. We create three sets of labels at different levels of granularity, and compare performance of a  state-of-the-art geolocation model trained and tested with P2C labels to one with k-d tree labels.
+Even though P2C results in substantially more labels than the baseline, model accuracy increases significantly over using traditional labels at the fine-grained level, while staying comparable at 100 miles. 
+The results suggest that identifying meaningful linguistic areas is crucial for improving geolocation at a fine-grained level.</p> </p>
+</blockquote>
+
+
+
+
+<hr>
+
+<p>
+</body>
+</html>
