@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>W-NUT 2020 Shared Task: Machine Reading of Sequential Instructions</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  <style>
+ 
+  </style>
+  </head>
+
+  <body >
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">W-NUT</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+           <li class="active"><a href="#">Home</a></li>
+           <li><a href="../2020/index.html">2020</a></li>
+           <li><a href="../2019/index.html">2019</a></li>
+           <li><a href="../2018/index.html">2018</a></li>
+           <li><a href="../2017/index.html">2017</a></li>
+           <li><a href="../2016/index.html">2016</a></li>
+           <li><a href="../2015/index.html">2015</a></li>
+           <li><a href="#call">Call</a></li>
+           <!-- <li><a href="#tasks">Shared-tasks</a></li> -->
+           <li><a href="#committee">Committee</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron" >
+        <h2>Machine Reading of Sequential Instructions</h2>
+        
+        <p>For this task, systems are asked to extract relations and events from lab instructions. </p>
+
+        <p>There is a mailing list <a href="https://groups.google.com/forum/#!forum/wnut2020-sharedtask">here</a> for future announcements.</p>
+        
+        
+        <p>We have <strong>best paper awards</strong> sponsored by <strong>Twitter</strong> this year. </p>
+        
+        
+        <p></p>
+      </div>
+
+
+<hr/>
+
+<a id="intro"><h2 style="padding-top:50px; margin-top:-50px;">Intro</h2></a>
+
+<p>Lab protocols specify steps in performing a lab procedure. They are noisy, dense, and domain-specific. Automatic or semi-automatic conversion of protocols into machine-readable format benefits biological research. In this task, system entries are invited for the identification of events and relations in these lab protocols.</p>
+
+<pre>
+      How to Make a 0.5M TCEP Stock Solution
+      Weigh 5.73 g of TCEP.
+      Add 35 ml of cold molecular biology grade water to the vial, and dissolve the TCEP.
+      This resulting solution is very acidic, with an approximate pH of 2.5.
+</pre>
+
+<p>For WNUT-2020, web lab data has been annotated for events and relations using BRAT. Submissions should be made in BRAT format. Lab instructions come from <a href="https://protocols.io">protocols.io</a>. An example paper working with this noisy and dense format is <a href="https://www.aclweb.org/anthology/N18-2016/">N18-2016</a>.</p>
+
+<p>See here for a live demo on <strong><a href="http://bionlp.osu.edu:5000/protocols">entity and relation recognition over lab protocols</a></strong>.</p>
+
+
+<hr/>
+
+<a id="format"><h2 style="padding-top:50px; margin-top:-50px;">Data format</h2></a>
+
+
+<h4>CONLL format:</h4>
+<p>Protocols are represented in CONLL format. In this format each line of the is in the following format:</p>
+
+<blockquote>
+      &lt;word&gt;+"\t"+&lt;NE&gt;
+</blockquote>
+
+<p>The end of sentence is marked with an empty line.</p>
+
+<h4>The standoff format:</h4>
+
+<p>In the standoff format Each text document in the dataset is acompanied by a corresponding annotation file. The two are associatied by using a simple file naming convention, wherein their base name (file name without the file extention) is the same: for example, the file protocol_30.ann contains annotations for the file protocol_30.txt.</p>
+
+<p>Within the document, individual annotations are connected to specific spans of text through character offsets. For example, in a document beginning "Weigh 5.73 g of TCEP." the text "Weigh" is identified by the offset range 0..5. (All offsets all indexed from 0 and include the character at the start offset but exclude the character at the end offset.)</p>
+
+<h5> Text file:</h5>
+
+<p>Text files are expected to have the file extension .txt and contain the text of the original protocol input into the system.</p>
+
+<p>The protocol texts are stored in plain text files encoded using UTF-8 (an extension of ASCII — plain ASCII texts work too). The Protocol texts contain newlines, each line indicating a single step in the protocol. The first line is always the protocol's name/title, as shown in the example above.</p>
+
+<h5> Annotation file:</h5>
+
+<p>Annotations are stored in files with the .ann file extension. The various annotation types that may be contained in these files are discussed in the following.</p>
+
+<p>All annotations follow the same basic structure: Each line contains one annotation, and each annotation is given an ID that appears first on the line, separated from the rest of the annotation by a single TAB character. The rest of the structure varies by annotation type.</p>
+
+<p>Examples of annotation for an entity "Reagent" (T1), an event trigger "Action" (T2), an event (E1) and a relation (R2) are shown in the following.</p>
+
+<ul>
+      <li>T1  Reagent 111 130 fresh tissue sample</li>
+      <li>T2  Action 199 204  Weigh</li>
+      <li>E1  Action:T2 Acts-on:T4</li>
+      <li>T3  Amount 219 227  50-100mg</li>
+      <li>T4  Reagent 228 235 tissues</li>
+      <li>T5  Action 289 294  mince</li>
+      <li>E2  Action:T5 Acts-on:T6 Using:T10 Site:T8</li>
+      <li>T6  Reagent 299 305 tissue</li>
+      <li>T7  Modifier 311 328  very small pieces</li>
+      <li>R2  Mod-Link Arg1:E2 Arg2:T7</li>
+</ul>
+
+<p>In our annotated dataset, we only ever make use of three types of annotations, each associated with their annotation ID. Those annotation IDs are described below:</p>
+
+<ul>
+<li><b>T: text-bound annotation</b></li>
+<li><b>R: relation</b></li>
+<li><b>E: event</b></li>
+</ul>
+
+<p>Detailed descriptions of each of these types of annotations are given below.</p>
+
+<h6>Text bound annotations:</h6>
+
+<p>Text-bound annotations are an important category of annotation related to both entity and event annotations. Text-bound annotation identifies a specific span of text and assigns it a type.</p>
+
+<ul>
+      <li>T1  Reagent 111 130 fresh tissue sample</li>
+      <li>T2  Action 199 204  Weigh</li>
+</ul>
+
+<p>All text-bound annotations follow the same structure. As in all annotations, the ID occurs first and is delimited from the rest of the line with a TAB character. The primary annotation is given as a SPACE-separated triple (type, start-offset, end-offset). The start-offset is the index of the first character of the annotated span in the text (".txt" file), i.e. the number of characters in the document preceding it. The end-offset is the index of the first character after the annotated span. Thus, the character in the end-offset position is not included in the annotated span. For reference, the text spanned by the annotation is included, separated by a TAB character.</p>
+
+<h6>Entity annotations:</h6>
+
+<p>Each entity annotation has a unique ID and is defined by type (e.g. Reagent or Amount) and the span of characters containing the entity mention (represented as a "start end" offset pair).</p>
+
+<ul>
+      <li>T1  Reagent 111 130 fresh tissue sample</li>
+      <li>T3  Amount 219 227  50-100mg</li>
+      <li>T4  Reagent 228 235 tissues</li>
+</ul>
+
+<p>Each line contains one text-bound annotation identifying the entity mention in text.</p>
+
+<h6>Event annotations</h6>
+
+<p>Each event annotation has a unique ID and is defined by type, event trigger (the text stating the event) and arguments. We only have one type of event in our dataset, which is "Action"</p>
+
+<ul>
+      <li>T2  Action 199 204  Weigh</li>
+      <li>E1  Action:T2 Acts-on:T4</li>
+</ul>
+
+<p>The event triggers, annotations marking the word or words stating each event, are text-bound annotations and their format is identical to that for entities. (The IDs of triggers occupy the same space as the IDs of entities, and these must not overlap.)</p>
+
+<p>As for all annotations, the event ID occurs first, separated by a TAB character. The event trigger is specified as TYPE:ID and identifies the event type and its trigger through the ID. By convention, the event type is specified both in the trigger annotation and the event annotation. The event trigger is separated from the event arguments by SPACE. The event arguments are a SPACE-separated set of ROLE:ID pairs, where ROLE is one of the event- and task-specific argument roles (e.g. Acts-on, Creates, Site, etc) and the ID identifies the entity or event filling that role. Note that several events can share the same trigger and that while the event trigger should be specified first, the event arguments can appear in any order.</p>
+
+<h6>Relation annotations:</h6>
+
+<p>Binary relations have a unique ID and are defined by their type (e.g. Measure, Mod-Link) and their arguments. Relation arguments are always identified simply as Arg1 and Arg2.</p>
+
+<ul>
+      <li>R2  Mod-Link Arg1:E2 Arg2:T7</li>
+</ul>
+
+<p>The format is similar to that applied for events, with the exception that the annotation does not identify a specific piece of text expressing the relation ("trigger"): the ID is separated by a TAB character, and the relation type and arguments by SPACE.</p>
+
+
+
+<hr/>
+
+<a id="baseline"><h2 style="padding-top:50px; margin-top:-50px;">Baseline</h2></a>
+<p>A CRF-based system is included as the baseline for this task.</p>
+
+<hr/>
+
+<a id="downloads"><h2 style="padding-top:50px; margin-top:-50px;">Downloads</h2></a>
+
+<p>As with a typical NLP shared task, the training data is released ahead of time, and then during an evaluation period some unlabelled data is released, and entrants should run their system on this data and upload the result. The score on this is the result. Unlike typical NLP shared tasks, we release no dev partition, but instead invite participants to cross-validate over a larger training set; this should give a stabler picture of performance during system development (<a href="https://www.aclweb.org/anthology/P19-1267/">P19-1267</a>).</p>
+
+<p>Source data: To appear</p>
+
+
+<a id="submission"><h2 style="padding-top:50px; margin-top:-50px;">Submit results</h2></a>
+
+<p>Output should be submitted to CodaLab. There will be a dev set for validating your system based on a subset of the training data (no leaderboard). A limited number of runs may be submitted; the highest-scoring one will be the final result.<p>
+
+<p>CodaLab submission: To appear</p>
+
+<hr/>
+<a id="call"><h2 style="padding-top:50px; margin-top:-50px;">Call for Papers</h2></a>
+
+
+<p>We seek submissions of systems and system descriptions. System results may be filed via a CodaLab instance, soon to be published. Creators of systems with valid results that are submitted to this shared task are invited to sent a short paper (4 pages plus references) to W-NUT 2020 that describes the system. There is no need to give a detailed description of the shared task in a system submission.</p>
+
+All submissions should conform to <a href="https://2020.emnlp.org/call-for-papers">EMNLP 2020 style guidelines</a>. Submissions must be anonymized. Abstract submissions should include author information (and where the work was published in a footnote on the front page, if applicable). Please submit your papers at the <a href="https://www.softconf.com/emnlp2020/wnut2020/">SoftConf link</a>.
+<br>
+<br>
+<strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or publications must indicate at submission time. Authors of a paper accepted for presentation must notify the workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.
+<hr/>
+
+        
+<a id="organizer">  <h2 style="padding-top:50px; margin-top:-50px;">Task Organizers</h2></a>
+<ul>
+  <li><a href="http://www.derczynski.com/">Leon Derczynski</a> (IT University of Copenhagen)  </li>
+  <li><a href="https://sites.google.com/site/jeniyatabassum/">Jeniya Tabassum</a> (Ohio State University)</li>
+</ul>
+
+
+<hr/>	
+	
+<a id="dates" ><h2>Important Dates</h2></a>
+<ul>
+<li>Data available: March-April 2020</li>
+<li>Leaderboard available: Late April 2020</li>
+<li>Test window: Jun 29 - Jul 3</li>
+<li>Papers submitted: Jul 17</li>
+<li>Papers reviewed: Jul 31</li>
+<li>Papers camera ready: Aug 31</li>
+<li>Workshop day: November 11</li>
+</ul>
+
+
+<hr/>
+<br/>
+<strong>Sponsored by &nbsp;&nbsp;  <a href="https://about.twitter.com/"><img src="files/Twitter_Logo_Blue.png" alt="Twitter logo" height="60"></a></strong>
+
+<br/>
+<br/>
+<strong><a href='https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy'>Anti-harassment Policy</a></strong>
+<br/>
+<br/>
+<br/>
+
+
+    </div> <!-- /container -->
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
