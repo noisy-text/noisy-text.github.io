@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>W-NUT 2020 Shared Task 2: Identification of informative COVID-19 English Tweets</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  <style>
+ 
+  </style>
+  </head>
+
+  <body >
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">W-NUT</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+           <li class="active"><a href="http://noisy-text.github.io/">Home</a></li>
+           <li><a href="../2020/index.html">2020</a></li>
+           <li><a href="#intro">Introduction</a></li>
+           <li><a href="#dates">Dates</a></li>
+           <li><a href="#data">Data</a></li>
+           <!--li><a href="#baseline">Baseline</a></li-->
+           <!--li><a href="#download">Download</a></li-->
+           <li><a href="#submission">Submit</a></li>
+           <li><a href="#call">System papers</a></li>
+           <li><a href="#organizer">Organizers</a></li>
+           
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron" >
+        <h2>Identification of informative COVID-19 English Tweets</h2>
+        
+        <p>For this task, participants are asked to develop systems that automatically identify whether an English Tweet related to the novel coronavirus (COVID-19) is informative or not. Such informative Tweets provide information about recovered, suspected, confirmed and death cases as well as location or travel history of the cases. </p>
+
+        <p><strong>Data is <a href="https://github.com/VinAIResearch/COVID19Tweet">released</a> on June 21, 2020!</strong></p> 
+        <p><strong>Official valuation will be between August 17, 2020 and August 21, 2020 (Please register <a href="https://forms.gle/TEFbySkQoPCJzs8H6">here</a> to participate).</strong></p>
+        
+        <p>There is a <a href="https://groups.google.com/forum/#!forum/wnut-2020-covid19tweet">mailing list</a> for future announcements.</p>
+        
+                
+        
+        <p></p>
+      </div>
+
+<a id="intro"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Introduction</h2>
+
+<!--pre>
+      How to Make a 0.5M TCEP Stock Solution
+      Weigh 5.73 g of TCEP.
+      Add 35 ml of cold molecular biology grade water to the vial, and dissolve the TCEP.
+      This resulting solution is very acidic, with an approximate pH of 2.5.
+</pre-->
+
+<p>The goals of our shared task are: (1) To develop a language processing task that potentially impacts research and downstream applications, and  (2) To provide the community with a new dataset for identifying informative COVID-19 English Tweets. </p>
+
+<p>
+As of mid-June 2020, the COVID-19 outbreak has led to about <a href="https://www.worldometers.info/coronavirus/">445K deaths and 8.2M+ infected patients from 215 regions & countries</a>, creating fear and panic for people all around the world. Recently, much attention has been paid  to building monitoring systems (e.g. <a href="https://coronavirus.jhu.edu/map.html">The Johns Hopkins Coronavirus Dashboard</a>) to track the development of the outbreak and to provide users the information related to the virus, e.g. any new suspicious/confirmed cases near/in the users' regions. Note that most of the "official" sources used in the tracking tools are not kept up to date with the current outbreak situation, e.g. WHO updates the outbreak information only once a day. Those monitoring systems thus use social network data, e.g. from Twitter, as a real-time alternative source for updating the outbreak information, generally by crowdsourcing or searching for related information manually. However, the outbreak has been spreading rapidly, we observe a massive amount of data on social networks, e.g. <a href="https://ieee-dataport.org/open-access/coronavirus-covid-19-tweets-dataset">about 4 millions of COVID-19 English Tweets daily on the Twitter platform</a> in which the majority of these Tweets are uninformative. Thus it is important to be able to select the informative ones (e.g. COVID-19 Tweets related to new cases or suspicious cases) for downstream applications. However, manual approaches to identify the informative Tweets  require significant human efforts, and thus are costly.
+</p>
+
+<p>To help handle the problem, this shared task is to automatically identify whether a COVID-19 English Tweet is informative or not. Such informative Tweets provide information about recovered, suspected, confirmed and death cases as well as location or travel history of the cases. To be able to achieve the goals of this shared task, we construct a dataset of 10K COVID19 English tweets. We believe our dataset and systems developed for this shared task will be beneficial for the development of COVID-19 related monitoring systems.</p>
+
+	
+<a id="dates" ></a>
+<hr/> 
+<h2>Important Dates</h2>
+<ul>
+<li>Data available: June 21, 2020</li>
+<li>Evaluation window: August 17, 2020 - August 21, 2020</li>
+<li>System description papers submitted: September 4, 2020</li>
+<li>Papers reviewed: September 25, 2020</li>
+<li>Papers camera ready: October 08, 2020</li>
+<li>Workshop day: November 19, 2020</li>
+</ul>
+
+
+
+
+<a id="data"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Data</h2>
+
+
+
+<p>The dataset consists of 10K COVID English Tweets, including 4719 Tweets labeled as INFORMATIVE and 5281 Tweets labeled as UNINFORMATIVE. We use a 70/10/20 rate for splitting the dataset into training/validation/test sets.  </p>
+
+<ul>
+<li>Training set released on June 21, 2020:  3303 (INFORMATIVE) &  3697 (UNINFORMATIVE)</li>
+<li>Validation set:  472 (INFORMATIVE) &  528 (UNINFORMATIVE) </li>
+<li>Test set:  944 (INFORMATIVE) & 1056 (UNINFORMATIVE) </li>
+</ul>
+
+<p>
+<strong>Shared task dataset is available at <a href="https://github.com/VinAIResearch/COVID19Tweet">https://github.com/VinAIResearch/COVID19Tweet</a></strong></p>
+
+
+<a id="submission"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Submit results</h2>
+
+<p> System results on the validation and test sets may be filed via a CodaLab instance which is soon to be published. <p>
+
+<p>Results submission: TBA </p>
+
+
+<a id="call"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Technical System Papers</h2>
+
+
+<p>We seek submissions of systems and system descriptions, which will be published in Proceedings the W-NUT 2020 workshop in the ACL Anthology.</p> 
+<p>Creators of systems with valid results that are submitted to this shared task are invited to send a short paper (4 pages plus references) to W-NUT 2020 that describes the system. There is no need to give a detailed description of the shared task in a system submission. </p>
+<p>
+All submissions should conform to <a href="https://2020.emnlp.org/call-for-papers">EMNLP 2020 style guidelines</a>. Please submit your papers at the <a href="https://www.softconf.com/emnlp2020/wnut2020/">SoftConf link</a>. </p>
+
+<!--<strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or publications must indicate at submission time. Authors of a paper accepted for presentation must notify the workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.-->
+
+        
+<a id="organizer"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Task Organizers</h2>
+<ul>
+  <li><a href="https://datquocnguyen.github.io">Dat Quoc Nguyen</a> (VinAI Research, Vietnam)</li>
+  <li><a href="https://people.csiro.au/v/t/thanh-vu">Thanh Vu</a> (AEHRC, CSIRO, Australia)</li>
+  <li><a href="http://afshinrahimi.github.io">Afshin Rahimi</a> (The University of Queensland, Australia)</li>
+  <li>Mai Hoang Dao (VinAI Research, Vietnam)</li>
+  <li>Linh The Nguyen (VinAI Research, Vietnam)</li>
+  <li>Long Doan (VinAI Research, Vietnam)</li>
+</ul>
+
+
+
+<hr/>
+<br/>
+<strong>Sponsored by &nbsp;&nbsp;  <a href="https://about.twitter.com/"><img src="files/Twitter_Logo_Blue.png" alt="Twitter logo" height="60"></a></strong>
+
+<br/>
+<br/>
+<strong><a href='https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy'>Anti-harassment Policy</a></strong>
+<br/>
+<br/>
+<br/>
+
+
+    </div> <!-- /container -->
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
