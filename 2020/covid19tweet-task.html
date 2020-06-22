@@ -51,8 +51,8 @@
            <li><a href="#dates">Dates</a></li>
            <li><a href="#data">Data</a></li>
            <!--li><a href="#baseline">Baseline</a></li-->
-           <!--li><a href="#download">Download</a></li-->
-           <li><a href="#submission">Submit</a></li>
+           <!--li><a href="#evaluation">Metrics</a></li-->
+           <li><a href="#submission">Submission</a></li>
            <li><a href="#call">System papers</a></li>
            <li><a href="#organizer">Organizers</a></li>
            
@@ -123,25 +123,51 @@ As of mid-June 2020, the COVID-19 outbreak has led to about <a href="https://www
 <p>The dataset consists of 10K COVID English Tweets, including 4719 Tweets labeled as INFORMATIVE and 5281 Tweets labeled as UNINFORMATIVE. We use a 70/10/20 rate for splitting the dataset into training/validation/test sets.  </p>
 
 <ul>
-<li>Training set released on June 21, 2020:  3303 (INFORMATIVE) &  3697 (UNINFORMATIVE)</li>
-<li>Validation set:  472 (INFORMATIVE) &  528 (UNINFORMATIVE) </li>
+<li>Training set (released on June 21, 2020):  3303 (INFORMATIVE) &  3697 (UNINFORMATIVE)</li>
+<li>Validation set (released on June 21, 2020):  472 (INFORMATIVE) &  528 (UNINFORMATIVE) </li>
 <li>Test set:  944 (INFORMATIVE) & 1056 (UNINFORMATIVE) </li>
 </ul>
 
+
+
+
+<p>Although we provide a default training and validation split of the released data,  participants are free to use this data in any way they find useful when training and tuning their systems, e.g. use a different split, perform cross-validation, and the like.</p>
+
+<p>The raw test set will be released when the evaluation phase starts. To keep fairness among participants, the test set will be a relatively large set of Tweets, and the actual test Tweets by which your model will be evaluated are hidden in the large test set. Gold test labels will be released after the evaluation period. </p>
+
 <p>
-<strong>Shared task dataset is available at <a href="https://github.com/VinAIResearch/COVID19Tweet">https://github.com/VinAIResearch/COVID19Tweet</a></strong></p>
+<strong>Shared task data is available at: <a href="https://github.com/VinAIResearch/COVID19Tweet">https://github.com/VinAIResearch/COVID19Tweet</a></strong></p>
 
-
-<p>Note that the data is released for you to use without downloading from Twitter.
+<p>
+  Note that the data is released for you to use without downloading from Twitter (here, each data line consists of Tweet ID, Tweet text and label).
  Part of our agreement in sharing this data directly with you is that it is your responsibility to maintain <a href="https://dev.twitter.com/overview/terms/policy.html">Twitter's Term's of Service</a> and to delete Tweets that are no longer publicly available.</p>
+
+
+
+
+<!--h4 style="padding-top:50px; margin-top:-50px;">Additional resources</h4>
+
+
+<ul>
+<li><a href="https://github.com/FredericGodin/TwitterEmbeddings">Pre-trained Word2vec and FastText word embeddings for English Tweets</a></li>
+<li><a href="https://nlp.stanford.edu/projects/glove/">Pre-trained GloVe word embeddings for English Tweets</a></li>
+<li><a href="https://github.com/VinAIResearch/BERTweet">BERTweet: A pre-trained language model for English Tweets</a></li>
+</ul-->
+
 
 <a id="submission"></a>
 <hr/>
-<h2 style="padding-top:50px; margin-top:-50px;">Submit results</h2>
+<h2 style="padding-top:50px; margin-top:-50px;">Result Submission</h2>
 
-<p> System results on the validation and test sets may be filed via a CodaLab instance which is soon to be published. <p>
+<p>Systems are evaluated using standard evaluation metrics, including accuracy, precision, recall and F1-score.  Note that the latter three metrics will be calculated for the INFORMATIVE class only. <strong>The submissions will be ranked by F1-score</strong>. </p>
 
-<p>Results submission: TBA </p>
+<p>By submitting results to this shared task, you consent to the public release of your scores at the SemEval-2018 workshop and in the associated proceedings, at the task organizers' discretion. Scores may include, but are not limited to, automatic and manual quantitative judgments, qualitative judgments, and such other metrics as the task organizers see fit. You accept that the ultimate decision of metric choice and score value is that of the task organizers.</p>
+
+<p>You further agree that the task organizers are under no obligation to release scores and that scores may be withheld if it is the task organizers' judgment that the submission was incomplete, erroneous, deceptive, or violated the letter or spirit of the shared task's rules. The inclusion of a submission's scores is not an endorsement of a team or individual's submission, system, or science.</p>
+
+<p>You further agree that your system may be named according to the team name provided at the time of submission, or to a suitable shorthand as determined by the task organizers.</p>
+
+<p>Results: TBA </p>
 
 
 <a id="call"></a>
