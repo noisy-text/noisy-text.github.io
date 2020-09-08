@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,28 +7,28 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-
+​
     <title>W-NUT 2020 Shared Task: Extracting COVID-19 Events from Twitter</title>
-
+​
     <!-- Bootstrap core CSS -->
     <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
-
+​
     <!-- Custom styles for this template -->
     <link href="navbar-fixed-top.css" rel="stylesheet">
-
+​
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+​
   <style>
-
+​
   </style>
   </head>
-
+​
   <body >
-
+​
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -58,146 +57,134 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+​
     <div class="container">
-
+​
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron" >
         <h2>Extracting COVID-19 Events from Twitter</h2>
-
+​
         <p> For this task, participants are asked to develop systems that automatically extract COVID-19 related events from Twitter.</p>
-
+​
         <p><strong>Data is <a href="https://github.com/viczong/extract_COVID19_events_from_Twitter">released</a> on June 22, 2020!</strong></p>
-        <p><strong>Official evaluation will be between Sept. 7, 2020 - Sept. 11, 2020 (register <a href="https://forms.gle/Nm41G5BcyFE4vaW9A">here</a> to participate).</strong></p>
-        <p>There is a <a href="https://groups.google.com/forum/#!forum/wnut2020-sharedtask">mailing list</a> for future announcements.</p>
+        <p><strong>We have started our official evaluation during Sept. 7, 2020 - Sept. 11, 2020. For submission instructions check <a href="https://github.com/viczong/extract_COVID19_events_from_Twitter/tree/master/shared_task#evaluation-period-sep-7-2020---sep-11-2020">here</a>. Please submit your prediction results <a href="https://forms.gle/8tDfzMQp7mxQmFvk7">here</a> (Submission deadline: Sept. 11, 2020 11:59pm <a href="https://www.timeanddate.com/time/zones/aoe">AoE</a>).</strong></p>
+<!--        <p>There is a <a href="https://groups.google.com/forum/#!forum/wnut2020-sharedtask">mailing list</a> for future announcements.</p>-->
       </div>
-
+​
 <a id="intro"></a>
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Introduction</h2>
         <p> People usually share a wide variety of information related to COVID-19 publicly on social media. For example, Twitter users often indicate when they might be at increased risk of COVID-19 due to a coworker or other close contact testing positive for the virus, or when they have symptoms but were denied access to testing. They also discuss their opinions on potential cure methods or treatments for the coronavirus. In this shared task, system entries are invited to build systems for automatically extracting COVID-19 related events from Twitter using our newly built corpus.</p>
         <p>Our event extraction is formulated as a slot-filling task: to extract text spans from a given tweet for filling pre-designed slots. Specifically, each slot-filling task is set up as a binary classification problem: given a tweet \(t\) with a candidate choice \(s\), the classification model \(f(t, s) \rightarrow \{0, 1\}\) predicts whether \(s\) answers its designated question.</p>
         <p>Our annotated corpus currently covers the following 5 events: (1) tested positive, (2) tested negative, (3) can not test, (4) death and (5) cure and prevention. Below are some examples of our annotated tweets.</p>
-
+​
         <a><image src="files/covid19-task_example.png" style="width:600px;"></a>
-
+​
 <a id="organizer"></a>
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Task Organizers</h2>
 <ul>
     <li><a href="http://web.cse.ohio-state.edu/~zong.56/">Shi Zong</a> (Ohio State University)</li>
-    <li><a href="https://cocoxu.github.io/">Wei Xu</a> (Ohio State University → Georgia Tech)</li>
-    <li><a href="http://aritter.github.io/">Alan Ritter</a> (Ohio State University → Georgia Tech)</li>
+    <li><a href="https://cocoxu.github.io/">Wei Xu</a> (Georgia Tech)</li>
+    <li><a href="http://aritter.github.io/">Alan Ritter</a> (Georgia Tech)</li>
 </ul>
         <p><strong>Contact Us:</strong> If you have any questions, please feel free to contact us at <a href="mailto:wnut.sharedtask.covid19extract@gmail.com">wnut.sharedtask.covid19extract@gmail.com</a>.</p>
-
+​
 <a id="dates" ></a>
 <hr/>
 <h2>Important Dates</h2>
 <ul>
     <li>Data available: June 22, 2020</li>
-    <li>Evaluation window: Sept. 7, 2020 - Sept. 11, 2020</li>
+    <li>Evaluation window: Sept. 7, 2020 - Sept. 11, 2020 (AoE)</li>
     <li>System description papers submitted: Sept. 21, 2020</li>
     <li>Papers reviewed: Sept. 30, 2020</li>
     <li>Papers camera ready: Oct. 8, 2020</li>
     <li>Workshop day: Nov. 19, 2020</li>
 </ul>
-
-
+​
+​
 <a id="format"></a>
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Dataset Release and Format</h2>
-
+​
         <p>We are currently releasing 7,500 annotated tweets for the following 5 events: (1) tested positive, (2) tested negative, (3) can not test, (4) death and (5) cure and prevention. The dataset could be accessed at: <a href="https://github.com/viczong/extract_COVID19_events_from_Twitter">https://github.com/viczong/extract_COVID19_events_from_Twitter</a>.</p>
-
+​
         <h4>Get dataset </h4>
-
+​
         <p>Due to Twitter's data sharing policy and people's privacy concerns, we are only able to release the tweet IDs. Participants could recover our annotated data by using official Twitter API, for example in the following way.</p>
-
+​
         <pre><code>
             import tweepy
-
+​
             auth = tweepy.OAuthHandler(your_API_key, your_API_secret_key)
             auth.set_access_token(your_Access_token, your_Access_token_secret)
-
+​
             api = tweepy.API(auth, parser=tweepy.parsers.JSONParser(), wait_on_rate_limit=True)
-
+​
             a_single_tweet = api.get_status(id=id_for_tweet, tweet_mode='extended')
             tweet_text_we_use = a_single_tweet['full_text']
         </code></pre>
-
+​
         <p>Based on our own trail for re-collecting tweets through official Twitter API, 7,115 out of 7,500 tweets could be obtained by using above code snippet (as of June 5, 2020).</p>
-
+​
         <h4>Annotation format</h4>
-
+​
         <p>For each tweet, we provide character offsets for candidate chunks and annotations. Character offsets are calculated by using the 'full_text' field (as shown above in the code).</p>
         <p>Our provided annotations are divided into two parts. For more details, please refer to Section 2 of our <a href="https://arxiv.org/pdf/2006.02567.pdf">paper</a>.</p>
-
+​
         <ul>
             <li>Part 1 - specific event identification: The annotation is a binary "yes" or "no" answer, with "yes" meaning the given tweet describes an event for an individual or a small group of people (or describes a cure or prevention method for cure category).</li>
             <li>Part 2 - slot filling: For each designed question (slot), annotators are asked to choose from a set of candidate choices. We summarize all questions with corresponding candidate choices <a href="https://docs.google.com/document/d/1OWFTXOZpoXNrDULq6PFXvIGarSZwpU-uLQRuV4wrJwI/edit?usp=sharing">here</a>. Please note that there might be more than one choice that could answer a specific question.</li>
         </ul>
-
+​
 <a id="baseline"></a>
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Baseline</h2>
 <p> We will provide a logistic regression baseline for this task.</p>
-
-
+​
+​
 <a id="submission"></a>
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Submit Results</h2>
         <p>All submitted systems will be evaluated on a separate test set (we plan to prepare around 400-500 tweets as final test set for each category). The predictions will be compared with the golden data and we will maintain a leaderboard for all participants. We will be releasing an evaluation script for comparing the system generated outputs with golden annotations.</p>
-        <p>Participants should use the following format (similar to our provided annotations in .jsonl format, but replace character offsets with actual text) to submit their results. We will provide a link for uploading the system results, soon to be published.
-        <pre><code>
-        [{'id': '1238504197319995397',
-         'predicted_annotation': {'part2-age.Response': ['Not Specified'],
-                                  'part2-close_contact.Response': ['Not Specified'],
-                                  'part2-employer.Response': ['Not Specified'],
-                                  'part2-gender.Response': ['Not Specified'],
-                                  'part2-name.Response': ['Rita Wilson', 'Tom Hanks'],
-                                  'part2-recent_travel.Response': ['Not Specified'],
-                                  'part2-relation.Response': ['Not Specified'],
-                                  'part2-when.Response': ['Friday'],
-                                  'part2-where.Response': ['Australia']}}]
-        </code></pre>
+        <p>Please follow our <a href="https://github.com/viczong/extract_COVID19_events_from_Twitter/tree/master/shared_task#evaluation-period-sep-7-2020---sep-11-2020">submission requirements</a> to format your prediction results. Please submit your prediction results <a href="https://forms.gle/8tDfzMQp7mxQmFvk7">here</a>.
         </p>
-
-
+​
+​
 <a id="call"></a>
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Technical System Papers</h2>
-
-
+​
+​
 <p>We seek submissions of systems and system descriptions. Creators of systems with valid results that are submitted to this shared task are invited to sent a short paper (4 pages plus references) to W-NUT 2020 that describes the system. There is no need to give a detailed description of the shared task in a system submission.</p>
-
+​
 All submissions should conform to <a href="https://2020.emnlp.org/call-for-papers">EMNLP 2020 style guidelines</a>. Submissions must be anonymized. Abstract submissions should include author information (and where the work was published in a footnote on the front page, if applicable). Please submit your papers at the <a href="https://www.softconf.com/emnlp2020/wnut2020/">SoftConf link</a>.
 <br>
 <br>
 <strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or publications must indicate at submission time. Authors of a paper accepted for presentation must notify the workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.
-
-
-
-
-
+​
+​
+​
+​
+​
 <hr/>
 <br/>
 <strong>Sponsored by <a href="https://about.twitter.com/"><img src="files/Twitter_Logo_Blue.png" alt="Twitter logo" height="60"></a></strong>
-
+​
 <br/>
 <br/>
 <strong><a href='https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy'>Anti-harassment Policy</a></strong>
 <br/>
 <br/>
 <br/>
-
-
+​
+​
     </div> <!-- /container -->
-
-
-
-
-
+​
+​
+​
+​
+​
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
