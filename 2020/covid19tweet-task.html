@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,29 +7,28 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <meta http-equiv="refresh" content="0; url=https://competitions.codalab.org/competitions/25845" />
-    <title>WNUT-2020 Task 2: Identification of informative COVID-19 English Tweets</title>
-
-
+​
+    <title>W-NUT 2020 Shared Task: Extracting COVID-19 Events from Twitter</title>
+​
     <!-- Bootstrap core CSS -->
     <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
-
+​
     <!-- Custom styles for this template -->
     <link href="navbar-fixed-top.css" rel="stylesheet">
-
+​
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+​
   <style>
- 
+​
   </style>
   </head>
-
+​
   <body >
-
+​
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -48,183 +45,153 @@
           <ul class="nav navbar-nav">
            <li class="active"><a href="http://noisy-text.github.io/">Home</a></li>
            <li><a href="../2020/index.html">2020</a></li>
-           <li><a href="#intro">Introduction</a></li>
-           <li><a href="#dates">Dates</a></li>
-           <li><a href="#data">Data</a></li>
-           <!--li><a href="#baseline">Baseline</a></li-->
-           <!--li><a href="#evaluation">Metrics</a></li-->
-           <li><a href="#submission">Submission</a></li>
+           <li><a href="#intro">Intro</a></li>
+           <li><a href="#format">Data format</a></li>
+           <li><a href="#baseline">Baseline</a></li>
+<!--           <li><a href="#download">Download</a></li>-->
+           <li><a href="#submission">Submit</a></li>
            <li><a href="#call">System papers</a></li>
-           <li><a href="#organizer">Organizers</a></li>
-           
+           <li><a href="#organizer">Organisation</a></li>
+           <li><a href="#dates">Dates</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
+​
     <div class="container">
-
+​
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron" >
-        <h2>Identification of informative COVID-19 English Tweets</h2>
-        
-        <p>For this task, participants are asked to develop systems that automatically identify whether an English Tweet related to the novel coronavirus (COVID-19) is informative or not. Such informative Tweets provide information about recovered, suspected, confirmed and death cases as well as location or travel history of the cases. </p>
-
-        <p><strong>Data is <a href="https://github.com/VinAIResearch/COVID19Tweet">released</a> on June 21, 2020!</strong></p> 
-        <p><strong>Official evaluation will be between August 17, 2020 and August 21, 2020 <s>(Please register <a href="https://forms.gle/TEFbySkQoPCJzs8H6">HERE</a> to participate)</s>.</strong></p>
-        
-        <p>There is a <a href="https://groups.google.com/forum/#!forum/wnut-2020-covid19tweet">mailing list</a> for future announcements.</p>
-        
-                
-        
-        <p></p>
+        <h2>Extracting COVID-19 Events from Twitter</h2>
+​
+        <p> For this task, participants are asked to develop systems that automatically extract COVID-19 related events from Twitter.</p>
+​
+        <p><strong>Data is <a href="https://github.com/viczong/extract_COVID19_events_from_Twitter">released</a> on June 22, 2020!</strong></p>
+        <p><strong>We have started our official evaluation during Sept. 7, 2020 - Sept. 11, 2020. For submission instructions check <a href="https://github.com/viczong/extract_COVID19_events_from_Twitter/tree/master/shared_task#evaluation-period-sep-7-2020---sep-11-2020">here</a>. Please submit your prediction results <a href="https://forms.gle/8tDfzMQp7mxQmFvk7">here</a> (Submission deadline: Sept. 11, 2020 11:59pm <a href="https://www.timeanddate.com/time/zones/aoe">AoE</a>).</strong></p>
+<!--        <p>There is a <a href="https://groups.google.com/forum/#!forum/wnut2020-sharedtask">mailing list</a> for future announcements.</p>-->
       </div>
-
+​
 <a id="intro"></a>
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Introduction</h2>
-
-<!--pre>
-      How to Make a 0.5M TCEP Stock Solution
-      Weigh 5.73 g of TCEP.
-      Add 35 ml of cold molecular biology grade water to the vial, and dissolve the TCEP.
-      This resulting solution is very acidic, with an approximate pH of 2.5.
-</pre-->
-
-<p>The goals of our shared task are: (1) To develop a language processing task that potentially impacts research and downstream applications, and  (2) To provide the community with a new dataset for identifying informative COVID-19 English Tweets. </p>
-
-<p>
-As of mid-June 2020, the COVID-19 outbreak has led to about <a href="https://www.worldometers.info/coronavirus/">445K deaths and 8.2M+ infected patients from 215 regions & countries</a>, creating fear and panic for people all around the world. Recently, much attention has been paid  to building monitoring systems (e.g. <a href="https://coronavirus.jhu.edu/map.html">The Johns Hopkins Coronavirus Dashboard</a>) to track the development of the outbreak and to provide users the information related to the virus, e.g. any new suspicious/confirmed cases near/in the users' regions. Note that most of the "official" sources used in the tracking tools are not kept up to date with the current outbreak situation, e.g. WHO updates the outbreak information only once a day. Those monitoring systems thus use social network data, e.g. from Twitter, as a real-time alternative source for updating the outbreak information, generally by crowdsourcing or searching for related information manually. However, the outbreak has been spreading rapidly, we observe a massive amount of data on social networks, e.g. <a href="https://ieee-dataport.org/open-access/coronavirus-covid-19-tweets-dataset">about 4 millions of COVID-19 English Tweets daily on the Twitter platform</a> in which the majority of these Tweets are uninformative. Thus it is important to be able to select the informative ones (e.g. COVID-19 Tweets related to new cases or suspicious cases) for downstream applications. However, manual approaches to identify the informative Tweets  require significant human efforts, and thus are costly.
-</p>
-
-<p>To help handle the problem, this shared task is to automatically identify whether a COVID-19 English Tweet is informative or not. Such informative Tweets provide information about recovered, suspected, confirmed and death cases as well as location or travel history of the cases. To be able to achieve the goals of this shared task, we construct a dataset of 10K COVID19 English tweets. We believe our dataset and systems developed for this shared task will be beneficial for the development of COVID-19 related monitoring systems.</p>
-
-	
-<a id="dates" ></a>
-<hr/> 
-<h2>Important Dates</h2>
-<ul>
-<li>Data available: June 21, 2020</li>
-<li>Registration closed: August 14, 2020</li>
-<li>Evaluation window: August 17, 2020 - August 21, 2020</li>
-<li>System description papers submitted: September 4, 2020</li>
-<li>Papers reviewed: September 25, 2020</li>
-<li>Papers camera ready: October 08, 2020</li>
-<li>Workshop day: November 19, 2020</li>
-</ul>
-
-
-
-
-<a id="data"></a>
-<hr/>
-<h2 style="padding-top:50px; margin-top:-50px;">Data</h2>
-
-
-
-<p>The dataset consists of 10K COVID English Tweets, including 4719 Tweets labeled as INFORMATIVE and 5281 Tweets labeled as UNINFORMATIVE. Here, each Tweet is annotated by 3 independent annotators and we obtain an inter-annotator agreement score of Fleiss' Kappa at 0.818. We use a 70/10/20 rate for splitting the dataset into training/validation/test sets.  </p>
-
-<ul>
-<li>Training set (released on June 21, 2020):  3303 (INFORMATIVE) &  3697 (UNINFORMATIVE)</li>
-<li>Validation set (released on June 21, 2020):  472 (INFORMATIVE) &  528 (UNINFORMATIVE) </li>
-<li>Test set:  944 (INFORMATIVE) & 1056 (UNINFORMATIVE) </li>
-</ul>
-
-
-
-
-<p>Although we provide a default training and validation split of the released data,  participants are free to use this data in any way they find useful when training and tuning their systems, e.g. use a different split, perform cross-validation, and the like.</p>
-
-<p>The raw test set will be released when the evaluation phase starts. To keep fairness among participants, the test set will be a relatively large set of Tweets, and the actual test Tweets by which your model will be evaluated are hidden in the large test set. Gold test labels will be released after the evaluation period. </p>
-
-<p>
-<strong>Shared task data is available at: <a href="https://github.com/VinAIResearch/COVID19Tweet">https://github.com/VinAIResearch/COVID19Tweet</a></strong></p>
-
-<p>
-  Note that the data is released for you to use without downloading from Twitter (here, each data line consists of Tweet ID, Tweet text and label).
- Part of our agreement in sharing this data directly with you is that it is your responsibility to maintain <a href="https://dev.twitter.com/overview/terms/policy.html">Twitter's Term's of Service</a> and to delete Tweets that are no longer publicly available.</p>
-
-
-
-
-<!--h4 style="padding-top:50px; margin-top:-50px;">Additional resources</h4>
-
-
-<ul>
-<li><a href="https://github.com/FredericGodin/TwitterEmbeddings">Pre-trained Word2vec and FastText word embeddings for English Tweets</a></li>
-<li><a href="https://nlp.stanford.edu/projects/glove/">Pre-trained GloVe word embeddings for English Tweets</a></li>
-<li><a href="https://github.com/VinAIResearch/BERTweet">BERTweet: A pre-trained language model for English Tweets</a></li>
-</ul-->
-
-
-<a id="submission"></a>
-<hr/>
-<h2 style="padding-top:50px; margin-top:-50px;">Result Submission</h2>
-
-<p>Systems are evaluated using standard evaluation metrics, including accuracy, precision, recall and F1-score.  Note that the latter three metrics will be calculated for the INFORMATIVE class only. <strong>The submissions will be ranked by F1-score</strong>. </p>
-
-<p>By submitting results to this shared task, you consent to the public release of your scores at the W-NUT 2020 workshop and in the associated proceedings, at the task organizers' discretion. Scores may include, but are not limited to, automatic and manual quantitative judgments, qualitative judgments, and such other metrics as the task organizers see fit. You accept that the ultimate decision of metric choice and score value is that of the task organizers.</p>
-
-<p>You further agree that the task organizers are under no obligation to release scores and that scores may be withheld if it is the task organizers' judgment that the submission was incomplete, erroneous, deceptive, or violated the letter or spirit of the shared task's rules. The inclusion of a submission's scores is not an endorsement of a team or individual's submission, system, or science.</p>
-
-<p>You further agree that your system may be named according to the team name provided at the time of submission, or to a suitable shorthand as determined by the task organizers.</p>
-
-<p>You can only join one participating team.</p>
-
-<p><b>Result submission: <a href="https://competitions.codalab.org/competitions/25845">https://competitions.codalab.org/competitions/25845</a></b> </p>
-
-
-<a id="call"></a>
-<hr/>
-<h2 style="padding-top:50px; margin-top:-50px;">Technical System Papers</h2>
-
-
-<p>We seek submissions of systems and system descriptions, which will be published in Proceedings of the W-NUT 2020 workshop in the ACL Anthology.</p> 
-<p>Creators of systems with valid results that are submitted to this shared task are invited to send a short paper (4 pages plus references) to W-NUT 2020 that describes the system. There is no need to give a detailed description of the shared task in a system submission. </p>
-<p>
-All submissions should conform to <a href="https://2020.emnlp.org/call-for-papers">EMNLP 2020 style guidelines</a>. Please submit your papers at the <a href="https://www.softconf.com/emnlp2020/wnut2020/">SoftConf link</a>. </p>
-
-<!--<strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or publications must indicate at submission time. Authors of a paper accepted for presentation must notify the workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.-->
-
-        
+        <p> People usually share a wide variety of information related to COVID-19 publicly on social media. For example, Twitter users often indicate when they might be at increased risk of COVID-19 due to a coworker or other close contact testing positive for the virus, or when they have symptoms but were denied access to testing. They also discuss their opinions on potential cure methods or treatments for the coronavirus. In this shared task, system entries are invited to build systems for automatically extracting COVID-19 related events from Twitter using our newly built corpus.</p>
+        <p>Our event extraction is formulated as a slot-filling task: to extract text spans from a given tweet for filling pre-designed slots. Specifically, each slot-filling task is set up as a binary classification problem: given a tweet \(t\) with a candidate choice \(s\), the classification model \(f(t, s) \rightarrow \{0, 1\}\) predicts whether \(s\) answers its designated question.</p>
+        <p>Our annotated corpus currently covers the following 5 events: (1) tested positive, (2) tested negative, (3) can not test, (4) death and (5) cure and prevention. Below are some examples of our annotated tweets.</p>
+​
+        <a><image src="files/covid19-task_example.png" style="width:600px;"></a>
+​
 <a id="organizer"></a>
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Task Organizers</h2>
 <ul>
-  <li><a href="https://datquocnguyen.github.io">Dat Quoc Nguyen</a> (VinAI Research, Vietnam)</li>
-  <li><a href="https://people.csiro.au/v/t/thanh-vu">Thanh Vu</a> (AEHRC, CSIRO, Australia)</li>
-  <li><a href="http://afshinrahimi.github.io">Afshin Rahimi</a> (The University of Queensland, Australia)</li>
-  <li>Mai Hoang Dao (VinAI Research, Vietnam)</li>
-  <li>Linh The Nguyen (VinAI Research, Vietnam)</li>
-  <li>Long Doan (VinAI Research, Vietnam)</li>
+    <li><a href="http://web.cse.ohio-state.edu/~zong.56/">Shi Zong</a> (Ohio State University)</li>
+    <li><a href="https://cocoxu.github.io/">Wei Xu</a> (Georgia Tech)</li>
+    <li><a href="http://aritter.github.io/">Alan Ritter</a> (Georgia Tech)</li>
 </ul>
-
-<p><strong>Contact Us:</strong> If you have any questions, please feel free to contact us at <a href="mailto:wnut.sharedtask.covid19tweet@gmail.com">wnut.sharedtask.covid19tweet@gmail.com</a>.</p>
-
-
+        <p><strong>Contact Us:</strong> If you have any questions, please feel free to contact us at <a href="mailto:wnut.sharedtask.covid19extract@gmail.com">wnut.sharedtask.covid19extract@gmail.com</a>.</p>
+​
+<a id="dates" ></a>
+<hr/>
+<h2>Important Dates</h2>
+<ul>
+    <li>Data available: June 22, 2020</li>
+    <li>Evaluation window: Sept. 7, 2020 - Sept. 11, 2020 (AoE)</li>
+    <li>System description papers submitted: Sept. 21, 2020</li>
+    <li>Papers reviewed: Sept. 30, 2020</li>
+    <li>Papers camera ready: Oct. 8, 2020</li>
+    <li>Workshop day: Nov. 19, 2020</li>
+</ul>
+​
+​
+<a id="format"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Dataset Release and Format</h2>
+​
+        <p>We are currently releasing 7,500 annotated tweets for the following 5 events: (1) tested positive, (2) tested negative, (3) can not test, (4) death and (5) cure and prevention. The dataset could be accessed at: <a href="https://github.com/viczong/extract_COVID19_events_from_Twitter">https://github.com/viczong/extract_COVID19_events_from_Twitter</a>.</p>
+​
+        <h4>Get dataset </h4>
+​
+        <p>Due to Twitter's data sharing policy and people's privacy concerns, we are only able to release the tweet IDs. Participants could recover our annotated data by using official Twitter API, for example in the following way.</p>
+​
+        <pre><code>
+            import tweepy
+​
+            auth = tweepy.OAuthHandler(your_API_key, your_API_secret_key)
+            auth.set_access_token(your_Access_token, your_Access_token_secret)
+​
+            api = tweepy.API(auth, parser=tweepy.parsers.JSONParser(), wait_on_rate_limit=True)
+​
+            a_single_tweet = api.get_status(id=id_for_tweet, tweet_mode='extended')
+            tweet_text_we_use = a_single_tweet['full_text']
+        </code></pre>
+​
+        <p>Based on our own trail for re-collecting tweets through official Twitter API, 7,115 out of 7,500 tweets could be obtained by using above code snippet (as of June 5, 2020).</p>
+​
+        <h4>Annotation format</h4>
+​
+        <p>For each tweet, we provide character offsets for candidate chunks and annotations. Character offsets are calculated by using the 'full_text' field (as shown above in the code).</p>
+        <p>Our provided annotations are divided into two parts. For more details, please refer to Section 2 of our <a href="https://arxiv.org/pdf/2006.02567.pdf">paper</a>.</p>
+​
+        <ul>
+            <li>Part 1 - specific event identification: The annotation is a binary "yes" or "no" answer, with "yes" meaning the given tweet describes an event for an individual or a small group of people (or describes a cure or prevention method for cure category).</li>
+            <li>Part 2 - slot filling: For each designed question (slot), annotators are asked to choose from a set of candidate choices. We summarize all questions with corresponding candidate choices <a href="https://docs.google.com/document/d/1OWFTXOZpoXNrDULq6PFXvIGarSZwpU-uLQRuV4wrJwI/edit?usp=sharing">here</a>. Please note that there might be more than one choice that could answer a specific question.</li>
+        </ul>
+​
+<a id="baseline"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Baseline</h2>
+<p> We will provide a logistic regression baseline for this task.</p>
+​
+​
+<a id="submission"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Submit Results</h2>
+        <p>All submitted systems will be evaluated on a separate test set (we plan to prepare around 400-500 tweets as final test set for each category). The predictions will be compared with the golden data and we will maintain a leaderboard for all participants. We will be releasing an evaluation script for comparing the system generated outputs with golden annotations.</p>
+        <p>Please follow our <a href="https://github.com/viczong/extract_COVID19_events_from_Twitter/tree/master/shared_task#evaluation-period-sep-7-2020---sep-11-2020">submission requirements</a> to format your prediction results. Please submit your prediction results <a href="https://forms.gle/8tDfzMQp7mxQmFvk7">here</a>.
+        </p>
+​
+​
+<a id="call"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;">Technical System Papers</h2>
+​
+​
+<p>We seek submissions of systems and system descriptions. Creators of systems with valid results that are submitted to this shared task are invited to sent a short paper (4 pages plus references) to W-NUT 2020 that describes the system. There is no need to give a detailed description of the shared task in a system submission.</p>
+​
+All submissions should conform to <a href="https://2020.emnlp.org/call-for-papers">EMNLP 2020 style guidelines</a>. Submissions must be anonymized. Abstract submissions should include author information (and where the work was published in a footnote on the front page, if applicable). Please submit your papers at the <a href="https://www.softconf.com/emnlp2020/wnut2020/">SoftConf link</a>.
+<br>
+<br>
+<strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or publications must indicate at submission time. Authors of a paper accepted for presentation must notify the workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.
+​
+​
+​
+​
+​
 <hr/>
 <br/>
-<strong>Sponsored by &nbsp;&nbsp;  <a href="https://about.twitter.com/"><img src="files/Twitter_Logo_Blue.png" alt="Twitter logo" height="60"></a></strong>
-
+<strong>Sponsored by <a href="https://about.twitter.com/"><img src="files/Twitter_Logo_Blue.png" alt="Twitter logo" height="60"></a></strong>
+​
 <br/>
 <br/>
 <strong><a href='https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy'>Anti-harassment Policy</a></strong>
 <br/>
 <br/>
 <br/>
-
-
+​
+​
     </div> <!-- /container -->
-
-
-
-
-
+​
+​
+​
+​
+​
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="./dist/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
