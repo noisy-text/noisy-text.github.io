@@ -67,7 +67,7 @@
       <div class="jumbotron" >
         <h2>MultiLexNorm: Multilingual Lexical Normalization</h2>
         
-        <p>For this task, participants are asked to develop systems that perform lexical normalization, the conversion of non-canonical texts to its canonical equivalent form. In particular, in this shared task tackle social media data from 12 languages.</p> 
+        <p>For this task, participants are asked to develop a system that performs lexical normalization: the conversion of non-canonical texts to their canonical equivalent form. In particular, this task includes data from 12 languages.</p> 
         <p></p>
       </div>
 
@@ -92,7 +92,7 @@ normalization, which means that replacements are done on the word level.
 
 <p>
 Previous work on normalization has mostly been mono-lingual, where a wide
-variety of approaches, datasets, and evaluation metrics where used. for this
+variety of approaches, datasets, and evaluation metrics where used. For this
 shared task we combined existing datasets with new ones, and converted them 
 to the same format. 
 </p>
@@ -163,7 +163,9 @@ Note that a word which should be normalized, but is normalized to the wrong
 candidate, is only a FN. Every input token represents exactly one point in TP,
 FP, TN, FN. It should also be noted that our evaluation script is
 case-sensitive, even though some of the dataset do not include capitalization
-corrections.
+corrections. For a more in depth discussion about evaluation of normalization 
+and ERR in particular we refer to Chapter 5 of
+<a href="http://robvandergoot.com/doc/thesis.pdf">http://robvandergoot.com/doc/thesis.pdf</a>
 </p>
 
 <p>
@@ -242,7 +244,7 @@ Our dataset consists of the following languages (two of them are language-pairs,
     <th>6.90</th>
     <th>61.88</th>
   </tr>
-  <tr>
+<!--  <tr>
     <th>French</th>
     <th></th>
     <th><a href=""></a></th>
@@ -251,7 +253,7 @@ Our dataset consists of the following languages (two of them are language-pairs,
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </tr>-->
   <tr>
     <th>German</th>
     <th>Twitter</th>
@@ -374,7 +376,7 @@ As secondary evaluation, we will include an evaluation of the downstream effect 
 <hr/>
 <h2 style="padding-top:50px; margin-top:-50px;">Organizers</h2>
 
-<p> The main contact point for the shared task is https://groups.google.com/u/2/g/multilexnorm </p>
+<p> The main contact point for the shared task is <a href="https://groups.google.com/u/2/g/multilexnorm">https://groups.google.com/u/2/g/multilexnorm</a> </p>
 
 <p> Less public matters can be communicated to multilexnorm@gmail.com </p>
 
