@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+ ##################
+ ##### HEADER ##### 
+ ##################
+-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+  <title>W-NUT 2025 Shared Task: Multi-lingual Lexical Normalization</title>
+  <!-- Bootstrap core CSS -->
+  <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="navbar-fixed-top.css" rel="stylesheet">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style>
+  .grid-container {
+      display: grid;
+      grid-template-columns: 100px 200px; /* Adjust column widths as needed */
+      gap: 10px;
+  }
+</style>
+  </style>
+</head>
+
+
+<!--
+ ##################
+ ## Fixed Navbar ## 
+ ##################
+-->
+<body>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">W-NUT</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="http://noisy-text.github.io/">Home</a></li>
+        <li><a href="#">2025</a></li>
+        <li><a href="#intro">Lexical normalization</a></li>
+        <li><a href="#format">Data format</a></li>
+        <li><a href="#metric">Evaluation metric</a></li>
+        <li><a href="#baseline">Baseline</a></li>
+        <li><a href="#languages">Languages</a></li>
+        <li><a href="#extrinsic">Extrinsic evaluation</a></li>
+        <li><a href="#dates">Timeline</a></li>
+        <li><a href="#organizers">Organizers</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container">
+<!--
+#####################################################################
+Main component for a primary marketing message or call to action 
+#####################################################################
+-->
+<div class="jumbotron">
+<h2><b>MultiLexNorm: Multilingual Lexical Normalization</b></h2>
+  <p>
+    For this task, participants are asked to develop a system that performs lexical normalization: the conversion
+    of non-canonical texts to their canonical equivalent form. In particular, this task includes data from 15
+    languages.</p>
+</div>
+
+<!--
+#####################################################################
+  Release Notification!
+#####################################################################
+-->
+<a id="intro"></a>
+<hr/>
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Release Notification!</b></h2>
+
+<table>
+  <tr>
+    <td valign="top" style="width: 30%;" ><b>Nov 14, 2024</b></td>
+    <td>
+      <li>Registration form <a href="https://forms.gle/YByswwWBLK8tJRGq8">Here</a>.</li>
+      <!-- <li>Public data is now available <a href="https://bitbucket.org/Weerayut_bua/wnut-2025-multilexnorm">Here</a>.</li> -->
+      <li>Communication channel is now available on <a href="https://discord.gg/FSj3uKfs">Discord</a>.</li>
+    </td>
+  </tr>
+  <!-- 
+    <tr>
+    <td valign="top">xx-xx-xxx</td>
+    <td>
+      <li> Test data is now available <a href="https://bitbucket.org/robvanderg/multilexnorm/src/master/test-eval/">Here</a>.</li>
+      <li> The online evaluation platform is online <a href="https://competitions.codalab.org/competitions/34355">Here</a>.</li>
+    </td>
+  </tr>
+  <tr>
+    <td>xx-xx-xx</td>
+    <td>
+      <li> Results of the shared task are now available, please find them on <a href="https://discord.gg/FSj3uKfs">Discord</a>.</li>
+    </td>
+  </tr> 
+-->
+</table>
+
+
+<!--
+#####################################################################
+  Lexical Normalization
+#####################################################################
+-->
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Lexical Normalization</b></h2>
+<p>
+  Social media provides a rich source of information. It is notoriously noisy,
+  but also interesting because of its fast pace, informal nature and the vast
+  amount of available data. The creative language use found on social media
+  introduces many difficulties for existing natural language processing tools.
+  One way to overcome these issues is to `normalize' this data to a more
+  canonical register before processing it. In this task we focus on lexical
+  normalization, which means that replacements are done on the word level.</p>
+
+<pre class="grid-container">
+  social  ppl     r    troublesome
+  Social  people  are  troublesome</pre>
+<p>
+  Previous work on normalization has mostly been mono-lingual, where a wide
+  variety of approaches, datasets, and evaluation metrics where used. For this
+  shared task we combined existing datasets with new ones, and converted them
+  to the same format.</p>
+
+
+<!--
+#####################################################################
+  Data format
+#####################################################################
+-->
+<a id="format"></a>
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Data format</b></h2>
+
+<p>
+  We use a tab-seperated format, with pre-tokenized data. Each word is on one
+  line, and sentence boundaries are indicated with an empty line. The
+  normalization is displayed in the first column:</p>
+
+<pre class="grid-container">
+  social          Social
+  ppl             people
+  r               are
+  troublesome     troublesome</pre>
+
+<p>
+  Some of the languages include annotation for word splits and merges. When a
+  word is split, the normalization column include a white-space character, and
+  with a merge the normalization is only included for the first word:</p>
+
+<pre class="grid-container">
+  if              If
+  i               i
+  have            have
+  a               a
+  head            headache
+  ache            
+  tomorro         tomorrow
+  ima             i'm going to
+  be              be
+  pissed          pissed</pre>
+
+
+<!--
+#####################################################################
+Evaluation metric
+#####################################################################
+-->
+<a id="metric"></a>
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Evaluation metric</b></h2>
+
+<p>
+  We use Error Reduction Rate (ERR), which is word-level
+  accuracy normalized for the number of replacements in the dataset (<a href="https://www.aclweb.org/anthology/P19-3032.pdf">van der Goot, 2019</a>). The formula for ERR is:
+</p>
+
+<pre>
+  ERR = (TP − FP)/(TP + FN)</pre>
+<p>
+  Where TP, FP, TN, FN are defined as follows:</p>
+
+<pre>
+  TN = Annotators did not normalize, system did not normalize
+  FP = Annotators did not normalize, system normalized
+  FN = Annotators normalized, but system did not find the correct normalization. This could be because it kept the original word, or proposed a wrong candidate.
+  TP = Annotators normalized, systems normalized correctly</pre>
+
+<p>
+  Note that a word which should be normalized, but is normalized to the wrong
+  candidate, is only a FN. Every input token represents exactly one point in TP,
+  FP, TN, FN. It should also be noted that our evaluation script is
+  case-sensitive, even though some of the dataset do not include capitalization
+  corrections. For a more in depth discussion about evaluation of normalization
+  and ERR in particular we refer to Chapter 5 of <a href="https://pure.rug.nl/ws/portalfiles/portal/78256480/Complete_thesis.pdf">Normalization and Parsing Algorithms for Uncertain Input</a></p>
+
+<p>
+  For the final ranking, we use the macro-average ERR over all languages. 
+  <b>It should be noted that the official winner will be the highest ranking open-source system</b>
+</p>
+
+
+<!--
+#####################################################################
+Baselines
+#####################################################################
+-->
+<a id="baseline"></a>
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Baselines</b></h2>
+<p>We provide two simple baselines:</p>
+<ul>
+  <li>Leave-As-Is (LAI): Simply uses the input as output. Word level accuracy would be equal to the &#37; of words that are not normalized, and ERR is 0.0.</li>
+  <li>Most-frequent-Replacement (MFR): Uses the most frequent replacement based on the training data. If the input word is not present in the training data, it returns the input word.</li>
+</ul>
+
+
+<!--
+#####################################################################
+Languages
+#####################################################################
+-->
+<a id="languages"></a>
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Languages</b></h2>
+
+<p>
+  Our dataset consists of the following languages (two of them are language-pairs, these include code-switched data):
+</p>
+
+<table style="width: 90%; margin: 0 auto;">
+  <tr>
+    <th style="padding-right:80px;">Language</th>
+    <th style="padding-right:80px;">Data from</th>
+    <th style="padding-right:110px;">Original Source</th>
+    <th style="padding-right:20px;">Size (#words)</th>
+    <th style="padding-right:20px;">1-n/n-1</th>
+    <th style="padding-right:20px;">Caps</th>
+    <th style="padding-right:20px;">&#37;normed</th>
+    <th style="padding-right:20px;">MFR-ERR</th>
+  </tr>
+  <tr>
+    <th>Thai</th>
+    <th>Twitter</th>
+    <th><a href="https://aclanthology.org/2021.findings-acl.86">Limkonchotiwat et al.</a> [<a
+        href="bibs/th.bib">bib</a>]</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+  </tr>
+  <tr>
+    <th>Vietnamese</th>
+    <th>Facebook/TikTok</th>
+    <th><a href="https://aclanthology.org/2024.eacl-long.85">nguyen-etal-2024-vilexnorm</a> [<a
+        href="bibs/vi.bib">bib</a>]</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+  </tr>
+  <tr>
+    <th>Indonesian</th>
+    <th>Instagram</th>
+    <th><a href="https://ieeexplore.ieee.org/document/9310508">kurnia2020statistical</a> [<a
+        href="bibs/id.bib">bib</a>]</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+    <th>N/A</th>
+  </tr>
+  <tr>
+    <th>Croatian</th>
+    <th>Twitter</th>
+    <th><a href="https://www.clarin.si/repository/xmlui/handle/11356/1170">Ljube&scaron;ić et al, 2017</a> [<a
+        href="bibs/hr.bib">bib</a>]</th>
+    <th>75,276</th>
+    <th>-</th>
+    <th>+</th>
+    <th>8.98</th>
+    <th>35.41</th>
+  </tr>
+  <tr>
+    <th>Danish</th>
+    <th>Twitter/Arto</th>
+    <th><a href="https://www.aclweb.org/anthology/2020.coling-main.583.pdf">Plank et al, 2020</a> [<a
+        href="bibs/da.bib">bib</a>]</th>
+    <th>11,816</th>
+    <th>+</th>
+    <th>+</th>
+    <th>8.66</th>
+    <th>41.69</th>
+  </tr>
+  <tr>
+    <th>Dutch</th>
+    <th>Twitter/sms/forum</th>
+    <th><a href="http://robvanderg.github.io/doc/normalization_dutch.pdf">Schuur, 2020</a> [<a
+        href="bibs/nl.bib">bib</a>]</th>
+    <th>23,053</th>
+    <th>+</th>
+    <th>+</th>
+    <th>26.49</th>
+    <th>29.97</th>
+  </tr>
+  <tr>
+    <th>English</th>
+    <th>Twitter</th>
+    <th><a href="https://www.aclweb.org/anthology/W15-4319.pdf">Baldwin et al, 2015</a> [<a
+        href="bibs/en.bib">bib</a>]</th>
+    <th>73,806</th>
+    <th>+</th>
+    <th>-</th>
+    <th>6.90</th>
+    <th>61.88</th>
+  </tr>
+  <tr>
+    <th>German</th>
+    <th>Twitter</th>
+    <th><a href="https://www-archiv.tu-darmstadt.de/gscl2013/images/sidarenka_scheffler_stede.pdf">Sidarenka et al,
+        2013</a> [<a href="bibs/de.bib">bib</a>]</th>
+    <th>25,157</th>
+    <th>+</th>
+    <th>+</th>
+    <th>8.90</th>
+    <th>60.00</th>
+  </tr>
+  <tr>
+    <th>Indonesian-English</th>
+    <th>Twitter</th>
+    <th><a href="https://www.aclweb.org/anthology/D19-5554.pdf">Barik et al, 2019</a> [<a
+        href="bibs/iden.bib">bib</a>]</th>
+    <th>23,124</th>
+    <th>+</th>
+    <th>-</th>
+    <th>12.16</th>
+    <th>62.91</th>
+  </tr>
+  <tr>
+    <th>Italian</th>
+    <th>Twitter</th>
+    <th><a href="https://www.aclweb.org/anthology/2020.lrec-1.769.pdf">van der Goot et al, 2020</a> [<a
+        href="bibs/it.bib">bib</a>]</th>
+    <th>14,641</th>
+    <th>+</th>
+    <th>+</th>
+    <th>7.36</th>
+    <th>15.90</th>
+  </tr>
+  <tr>
+    <th>Serbian</th>
+    <th>Twitter</th>
+    <th><a href="http://hdl.handle.net/11356/1171">Ljube&scaron;ić et al, 2017</a> [<a href="bibs/sr.bib">bib</a>]
+    </th>
+    <th>91,738</th>
+    <th>-</th>
+    <th>+</th>
+    <th>7.73</th>
+    <th>43.86</th>
+  </tr>
+  <tr>
+    <th>Slovenian</th>
+    <th>Twitter</th>
+    <th><a href="http://hdl.handle.net/11356/1123">Erjavec et al, 2017</a> [<a href="bibs/sl.bib">bib</a>]</th>
+    <th>75,276</th>
+    <th>-</th>
+    <th>+</th>
+    <th>15.66</th>
+    <th>54.34</th>
+  </tr>
+  <tr>
+    <th>Spanish</th>
+    <th>Twitter</th>
+    <th><a href="http://ceur-ws.org/Vol-1086/paper01.pdf">Alegria et al, 2013</a> [<a href="bibs/es.bib">bib</a>]
+    </th>
+    <th>13,827</th>
+    <th>-</th>
+    <th>-</th>
+    <th>7.69</th>
+    <th>21.33</th>
+  </tr>
+  <tr>
+    <th>Turkish</th>
+    <th>Twitter</th>
+    <th><a href="https://www.aclweb.org/anthology/P19-2037.pdf">&Ccedil;olako&#287;lu et al, 2019</a> [<a
+        href="bibs/tr.bib">bib</a>]</th>
+    <th>7,949</th>
+    <th>-</th>
+    <th>+</th>
+    <th>36.60</th>
+    <th>15.38</th>
+  </tr>
+  <tr>
+    <th>Turkish-German</th>
+    <th>Twitter</th>
+    <th><a href="https://arxiv.org/pdf/2006.01175.pdf">van der Goot &amp; &Ccedil;etinoglu</a> [<a
+        href="bibs/trde.bib">bib</a>]</th>
+    <th>16,546</th>
+    <th>+</th>
+    <th>+</th>
+    <th>24.25</th>
+    <th>15.59</th>
+  </tr>
+</table>
+</br>
+
+<p>
+  The 1-n/n-1 column indicates whether words are split and or merged in the annotation, and the caps column
+  indicates whether capitalization is corrected. It should be noted that there were annotation guidelines
+  differences as well as filtering criteria during creation of these datasets, which might hinder cross-lingual
+  learning. We attempted to converge some of these annotation differences automatically, and some of them manually,
+  but did not have the resources to do a full re-annotation.
+</p>
+
+<p>
+  The current version of the data can be downloaded <a
+    href="https://bitbucket.org/Weerayut_bua/wnut-2025-multilexnorm">here</a>.
+  We encourage all the participants to notify the organizers of any disagreements with the annotation. We will take
+  these into account, and improve the dataset until the 1st of Jan 2025. Please forward such cases to multilexnorm@gmail.com.
+</p>
+
+
+<!--
+#####################################################################
+Extrinsic evaluation
+#####################################################################
+-->
+<a id="extrinsic"></a>
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Extrinsic evaluation</b></h2>
+As secondary evaluation, we will include an evaluation of the downstream effect of normalization. We will focus on
+Dependency parsing, and include the raw input data with the distributed test data for some of the languages. Then,
+we train a dependency parser for each available language on canonical data, and evaluate the effect of having
+normalization versus the orginal data.
+
+
+<!--
+#####################################################################
+Timeline
+#####################################################################
+-->
+<a id="dates"></a>
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Timeline</b></h2>
+<ul>
+  <table>
+    <tr><th style="width: 50%;">Event</th><th>Date</th></tr>
+    <tr><td><li>Data available   </li></td><td>Nov 15, 2024      </td></tr>
+    <tr><td><li>Data freeze      </li></td><td>Jan 01, 2025      </td></tr> <!-- 01/1 (N/A)                         -->
+    <tr><td><li>Test data        </li></td><td>Jan 15, 2025      </td></tr> <!-- 15/1 (Run scores)                  -->
+    <tr><td><li>Final Evaluation </li></td><td>Feb 01, 2025      </td></tr> <!-- 01/2 (N/A)                         -->  
+    <tr><td><li>Paper deadline   </li></td><td>Feb 15, 2025      </td></tr> <!-- 15/3 (Review process)              -->
+    <tr><td><li>Paper reviewed   </li></td><td>Mar 01, 2025      </td></tr> <!-- 01/3 (Return to authors)           -->
+    <tr><td><li>Camera ready     </li></td><td>Mar 10, 2025      </td></tr> <!-- 10/3 (Authors return the papers)   -->
+    <tr><td><li>Workshop         </li></td><td>May 03, 2025 (TBD)</td></tr> 
+  </table>
+</ul>
+
+<!--
+#####################################################################
+Organizers
+#####################################################################
+-->
+<a id="organizers"></a>
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Organizers</b></h2>
+
+<p> The main contact point for the shared task is <a href="https://discord.gg/FSj3uKfs">Discord</a>.</p>
+<p> Less public matters can be communicated to multilexnorm@gmail.com </p>
+
+<ul>
+  <li>Rob van der Goot</li>
+  <li>Barbara Plank</li>
+  <li>Alan Ramponi</li>
+  <li>Tommaso Caselli</li>
+  <li>Nikola Ljube&scaron;ić</li>
+  <li>Timothy Baldwin</li>
+  <li>&Ouml;zlem &Ccedil;etinoglu </li>
+  <li>Benjamin Muller</li>
+  <li>Talha &Ccedil;olako&#287;lu</li>
+  <li>Arkaitz Zubiaga</li>
+  <li>Iñaki San Vicente Roncal</li>
+  <li>Wladimir Sidorenko</li>
+  <li>Rahmad Mahendra</li>
+</ul>
+
+
+<!--
+#####################################################################
+Policy
+#####################################################################
+-->
+<br /><br />
+<strong><a href='https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy'>Anti-harassment Policy</a></strong>
+<br /><br /><br />
+</div> 
+
+<!-- /container -->
+<!-- Bootstrap core JavaScript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="./dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+</html>
