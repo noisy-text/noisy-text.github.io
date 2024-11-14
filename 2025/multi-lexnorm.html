@@ -29,8 +29,9 @@
       grid-template-columns: 100px 200px; /* Adjust column widths as needed */
       gap: 10px;
   }
+
 </style>
-  </style>
+
 </head>
 
 
@@ -60,9 +61,10 @@
         <li><a href="#intro">Lexical normalization</a></li>
         <li><a href="#format">Data format</a></li>
         <li><a href="#metric">Evaluation metric</a></li>
+        <li><a href="#ranking">Final Ranking</a></li>
         <li><a href="#baseline">Baseline</a></li>
         <li><a href="#languages">Languages</a></li>
-        <li><a href="#extrinsic">Extrinsic evaluation</a></li>
+        <!-- <li><a href="#extrinsic">Extrinsic evaluation</a></li> -->
         <li><a href="#dates">Timeline</a></li>
         <li><a href="#organizers">Organizers</a></li>
       </ul>
@@ -217,9 +219,22 @@ Evaluation metric
   corrections. For a more in depth discussion about evaluation of normalization
   and ERR in particular we refer to Chapter 5 of <a href="https://pure.rug.nl/ws/portalfiles/portal/78256480/Complete_thesis.pdf">Normalization and Parsing Algorithms for Uncertain Input</a></p>
 
+
+<!--
+#####################################################################
+Final ranking
+#####################################################################
+-->
+<a id="ranking"></a>
+<hr />
+<h2 style="padding-top:50px; margin-top:-50px;"><b>Final ranking</b></h2>
 <p>
-  For the final ranking, we use the macro-average ERR over all languages. 
-  <b>It should be noted that the official winner will be the highest ranking open-source system</b>
+  For the final ranking, we use the macro-average ERR, weighted as follows: <br>
+  <ul>
+    <li><b>40%</b> from the average score of the newly added languages (Thai, Vietnamese, and Indonesian).</li>
+    <li><b>60%</b> from the average scores of all other languages.</li>
+  </ul>
+  <b>Note:</b> <i>The official winner will be the highest-ranking open-source system.</i>
 </p>
 
 
@@ -251,8 +266,8 @@ Languages
   Our dataset consists of the following languages (two of them are language-pairs, these include code-switched data):
 </p>
 
-<table style="width: 90%; margin: 0 auto;">
-  <tr>
+<table style="width: 90%; margin: 0 auto;" >
+  <tr style="border-bottom: 1px solid black;">
     <th style="padding-right:80px;">Language</th>
     <th style="padding-right:80px;">Data from</th>
     <th style="padding-right:110px;">Original Source</th>
@@ -262,169 +277,176 @@ Languages
     <th style="padding-right:20px;">&#37;normed</th>
     <th style="padding-right:20px;">MFR-ERR</th>
   </tr>
-  <tr>
-    <th>Thai</th>
-    <th>Twitter</th>
-    <th><a href="https://aclanthology.org/2021.findings-acl.86">Limkonchotiwat et al.</a> [<a
-        href="bibs/th.bib">bib</a>]</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
+  <tr></tr>
+  <tr style="background-color: #f0f8ff; color: #333;">
+    <td colspan="8"><i>Added new languages</i></td>
   </tr>
   <tr>
-    <th>Vietnamese</th>
-    <th>Facebook/TikTok</th>
-    <th><a href="https://aclanthology.org/2024.eacl-long.85">nguyen-etal-2024-vilexnorm</a> [<a
-        href="bibs/vi.bib">bib</a>]</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
+    <td>Thai</td>
+    <td>Twitter</td>
+    <td><a href="https://aclanthology.org/2021.findings-acl.86">Limkonchotiwat et al.</a> [<a
+        href="bibs/th.bib">bib</a>]</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
   </tr>
   <tr>
-    <th>Indonesian</th>
-    <th>Instagram</th>
-    <th><a href="https://ieeexplore.ieee.org/document/9310508">kurnia2020statistical</a> [<a
-        href="bibs/id.bib">bib</a>]</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
-    <th>N/A</th>
+    <td>Vietnamese</td>
+    <td>Facebook/TikTok</td>
+    <td><a href="https://aclanthology.org/2024.eacl-long.85">Nguyen, Le, & Nguyen, 2024</a> [<a
+        href="bibs/vi.bib">bib</a>]</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td>Indonesian</td>
+    <td>Instagram</td>
+    <td><a href="https://ieeexplore.ieee.org/document/9310508">Kurnia & Yulianti, 2020</a> [<a
+        href="bibs/id.bib">bib</a>]</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>N/A</td>
+  </tr>
+  <tr style="background-color: #f0f8ff; color: #333;">
+    <td colspan="8"><i>Original languages</i></td>
   </tr>
   <tr>
-    <th>Croatian</th>
-    <th>Twitter</th>
-    <th><a href="https://www.clarin.si/repository/xmlui/handle/11356/1170">Ljube&scaron;ić et al, 2017</a> [<a
-        href="bibs/hr.bib">bib</a>]</th>
-    <th>75,276</th>
-    <th>-</th>
-    <th>+</th>
-    <th>8.98</th>
-    <th>35.41</th>
+    <td>Croatian</td>
+    <td>Twitter</td>
+    <td><a href="https://www.clarin.si/repository/xmlui/handle/11356/1170">Ljube&scaron;ić et al, 2017</a> [<a
+        href="bibs/hr.bib">bib</a>]</td>
+    <td>75,276</td>
+    <td>-</td>
+    <td>+</td>
+    <td>8.98</td>
+    <td>35.41</td>
   </tr>
   <tr>
-    <th>Danish</th>
-    <th>Twitter/Arto</th>
-    <th><a href="https://www.aclweb.org/anthology/2020.coling-main.583.pdf">Plank et al, 2020</a> [<a
-        href="bibs/da.bib">bib</a>]</th>
-    <th>11,816</th>
-    <th>+</th>
-    <th>+</th>
-    <th>8.66</th>
-    <th>41.69</th>
+    <td>Danish</td>
+    <td>Twitter/Arto</td>
+    <td><a href="https://www.aclweb.org/anthology/2020.coling-main.583.pdf">Plank et al, 2020</a> [<a
+        href="bibs/da.bib">bib</a>]</td>
+    <td>11,816</td>
+    <td>+</td>
+    <td>+</td>
+    <td>8.66</td>
+    <td>41.69</td>
   </tr>
   <tr>
-    <th>Dutch</th>
-    <th>Twitter/sms/forum</th>
-    <th><a href="http://robvanderg.github.io/doc/normalization_dutch.pdf">Schuur, 2020</a> [<a
-        href="bibs/nl.bib">bib</a>]</th>
-    <th>23,053</th>
-    <th>+</th>
-    <th>+</th>
-    <th>26.49</th>
-    <th>29.97</th>
+    <td>Dutch</td>
+    <td>Twitter/sms/forum</td>
+    <td><a href="http://robvanderg.github.io/doc/normalization_dutch.pdf">Schuur, 2020</a> [<a
+        href="bibs/nl.bib">bib</a>]</td>
+    <td>23,053</td>
+    <td>+</td>
+    <td>+</td>
+    <td>26.49</td>
+    <td>29.97</td>
   </tr>
   <tr>
-    <th>English</th>
-    <th>Twitter</th>
-    <th><a href="https://www.aclweb.org/anthology/W15-4319.pdf">Baldwin et al, 2015</a> [<a
-        href="bibs/en.bib">bib</a>]</th>
-    <th>73,806</th>
-    <th>+</th>
-    <th>-</th>
-    <th>6.90</th>
-    <th>61.88</th>
+    <td>English</td>
+    <td>Twitter</td>
+    <td><a href="https://www.aclweb.org/anthology/W15-4319.pdf">Baldwin et al, 2015</a> [<a
+        href="bibs/en.bib">bib</a>]</td>
+    <td>73,806</td>
+    <td>+</td>
+    <td>-</td>
+    <td>6.90</td>
+    <td>61.88</td>
   </tr>
   <tr>
-    <th>German</th>
-    <th>Twitter</th>
-    <th><a href="https://www-archiv.tu-darmstadt.de/gscl2013/images/sidarenka_scheffler_stede.pdf">Sidarenka et al,
-        2013</a> [<a href="bibs/de.bib">bib</a>]</th>
-    <th>25,157</th>
-    <th>+</th>
-    <th>+</th>
-    <th>8.90</th>
-    <th>60.00</th>
+    <td>German</td>
+    <td>Twitter</td>
+    <td><a href="https://www-archiv.tu-darmstadt.de/gscl2013/images/sidarenka_scheffler_stede.pdf">Sidarenka et al,
+        2013</a> [<a href="bibs/de.bib">bib</a>]</td>
+    <td>25,157</td>
+    <td>+</td>
+    <td>+</td>
+    <td>8.90</td>
+    <td>60.00</td>
   </tr>
   <tr>
-    <th>Indonesian-English</th>
-    <th>Twitter</th>
-    <th><a href="https://www.aclweb.org/anthology/D19-5554.pdf">Barik et al, 2019</a> [<a
-        href="bibs/iden.bib">bib</a>]</th>
-    <th>23,124</th>
-    <th>+</th>
-    <th>-</th>
-    <th>12.16</th>
-    <th>62.91</th>
+    <td>Indonesian-English</td>
+    <td>Twitter</td>
+    <td><a href="https://www.aclweb.org/anthology/D19-5554.pdf">Barik et al, 2019</a> [<a
+        href="bibs/iden.bib">bib</a>]</td>
+    <td>23,124</td>
+    <td>+</td>
+    <td>-</td>
+    <td>12.16</td>
+    <td>62.91</td>
   </tr>
   <tr>
-    <th>Italian</th>
-    <th>Twitter</th>
-    <th><a href="https://www.aclweb.org/anthology/2020.lrec-1.769.pdf">van der Goot et al, 2020</a> [<a
-        href="bibs/it.bib">bib</a>]</th>
-    <th>14,641</th>
-    <th>+</th>
-    <th>+</th>
-    <th>7.36</th>
-    <th>15.90</th>
+    <td>Italian</td>
+    <td>Twitter</td>
+    <td><a href="https://www.aclweb.org/anthology/2020.lrec-1.769.pdf">van der Goot et al, 2020</a> [<a
+        href="bibs/it.bib">bib</a>]</td>
+    <td>14,641</td>
+    <td>+</td>
+    <td>+</td>
+    <td>7.36</td>
+    <td>15.90</td>
   </tr>
   <tr>
-    <th>Serbian</th>
-    <th>Twitter</th>
-    <th><a href="http://hdl.handle.net/11356/1171">Ljube&scaron;ić et al, 2017</a> [<a href="bibs/sr.bib">bib</a>]
-    </th>
-    <th>91,738</th>
-    <th>-</th>
-    <th>+</th>
-    <th>7.73</th>
-    <th>43.86</th>
+    <td>Serbian</td>
+    <td>Twitter</td>
+    <td><a href="http://hdl.handle.net/11356/1171">Ljube&scaron;ić et al, 2017</a> [<a href="bibs/sr.bib">bib</a>]
+    </td>
+    <td>91,738</td>
+    <td>-</td>
+    <td>+</td>
+    <td>7.73</td>
+    <td>43.86</td>
   </tr>
   <tr>
-    <th>Slovenian</th>
-    <th>Twitter</th>
-    <th><a href="http://hdl.handle.net/11356/1123">Erjavec et al, 2017</a> [<a href="bibs/sl.bib">bib</a>]</th>
-    <th>75,276</th>
-    <th>-</th>
-    <th>+</th>
-    <th>15.66</th>
-    <th>54.34</th>
+    <td>Slovenian</td>
+    <td>Twitter</td>
+    <td><a href="http://hdl.handle.net/11356/1123">Erjavec et al, 2017</a> [<a href="bibs/sl.bib">bib</a>]</td>
+    <td>75,276</td>
+    <td>-</td>
+    <td>+</td>
+    <td>15.66</td>
+    <td>54.34</td>
   </tr>
   <tr>
-    <th>Spanish</th>
-    <th>Twitter</th>
-    <th><a href="http://ceur-ws.org/Vol-1086/paper01.pdf">Alegria et al, 2013</a> [<a href="bibs/es.bib">bib</a>]
-    </th>
-    <th>13,827</th>
-    <th>-</th>
-    <th>-</th>
-    <th>7.69</th>
-    <th>21.33</th>
+    <td>Spanish</td>
+    <td>Twitter</td>
+    <td><a href="http://ceur-ws.org/Vol-1086/paper01.pdf">Alegria et al, 2013</a> [<a href="bibs/es.bib">bib</a>]
+    </td>
+    <td>13,827</td>
+    <td>-</td>
+    <td>-</td>
+    <td>7.69</td>
+    <td>21.33</td>
   </tr>
   <tr>
-    <th>Turkish</th>
-    <th>Twitter</th>
-    <th><a href="https://www.aclweb.org/anthology/P19-2037.pdf">&Ccedil;olako&#287;lu et al, 2019</a> [<a
-        href="bibs/tr.bib">bib</a>]</th>
-    <th>7,949</th>
-    <th>-</th>
-    <th>+</th>
-    <th>36.60</th>
-    <th>15.38</th>
+    <td>Turkish</td>
+    <td>Twitter</td>
+    <td><a href="https://www.aclweb.org/anthology/P19-2037.pdf">&Ccedil;olako&#287;lu et al, 2019</a> [<a
+        href="bibs/tr.bib">bib</a>]</td>
+    <td>7,949</td>
+    <td>-</td>
+    <td>+</td>
+    <td>36.60</td>
+    <td>15.38</td>
   </tr>
-  <tr>
-    <th>Turkish-German</th>
-    <th>Twitter</th>
-    <th><a href="https://arxiv.org/pdf/2006.01175.pdf">van der Goot &amp; &Ccedil;etinoglu</a> [<a
-        href="bibs/trde.bib">bib</a>]</th>
-    <th>16,546</th>
-    <th>+</th>
-    <th>+</th>
-    <th>24.25</th>
-    <th>15.59</th>
+  <tr style="border-bottom: 1px solid black;">
+    <td>Turkish-German</td>
+    <td>Twitter</td>
+    <td><a href="https://arxiv.org/pdf/2006.01175.pdf">van der Goot &amp; &Ccedil;etinoglu</a> [<a
+        href="bibs/trde.bib">bib</a>]</td>
+    <td>16,546</td>
+    <td>+</td>
+    <td>+</td>
+    <td>24.25</td>
+    <td>15.59</td>
   </tr>
 </table>
 </br>
@@ -450,13 +472,14 @@ Languages
 Extrinsic evaluation
 #####################################################################
 -->
-<a id="extrinsic"></a>
+<!-- <a id="extrinsic"></a>
 <hr />
 <h2 style="padding-top:50px; margin-top:-50px;"><b>Extrinsic evaluation</b></h2>
 As secondary evaluation, we will include an evaluation of the downstream effect of normalization. We will focus on
 Dependency parsing, and include the raw input data with the distributed test data for some of the languages. Then,
 we train a dependency parser for each available language on canonical data, and evaluate the effect of having
 normalization versus the orginal data.
+ -->
 
 
 <!--
@@ -495,18 +518,7 @@ Organizers
 
 <ul>
   <li>Rob van der Goot</li>
-  <li>Barbara Plank</li>
-  <li>Alan Ramponi</li>
-  <li>Tommaso Caselli</li>
-  <li>Nikola Ljube&scaron;ić</li>
-  <li>Timothy Baldwin</li>
-  <li>&Ouml;zlem &Ccedil;etinoglu </li>
-  <li>Benjamin Muller</li>
-  <li>Talha &Ccedil;olako&#287;lu</li>
-  <li>Arkaitz Zubiaga</li>
-  <li>Iñaki San Vicente Roncal</li>
-  <li>Wladimir Sidorenko</li>
-  <li>Rahmad Mahendra</li>
+  <li>Weerayut Buaphet</li>
 </ul>
 
 
