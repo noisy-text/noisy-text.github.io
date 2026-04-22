@@ -76,8 +76,26 @@
     /* .intro-section p  { font-size: 0.9em; margin-bottom: 0; } */
 
 
-/* Section headings */
-    .container h2 {
+/* Override Bootstrap container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    /* Content column */
+    .content {
+      width: 62%;
+      margin: 0 auto;
+    }
+    @media (max-width: 992px) {
+      .content { width: 90%; }
+    }
+    @media (max-width: 768px) {
+      .content { width: 100%; }
+    }
+
+    /* Section headings */
+    .content h2 {
       padding-top: 70px;
       margin-top: -75px;
       border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -87,7 +105,7 @@
       font-size: 1.25em;
       color: #37477c;
     }
-    .container h4 {
+    .content h4 {
       font-weight: 600;
       font-size: 1.1em;
       margin-top: 2em;
@@ -96,7 +114,7 @@
       border-left: 4px solid rgba(46,109,164,0.3);
       color: #1a2a4a;
     }
-    .container h4 + ul {
+    .content h4 + ul {
       border-left: 4px solid rgba(46,109,164,0.3);
       padding-left: 2em;
       margin-left: 0;
@@ -144,7 +162,7 @@
   <body>
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
+      <div class="container-fluid" style="padding: 0 2rem;">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -155,7 +173,7 @@
           <a class="navbar-brand" href="#">W-NUT</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#shared-task">Shared Task</a></li>
             <li><a href="#dates">Dates</a></li>
@@ -175,6 +193,7 @@
     </div>
 
     <div class="container">
+      <div class="content">
 
       <div class="intro-section">
         <h3>From Noisy Text to Real-World Applications of LLMs</h3>
@@ -292,6 +311,7 @@
         <a href="https://pixabay.com/photos/river-city-budapest-hungary-9010602/">Photo: Budapest, Pixabay</a>
       </div>
 
+      </div><!-- /.content -->
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
