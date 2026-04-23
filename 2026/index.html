@@ -1,36 +1,168 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="W-NUT 2026: The 11th Workshop on Natural User-generated Text, collocated with EMNLP 2026.">
+    <meta name="author" content="W-NUT Organizers">
     <link rel="icon" href="../../favicon.ico">
-
     <title>W-NUT 2026: Workshop on Natural User-generated Text (at EMNLP 2026)</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="navbar-fixed-top.css" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .portrait {
-      height: 175px;
-      border-radius: 50%;
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 18px;
+      line-height: 1.75;
+      color: #374151;
+      background-color: #f8fafc;
+      padding-top: 50px;
     }
+    body h1, body h2, body h3, body h4, body h5, body h6 {
+      font-size: 1em;
+      font-weight: normal;
+      line-height: 1.75;
+      color: inherit;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    p  { margin-bottom: 0.9em; }
+    ul { padding-left: 1.5em; margin-bottom: 1em; }
+    li { margin-bottom: 0.2em; }
+    a  { color: #2e6da4; }
+    a:hover { color: #1a2a4a; text-decoration: underline; }
+
+    /* Navbar */
+    .navbar-default {
+      background-color: rgba(255,255,255,0.92);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      box-shadow: none;
+    }
+    .navbar-default .navbar-brand { color: #2e6da4; font-weight: 600; font-size: inherit; }
+    .navbar-default .navbar-toggle { border-color: #374151; }
+    .navbar-default .navbar-toggle .icon-bar { background-color: #374151; }
+    .navbar-default .navbar-toggle:hover { background-color: rgba(55,65,81,0.1); }
+    .navbar-default .navbar-nav > li > a { color: #374151; font-size: inherit; }
+    .navbar-default .navbar-collapse { background-color: rgba(255,255,255,0.92); border-top: 1px solid rgba(0,0,0,0.08); }
+    nav.navbar-default .navbar-collapse .navbar-nav > li > a { color: #374151; background-color: transparent; }
+    nav.navbar-default .navbar-collapse .navbar-nav > li > a:hover,
+    nav.navbar-default .navbar-collapse .navbar-nav > li > a:focus { color: #2e6da4; background-color: rgba(46,109,164,0.08); }
+    .navbar-default .navbar-brand:hover,
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > .active > a { background-color: transparent; color: #2e6da4; }
+
+    /* Hero banner */
+    .hero-banner {
+      width: 100%;
+      height: 320px;
+      background: linear-gradient(rgba(15,25,50,0.45), rgba(15,25,50,0.45)),
+                  url('image/background.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero-banner h1 { font-size: 2em; font-weight: bold; color: #fff; line-height: 1.3; margin: 0 0 8px; }
+    .hero-banner p  { color: rgba(255,255,255,0.85); margin: 0; }
+    .intro-section {
+      padding-top: 24px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .intro-section h3 { font-weight: bold; font-size: 1.5em; margin-bottom: 0.3em; }
+    /* .intro-section p  { font-size: 0.9em; margin-bottom: 0; } */
+
+
+/* Override Bootstrap container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    /* Content column */
+    .content {
+      width: 62%;
+      margin: 0 auto;
+    }
+    @media (max-width: 992px) {
+      .content { width: 90%; }
+    }
+    @media (max-width: 768px) {
+      .content { width: 100%; }
+    }
+
+    /* Section headings */
+    .content h2 {
+      padding-top: 70px;
+      margin-top: -75px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      font-weight: bold;
+      font-size: 1.25em;
+      color: #37477c;
+    }
+    .content h4 {
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-top: 2em;
+      margin-bottom: 0;
+      padding-left: 12px;
+      border-left: 4px solid rgba(46,109,164,0.3);
+      color: #1a2a4a;
+    }
+    .content h4 + ul {
+      border-left: 4px solid rgba(46,109,164,0.3);
+      padding-left: 2em;
+      margin-left: 0;
+      list-style-position: inside;
+    }
+
+    /* Organizers */
+    .organizer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
+      margin-top: 24px;
+    }
+    .organizer-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 12px 4px;
+    }
+    .organizer-card { font-size: 0.7em; }
+    .organizer-card img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .organizer-card .org-name { margin-bottom: 4px; }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 3em;
+      padding: 1.5em 0;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      text-align: center;
+      font-size: 0.85em;
+      color: #94949a;
+    }
+    .page-footer a { color: #9ca3af; }
+    .page-footer a:hover { color: #2e6da4; }
   </style>
   </head>
+  <body>
 
-  <body >
-
-    <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
+      <div class="container-fluid" style="padding: 0 2rem;">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -41,347 +173,277 @@
           <a class="navbar-brand" href="#">W-NUT</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-           <li class="active"><a href="#">Home</a></li>
-           <!-- <li><a href="#talks">Keynotes</a></li> -->
-           <li><a href="#shared-task">Shared Task</a></li>
-           <li><a href="#dates">Dates</a></li>
-           <li><a href="#call">Call for Papers</a></li>
-           <li><a href="#organizers">Organizers</a></li>
-           <!-- <li><a href="#committee">Committee</a></li> -->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#shared-task">Shared Task</a></li>
+            <li><a href="#dates">Dates</a></li>
+            <li><a href="#call">Call for Papers</a></li>
+            <li><a href="#organizers">Organizers</a></li>
             <li><a href="../history/">Previous Editions</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 
+    <div class="hero-banner">
+      <div style="background: rgba(10,18,40,0.65); padding: 18px 36px; border-radius: 12px; backdrop-filter: blur(2px);">
+        <h1>The 11th Workshop on Noisy User-generated Text (W-NUT)</h1>
+        <p>Oct 2026 &mdash; collocated with <strong>EMNLP 2026</strong></p>
+      </div>
+    </div>
+
     <div class="container">
+      <div class="content">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron" >
-        <h2>The 11th Workshop on Natural User-generated Text (W-NUT)</h2>
-
-        <h3>From Noisy Text to real-world applications of LLMs</h3>
-        
-        <br>
-        <p>Oct, 2026 &mdash; collocated with <strong><a href="https://2026.emnlp.org/">EMNLP 2026</a></strong>.</p> 
-        <p>The WNUT workshop on language by people. We focus on language as it occurs in the real world, from noisy text to real-world applications of LLMs.</p> 
+      <div class="intro-section">
+        <h3>From Noisy Text to Real-World Applications of LLMs</h3>
+        <p>The WNUT workshop on language by people. We focus on language as it occurs in the real world, from noisy text to real-world applications of LLMs.</p>
+      </div>
 
     
-<!--
-<hr>
-<a id="talks" > <h2 style="padding-top:50px; margin-top:-50px;">Invited Speakers</h2></a>
+      <!-- ###############
+      Invited Speakers 
+      ###############-->
 
-<table style="width:100%">
-  <tr>
-    <td style="text-align:center">
-      <img src="" class="portrait" />
-    </td>
-    <td style="text-align:center"><img src="" class="portrait" /></td>
-  </tr>
-  <tr>
-    <td style="text-align:center"><a href="">TBA</a> <br></td>
-    <td style="text-align:center"><a href="">TBA</a> <br></td>
-  </tr>
-</table>
--->
+      <!-- <h2 id="talks">Invited Speakers</h2>
+      <div class="organizer-grid">
+        <div class="organizer-card">
+          <img src="image/background.jpg" alt="Speaker Name">
+          <div class="org-name"><a href="https://example.com">Speaker Name</a></div>
+          <div class="org-meta">Professor<br>University Name</div>
+        </div>
+        <div class="organizer-card">
+          <img src="image/background.jpg" alt="Speaker Name">
+          <div class="org-name"><a href="https://example.com">Speaker Name</a></div>
+          <div class="org-meta">Professor<br>University Name</div>
+        </div>
+      </div> -->
 
-<hr>	
-<a id="shared-task" > <h2 style="padding-top:50px; margin-top:-50px;">Shared Task</h2></a>
-<p>This year, we host MultiLexNorm 2: a shared task on multi-lingual lexical normalization with a focus on non Indo-european languages. After the success of our first MultiLexNorm shared task held in <a href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm 2</a></p>
-<hr> 
+      <h2 id="shared-task">Shared Task</h2>
+      <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non Indo-european languages. After the success of our first MultiLexNorm shared task held in <a href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
+  
+      <br>
+      <h2 id="dates">Important Dates</h2>
+      <ul>
+        <table>
+          <tr><th>Date</th><th>Event</th></tr>
+          <tr><td style="width: 18%;"><li>25-Jul</li></td><td>Submission Deadline (anytime on earth; dual-submission allowed)</td></tr>
+          <!-- <tr><td style="width: 18%;"><li>TBA</li></td><td>Reviews Due</td></tr> -->
+          <tr><td><li>TBA</li></td><td>ARR Commitment Date</td></tr>
+          <tr><td><li>10-Sep</li></td><td>Acceptance Notification</td></tr>
+          <!-- <tr><td style="width: 18%;"><li>TBA</li></td><td>Camera-Ready Deadline</td></tr> -->
+          <tr><td><li>TBA</li></td><td>EMNLP 2026 Findings Deadline</td></tr>
+          <tr><td><li>TBA</li></td><td>Workshop Day</td></tr>
+        </table>
+      </ul>
+      <br>
 
-	
-<a id="dates" ><h2>Important Dates</h2></a>
-<ul>
-<li><strong>Submission Deadline</strong>: <strong>July 25</strong> (anytime on earth; dual-submission allowed) </li>
-<!-- <li>Reviews Due: September 4, 2022</li> -->
-<li><strong>ARR Commitment Date</strong>: <strong>TBA </strong></li>
-<li><strong>Acceptance Notification</strong>: <strong>Sep 10</strong></li>
-<!--<li><strong>Camera-Ready Deadline</strong>: <strong>TBA</strong></li>-->
-<li><strong>EMNLP 2026 Findings Deadline</strong>: <strong>TBA</strong></li>
-<li><strong>Workshop Day</strong>: <strong>TBA</strong></li>
-</ul>
+      <h2 id="call">Call for Papers</h2>
+      <p>We seek submissions of <strong>long and short papers on original and unpublished work (same page limit as the EMNLP 2026 main conference)</strong>. All accepted submissions will be presented as talks and/or posters at the workshop, following the EMNLP 2026 main conference.</p>
+      <p>We welcome submissions addressing (but not limited to) the following areas:</p>
 
+      <h4>Classical NLP Tasks on Noisy Text</h4>
+      <ul>
+        <li>NLP of noisy text, e.g., POS and NER tagging, parsing</li>
+        <li>Text normalization and error correction</li>
+        <li>Paraphrase identification and semantic similarity of short text or noisy text</li>
+        <li>Extracting user demographics, profiles, and major life events</li>
+        <li>Machine translation and multilingual NLP over noisy text</li>
+        <li>Information extraction from noisy text and event extraction</li>
+        <li>Colloquial language, e.g., idiom detection</li>
+        <li>Domain adaptation to user-generated text</li>
+        <li>Detecting rumors, contradictory information, sarcasm, and humor on social media</li>
+        <li>Sentiment analysis</li>
+        <li>Temporal aspects of user-generated content (resolving time expressions, concept drift, etc.)</li>
+        <li>Representing and mining language variation in user-generated content</li>
+      </ul>
 
-<hr>
-<a id="call"><h2 style="padding-top:50px; margin-top:-50px;">Call for Papers</h2></a>
+      <h4>LLMs and Noisy Text</h4>
+      <ul>
+        <li>Robustness of LLMs to noisy, ungrammatical, or informal input</li>
+        <li>Training and fine-tuning of LLMs on user-generated text</li>
+        <li>Evaluation methodologies for LLMs on noisy text</li>
+        <li>Domain adaptation of LLMs to specific user-generated text domains</li>
+        <li>LLM-generated noisy text: detection, characteristics, and implications</li>
+        <li>Instruction-following in LLMs when faced with noisy or ambiguous prompts</li>
+        <li>Retrieval-augmented generation (RAG) with noisy documents</li>
+      </ul>
 
+      <h4>Real-World LLM Applications</h4>
+      <ul>
+        <li>LLM performance on text from social media, forums, and messaging platforms</li>
+        <li>Handling code-switching, slang, and emerging language in LLMs</li>
+        <li>LLMs for content moderation and safety in user-generated contexts</li>
+        <li>Multilingual and cross-lingual LLM applications on informal text</li>
+        <li>LLMs for assisting language learners and processing learner text</li>
+        <li>Bias, fairness, and representation in LLMs trained on user-generated text</li>
+      </ul>
 
-<p>We seek submissions of <strong><code>long and short papers</code> on
-    original and unpublished work (same page limit as the EMNLP 2026 main conference)</strong>. All accepted submissions will be presented as talks and/or posters at the workshop, following the EMNLP 2026 main conference.</p>
-
-<p> We welcome submissions addressing (but not limited to) the following areas:</p>
-<b>Classical NLP Tasks on Noisy Text</b>
-<ul>
-    <li> NLP of noisy text, e.g., POS and NER tagging, parsing </li>
-    <li> Text normalization and error correction  </li>
-    <li> Paraphrase identification and semantic similarity of short text or noisy text </li>
-    <li> Extracting user demographics, profiles, and major life events </li>
-    <li> Machine translation and multilingual NLP over noisy text </li>
-    <li> Information extraction from noisy text and event extraction </li>
-    <li> Colloquial language, e.g. idiom detection </li>
-    <li> Domain adaptation to user-generated text </li>
-    <li> Detecting rumors, contradictory information, sarcasm and humor on social media </li>
-    <li> Sentiment analysis </li>
-    <li> Temporal aspects of user-generated content (resolving time expressions, concept drift, etc...) </li>
-    <li> Representing and mining language variation in user-generated content </li>
-</ul>
-
-<b>LLMs and Noisy Text</b>
-<ul>
-  <li>Robustness of LLMs to noisy, ungrammatical, or informal input</li>
-  <li>Training and fine-tuning of LLMs on user-generated text</li>
-  <li>Evaluation methodologies for LLMs on noisy text</li>
-  <li>Domain adaptation of LLMs to specific user-generated text domains</li>
-  <li>LLM-generated noisy text: detection, characteristics, and implications</li>
-  <li>Instruction-following in LLMs when faced with noisy or ambiguous prompts</li>
-  <li>Retrieval-augmented generation (RAG) with noisy documents</li>
-</ul>
-
-<b>Real-World LLM Applications</b>
-<ul>
-  <li>LLM performance on text from social media, forums, and messaging platforms</li>
-  <li>Handling code-switching, slang, and emerging language in LLMs</li>
-  <li>LLMs for content moderation and safety in user-generated contexts</li>
-  <li>Multilingual and cross-lingual LLM applications on informal text</li>
-  <li>LLMs for assisting language learners and processing learner text</li>
-  <li>Bias, fairness, and representation in LLMs trained on user-generated text</li>
-</ul>
-
-<p>We particularly encourage submissions that address multilingual challenges, low-resource languages, cross-platform variations, and the unique characteristics of user-generated text across different communities. </p>
-
-<br>
-<br>
-
-<p> Submissions should conform
-to the <a href="https://github.com/acl-org/acl-style-files">ACL style
-guidelines</a>. Long and short paper submissions must be anonymized. Please submit your
-papers via <a href="#">OpenReview</a> or commit them via <a href="#">ARR</a>.</p>
-<br>
-<br>
-<p><strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or publications must indicate at submission time. Authors of a paper accepted for presentation must notify the workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn. </p>
+      <p>We particularly encourage submissions that address multilingual challenges, low-resource languages, cross-platform variations, and the unique characteristics of user-generated text across different communities.</p>
+      <p>Submissions should conform to the <a href="https://github.com/acl-org/acl-style-files">ACL style guidelines</a>. Long and short paper submissions must be anonymized. Please submit your papers via OpenReview or commit them via ARR (submission links will be announced).</p>
+      <p><strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or publications must indicate at submission time. Authors of a paper accepted for presentation must notify the workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.</p>
 
 
 
+    <!-- <p>If you would like to present your EMNLP findings paper at WNUT, please fill out the following <a href="#">form</a> before Mar 31rd.</p> -->
+   
 
+    <!--
+    <hr>
+    <a id="papers">  <h2 style="padding-top:50px; margin-top:-50px;">Accepted Papers</h2></a>
+    <p><a href="https://aclanthology.org/volumes/2025.wnut-1/">Proceedings</a></p>
+    <ul>
+    </ul>
+    -->
 
-<!--
-<p>If you would like to present your EMNLP findings paper at WNUT, please fill out the following <a href="#">form</a> before Mar 31rd.</p>
--->
+    <!--
+    <hr>
+    <a id="bestpapers">  <h2 style="padding-top:50px; margin-top:-50px;">Best Paper Award</h2></a>
+    <ul>
 
-<!--
-<hr>
-<a id="papers">  <h2 style="padding-top:50px; margin-top:-50px;">Accepted Papers</h2></a>
-<p><a href="https://aclanthology.org/volumes/2025.wnut-1/">Proceedings</a></p>
-<ul>
-</ul>
--->
-
-<!--
-<hr>
-<a id="bestpapers">  <h2 style="padding-top:50px; margin-top:-50px;">Best Paper Award</h2></a>
-<ul>
-
-</ul>
--->
+    </ul>
+    -->
 
 
 
-<hr>
-<a id="schedule">  <h2 style="padding-top:50px; margin-top:-50px;">Workshop Programme</h2></a>
-Timezone: <a href="https://www.timeanddate.com/worldclock/hungary/budapest">CET</a>
-<!--
-<table>
-  <thead>
-      <tr>
-          <th> Start Time </th>
-          <th> End Time </th>
-          <th> Contents </th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>9:15</td>
-          <td>9:30</td>
-          <td>Opening Remarks</td>
-      </tr>
-      <tr>
-          <td>9:30</td>
-          <td>10:30</td>
-          <td>Invited Talk - Verena Blaschke</td>
-      </tr>
-      <tr>
-          <td>10:30</td>
-          <td>11:00</td>
-          <td>Coffee Break &amp; Poster Presentations</td>
-      </tr>
-      <tr>
-          <td>11:00</td>
-          <td>12:00</td>
-          <td>Poster Presentations</td>
-      </tr>
-      <tr>
-          <td>12:00</td>
-          <td>13:30</td>
-          <td>Lunch &amp; Networking</td>
-      </tr>
-      <tr>
-          <td>13:30</td>
-          <td>15:00</td>
-          <td>Oral Presentations</td>
-      </tr>
-      <tr>
-          <td>15:00</td>
-          <td>15:30</td>
-          <td>Best Paper Presentations</td>
-      </tr>
-      <tr>
-          <td>15:30</td>
-          <td>16:00</td>
-          <td>Coffee Break</td>
-      </tr>
-      <tr>
-          <td>16:00</td>
-          <td>17:00</td>
-          <td>Invited Talk - Su Lin Blodgett</td>
-      </tr>
-      <tr>
-          <td>17:00</td>
-          <td>17:10</td>
-          <td>Closing</td>
-      </tr>
-  </tbody>
-</table>
--->
+      <br>
+      <h2 id="schedule">Workshop Programme</h2>
+      <p>The workshop programme will be announced after acceptance notifications.</p>
+      <!--         
+        <table>
+          <thead>
+              <tr>
+                  <th> Start Time </th>
+                  <th> End Time </th>
+                  <th> Contents </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>9:15</td>
+                  <td>9:30</td>
+                  <td>Opening Remarks</td>
+              </tr>
+              <tr>
+                  <td>9:30</td>
+                  <td>10:30</td>
+                  <td>Invited Talk - Verena Blaschke</td>
+              </tr>
+              <tr>
+                  <td>10:30</td>
+                  <td>11:00</td>
+                  <td>Coffee Break &amp; Poster Presentations</td>
+              </tr>
+              <tr>
+                  <td>11:00</td>
+                  <td>12:00</td>
+                  <td>Poster Presentations</td>
+              </tr>
+              <tr>
+                  <td>12:00</td>
+                  <td>13:30</td>
+                  <td>Lunch &amp; Networking</td>
+              </tr>
+              <tr>
+                  <td>13:30</td>
+                  <td>15:00</td>
+                  <td>Oral Presentations</td>
+              </tr>
+              <tr>
+                  <td>15:00</td>
+                  <td>15:30</td>
+                  <td>Best Paper Presentations</td>
+              </tr>
+              <tr>
+                  <td>15:30</td>
+                  <td>16:00</td>
+                  <td>Coffee Break</td>
+              </tr>
+              <tr>
+                  <td>16:00</td>
+                  <td>17:00</td>
+                  <td>Invited Talk - Su Lin Blodgett</td>
+              </tr>
+              <tr>
+                  <td>17:00</td>
+                  <td>17:10</td>
+                  <td>Closing</td>
+              </tr>
+          </tbody>
+        </table>
+       -->
 
-<hr>
-<a id="organizers">  <h2 style="padding-top:50px; margin-top:-50px;">Organizers</h2></a>
-<table style="width:100%">
-  <tr>
-    <td style="text-align:center"><img src="image/JinYeong.jpg" class="portrait" /></td>
-    <td style="text-align:center"><img src="image/rob.jpg" class="portrait" /></td>
-    <td style="text-align:center"><img src="image/hyeju_2020.png" class="portrait" /></td>
-    <td style="text-align:center"><img src="image/Weerayut.jpg" class="portrait" /></td>
-    <td style="text-align:center"><img src="image/alan.jpg" class="portrait" /></td>
-    <td style="text-align:center"><img src="image/weixu_profile_square.png" class="portrait" /></td>
-    <td style="text-align:center"><img src="image/ritter_profile_square.png" class="portrait" /></td>
-  </tr>
-  <tr>
-    <td style="text-align:center"><a href="https://nosyu.kr/">JinYeong Bak</a> <br>Associate Professor <br> SungKyunKwan University</td>
-    <td style="text-align:center"><a href="https://robvanderg.github.io/">Rob van der Goot</a> <br>Associate Professor <br> IT University of Copenhagen</td>
-    <td style="text-align:center"><a href="https://hyejuj.github.io/">Hyeju Jang</a> <br>Assistant Professor <br> Indiana University Indianapolis</td>
-    <td style="text-align:center"><a href="https://weerayutbu.github.io/">Weerayut Buaphet</a> <br> Ph.D. Student <br>Vidyasirimedhi Institute of Science and Technology</td>
-    <td style="text-align:center"><a href="https://alanramponi.github.io/">Alan Ramponi</a> <br>Senior Researcher<br>Fondazione Bruno Kessler</td>
-    <td style="text-align:center"><a href="https://cocoxu.github.io/">Wei Xu</a> <br>Associate Professor <br> Georgia Institute of Technology</td>
-    <td style="text-align:center"><a href="http://aritter.github.io/">Alan Ritter</a> <br>Associate Professor <br> Georgia Institute of Technology</td>
-  </tr>
-</table>
+      <br>
+      <h2 id="organizers">Organizers</h2>
+      <div class="organizer-grid">
+        <div class="organizer-card">
+          <img src="image/JinYeong.jpg" alt="JinYeong Bak">
+          <div class="org-name"><a href="https://nosyu.kr/">JinYeong Bak</a></div>
+          <div class="org-meta">Associate Professor<br>SungKyunKwan University</div>
+        </div>
+        <div class="organizer-card">
+          <img src="image/rob.jpg" alt="Rob van der Goot">
+          <div class="org-name"><a href="https://robvanderg.github.io/">Rob van der Goot</a></div>
+          <div class="org-meta">Associate Professor<br>IT University of Copenhagen</div>
+        </div>
+        <div class="organizer-card">
+          <img src="image/hyeju_2020.png" alt="Hyeju Jang">
+          <div class="org-name"><a href="https://hyejuj.github.io/">Hyeju Jang</a></div>
+          <div class="org-meta">Assistant Professor<br>Indiana University Indianapolis</div>
+        </div>
+        <div class="organizer-card">
+          <img src="image/Weerayut.jpg" alt="Weerayut Buaphet">
+          <div class="org-name"><a href="https://weerayutbu.github.io/">Weerayut Buaphet</a></div>
+          <div class="org-meta">Ph.D.<br>VISTEC</div>
+        </div>
+        <div class="organizer-card">
+          <img src="image/alan.jpg" alt="Alan Ramponi">
+          <div class="org-name"><a href="https://alanramponi.github.io/">Alan Ramponi</a></div>
+          <div class="org-meta">Senior Researcher<br>Fondazione Bruno Kessler</div>
+        </div>
+        <div class="organizer-card">
+          <img src="image/weixu_profile_square.png" alt="Wei Xu">
+          <div class="org-name"><a href="https://cocoxu.github.io/">Wei Xu</a></div>
+          <div class="org-meta">Associate Professor<br>Georgia Institute of Technology</div>
+        </div>
+        <div class="organizer-card">
+          <img src="image/ritter_profile_square.png" alt="Alan Ritter">
+          <div class="org-name"><a href="http://aritter.github.io/">Alan Ritter</a></div>
+          <div class="org-meta">Associate Professor<br>Georgia Institute of Technology</div>
+        </div>
+      </div>
 
-<hr>
+      <h2 id="contact">Contact</h2>
+      <a href="mailto:jy.bak@skku.edu">jy.bak@skku.edu</a>
+    
+  
+      <!-- <a id="sponsor" > <h2 style="padding-top:50px; margin-top:-50px;">Sponsor</h2></a>
 
-<a id="contact">  <h2 style="padding-top:50px; margin-top:-50px;">Contact</h2></a>
-jy.bak@skku.edu
+      <table style="width:100%">
+        <tr>
+          <td style="text-align:center"><img src="image/SKKU.jpg" class="portrait" /></td>
+        </tr>
+        <tr>
+          <td style="text-align:center"><a href="https://www.skku.edu/eng/">SungKyunKwan University</a> <br>Department of Artificial Intelligence &<br>ICT Research And Education Foundation</td>
+        </tr>
+      </table> -->
 
 
-<!--
-<hr>
-	<a id="committee"><h2>Program Committee</h2> </a>
-	<ul class="list-unstyled">
-    <li>Abhai Pratap Singh (Carnegie Mellon University)</li>
-    <li>Aditya Jain (Applied Research Scientist )</li>
-    <li>Alan Ramponi (Fondazione Bruno Kessler)</li>
-    <li>Andreas Spitz (Universität Konstanz)</li>
-    <li>Antonios Anastasopoulos (Athena Research Center)</li>
-    <li>Chao Jiang (Georgia Institute of Technology)</li>
-    <li>Dan Simonson (BlackBoiler, Inc.)</li>
-    <li>Danae Sanchez Villegas (University of Copenhagen)</li>
-    <li>Daniel Varab (German Research Center for AI)</li>
-    <li>Danilo Croce (University of Roma Tor Vergata)</li>
-    <li>Dustin Wright (University of Copenhagen)</li>
-    <li>Eduardo Blanco (University of Arizona)</li>
-    <li>Emily Allaway (University of Edinburgh)</li>
-    <li>Günter Neumann (German Research Center for AI)</li>
-    <li>H. Schwartz (Stony Brook University (SUNY))</li>
-    <li>Hamed Alhoori (Northern Illinois University)</li>
-    <li>HyunJin Kim (Sungkyunkwan University)</li>
-    <li>Iñaki San Vicente (Orai NLP Technologies)</li>
-    <li>Ishan Jindal (IBM Research)</li>
-    <li>Jaehyeok Lee (Sung Kyun Kwan University)</li>
-    <li>Jing Li (The Hong Kong Polytechnic University)</li>
-    <li>Joel R. Tetreault (Dataminr)</li>
-    <li>Kokil Jaidka (National University of Singapore)</li>
-    <li>Lucy H. Lin (Spotify)</li>
-    <li>Manuel Montes (INAOE)</li>
-    <li>Maria Antoniak (Copenhagen University)</li>
-    <li>Micha Elsner (Ohio State University)</li>
-    <li>Mika Hämäläinen (Metropolia University of Applied Sciences)</li>
-    <li>Mike Zhang (Aalborg University (Copenhagen))</li>
-    <li>Mirco Schönfeld (Universität Bayreuth)</li>
-    <li>Naoki Otani (Megagon Labs)</li>
-    <li>Nikola Ljubešić (Jožef Stefan Institute)</li>
-    <li>Paul Cook (University of New Brunswick)</li>
-    <li>Rahul Raja (LinkedIn)</li>
-    <li>Sachin Kumar (Ohio State University, Columbus)</li>
-    <li>Sai P Vallurupalli (University of Maryland, Baltimore County)</li>
-    <li>Shubhashis Roy Dipta (University of Maryland, Baltimore County)</li>
-    <li>Suyoung Kim (Sungkyunkwan University)</li>
-    <li>Sweta Agrawal (Instituto de Telecomunicações)</li>
-    <li>Tommaso Caselli (University of Groningen)</li>
-    <li>Vincent Ng (University of Texas at Dallas)</li>
-    <li>Vincent Siddons (Indiana University)</li>
-    <li>Vishal Shah (Virginia Department of Wildlife Resources)</li>
-    <li>W. Graham Mueller (Leidos)</li>
-    <li>Xiaojun Wan (Peking University)</li>
-    <li>Yasuhide Miura (FUJIFILM)</li>
-    <li>YeongJun Hwang (Sung Kyun Kwan University)</li>
-    <li>Yoshinari Fujinuma (AWS AI Labs)</li>    
-        </ul>
-<br/>
--->
+      <div class="page-footer">
+        <a href="https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy">ACL Anti-Harassment Policy</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://pixabay.com/photos/river-city-budapest-hungary-9010602/">Photo: Budapest, Pixabay</a>
+      </div>
 
-<!--
-<hr>
-<a id="volunteer" > <h2 style="padding-top:50px; margin-top:-50px;">Volunteer</h2></a>
+      </div><!-- /.content -->
+    </div>
 
-<table style="width:100%">
-  <tr>
-    <td style="text-align:center"><img src="image/LJH.jpg" class="portrait" /></td>
-  </tr>
-  <tr>
-    <td style="text-align:center"><a href="https://hli.skku.edu/jaehyeok_lee/">Jaehyeok Lee</a> <br>Ph.D. Student<br>SungKyunKwan University</td>
-  </tr>
-</table>
--->
-
-<!--
-<hr>
-<a id="sponsor" > <h2 style="padding-top:50px; margin-top:-50px;">Sponsor</h2></a>
-
-<table style="width:100%">
-  <tr>
-    <td style="text-align:center"><img src="image/SKKU.jpg" class="portrait" /></td>
-  </tr>
-  <tr>
-    <td style="text-align:center"><a href="https://www.skku.edu/eng/">SungKyunKwan University</a> <br>Department of Artificial Intelligence &<br>ICT Research And Education Foundation</td>
-  </tr>
-</table>
--->
-
-<hr>
-<strong><a href='https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy'>ACL Anti-harassment Policy</a></strong>
-<br/>
-<hr>
-
-<br/>
-    </div> <!-- /container -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="./dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+      $(document).on('click', '.navbar-collapse.in .navbar-nav > li > a', function() {
+        $('.navbar-collapse').collapse('hide');
+      });
+    </script>
   </body>
 </html>
