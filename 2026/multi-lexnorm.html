@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="MultiLexNorm2026: Multilingual Lexical Normalization shared task at W-NUT 2026.">
     <meta name="author" content="W-NUT Organizers">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="../favicon.ico">
     <title>W-NUT 2026 Shared Task: Multi-lingual Lexical Normalization</title>
     <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -257,13 +257,17 @@
 
         <h2 id="dates">Timeline</h2>
         <table>
-          <tr><th>Date</th><th>Event</th></tr>
-          <tr><td style="width: 18%;">21-Jul</td><td>Test data (Final phase)</td></tr>
-          <tr><td>01-Aug</td><td>Final Evaluation</td></tr>
-          <tr><td>20-Aug</td><td>Paper deadline</td></tr>
-          <tr><td>05-Sep</td><td>Paper reviewed</td></tr>
-          <tr><td>15-Sep</td><td>Camera ready</td></tr>
-          <tr><td>TBA</td><td>Workshop</td></tr>
+          <thead>
+            <tr><th>Date</th><th>Event</th></tr>
+          </thead>
+          <tbody>
+            <tr><td style="width: 18%;">21-Jul</td><td>Test data (Final phase)</td></tr>
+            <tr><td>01-Aug</td><td>Final Evaluation</td></tr>
+            <tr><td>20-Aug</td><td>Paper deadline</td></tr>
+            <tr><td>05-Sep</td><td>Paper reviewed</td></tr>
+            <tr><td>15-Sep</td><td>Camera ready</td></tr>
+            <tr><td>TBA</td><td>Workshop</td></tr>
+          </tbody>
         </table>
 
         <h2 id="intro">Lexical Normalization</h2>
@@ -316,7 +320,7 @@ pissed          pissed</pre>
           We use Error Reduction Rate (ERR), which is word-level
           accuracy normalized for the number of replacements in the dataset (<a href="https://www.aclweb.org/anthology/P19-3032.pdf">van der Goot, 2019</a>). The formula for ERR is:
         </p>
-<pre>ERR = (TP &minus; FP) / (TP + FN)</pre>
+<pre>ERR = (TP - FP) / (TP + FN)</pre>
         <p>Where TP, FP, TN, FN are defined as follows:</p>
 <pre>TN = Annotators did not normalize, system did not normalize
 FP = Annotators did not normalize, system normalized
