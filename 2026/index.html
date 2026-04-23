@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="W-NUT 2026: The 11th Workshop on Natural User-generated Text, collocated with EMNLP 2026.">
-    <meta name="author" content="W-NUT Organizers">
-    <link rel="icon" href="../../favicon.ico">
-    <title>W-NUT 2026: Workshop on Natural User-generated Text (at EMNLP 2026)</title>
-    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="W-NUT 2026: The 11th Workshop on Natural User-generated Text, collocated with EMNLP 2026.">
+  <meta name="author" content="W-NUT Organizers">
+  <link rel="icon" href="../../favicon.ico">
+  <title>W-NUT 2026: Workshop on Natural User-generated Text (at EMNLP 2026)</title>
+  <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -19,7 +21,13 @@
       background-color: #f8fafc;
       padding-top: 50px;
     }
-    body h1, body h2, body h3, body h4, body h5, body h6 {
+
+    body h1,
+    body h2,
+    body h3,
+    body h4,
+    body h5,
+    body h6 {
       font-size: 1em;
       font-weight: normal;
       line-height: 1.75;
@@ -27,56 +35,125 @@
       margin-top: 0;
       margin-bottom: 0;
     }
-    p  { margin-bottom: 0.9em; }
-    ul { padding-left: 1.5em; margin-bottom: 1em; }
-    li { margin-bottom: 0.2em; }
-    a  { color: #2e6da4; }
-    a:hover { color: #1a2a4a; text-decoration: underline; }
+
+    p {
+      margin-bottom: 0.9em;
+    }
+
+    ul {
+      padding-left: 1.5em;
+      margin-bottom: 1em;
+    }
+
+    li {
+      margin-bottom: 0.2em;
+    }
+
+    a {
+      color: #2e6da4;
+    }
+
+    a:hover {
+      color: #1a2a4a;
+      text-decoration: underline;
+    }
 
     /* Navbar */
     .navbar-default {
-      background-color: rgba(255,255,255,0.92);
+      background-color: rgba(255, 255, 255, 0.92);
       -webkit-backdrop-filter: blur(12px);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: none;
     }
-    .navbar-default .navbar-brand { color: #2e6da4; font-weight: 600; font-size: inherit; }
-    .navbar-default .navbar-toggle { border-color: #374151; }
-    .navbar-default .navbar-toggle .icon-bar { background-color: #374151; }
-    .navbar-default .navbar-toggle:hover { background-color: rgba(55,65,81,0.1); }
-    .navbar-default .navbar-nav > li > a { color: #374151; font-size: inherit; }
-    .navbar-default .navbar-collapse { background-color: rgba(255,255,255,0.92); border-top: 1px solid rgba(0,0,0,0.08); }
-    nav.navbar-default .navbar-collapse .navbar-nav > li > a { color: #374151; background-color: transparent; }
-    nav.navbar-default .navbar-collapse .navbar-nav > li > a:hover,
-    nav.navbar-default .navbar-collapse .navbar-nav > li > a:focus { color: #2e6da4; background-color: rgba(46,109,164,0.08); }
+
+    .navbar-default .navbar-brand {
+      color: #2e6da4;
+      font-weight: 600;
+      font-size: inherit;
+    }
+
+    .navbar-default .navbar-toggle {
+      border-color: #374151;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #374151;
+    }
+
+    .navbar-default .navbar-toggle:hover {
+      background-color: rgba(55, 65, 81, 0.1);
+    }
+
+    .navbar-default .navbar-nav>li>a {
+      color: #374151;
+      font-size: inherit;
+    }
+
+    .navbar-default .navbar-collapse {
+      background-color: rgba(255, 255, 255, 0.92);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    nav.navbar-default .navbar-collapse .navbar-nav>li>a {
+      color: #374151;
+      background-color: transparent;
+    }
+
+    nav.navbar-default .navbar-collapse .navbar-nav>li>a:hover,
+    nav.navbar-default .navbar-collapse .navbar-nav>li>a:focus {
+      color: #2e6da4;
+      background-color: rgba(46, 109, 164, 0.08);
+    }
+
     .navbar-default .navbar-brand:hover,
-    .navbar-default .navbar-nav > li > a:hover,
-    .navbar-default .navbar-nav > .active > a { background-color: transparent; color: #2e6da4; }
+    .navbar-default .navbar-nav>li>a:hover,
+    .navbar-default .navbar-nav>.active>a {
+      background-color: transparent;
+      color: #2e6da4;
+    }
 
     /* Hero banner */
     .hero-banner {
       width: 100%;
       height: 320px;
-      background: linear-gradient(rgba(15,25,50,0.45), rgba(15,25,50,0.45)),
-                  url('image/background.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(15, 25, 50, 0.45), rgba(15, 25, 50, 0.45)),
+        url('image/background.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
     }
-    .hero-banner h1 { font-size: 2em; font-weight: bold; color: #fff; line-height: 1.3; margin: 0 0 8px; }
-    .hero-banner p  { color: rgba(255,255,255,0.85); margin: 0; }
+
+    .hero-banner h1 {
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
+      line-height: 1.3;
+      margin: 0 0 8px;
+    }
+
+    .hero-banner p {
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0;
+    }
+
     .intro-section {
       padding-top: 24px;
       padding-bottom: 16px;
       margin-bottom: 16px;
     }
-    .intro-section h3 { font-weight: bold; font-size: 1.5em; margin-bottom: 0.3em; }
+
+    .intro-section h3 {
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 0.3em;
+    }
+
     /* .intro-section p  { font-size: 0.9em; margin-bottom: 0; } */
 
 
-/* Override Bootstrap container */
+    /* Override Bootstrap container */
     .container {
       width: 90%;
       max-width: 1200px;
@@ -87,35 +164,43 @@
       width: 62%;
       margin: 0 auto;
     }
+
     @media (max-width: 992px) {
-      .content { width: 90%; }
+      .content {
+        width: 90%;
+      }
     }
+
     @media (max-width: 768px) {
-      .content { width: 100%; }
+      .content {
+        width: 100%;
+      }
     }
 
     /* Section headings */
     .content h2 {
       padding-top: 70px;
       margin-top: -75px;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       padding-bottom: 8px;
       margin-bottom: 16px;
       font-weight: bold;
       font-size: 1.25em;
       color: #37477c;
     }
+
     .content h4 {
       font-weight: 600;
       font-size: 1.1em;
       margin-top: 2em;
       margin-bottom: 0;
       padding-left: 12px;
-      border-left: 4px solid rgba(46,109,164,0.3);
+      border-left: 4px solid rgba(46, 109, 164, 0.3);
       color: #1a2a4a;
     }
-    .content h4 + ul {
-      border-left: 4px solid rgba(46,109,164,0.3);
+
+    .content h4+ul {
+      border-left: 4px solid rgba(46, 109, 164, 0.3);
       padding-left: 2em;
       margin-left: 0;
       list-style-position: inside;
@@ -129,6 +214,7 @@
       gap: 1em;
       margin-top: 24px;
     }
+
     .organizer-card {
       display: flex;
       flex-direction: column;
@@ -136,7 +222,11 @@
       text-align: center;
       padding: 12px 4px;
     }
-    .organizer-card { font-size: 0.7em; }
+
+    .organizer-card {
+      font-size: 0.7em;
+    }
+
     .organizer-card img {
       width: 160px;
       height: 160px;
@@ -144,63 +234,75 @@
       object-fit: cover;
       margin-bottom: 10px;
     }
-    .organizer-card .org-name { margin-bottom: 4px; }
+
+    .organizer-card .org-name {
+      margin-bottom: 4px;
+    }
 
     /* Footer */
     .page-footer {
       margin-top: 3em;
       padding: 1.5em 0;
-      border-top: 1px solid rgba(0,0,0,0.08);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
       text-align: center;
       font-size: 0.85em;
       color: #94949a;
     }
-    .page-footer a { color: #9ca3af; }
-    .page-footer a:hover { color: #2e6da4; }
+
+    .page-footer a {
+      color: #9ca3af;
+    }
+
+    .page-footer a:hover {
+      color: #2e6da4;
+    }
   </style>
-  </head>
-  <body>
+</head>
 
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid" style="padding: 0 2rem;">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">W-NUT</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#shared-task">Shared Task</a></li>
-            <li><a href="#dates">Dates</a></li>
-            <li><a href="#call">Call for Papers</a></li>
-            <li><a href="#organizers">Organizers</a></li>
-            <li><a href="../history/">Previous Editions</a></li>
-          </ul>
-        </div>
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid" style="padding: 0 2rem;">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">W-NUT</a>
       </div>
-    </nav>
-
-    <div class="hero-banner">
-      <div style="background: rgba(10,18,40,0.65); padding: 18px 36px; border-radius: 12px; backdrop-filter: blur(2px);">
-        <h1>The 11th Workshop on Noisy User-generated Text (W-NUT)</h1>
-        <p>Oct 2026 &mdash; collocated with <strong>EMNLP 2026</strong></p>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#shared-task">Shared Task</a></li>
+          <li><a href="#dates">Dates</a></li>
+          <li><a href="#call">Call for Papers</a></li>
+          <li><a href="#organizers">Organizers</a></li>
+          <li><a href="../history/">Previous Editions</a></li>
+        </ul>
       </div>
     </div>
+  </nav>
 
-    <div class="container">
-      <div class="content">
+  <div class="hero-banner">
+    <div style="background: rgba(10,18,40,0.65); padding: 18px 36px; border-radius: 12px; backdrop-filter: blur(2px);">
+      <h1>The 11th Workshop on Noisy User-generated Text (W-NUT)</h1>
+      <p>Oct 2026 &mdash; collocated with <strong>EMNLP 2026</strong></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content">
 
       <div class="intro-section">
         <h3>From Noisy Text to Real-World Applications of LLMs</h3>
-        <p>The WNUT workshop on language by people. We focus on language as it occurs in the real world, from noisy text to real-world applications of LLMs.</p>
+        <p>The WNUT workshop on language by people. We focus on language as it occurs in the real world, from noisy text
+          to real-world applications of LLMs.</p>
       </div>
 
-    
+
       <!-- ###############
       Invited Speakers 
       ###############-->
@@ -220,26 +322,59 @@
       </div> -->
 
       <h2 id="shared-task">Shared Task</h2>
-      <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non Indo-european languages. After the success of our first MultiLexNorm shared task held in <a href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
-  
+      <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non
+        Indo-european languages. After the success of our first MultiLexNorm shared task held in <a
+          href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more
+        varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
+
       <br>
       <h2 id="dates">Important Dates</h2>
       <ul>
         <table>
-          <tr><th>Date</th><th>Event</th></tr>
-          <tr><td style="width: 18%;"><li>25-Jul</li></td><td>Submission Deadline (anytime on earth; dual-submission allowed)</td></tr>
+          <tr>
+            <th>Date</th>
+            <th>Event</th>
+          </tr>
+          <tr>
+            <td style="width: 18%;">
+              <li>25-Jul</li>
+            </td>
+            <td>Submission Deadline (anytime on earth; dual-submission allowed)</td>
+          </tr>
           <!-- <tr><td style="width: 18%;"><li>TBA</li></td><td>Reviews Due</td></tr> -->
-          <tr><td><li>TBA</li></td><td>ARR Commitment Date</td></tr>
-          <tr><td><li>10-Sep</li></td><td>Acceptance Notification</td></tr>
+          <tr>
+            <td>
+              <li>TBA</li>
+            </td>
+            <td>ARR Commitment Date</td>
+          </tr>
+          <tr>
+            <td>
+              <li>10-Sep</li>
+            </td>
+            <td>Acceptance Notification</td>
+          </tr>
           <!-- <tr><td style="width: 18%;"><li>TBA</li></td><td>Camera-Ready Deadline</td></tr> -->
-          <tr><td><li>TBA</li></td><td>EMNLP 2026 Findings Deadline</td></tr>
-          <tr><td><li>TBA</li></td><td>Workshop Day</td></tr>
+          <tr>
+            <td>
+              <li>TBA</li>
+            </td>
+            <td>EMNLP 2026 Findings Deadline</td>
+          </tr>
+          <tr>
+            <td>
+              <li>TBA</li>
+            </td>
+            <td>Workshop Day</td>
+          </tr>
         </table>
       </ul>
       <br>
 
       <h2 id="call">Call for Papers</h2>
-      <p>We seek submissions of <strong>long and short papers on original and unpublished work (same page limit as the EMNLP 2026 main conference)</strong>. All accepted submissions will be presented as talks and/or posters at the workshop, following the EMNLP 2026 main conference.</p>
+      <p>We seek submissions of <strong>long and short papers on original and unpublished work (same page limit as the
+          EMNLP 2026 main conference)</strong>. All accepted submissions will be presented as talks and/or posters at
+        the workshop, following the EMNLP 2026 main conference.</p>
       <p>We welcome submissions addressing (but not limited to) the following areas:</p>
 
       <h4>Classical NLP Tasks on Noisy Text</h4>
@@ -279,16 +414,27 @@
         <li>Bias, fairness, and representation in LLMs trained on user-generated text</li>
       </ul>
 
-      <p>We particularly encourage submissions that address multilingual challenges, low-resource languages, cross-platform variations, and the unique characteristics of user-generated text across different communities.</p>
-      <p>Submissions should conform to the <a href="https://github.com/acl-org/acl-style-files">ACL style guidelines</a>. Long and short paper submissions must be anonymized. Please submit your papers via OpenReview or commit them via ARR (submission links will be announced).</p>
-      <p><strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or publications must indicate at submission time. Authors of a paper accepted for presentation must notify the workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.</p>
+      <p>We particularly encourage submissions that address multilingual challenges, low-resource languages,
+        cross-platform variations, and the unique characteristics of user-generated text across different communities.
+      </p>
+      <p>Submissions should conform to the <a href="https://github.com/acl-org/acl-style-files">ACL style
+          guidelines</a>. Long and short paper submissions must be anonymized. Please submit your papers via:
+      </p>
+      <p class="text-center">
+        <a href="#" class="btn btn-primary" style="margin-right: 10px;">Submit via OpenReview</a>
+        <a href="#" class="btn btn-default">Commit via ARR</a>
+        <br><small style="color: #888; margin-top: 8px; display: inline-block;">(Submission links will be announced)</small>
+      </p>
+      <p><strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or
+        publications must indicate at submission time. Authors of a paper accepted for presentation must notify the
+        workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.</p>
 
 
 
-    <!-- <p>If you would like to present your EMNLP findings paper at WNUT, please fill out the following <a href="#">form</a> before Mar 31rd.</p> -->
-   
+      <!-- <p>If you would like to present your EMNLP findings paper at WNUT, please fill out the following <a href="#">form</a> before Mar 31rd.</p> -->
 
-    <!--
+
+      <!--
     <hr>
     <a id="papers">  <h2 style="padding-top:50px; margin-top:-50px;">Accepted Papers</h2></a>
     <p><a href="https://aclanthology.org/volumes/2025.wnut-1/">Proceedings</a></p>
@@ -296,7 +442,7 @@
     </ul>
     -->
 
-    <!--
+      <!--
     <hr>
     <a id="bestpapers">  <h2 style="padding-top:50px; margin-top:-50px;">Best Paper Award</h2></a>
     <ul>
@@ -392,9 +538,9 @@
           <div class="org-meta">Assistant Professor<br>Indiana University Indianapolis</div>
         </div>
         <div class="organizer-card">
-          <img src="image/Weerayut.jpg" alt="Weerayut Buaphet">
+          <img src="image/Weerayut.png" alt="Weerayut Buaphet">
           <div class="org-name"><a href="https://weerayutbu.github.io/">Weerayut Buaphet</a></div>
-          <div class="org-meta">Ph.D.<br>VISTEC</div>
+          <div class="org-meta">AI Engineer<br>Cariva</div>
         </div>
         <div class="organizer-card">
           <img src="image/alan.jpg" alt="Alan Ramponi">
@@ -415,8 +561,8 @@
 
       <h2 id="contact">Contact</h2>
       <a href="mailto:jy.bak@skku.edu">jy.bak@skku.edu</a>
-    
-  
+
+
       <!-- <a id="sponsor" > <h2 style="padding-top:50px; margin-top:-50px;">Sponsor</h2></a>
 
       <table style="width:100%">
@@ -435,15 +581,16 @@
         <a href="https://pixabay.com/photos/river-city-budapest-hungary-9010602/">Photo: Budapest, Pixabay</a>
       </div>
 
-      </div><!-- /.content -->
-    </div>
+    </div><!-- /.content -->
+  </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="./dist/js/bootstrap.min.js"></script>
-    <script>
-      $(document).on('click', '.navbar-collapse.in .navbar-nav > li > a', function() {
-        $('.navbar-collapse').collapse('hide');
-      });
-    </script>
-  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="./dist/js/bootstrap.min.js"></script>
+  <script>
+    $(document).on('click', '.navbar-collapse.in .navbar-nav > li > a', function () {
+      $('.navbar-collapse').collapse('hide');
+    });
+  </script>
+</body>
+
 </html>
