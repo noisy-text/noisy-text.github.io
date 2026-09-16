@@ -7,7 +7,7 @@ The following 26 papers have been accepted to W-NUT 2026, listed alphabetically 
 | A Precision-First Whitespace Restoration Pipeline for Noisy Urdu Tafseer Text | Muhammad Mubashir Hassan |
 | Are More Emotion Theories Better? Joint Prompting Improves Emotion Categorization Robustness | Albina Sarymsakova, Roman Klinger |
 | Beyond Clean Text: Evaluating Encoder and Decoder Robustness for Bangla Event Detection in Noisy Text | Tanvir Ahmed Sijan, S M Golam Rifat, Nayeemul Islam, Md Musfique Anwar |
-| CrisisKD: Five-Stage Knowledge Distillation for Aspect-Level Sentiment and Emotion Analysis in Crisis Discourse | Marko Haralovic, Onat Dogan Akca, Salih Eren Yuceturk, Minsi Li, Mariët Theune |
+| CrisisKD: Five-Stage Knowledge Distillation for Aspect-Level Sentiment and Emotion Analysis in Crisis Discourse | Marko Haralovic, Onat Dogan Akca, Salih Eren Yücetürk, Minsi Li, Mariët Theune |
 | Discourse-Structural Noise in LLM-Generated Explanations | Raghvi Baloni, Achim Rettinger |
 | Do LLMs Give Consistent Opinions? Evaluating Response Reliability Under Varying Likert-Scale Formulations in Survey-Style MCQA | Martin Kandlinger, Bolei Ma, Anna-Carolina Haensch, Matthias Aßenmacher |
 | Evaluating Token Probabilities as Confidence Estimators in Human Behavior Simulations: A Case Study in Luxembourgish Next Like Prediction | Nils Schwager, Simon Münker, Alistair Plum, Achim Rettinger |
