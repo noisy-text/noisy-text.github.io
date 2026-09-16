@@ -19,7 +19,6 @@
       line-height: 1.75;
       color: #374151;
       background-color: #f8fafc;
-      padding-top: 50px;
     }
 
     body h1,
@@ -58,65 +57,11 @@
       text-decoration: underline;
     }
 
-    /* Navbar */
-    .navbar-default {
-      background-color: rgba(255, 255, 255, 0.92);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: none;
-    }
-
-    .navbar-default .navbar-brand {
-      color: #2e6da4;
-      font-weight: 600;
-      font-size: inherit;
-    }
-
-    .navbar-default .navbar-toggle {
-      border-color: #374151;
-    }
-
-    .navbar-default .navbar-toggle .icon-bar {
-      background-color: #374151;
-    }
-
-    .navbar-default .navbar-toggle:hover {
-      background-color: rgba(55, 65, 81, 0.1);
-    }
-
-    .navbar-default .navbar-nav>li>a {
-      color: #374151;
-      font-size: inherit;
-    }
-
-    .navbar-default .navbar-collapse {
-      background-color: rgba(255, 255, 255, 0.92);
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-    }
-
-    nav.navbar-default .navbar-collapse .navbar-nav>li>a {
-      color: #374151;
-      background-color: transparent;
-    }
-
-    nav.navbar-default .navbar-collapse .navbar-nav>li>a:hover,
-    nav.navbar-default .navbar-collapse .navbar-nav>li>a:focus {
-      color: #2e6da4;
-      background-color: rgba(46, 109, 164, 0.08);
-    }
-
-    .navbar-default .navbar-brand:hover,
-    .navbar-default .navbar-nav>li>a:hover,
-    .navbar-default .navbar-nav>.active>a {
-      background-color: transparent;
-      color: #2e6da4;
-    }
-
     /* Hero banner */
     .hero-banner {
       width: 100%;
-      height: 320px;
+      min-height: 320px;
+      padding: 32px 20px;
       background: linear-gradient(rgba(15, 25, 50, 0.45), rgba(15, 25, 50, 0.45)),
         url('image/background.jpg') center/cover no-repeat;
       display: flex;
@@ -132,6 +77,16 @@
       line-height: 1.3;
       margin: 0 0 8px;
     }
+
+    .hero-banner h1 { text-wrap: balance; }
+
+    @media (min-width: 1200px) {
+      .hero-banner h1 {
+        font-size: clamp(24px, 2.1vw, 32px);
+        white-space: nowrap;
+      }
+    }
+    .workshop-acronym { white-space: nowrap; }
 
     .hero-banner p {
       color: rgba(255, 255, 255, 0.85);
@@ -150,43 +105,253 @@
       margin-bottom: 0.3em;
     }
 
-    /* .intro-section p  { font-size: 0.9em; margin-bottom: 0; } */
+    .hero-copy {
+      width: 100%;
+      max-width: 1280px;
+      background: rgba(10, 18, 40, 0.65);
+      padding: 24px 32px;
+      border-radius: 12px;
+      backdrop-filter: blur(2px);
+    }
 
 
-    /* Override Bootstrap container */
+    /* Page layout and section navigation */
     .container {
-      width: 90%;
-      max-width: 1200px;
+      width: 100%;
+      max-width: 1280px;
+      padding: 0 28px;
     }
 
-    /* Content column */
-    .content {
-      width: 62%;
-      margin: 0 auto;
+    .page-layout {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 48px;
+      align-items: start;
+      padding-top: 32px;
     }
 
-    @media (max-width: 992px) {
-      .content {
-        width: 90%;
-      }
+    /* Keep Bootstrap's clearfix pseudo-elements out of the grid. */
+    .page-layout::before,
+    .page-layout::after {
+      display: none;
+      content: none;
     }
 
-    @media (max-width: 768px) {
-      .content {
-        width: 100%;
-      }
+    .section-nav {
+      position: sticky;
+      top: 24px;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      padding: 20px 0;
+      font-size: 15px;
     }
 
-    /* Section headings */
-    .content h2 {
-      padding-top: 70px;
-      margin-top: -75px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      padding-bottom: 8px;
-      margin-bottom: 16px;
-      font-weight: bold;
-      font-size: 1.25em;
+    .section-nav-title {
+      font-weight: 700;
       color: #37477c;
+      padding-left: 12px;
+    }
+
+    .section-nav-toggle {
+      display: none;
+    }
+
+    .section-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .section-nav a {
+      display: block;
+      padding: 7px 12px;
+      border-radius: 6px;
+    }
+
+    .section-nav a:hover,
+    .section-nav a:focus {
+      background: #e8eff7;
+    }
+
+    .content {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .content-section {
+      margin-bottom: 48px;
+    }
+
+    .content h2 {
+      scroll-margin-top: 24px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 1.35em;
+      color: #37477c;
+    }
+
+    .content .table-responsive {
+      border: 1px solid #dfe5ed;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      background: #fff;
+    }
+
+    .content .table {
+      margin-bottom: 0;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .content .table > thead > tr > th {
+      background: #e8eff7;
+      color: #263b59;
+      padding: 12px 16px;
+      border-bottom: 1px solid #dfe5ed;
+    }
+
+    .content .table > tbody > tr > td {
+      padding: 12px 16px;
+      vertical-align: top;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .event-tables {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .event-tables .content-section {
+      min-width: 0;
+      margin-bottom: 0;
+    }
+
+    .event-tables h2 {
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+    }
+
+    .event-tables .table-responsive { margin-bottom: 0; }
+    .event-tables .table { font-size: 15px; line-height: 1.45; }
+
+    .content .event-tables .table > thead > tr > th,
+    .content .event-tables .table > tbody > tr > td {
+      padding: 8px 12px;
+    }
+
+    @media (min-width: 1200px) {
+      .event-tables {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+        gap: 24px;
+        align-items: start;
+      }
+    }
+
+    #papers,
+    #call {
+      scroll-margin-top: 130px;
+    }
+
+    .paper-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .paper-tabs button {
+      border: 0;
+      border-bottom: 3px solid transparent;
+      background: transparent;
+      padding: 12px 16px;
+      color: #52657a;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .paper-tabs button[aria-selected="true"] {
+      color: #2e6da4;
+      border-bottom-color: #2e6da4;
+      background: #e8eff7;
+    }
+
+    .paper-tabs button:focus-visible {
+      outline: 2px solid #2e6da4;
+      outline-offset: 2px;
+    }
+
+    .paper-panel[hidden] {
+      display: none;
+    }
+
+    .directory-list { list-style: none; padding: 0; margin: 0 0 20px; }
+    .directory-item { margin: 0; padding: 16px 0; border-bottom: 1px solid #dfe5ed; }
+    .directory-title { font-size: 17px; line-height: 1.5; font-weight: 600; color: #263b59; margin: 0 0 5px; }
+    .directory-meta { font-size: 15px; line-height: 1.5; color: #52657a; margin: 0; }
+    #accepted-papers-panel > h2 { padding-bottom: 8px; margin-bottom: 8px; }
+    .papers-summary { font-size: 14px; color: #52657a; margin-bottom: 10px; }
+    .papers-list .directory-item { padding: 7px 0; border-bottom: 0; }
+    .papers-list .directory-title { font-size: 16px; line-height: 1.4; margin-bottom: 2px; }
+    .papers-list .directory-meta { font-size: 14px; line-height: 1.4; }
+
+    .committee-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+      gap: 0 16px;
+    }
+    .committee-list .directory-item { padding: 5px 0; border-bottom: 0; }
+    .committee-list .directory-title { font-size: 14px; line-height: 1.4; margin-bottom: 3px; }
+    .committee-list .directory-meta { font-size: 13px; line-height: 1.4; }
+    @media (max-width: 991px) {
+      .page-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .section-nav {
+        position: static;
+        max-height: none;
+        padding: 0;
+        border: 1px solid #dfe5ed;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .section-nav-title { display: none; }
+
+      .section-nav-toggle {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 12px 16px;
+        border: 0;
+        background: transparent;
+        color: #37477c;
+        font: inherit;
+        font-weight: 700;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .section-nav ul { display: none; padding: 0 4px 8px; }
+      .section-nav.is-open ul { display: block; }
+    }
+
+    @media (max-width: 767px) {
+      body { font-size: 16px; }
+      .container { padding: 0 20px; }
+      .hero-copy { padding: 20px; }
+      .hero-banner h1 { font-size: 1.7em; }
+      .content-section { margin-bottom: 36px; }
+      .content .table { font-size: 14px; }
+      .content .table > thead > tr > th,
+      .content .table > tbody > tr > td { padding: 10px; }
     }
 
     .content h4 {
@@ -220,11 +385,12 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      flex: 0 1 220px;
       padding: 12px 4px;
     }
 
     .organizer-card {
-      font-size: 0.7em;
+      font-size: 0.85em;
     }
 
     .organizer-card img {
@@ -246,11 +412,11 @@
       border-top: 1px solid rgba(0, 0, 0, 0.08);
       text-align: center;
       font-size: 0.85em;
-      color: #94949a;
+      color: #64748b;
     }
 
     .page-footer a {
-      color: #9ca3af;
+      color: #52657a;
     }
 
     .page-footer a:hover {
@@ -261,41 +427,36 @@
 
 <body>
 
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid" style="padding: 0 2rem;">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-          aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">W-NUT</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#shared-task">Shared Task</a></li>
-          <li><a href="#dates">Dates</a></li>
-          <li><a href="#call">Call for Papers</a></li>
-          <li><a href="#organizers">Organizers</a></li>
-          <li><a href="../history/">Previous Editions</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
 
   <div class="hero-banner">
-    <div style="background: rgba(10,18,40,0.65); padding: 18px 36px; border-radius: 12px; backdrop-filter: blur(2px);">
-      <h1>The 11th Workshop on Natural User-generated Text (W-NUT)</h1>
+    <div class="hero-copy">
+      <h1>The 11th Workshop on Natural User-generated Text <span class="workshop-acronym">(W-NUT)</span></h1>
       <p>Oct 28, 2026 &mdash; collocated with <strong>EMNLP 2026</strong></p>
       <p>Room G15-16, HUNGEXPO Budapest Congress & Exhibition Center, Budapest, Hungary</p>
     </div>
   </div>
 
-  <div class="container">
-    <div class="content">
+  <div class="container page-layout">
+
+    <nav class="section-nav" aria-label="On this page">
+      <p class="section-nav-title">On this page</p>
+      <button class="section-nav-toggle" type="button" aria-expanded="false"
+        aria-controls="section-links">On this page <span aria-hidden="true">▾</span></button>
+      <ul id="section-links">
+        <li><a href="#shared-task">Shared Task</a></li>
+        <li><a href="#talks">Invited Speakers</a></li>
+        <li><a href="#dates">Important Dates</a></li>
+        <li><a href="#schedule">Workshop Schedule</a></li>
+        <li><a href="#papers">Accepted Papers</a></li>
+        <li><a href="#call">Call for Papers</a></li>
+        <li><a href="#organizers">Organizers</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#committee">Program Committee</a></li>
+        <li><a href="../history/">Previous Editions</a></li>
+      </ul>
+    </nav>
+    <main class="content">
 
       <div class="intro-section">
         <h3>From Noisy Text to Real-World Applications of LLMs</h3>
@@ -303,271 +464,716 @@
           to real-world applications of LLMs.</p>
       </div>
 
-      <h2 id="shared-task">Shared Task</h2>
-      <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non
-        Indo-european languages. After the success of our first MultiLexNorm shared task held in <a
-          href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more
-        varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
+      <section class="content-section" aria-labelledby="shared-task">
+        <h2 id="shared-task">Shared Task</h2>
+        <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non
+          Indo-european languages. After the success of our first MultiLexNorm shared task held in <a
+            href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more
+          varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
+      </section>
 
-      <br>
-      <h2 id="dates">Important Dates</h2>
-      <ul>
-        <table>
-          <tr>
-            <th>Date</th><th>Event</th>
-          </tr>
-          <tr>
-            <td style="width: 18%;"><li>July 25th</li></td>
-            <td>Submission Deadline (anytime on earth; dual-submission allowed)</td>
-          </tr>
-          <!-- <tr><td style="width: 18%;"><li>TBA</li></td><td>Reviews Due</td></tr> -->
-          <tr>
-            <td><li>August 22nd</li>
-            </td>
-            <td>ARR Commitment Date</td>
-          </tr>
-          <tr>
-            <td><li>August 25th</li></td>
-            <td>Acceptance Notification</td>
-          </tr>
-          <tr>
-            <td style="width: 18%;"><li>September 6th</li></td>
-            <td>Camera-Ready Deadline</td></tr>
-          <tr>
-            <td>
-              <li>September 11th</li>
-            </td>
-            <td>EMNLP 2026 Findings Deadline</td>
-          </tr>
-          <tr>
-            <td>
-              <li>October 28th</li>
-            </td>
-            <td>Workshop Day</td>
-          </tr>
-        </table>
-      </ul>
-      <br>
-
-      <h2 id="talks">Invited Speakers</h2>
-      <div class="organizer-grid">
-        <div class="organizer-card">
-          <img src="image/haneul_yoo.jpg" alt="Haneul Yoo">
-          <div class="org-name"><a href="https://haneul-yoo.github.io/">Haneul Yoo</a></div>
-          <div class="org-meta">Assistant Professor/Faculty Fellow<br>New York University</div>
+      <section class="content-section" aria-labelledby="talks">
+        <h2 id="talks">Invited Speakers</h2>
+        <div class="organizer-grid">
+          <div class="organizer-card">
+            <img src="image/haneul_yoo.jpg" alt="Haneul Yoo">
+            <div class="org-name"><a href="https://haneul-yoo.github.io/">Haneul Yoo</a></div>
+            <div class="org-meta">Assistant Professor/Faculty Fellow<br>New York University</div>
+          </div>
+          <div class="organizer-card">
+            <img src="image/Hinrich_Schütze.jpg" alt="Hinrich Schütze">
+            <div class="org-name"><a href="https://cisnlp.github.io/about/">Hinrich Schütze</a></div>
+            <div class="org-meta">Professor<br>University of Munich</div>
+          </div>
+          <div class="organizer-card">
+            <img src="image/Maria_Antoniak.jpg" alt="Maria Antoniak">
+            <div class="org-name"><a href="https://maria-antoniak.github.io/">Maria Antoniak</a></div>
+            <div class="org-meta">Assistant Professor<br>University of Colorado Boulder</div>
+          </div>
         </div>
-        <div class="organizer-card">
-          <img src="image/Hinrich_Schütze.jpg" alt="Hinrich Schütze">
-          <div class="org-name"><a href="https://cisnlp.github.io/about/">Hinrich Schütze</a></div>
-          <div class="org-meta">Professor<br>University of Munich</div>
-        </div>
-        <div class="organizer-card">
-          <img src="image/Maria_Antoniak.jpg" alt="Maria Antoniak">
-          <div class="org-name"><a href="https://maria-antoniak.github.io/">Maria Antoniak</a></div>
-          <div class="org-meta">Assistant Professor<br>University of Colorado Boulder</div>
-        </div>
-      </div>
-      
-      <h2 id="call">Call for Papers</h2>
-      <p>We seek submissions of <strong>long and short papers on original and unpublished work (same page limit as the
-          EMNLP 2026 main conference)</strong>. All accepted submissions will be presented as talks and/or posters at
-        the workshop, following the EMNLP 2026 main conference.</p>
-      <p>We welcome submissions addressing (but not limited to) the following areas:</p>
+      </section>
 
-      <h4>Classical NLP Tasks on Noisy Text</h4>
-      <ul>
-        <li>NLP of noisy text, e.g., POS and NER tagging, parsing</li>
-        <li>Text normalization and error correction</li>
-        <li>Paraphrase identification and semantic similarity of short text or noisy text</li>
-        <li>Extracting user demographics, profiles, and major life events</li>
-        <li>Machine translation and multilingual NLP over noisy text</li>
-        <li>Information extraction from noisy text and event extraction</li>
-        <li>Colloquial language, e.g., idiom detection</li>
-        <li>Domain adaptation to user-generated text</li>
-        <li>Detecting rumors, contradictory information, sarcasm, and humor on social media</li>
-        <li>Sentiment analysis</li>
-        <li>Temporal aspects of user-generated content (resolving time expressions, concept drift, etc.)</li>
-        <li>Representing and mining language variation in user-generated content</li>
-      </ul>
+      <div class="event-tables">
+        <section class="content-section" aria-labelledby="dates">
+          <h2 id="dates">Important Dates</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Event</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="white-space: nowrap;">July 25th</td>
+                  <td>Submission Deadline (anytime on earth; dual-submission allowed)</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">August 22nd</td>
+                  <td>ARR Commitment Date</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">August 25th</td>
+                  <td>Acceptance Notification</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">September 6th</td>
+                  <td>Camera-Ready Deadline</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">September 11th</td>
+                  <td>EMNLP 2026 Findings Deadline</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">October 28th</td>
+                  <td>Workshop Day</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-      <h4>LLMs and Noisy Text</h4>
-      <ul>
-        <li>Robustness of LLMs to noisy, ungrammatical, or informal input</li>
-        <li>Training and fine-tuning of LLMs on user-generated text</li>
-        <li>Evaluation methodologies for LLMs on noisy text</li>
-        <li>Domain adaptation of LLMs to specific user-generated text domains</li>
-        <li>LLM-generated noisy text: detection, characteristics, and implications</li>
-        <li>Instruction-following in LLMs when faced with noisy or ambiguous prompts</li>
-        <li>Retrieval-augmented generation (RAG) with noisy documents</li>
-      </ul>
-
-      <h4>Real-World LLM Applications</h4>
-      <ul>
-        <li>LLM performance on text from social media, forums, and messaging platforms</li>
-        <li>Handling code-switching, slang, and emerging language in LLMs</li>
-        <li>LLMs for content moderation and safety in user-generated contexts</li>
-        <li>Multilingual and cross-lingual LLM applications on informal text</li>
-        <li>LLMs for assisting language learners and processing learner text</li>
-        <li>Bias, fairness, and representation in LLMs trained on user-generated text</li>
-      </ul>
-
-      <p>We particularly encourage submissions that address multilingual challenges, low-resource languages,
-        cross-platform variations, and the unique characteristics of user-generated text across different communities.
-      </p>
-      <p>Submissions should conform to the <a href="https://github.com/acl-org/acl-style-files">ACL style
-          guidelines</a>. Long and short paper submissions must be anonymized. Please submit your papers via:
-      </p>
-      <p class="text-center">
-        <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/WNUT" class="btn btn-primary" style="margin-right: 10px;">Submit via OpenReview</a>
-        <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/WNUT_ARR_Commitment" class="btn btn-default">Commit via ARR</a>
-        <!--<br><small style="color: #888; margin-top: 8px; display: inline-block;">(Submission links will be announced)</small>-->
-      </p>
-      <p><strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or
-        publications must indicate at submission time. Authors of a paper accepted for presentation must notify the
-        workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.</p>
-
-      <p><strong>EMNLP 2026 Findings:</strong>If you would like to present your EMNLP findings paper at WNUT, please fill out the following <a href="https://forms.gle/n8Dr5T99U3ZDqxeG9">form</a> by TBA.</p>
-
-
-      <!--
-    <hr>
-    <a id="papers">  <h2 style="padding-top:50px; margin-top:-50px;">Accepted Papers</h2></a>
-    <p><a href="https://aclanthology.org/volumes/2025.wnut-1/">Proceedings</a></p>
-    <ul>
-    </ul>
-    -->
-
-      <!--
-    <hr>
-    <a id="bestpapers">  <h2 style="padding-top:50px; margin-top:-50px;">Best Paper Award</h2></a>
-    <ul>
-
-    </ul>
-    -->
-
-
-
-      <br>
-      <h2 id="schedule">Workshop Programme</h2>
-      <p>The workshop programme will be announced after acceptance notifications.</p>
-      <!--         
-        <table>
-          <thead>
-              <tr>
-                  <th> Start Time </th>
-                  <th> End Time </th>
-                  <th> Contents </th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>9:15</td>
-                  <td>9:30</td>
-                  <td>Opening Remarks</td>
-              </tr>
-              <tr>
-                  <td>9:30</td>
-                  <td>10:30</td>
-                  <td>Invited Talk - Verena Blaschke</td>
-              </tr>
-              <tr>
-                  <td>10:30</td>
-                  <td>11:00</td>
-                  <td>Coffee Break &amp; Poster Presentations</td>
-              </tr>
-              <tr>
-                  <td>11:00</td>
-                  <td>12:00</td>
-                  <td>Poster Presentations</td>
-              </tr>
-              <tr>
-                  <td>12:00</td>
-                  <td>13:30</td>
-                  <td>Lunch &amp; Networking</td>
-              </tr>
-              <tr>
-                  <td>13:30</td>
-                  <td>15:00</td>
-                  <td>Oral Presentations</td>
-              </tr>
-              <tr>
-                  <td>15:00</td>
-                  <td>15:30</td>
-                  <td>Best Paper Presentations</td>
-              </tr>
-              <tr>
-                  <td>15:30</td>
-                  <td>16:00</td>
-                  <td>Coffee Break</td>
-              </tr>
-              <tr>
-                  <td>16:00</td>
-                  <td>17:00</td>
-                  <td>Invited Talk - Su Lin Blodgett</td>
-              </tr>
-              <tr>
-                  <td>17:00</td>
-                  <td>17:10</td>
-                  <td>Closing</td>
-              </tr>
-          </tbody>
-        </table>
-       -->
-
-      <br>
-      <h2 id="organizers">Organizers</h2>
-      <div class="organizer-grid">
-        <div class="organizer-card">
-          <img src="image/JinYeong.jpg" alt="JinYeong Bak">
-          <div class="org-name"><a href="https://nosyu.kr/">JinYeong Bak</a></div>
-          <div class="org-meta">Associate Professor<br>SungKyunKwan University</div>
-        </div>
-        <div class="organizer-card">
-          <img src="image/rob.jpg" alt="Rob van der Goot">
-          <div class="org-name"><a href="https://robvanderg.github.io/">Rob van der Goot</a></div>
-          <div class="org-meta">Associate Professor<br>IT University of Copenhagen</div>
-        </div>
-        <div class="organizer-card">
-          <img src="image/hyeju_2020.png" alt="Hyeju Jang">
-          <div class="org-name"><a href="https://hyejuj.github.io/">Hyeju Jang</a></div>
-          <div class="org-meta">Assistant Professor<br>Indiana University Indianapolis</div>
-        </div>
-        <div class="organizer-card">
-          <img src="image/Weerayut.png" alt="Weerayut Buaphet">
-          <div class="org-name"><a href="https://weerayutbu.github.io/">Weerayut Buaphet</a></div>
-          <div class="org-meta">AI Engineer<br>Cariva</div>
-        </div>
-        <div class="organizer-card">
-          <img src="image/alan.jpg" alt="Alan Ramponi">
-          <div class="org-name"><a href="https://alanramponi.github.io/">Alan Ramponi</a></div>
-          <div class="org-meta">Senior Researcher<br>Fondazione Bruno Kessler</div>
-        </div>
-        <div class="organizer-card">
-          <img src="image/weixu_profile_square.png" alt="Wei Xu">
-          <div class="org-name"><a href="https://cocoxu.github.io/">Wei Xu</a></div>
-          <div class="org-meta">Associate Professor<br>Georgia Institute of Technology</div>
-        </div>
-        <div class="organizer-card">
-          <img src="image/ritter_profile_square.png" alt="Alan Ritter">
-          <div class="org-name"><a href="http://aritter.github.io/">Alan Ritter</a></div>
-          <div class="org-meta">Associate Professor<br>Georgia Institute of Technology</div>
-        </div>
+        <section class="content-section" aria-labelledby="schedule">
+          <h2 id="schedule">Workshop Schedule</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Time</th>
+                  <th scope="col">Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="white-space: nowrap;">09:00 - 09:30</td>
+                  <td>Welcome</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">09:30 - 10:30</td>
+                  <td>Keynote 1 (TBA)</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">10:30 - 11:00</td>
+                  <td>Coffee Break &amp; Networking</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">11:00 - 12:30</td>
+                  <td>Oral Presentation</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">12:30 - 14:00</td>
+                  <td>Lunch</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">14:00 - 15:00</td>
+                  <td>Keynote 2 (TBA)</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">15:00 - 16:00</td>
+                  <td>Poster Presentation</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">15:30 - 16:00</td>
+                  <td>Coffee Break &amp; Networking</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">16:00 - 17:00</td>
+                  <td>Keynote 3 (TBA)</td>
+                </tr>
+                <tr>
+                  <td style="white-space: nowrap;">17:00 - 17:30</td>
+                  <td>Closing &amp; Next Steps</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
 
-      <h2 id="contact">Contact</h2>
-      <a href="mailto:jy.bak@skku.edu">jy.bak@skku.edu</a>
+      <div class="paper-tabs" role="tablist" aria-label="Papers">
+        <button type="button" id="papers-tab" role="tab" aria-selected="true"
+          aria-controls="accepted-papers-panel" tabindex="0">Accepted Papers</button>
+        <button type="button" id="call-tab" role="tab" aria-selected="false"
+          aria-controls="call-for-papers-panel" tabindex="-1">Call for Papers</button>
+      </div>
+      <section id="accepted-papers-panel" class="content-section paper-panel" role="tabpanel"
+        aria-labelledby="papers-tab" tabindex="0">
+        <h2 id="papers">Accepted Papers</h2>
+        <p class="papers-summary">26 accepted papers, listed alphabetically by title.</p>
+        <div class="directory">
+          <ul id="papers-list" class="directory-list papers-list">
+            <li class="directory-item">
+              <h3 class="directory-title">A Precision-First Whitespace Restoration Pipeline for Noisy Urdu Tafseer Text</h3>
+              <p class="directory-meta">Muhammad Mubashir Hassan</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Are More Emotion Theories Better? Joint Prompting Improves Emotion Categorization Robustness</h3>
+              <p class="directory-meta">Albina Sarymsakova, Roman Klinger</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Beyond Clean Text: Evaluating Encoder and Decoder Robustness for Bangla Event Detection in Noisy Text</h3>
+              <p class="directory-meta">Tanvir Ahmed Sijan, S M Golam Rifat, Nayeemul Islam, Md Musfique Anwar</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">CrisisKD: Five-Stage Knowledge Distillation for Aspect-Level Sentiment and Emotion Analysis in Crisis Discourse</h3>
+              <p class="directory-meta">Marko Haralovic, Onat Dogan Akca, Salih Eren Yuceturk, Minsi Li, Mariët Theune</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Discourse-Structural Noise in LLM-Generated Explanations</h3>
+              <p class="directory-meta">Raghvi Baloni, Achim Rettinger</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Do LLMs Give Consistent Opinions? Evaluating Response Reliability Under Varying Likert-Scale Formulations in Survey-Style MCQA</h3>
+              <p class="directory-meta">Martin Kandlinger, Bolei Ma, Anna-Carolina Haensch, Matthias Aßenmacher</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Evaluating Token Probabilities as Confidence Estimators in Human Behavior Simulations: A Case Study in Luxembourgish Next Like Prediction</h3>
+              <p class="directory-meta">Nils Schwager, Simon Münker, Alistair Plum, Achim Rettinger</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">From Errors to Precision: A Taxonomy-Guided Approach for LLM Flood Cause Extraction</h3>
+              <p class="directory-meta">Jane Arleth dela Cruz, Iris Hendrickx, Martha Larson</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">GeNERscore: Semantic Alignment Metrics for Generative Named Entity Recognition</h3>
+              <p class="directory-meta">Gianmarco Pappacoda, Federico Ruggeri, Paolo Torroni</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">How Noisy is Automatic Annotation? Characterizing Label Noise from Generative Models in Multi-Dimensional Spanish Subjectivity Annotation</h3>
+              <p class="directory-meta">Alba Pérez-Montero, Elena Lloret, Paloma Moreda Pozo</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Increasing the Robustness of the Fine-tuned Multilingual Machine-Generated Text Detectors</h3>
+              <p class="directory-meta">Dominik Macko, Robert Moro, Ivan Srba</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">LLMs are Easily Startled: Fragility Testing with Lookalike Character Noise</h3>
+              <p class="directory-meta">Peter deJonge, Nathanael Chambers</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Multi-author style detection with stylistic embeddings</h3>
+              <p class="directory-meta">Man-Ling Sung, Chak-Fai Li, Damianos Karakos, Frederick E. Bernardin III, Brian Ulicny</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">NERQual: Evaluating the Robustness of Named Entity Recognition Models to Data Quality Issues</h3>
+              <p class="directory-meta">Denis Trautner, Philippe Thomas</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Not All Duplicates Are Coordination: Generic vs. Non-Generic Duplicate Campaigns in Information Operations</h3>
+              <p class="directory-meta">Ashfaq Ali Shafin, Khandaker Mamun Ahmed</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Personalized Emotion Analysis via Prompting Large Language Models with Writer Information</h3>
+              <p class="directory-meta">Kentaro Hanafusa, Daisuke Maekawa, Tomoyuki Kajiwara</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Predicting Steering Vectors and Adapter Weights for Few-Shot Author-Style Transfer</h3>
+              <p class="directory-meta">Leonard Popp, Danni Liu, Supriti Sinhamahapatra, Jan Niehues</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">QueryDiagramEval: Evaluating and Benchmarking LLM Diagram Generation under Noisy Conditions</h3>
+              <p class="directory-meta">Ted Zhang, Souvik Das, Kai Ni, Aditya Agrawal, Xin Guo, Denis Kochedykov</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Robust Dual-Signal Fusion: Hybrid Neuro-Symbolic Gating with Compressed Chain-of-Thought Refinement for Irony Detection in Social Media Texts</h3>
+              <p class="directory-meta">Ankit Bhattacharjee, Krityapriya Bhaumik</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">RSPC: A Benchmark for Modeling Stress and Psychiatric Conditions in Digitally Mediated Relationships using Psychiatrist Annotations</h3>
+              <p class="directory-meta">Parmitha Vangapandu, Sai Ganesh M, Sathwik Narkedimilli, MSVPJ Sathvik, Timothy Liu, Simon See, Johannes C Eichstaedt</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Spoiler Court: Interpretable Spoiler Detection via Adversarial Multi-Agent LLM Judgement</h3>
+              <p class="directory-meta">Sangmin Song, Hari Kang, Suhyeon Park, Seongwoo Choi, Sungkyun Im, Sangoh Lee</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">The Curse of Multilinguality in Lexical Normalization</h3>
+              <p class="directory-meta">Saman Rahbar</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Topic Matching in the Wild: Benchmark and Lessons from Real-World ASR Transcripts</h3>
+              <p class="directory-meta">Saman Rahbar, Xiliang Zhu, Irvin Cardoza, David Rossouw</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">TurEngMix: A Text Corpus and Benchmark for Turkish-English Code-Mixed Language Identification and Named Entity Recognition</h3>
+              <p class="directory-meta">Ilayda Dogan, Phuong-Anh Nguyen-Le, Julia Mendelsohn</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">When Noise Fabricates Bias: The Fragility of LLM-as-a-Judge Bias Measurement under Noisy Text</h3>
+              <p class="directory-meta">DongHyun Ryu, Jaehyeok Lee, YeongJun Hwang, JinYeong Bak</p>
+            </li>
+            <li class="directory-item">
+              <h3 class="directory-title">Where Does Noise Robustness Live? Evidence from Ablation, Role Swaps, and Cross-Lingual Transfer in Code-Mixed Banking NLU</h3>
+              <p class="directory-meta">Piyush Agarwal</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="call-for-papers-panel" class="content-section paper-panel" role="tabpanel"
+        aria-labelledby="call-tab" tabindex="0" hidden>
+        <h2 id="call">Call for Papers</h2>
+        <p>We seek submissions of <strong>long and short papers on original and unpublished work (same page limit as the
+            EMNLP 2026 main conference)</strong>. All accepted submissions will be presented as talks and/or posters at
+          the workshop, following the EMNLP 2026 main conference.</p>
+        <p>We welcome submissions addressing (but not limited to) the following areas:</p>
+
+        <h4>Classical NLP Tasks on Noisy Text</h4>
+        <ul>
+          <li>NLP of noisy text, e.g., POS and NER tagging, parsing</li>
+          <li>Text normalization and error correction</li>
+          <li>Paraphrase identification and semantic similarity of short text or noisy text</li>
+          <li>Extracting user demographics, profiles, and major life events</li>
+          <li>Machine translation and multilingual NLP over noisy text</li>
+          <li>Information extraction from noisy text and event extraction</li>
+          <li>Colloquial language, e.g., idiom detection</li>
+          <li>Domain adaptation to user-generated text</li>
+          <li>Detecting rumors, contradictory information, sarcasm, and humor on social media</li>
+          <li>Sentiment analysis</li>
+          <li>Temporal aspects of user-generated content (resolving time expressions, concept drift, etc.)</li>
+          <li>Representing and mining language variation in user-generated content</li>
+        </ul>
+
+        <h4>LLMs and Noisy Text</h4>
+        <ul>
+          <li>Robustness of LLMs to noisy, ungrammatical, or informal input</li>
+          <li>Training and fine-tuning of LLMs on user-generated text</li>
+          <li>Evaluation methodologies for LLMs on noisy text</li>
+          <li>Domain adaptation of LLMs to specific user-generated text domains</li>
+          <li>LLM-generated noisy text: detection, characteristics, and implications</li>
+          <li>Instruction-following in LLMs when faced with noisy or ambiguous prompts</li>
+          <li>Retrieval-augmented generation (RAG) with noisy documents</li>
+        </ul>
+
+        <h4>Real-World LLM Applications</h4>
+        <ul>
+          <li>LLM performance on text from social media, forums, and messaging platforms</li>
+          <li>Handling code-switching, slang, and emerging language in LLMs</li>
+          <li>LLMs for content moderation and safety in user-generated contexts</li>
+          <li>Multilingual and cross-lingual LLM applications on informal text</li>
+          <li>LLMs for assisting language learners and processing learner text</li>
+          <li>Bias, fairness, and representation in LLMs trained on user-generated text</li>
+        </ul>
+
+        <p>We particularly encourage submissions that address multilingual challenges, low-resource languages,
+          cross-platform variations, and the unique characteristics of user-generated text across different communities.
+        </p>
+        <p>Submissions should conform to the <a href="https://github.com/acl-org/acl-style-files">ACL style
+            guidelines</a>. Long and short paper submissions must be anonymized. Please submit your papers via:
+        </p>
+        <p class="text-center">
+          <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/WNUT" class="btn btn-primary" style="margin-right: 10px;">Submit via OpenReview</a>
+          <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/WNUT_ARR_Commitment" class="btn btn-default">Commit via ARR</a>
+
+        </p>
+        <p><strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or
+          publications must indicate at submission time. Authors of a paper accepted for presentation must notify the
+          workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.</p>
+
+        <p><strong>EMNLP 2026 Findings:</strong>If you would like to present your EMNLP findings paper at WNUT, please fill out the following <a href="https://forms.gle/n8Dr5T99U3ZDqxeG9">form</a> by TBA.</p>
 
 
-      <!-- <a id="sponsor" > <h2 style="padding-top:50px; margin-top:-50px;">Sponsor</h2></a>
 
-      <table style="width:100%">
-        <tr>
-          <td style="text-align:center"><img src="image/SKKU.jpg" class="portrait" /></td>
-        </tr>
-        <tr>
-          <td style="text-align:center"><a href="https://www.skku.edu/eng/">SungKyunKwan University</a> <br>Department of Artificial Intelligence &<br>ICT Research And Education Foundation</td>
-        </tr>
-      </table> -->
+
+
+
+      </section>
+
+      <section class="content-section" aria-labelledby="organizers">
+        <h2 id="organizers">Organizers</h2>
+        <div class="organizer-grid">
+          <div class="organizer-card">
+            <img src="image/JinYeong.jpg" alt="JinYeong Bak">
+            <div class="org-name"><a href="https://nosyu.kr/">JinYeong Bak</a></div>
+            <div class="org-meta">Associate Professor<br>SungKyunKwan University</div>
+          </div>
+          <div class="organizer-card">
+            <img src="image/rob.jpg" alt="Rob van der Goot">
+            <div class="org-name"><a href="https://robvanderg.github.io/">Rob van der Goot</a></div>
+            <div class="org-meta">Associate Professor<br>IT University of Copenhagen</div>
+          </div>
+          <div class="organizer-card">
+            <img src="image/hyeju_2020.png" alt="Hyeju Jang">
+            <div class="org-name"><a href="https://hyejuj.github.io/">Hyeju Jang</a></div>
+            <div class="org-meta">Assistant Professor<br>Indiana University Indianapolis</div>
+          </div>
+          <div class="organizer-card">
+            <img src="image/Weerayut.png" alt="Weerayut Buaphet">
+            <div class="org-name"><a href="https://weerayutbu.github.io/">Weerayut Buaphet</a></div>
+            <div class="org-meta">AI Engineer<br>Cariva</div>
+          </div>
+          <div class="organizer-card">
+            <img src="image/alan.jpg" alt="Alan Ramponi">
+            <div class="org-name"><a href="https://alanramponi.github.io/">Alan Ramponi</a></div>
+            <div class="org-meta">Senior Researcher<br>Fondazione Bruno Kessler</div>
+          </div>
+          <div class="organizer-card">
+            <img src="image/weixu_profile_square.png" alt="Wei Xu">
+            <div class="org-name"><a href="https://cocoxu.github.io/">Wei Xu</a></div>
+            <div class="org-meta">Associate Professor<br>Georgia Institute of Technology</div>
+          </div>
+          <div class="organizer-card">
+            <img src="image/ritter_profile_square.png" alt="Alan Ritter">
+            <div class="org-name"><a href="http://aritter.github.io/">Alan Ritter</a></div>
+            <div class="org-meta">Associate Professor<br>Georgia Institute of Technology</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <a href="mailto:jy.bak@skku.edu">jy.bak@skku.edu</a>
+
+
+
+      </section>
+
+      <section class="content-section" aria-labelledby="committee">
+        <h2 id="committee">Program Committee</h2>
+        <p>We thank the W-NUT 2026 program committee members for their contributions to the review process. Members are listed alphabetically by first name.</p>
+        <div class="directory committee-directory">
+          <ul id="committee-list" class="directory-list committee-list">
+            <li class="directory-item">
+              <p class="directory-title">Aditya Jain</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Advitya Gemawat</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Alba Pérez-Montero</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Albina Sarymsakova</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Alexander Mehler</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Alistair Plum</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Anay Abhijit Dombe</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Ankit Bhattacharjee</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Antonios Anastasopoulos</p>
+              <p class="directory-meta">Athena Research Center</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Ashfaq Ali Shafin</p>
+              <p class="directory-meta">Augustana College</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Avinash Goutham Aluguvelly</p>
+              <p class="directory-meta">University of Texas at Austin</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Bitan Majumder</p>
+              <p class="directory-meta">Pondicherry University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Bogdan Savelyev</p>
+              <p class="directory-meta">Independent</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Bolei Ma</p>
+              <p class="directory-meta">Ludwig-Maximilians-Universität München</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Chao Jiang</p>
+              <p class="directory-meta">Apple</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Claire Wang</p>
+              <p class="directory-meta">Brandeis University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Cooper Ballard</p>
+              <p class="directory-meta">Dartmouth College</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Danae Sanchez Villegas</p>
+              <p class="directory-meta">University of Copenhagen</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Danilo Croce</p>
+              <p class="directory-meta">University of Roma Tor Vergata</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Danni Liu</p>
+              <p class="directory-meta">Karlsruher Institut für Technologie</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Diana Inkpen</p>
+              <p class="directory-meta">University of Ottawa</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Eduardo Blanco</p>
+              <p class="directory-meta">University of Arizona</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Emily Allaway</p>
+              <p class="directory-meta">University of Edinburgh</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Eshaan Jain</p>
+              <p class="directory-meta">University of Southern California</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Fayeq Jeelani Syed</p>
+              <p class="directory-meta">University of Toledo</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Federico Ruggeri</p>
+              <p class="directory-meta">University of Bologna</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Gianmarco Pappacoda</p>
+              <p class="directory-meta">University of Bologna</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Günter Neumann</p>
+              <p class="directory-meta">German Research Center for AI</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Hari Kang</p>
+              <p class="directory-meta">GS Neotek</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">HyunJin Kim</p>
+              <p class="directory-meta">Sungkyunkwan University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Iñaki San Vicente</p>
+              <p class="directory-meta">Orai NLP Technologies</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Ishan Jindal</p>
+              <p class="directory-meta">Fujitsu Research</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Jaehyeok Lee</p>
+              <p class="directory-meta">Sungkyunkwan University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Jane Arleth dela Cruz</p>
+              <p class="directory-meta">Radboud University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Julia Mendelsohn</p>
+              <p class="directory-meta">University of Maryland, College Park</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Julina Maharjan</p>
+              <p class="directory-meta">Kent State University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Khandaker Mamun Ahmed</p>
+              <p class="directory-meta">Dakota State University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Krityapriya Bhaumik</p>
+              <p class="directory-meta">Indian Institute of Technology Kharagpur</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Linsey C. Yang</p>
+              <p class="directory-meta">Radboud University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Lucy H. Lin</p>
+              <p class="directory-meta">Spotify</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Manuel Montes</p>
+              <p class="directory-meta">INAOE</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Manuel R. Ciosici</p>
+              <p class="directory-meta">Apple</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Maria Antoniak</p>
+              <p class="directory-meta">University of Colorado at Boulder</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Mariët Theune</p>
+              <p class="directory-meta">University of Twente</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Marko Haralovic</p>
+              <p class="directory-meta">ETH Zurich</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Markus J. Hofmann</p>
+              <p class="directory-meta">Bergische Universität Wuppertal</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Mike Zhang</p>
+              <p class="directory-meta">University of Copenhagen</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Mirco Schönfeld</p>
+              <p class="directory-meta">Universität Bayreuth</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Monica Hegde</p>
+              <p class="directory-meta">Indiana University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Muhammad Mubashir Hassan</p>
+              <p class="directory-meta">Independent</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Naoki Otani</p>
+              <p class="directory-meta">Megagon Labs</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Nathanael Chambers</p>
+              <p class="directory-meta">Williams College</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Nelu D. Radpour</p>
+              <p class="directory-meta">State University of New York at Buffalo</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Nikola Ljubešić</p>
+              <p class="directory-meta">Jožef Stefan Institute</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Nils Schwager</p>
+              <p class="directory-meta">Trier University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Noor Mairukh Khan Arnob</p>
+              <p class="directory-meta">University of Asia Pacific</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Onat Dogan Akca</p>
+              <p class="directory-meta">University of Twente</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Phuong-Anh Nguyen-Le</p>
+              <p class="directory-meta">University of Maryland, College Park</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Piyush Agarwal</p>
+              <p class="directory-meta">IDFC FIRST Bank</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Raghvi Baloni</p>
+              <p class="directory-meta">University of Trier</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Rajeel Ahmad Ansari</p>
+              <p class="directory-meta">dylog.ai</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Rajveer Singh Pall</p>
+              <p class="directory-meta">Gyan Ganga Institute of Technology and Sciences</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Richard Sproat</p>
+              <p class="directory-meta">Sakana AI</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Ruslana Margova</p>
+              <p class="directory-meta">Sofia University &quot;St. Kliment Ohridski&quot;</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Sai P Vallurupalli</p>
+              <p class="directory-meta">University of Maryland, Baltimore County</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Sai Tulasi Kolapudi</p>
+              <p class="directory-meta">Amazon</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Saman Rahbar</p>
+              <p class="directory-meta">Dialpad AI</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Sangmin Song</p>
+              <p class="directory-meta">GS Neotek</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Seongwoo Choi</p>
+              <p class="directory-meta">Ajou University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Shreyash Rawat</p>
+              <p class="directory-meta">Facebook</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Sivaraaman Balakrishnan</p>
+              <p class="directory-meta">University of Massachusetts Amherst</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Souvik Das</p>
+              <p class="directory-meta">J.P. Morgan Chase</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Suhyeon Park</p>
+              <p class="directory-meta">GS Neotek</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Tanmoy Mazumder</p>
+              <p class="directory-meta">Northern University Bangladesh</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Tanvir Ahmed Sijan</p>
+              <p class="directory-meta">Jahangirnagar University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Ted Zhang</p>
+              <p class="directory-meta">Carnegie Mellon University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Vincent Ng</p>
+              <p class="directory-meta">University of Texas at Dallas</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Xiliang Zhu</p>
+              <p class="directory-meta">Dialpad Inc.</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Xinyu Li</p>
+              <p class="directory-meta">Kent State University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Xuanjing Chen</p>
+              <p class="directory-meta">TikTok</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Yangfeng Ji</p>
+              <p class="directory-meta">University of Virginia, Charlottesville</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Yashdeep Thorat</p>
+              <p class="directory-meta">University of Illinois at Urbana-Champaign</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Yasuhide Miura</p>
+              <p class="directory-meta">FUJIFILM</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">YeongJun Hwang</p>
+              <p class="directory-meta">Sungkyunkwan University</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Yuval Pinter</p>
+              <p class="directory-meta">Ben-Gurion University of the Negev</p>
+            </li>
+            <li class="directory-item">
+              <p class="directory-title">Zihao Zheng</p>
+              <p class="directory-meta">PDD Holdings</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
 
 
       <div class="page-footer">
@@ -576,14 +1182,71 @@
         <a href="https://pixabay.com/photos/river-city-budapest-hungary-9010602/">Photo: Budapest, Pixabay</a>
       </div>
 
-    </div><!-- /.content -->
+    </main><!-- /.content -->
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="./dist/js/bootstrap.min.js"></script>
   <script>
-    $(document).on('click', '.navbar-collapse.in .navbar-nav > li > a', function () {
-      $('.navbar-collapse').collapse('hide');
+    const paperTabs = Array.from(document.querySelectorAll('.paper-tabs [role="tab"]'));
+
+    function selectPaperTab(tab) {
+      paperTabs.forEach(function (item) {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+      });
+    }
+
+    function showPaperTabForHash() {
+      if (window.location.hash === '#call' || window.location.hash === '#papers') {
+        selectPaperTab(document.getElementById(window.location.hash.slice(1) + '-tab'));
+      }
+    }
+
+    paperTabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        selectPaperTab(tab);
+      });
+      tab.addEventListener('keydown', function (event) {
+        let nextIndex;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % paperTabs.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index + paperTabs.length - 1) % paperTabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = paperTabs.length - 1;
+        else return;
+        event.preventDefault();
+        paperTabs[nextIndex].focus();
+        paperTabs[nextIndex].click();
+      });
+    });
+
+    document.querySelectorAll('a[href="#papers"], a[href="#call"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        selectPaperTab(document.getElementById(link.hash.slice(1) + '-tab'));
+      });
+    });
+    window.addEventListener('hashchange', function () {
+      showPaperTabForHash();
+      if (window.location.hash === '#call' || window.location.hash === '#papers') {
+        document.querySelector(window.location.hash).scrollIntoView();
+      }
+    });
+    selectPaperTab(document.getElementById('papers-tab'));
+    if (window.location.hash === '#call') {
+      history.replaceState(null, '', '#papers');
+    }
+
+    const sectionNav = document.querySelector('.section-nav');
+    const sectionToggle = document.querySelector('.section-nav-toggle');
+    sectionToggle.addEventListener('click', function () {
+      const expanded = sectionNav.classList.toggle('is-open');
+      sectionToggle.setAttribute('aria-expanded', String(expanded));
+    });
+    sectionNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        sectionNav.classList.remove('is-open');
+        sectionToggle.setAttribute('aria-expanded', 'false');
+      });
     });
   </script>
 </body>
