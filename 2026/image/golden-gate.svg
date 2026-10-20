@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" width="1400" height="600">
+<title>Golden Gate Bridge line art</title>
+<desc>Original line-art illustration of the Golden Gate Bridge, created for the W-NUT 2026 website and workshop slides to announce W-NUT 2027 @ NAACL 2027.</desc>
+<style>
+path { fill: none; stroke: #9CC3EC; stroke-width: 3; stroke-linecap: round; }
+.thin { stroke-width: 1.4; opacity: .7; }
+.cable { stroke-width: 4; }
+.hill { fill: rgba(156,195,236,.08); stroke-width: 1.5; opacity: .6; }
+.water { stroke-width: 1.5; opacity: .45; }
+</style>
+<path class="hill" d="M0 470 C120 360 260 340 360 430 L360 520 L0 520 Z"/>
+<path class="hill" d="M1080 520 L1080 450 C1160 400 1240 380 1400 410 L1400 520 Z"/>
+<path d="M0 430 H1400 M0 446 H1400"/>
+<path class="thin" d="M0 430 V446"/>
+<path class="thin" d="M40 430 V446"/>
+<path class="thin" d="M80 430 V446"/>
+<path class="thin" d="M120 430 V446"/>
+<path class="thin" d="M160 430 V446"/>
+<path class="thin" d="M200 430 V446"/>
+<path class="thin" d="M240 430 V446"/>
+<path class="thin" d="M280 430 V446"/>
+<path class="thin" d="M320 430 V446"/>
+<path class="thin" d="M360 430 V446"/>
+<path class="thin" d="M400 430 V446"/>
+<path class="thin" d="M440 430 V446"/>
+<path class="thin" d="M480 430 V446"/>
+<path class="thin" d="M520 430 V446"/>
+<path class="thin" d="M560 430 V446"/>
+<path class="thin" d="M600 430 V446"/>
+<path class="thin" d="M640 430 V446"/>
+<path class="thin" d="M680 430 V446"/>
+<path class="thin" d="M720 430 V446"/>
+<path class="thin" d="M760 430 V446"/>
+<path class="thin" d="M800 430 V446"/>
+<path class="thin" d="M840 430 V446"/>
+<path class="thin" d="M880 430 V446"/>
+<path class="thin" d="M920 430 V446"/>
+<path class="thin" d="M960 430 V446"/>
+<path class="thin" d="M1000 430 V446"/>
+<path class="thin" d="M1040 430 V446"/>
+<path class="thin" d="M1080 430 V446"/>
+<path class="thin" d="M1120 430 V446"/>
+<path class="thin" d="M1160 430 V446"/>
+<path class="thin" d="M1200 430 V446"/>
+<path class="thin" d="M1240 430 V446"/>
+<path class="thin" d="M1280 430 V446"/>
+<path class="thin" d="M1320 430 V446"/>
+<path class="thin" d="M1360 430 V446"/>
+<path class="thin" d="M1400 430 V446"/>
+<path d="M386 110 V520 M406 110 V520"/>
+<path d="M434 110 V520 M454 110 V520"/>
+<path d="M386 110 H454 M386 124 H454"/>
+<path d="M386 180 H454 M386 194 H454"/>
+<path d="M386 260 H454 M386 274 H454"/>
+<path d="M386 335 H454 M386 349 H454"/>
+<path d="M386 390 H454 M386 404 H454"/>
+<path d="M376 520 H464"/>
+<path d="M946 110 V520 M966 110 V520"/>
+<path d="M994 110 V520 M1014 110 V520"/>
+<path d="M946 110 H1014 M946 124 H1014"/>
+<path d="M946 180 H1014 M946 194 H1014"/>
+<path d="M946 260 H1014 M946 274 H1014"/>
+<path d="M946 335 H1014 M946 349 H1014"/>
+<path d="M946 390 H1014 M946 404 H1014"/>
+<path d="M936 520 H1024"/>
+<path class="cable" d="M0 400 Q210 330 420 118"/>
+<path class="cable" d="M420 118 Q700 700 980 118"/>
+<path class="cable" d="M980 118 Q1190 330 1400 400"/>
+<path class="thin" d="M15.0 394.8 V430"/>
+<path class="thin" d="M30.0 389.3 V430"/>
+<path class="thin" d="M45.0 383.4 V430"/>
+<path class="thin" d="M60.0 377.1 V430"/>
+<path class="thin" d="M75.0 370.5 V430"/>
+<path class="thin" d="M90.0 363.5 V430"/>
+<path class="thin" d="M105.0 356.1 V430"/>
+<path class="thin" d="M120.0 348.4 V430"/>
+<path class="thin" d="M135.0 340.3 V430"/>
+<path class="thin" d="M150.0 331.9 V430"/>
+<path class="thin" d="M165.0 323.1 V430"/>
+<path class="thin" d="M180.0 313.9 V430"/>
+<path class="thin" d="M195.0 304.4 V430"/>
+<path class="thin" d="M210.0 294.5 V430"/>
+<path class="thin" d="M225.0 284.2 V430"/>
+<path class="thin" d="M240.0 273.6 V430"/>
+<path class="thin" d="M255.0 262.7 V430"/>
+<path class="thin" d="M270.0 251.3 V430"/>
+<path class="thin" d="M285.0 239.6 V430"/>
+<path class="thin" d="M300.0 227.6 V430"/>
+<path class="thin" d="M315.0 215.1 V430"/>
+<path class="thin" d="M330.0 202.3 V430"/>
+<path class="thin" d="M345.0 189.2 V430"/>
+<path class="thin" d="M360.0 175.7 V430"/>
+<path class="thin" d="M375.0 161.8 V430"/>
+<path class="thin" d="M390.0 147.6 V430"/>
+<path class="thin" d="M405.0 133.0 V430"/>
+<path class="thin" d="M440.0 158.1 V430"/>
+<path class="thin" d="M460.0 195.2 V430"/>
+<path class="thin" d="M480.0 229.4 V430"/>
+<path class="thin" d="M500.0 260.5 V430"/>
+<path class="thin" d="M520.0 288.7 V430"/>
+<path class="thin" d="M540.0 314.0 V430"/>
+<path class="thin" d="M560.0 336.2 V430"/>
+<path class="thin" d="M580.0 355.6 V430"/>
+<path class="thin" d="M600.0 371.9 V430"/>
+<path class="thin" d="M620.0 385.2 V430"/>
+<path class="thin" d="M640.0 395.6 V430"/>
+<path class="thin" d="M660.0 403.1 V430"/>
+<path class="thin" d="M680.0 407.5 V430"/>
+<path class="thin" d="M700.0 409.0 V430"/>
+<path class="thin" d="M720.0 407.5 V430"/>
+<path class="thin" d="M740.0 403.1 V430"/>
+<path class="thin" d="M760.0 395.6 V430"/>
+<path class="thin" d="M780.0 385.2 V430"/>
+<path class="thin" d="M800.0 371.9 V430"/>
+<path class="thin" d="M820.0 355.6 V430"/>
+<path class="thin" d="M840.0 336.2 V430"/>
+<path class="thin" d="M860.0 314.0 V430"/>
+<path class="thin" d="M880.0 288.7 V430"/>
+<path class="thin" d="M900.0 260.5 V430"/>
+<path class="thin" d="M920.0 229.4 V430"/>
+<path class="thin" d="M940.0 195.2 V430"/>
+<path class="thin" d="M960.0 158.1 V430"/>
+<path class="thin" d="M995.0 133.0 V430"/>
+<path class="thin" d="M1010.0 147.6 V430"/>
+<path class="thin" d="M1025.0 161.8 V430"/>
+<path class="thin" d="M1040.0 175.7 V430"/>
+<path class="thin" d="M1055.0 189.2 V430"/>
+<path class="thin" d="M1070.0 202.3 V430"/>
+<path class="thin" d="M1085.0 215.1 V430"/>
+<path class="thin" d="M1100.0 227.6 V430"/>
+<path class="thin" d="M1115.0 239.6 V430"/>
+<path class="thin" d="M1130.0 251.3 V430"/>
+<path class="thin" d="M1145.0 262.7 V430"/>
+<path class="thin" d="M1160.0 273.6 V430"/>
+<path class="thin" d="M1175.0 284.2 V430"/>
+<path class="thin" d="M1190.0 294.5 V430"/>
+<path class="thin" d="M1205.0 304.4 V430"/>
+<path class="thin" d="M1220.0 313.9 V430"/>
+<path class="thin" d="M1235.0 323.1 V430"/>
+<path class="thin" d="M1250.0 331.9 V430"/>
+<path class="thin" d="M1265.0 340.3 V430"/>
+<path class="thin" d="M1280.0 348.4 V430"/>
+<path class="thin" d="M1295.0 356.1 V430"/>
+<path class="thin" d="M1310.0 363.5 V430"/>
+<path class="thin" d="M1325.0 370.5 V430"/>
+<path class="thin" d="M1340.0 377.1 V430"/>
+<path class="thin" d="M1355.0 383.4 V430"/>
+<path class="thin" d="M1370.0 389.3 V430"/>
+<path class="thin" d="M1385.0 394.8 V430"/>
+<path class="water" d="M0 520 H1400"/>
+<path class="water" d="M120 546 H1300"/>
+<path class="water" d="M300 570 H1150"/>
+</svg>
