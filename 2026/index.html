@@ -573,20 +573,41 @@
       .next-edition-float { right: 12px; bottom: 12px; }
     }
     .next-edition {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
       scroll-margin-top: 24px;
-      background: #1a2a4a;
+      min-height: 420px;
+      padding: 48px 44px 64px;
+      border-radius: 14px;
+      background: radial-gradient(ellipse at 75% 85%, rgba(46, 109, 164, 0.35) 0%, rgba(46, 109, 164, 0) 60%),
+        linear-gradient(160deg, #0c162d 0%, #1a2a4a 100%);
       color: rgba(255, 255, 255, 0.85);
-      border-radius: 12px;
-      padding: 32px;
-      text-align: center;
+      text-align: left;
     }
+    .next-edition > :not(.next-edition-illustration) { position: relative; z-index: 1; }
+    .next-edition-illustration {
+      position: absolute; right: 0; bottom: 0; z-index: 0;
+      width: 62%; height: auto; opacity: .5; pointer-events: none;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 25%);
+      mask-image: linear-gradient(to right, transparent, #000 25%);
+    }
+    .next-edition-eyebrow { margin: 0 0 14px; color: #fff; font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
     .content .next-edition h2 {
+      margin: 0 0 18px;
+      padding: 0;
       color: #fff;
-      font-size: 1.6em;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
     }
-    .content .next-edition h2::after { left: 50%; margin-left: -20px; background: #9cc3ec; }
-    .next-edition-subtitle { color: #fff; font-weight: 600; margin-bottom: 4px; }
-    .next-edition-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
+    .content .next-edition h2::after { display: none; }
+    .next-edition h2 span { color: #9cc3ec; white-space: nowrap; }
+    .next-edition-subtitle { margin: 0 0 18px; color: rgba(255, 255, 255, 0.85); font-size: 18px; }
+    .next-edition-place { display: flex; align-items: center; gap: 12px; margin: 0; color: #fff; font-size: 20px; }
+    .next-edition-place .ui-icon { width: 26px; height: 26px; }
+    .next-edition-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
     .next-edition-actions a {
       display: inline-block;
       padding: 10px 20px;
@@ -599,7 +620,8 @@
     .next-edition-actions a:hover { text-decoration: none; opacity: 0.9; }
 
     @media (max-width: 767px) {
-      .next-edition { padding: 24px 20px; }
+      .next-edition { min-height: 0; padding: 28px 20px 120px; }
+      .next-edition-illustration { width: 120%; opacity: .35; }
     }
 
     .topic-grid {
@@ -1525,11 +1547,11 @@
       </section>
 
       <section class="content-section next-edition" id="wnut-2027" aria-labelledby="wnut-2027-title">
-        <h2 id="wnut-2027-title">See you at W-NUT 2027 @ NAACL 2027</h2>
+        <img class="next-edition-illustration" src="image/golden-gate.svg" alt="" width="1400" height="600" decoding="async">
+        <p class="next-edition-eyebrow">Thank you for joining W-NUT 2026</p>
+        <h2 id="wnut-2027-title">See you at <span>W-NUT 2027</span><br>@ NAACL 2027</h2>
         <p class="next-edition-subtitle">The 12th Workshop on Natural User-generated Text</p>
-        <p>Dates and location to be announced.</p>
-        <p>Thank you to all speakers, authors, reviewers and attendees of W-NUT 2026. We look forward to continuing the
-          conversation on noisy, user-generated text and real-world applications of LLMs at NAACL 2027.</p>
+        <p class="next-edition-place"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><strong>San Francisco, USA</strong></p>
         <div class="next-edition-actions">
           <a href="mailto:jy.bak@skku.edu">Contact us</a>
           <a href="../history/">Previous editions</a>
@@ -1540,6 +1562,8 @@
         <a href="https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy">ACL Anti-Harassment Policy</a>
         &nbsp;&middot;&nbsp;
         <a href="https://pixabay.com/photos/river-city-budapest-hungary-9010602/">Photo: Budapest, Pixabay</a>
+        &nbsp;&middot;&nbsp;
+        <a href="image/golden-gate.svg">Illustration: Golden Gate Bridge, original line art for W-NUT 2026</a>
       </div>
 
     </main><!-- /.content -->

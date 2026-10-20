@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>W-NUT 2026 · Workshop Day</title>
+<style>
+/* Inter, bundled in fonts/ so the deck looks the same offline */
+@font-face { font-family: 'Inter'; font-weight: 400; font-display: swap; src: url('fonts/inter-latin-400.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-weight: 400; font-display: swap; src: url('fonts/inter-latin-ext-400.woff2') format('woff2'); unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Inter'; font-weight: 500; font-display: swap; src: url('fonts/inter-latin-500.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-weight: 500; font-display: swap; src: url('fonts/inter-latin-ext-500.woff2') format('woff2'); unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Inter'; font-weight: 600; font-display: swap; src: url('fonts/inter-latin-600.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-weight: 600; font-display: swap; src: url('fonts/inter-latin-ext-600.woff2') format('woff2'); unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Inter'; font-weight: 700; font-display: swap; src: url('fonts/inter-latin-700.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-weight: 700; font-display: swap; src: url('fonts/inter-latin-ext-700.woff2') format('woff2'); unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Inter'; font-weight: 800; font-display: swap; src: url('fonts/inter-latin-800.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Inter'; font-weight: 800; font-display: swap; src: url('fonts/inter-latin-ext-800.woff2') format('woff2'); unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+:root {
+  /* Website palette */
+  --bg: #F8FAFC;
+  --card: #FFFFFF;
+  --text: #374151;
+  --heading: #1A2A4A;
+  --muted: #52657A;
+  --soft: #8A9BB0;
+  --line: #DFE5ED;
+  --accent: #2E6DA4;
+  --accent-light: #9CC3EC;
+  --gold: #E6B85C;          /* W-NUT 2026: Budapest gold */
+  --gold-soft: rgba(230,184,92,.16);
+  --sky: #9CC3EC;           /* blue partner tone; W-NUT 2027 uses it alone */
+  --pale: #E8EFF7;
+  --pale-2: #EEF4FB;
+  --navy: #1A2A4A;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --title: 64px;
+  --body: 40px;
+  --small: 26px;
+  --s: 1;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #0E1628; color: var(--text); font-family: var(--font); overflow: hidden; }
+
+/* Stage: every slide is a fixed 1920x1080 canvas scaled to fit. */
+.deck { position: fixed; inset: 0; display: grid; place-items: center; }
+.frame { display: none; position: relative; overflow: hidden; width: calc(1920px * var(--s)); height: calc(1080px * var(--s)); box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+.frame.active { display: block; }
+.slide {
+  position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+  transform: scale(var(--s)); transform-origin: 0 0;
+  background: var(--bg); color: var(--text); padding: 96px 128px 150px;
+  display: flex; flex-direction: column; gap: 40px;
+}
+
+/* Grid overview (G) */
+body.grid { overflow: auto; }
+body.grid .deck { position: static; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start; gap: 28px; padding: 40px; min-height: 100%; }
+body.grid .frame { display: block; cursor: pointer; border-radius: 6px; outline: 1px solid #3A4A6A; }
+body.grid .frame.active { outline: 4px solid var(--accent-light); }
+body.grid .frame .label { display: block; }
+.frame .label { display: none; position: absolute; left: 10px; bottom: 8px; font: 600 14px var(--font); color: #fff; background: rgba(26,42,74,.85); padding: 2px 8px; border-radius: 4px; }
+
+/* Typography: one role, one size */
+.eyebrow { font: 700 var(--small)/1.2 var(--font); letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
+h1 { font: 700 88px/1.12 var(--font); letter-spacing: -2px; color: var(--heading); text-wrap: balance; }
+h2 { font: 700 var(--title)/1.15 var(--font); letter-spacing: -1px; color: var(--heading); position: relative; padding-bottom: 24px; }
+h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 80px; height: 6px; border-radius: 3px; background: var(--accent); }
+p { font-size: var(--body); line-height: 1.4; }
+.muted { color: var(--muted); }
+.head { display: flex; flex-direction: column; gap: 16px; }
+.grow { flex: 1; min-height: 0; }
+
+/* Now / Next footer, filled from SESSIONS */
+.foot { position: absolute; left: 128px; right: 128px; bottom: 48px; display: flex; justify-content: space-between; gap: 40px; padding-top: 22px; border-top: 2px solid var(--line); font: var(--small)/1.3 var(--font); color: var(--muted); }
+.foot b { color: var(--heading); font-weight: 600; }
+.foot .tag { font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 20px; color: var(--accent); margin-right: 12px; }
+
+/* Openers: the website hero (navy over the Budapest photo) */
+.slide.hero {
+  justify-content: center; align-items: flex-start; text-align: left; gap: 36px; color: #fff;
+  background: linear-gradient(90deg, rgba(12,22,45,.9) 0%, rgba(12,22,45,.78) 45%, rgba(12,22,45,.5) 100%),
+    url('../image/background.jpg') center 55% / cover no-repeat;
+}
+.slide.hero h1, .slide.hero h2 { color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,.45); max-width: 1450px; text-wrap: initial; }
+.slide.hero h2 { font-size: 80px; padding-bottom: 0; }
+.slide.hero h2::after { display: none; }
+.slide.hero .acr { color: var(--gold); white-space: nowrap; }
+.slide.hero.finale .acr { color: var(--sky); }
+.slide.hero .acr.line { display: block; }
+.slide.hero .lead { color: rgba(255,255,255,.88); max-width: 1300px; }
+.slide.hero .lead b { color: #fff; }
+.slide.finale { gap: 40px; }
+.slide.finale .pill { color: #fff; }
+.slide.hero.finale { background: radial-gradient(ellipse at 75% 85%, rgba(46,109,164,.35) 0%, rgba(46,109,164,0) 60%), linear-gradient(160deg, #0C162D 0%, #1A2A4A 100%); }
+.slide.finale > :not(.bridge) { position: relative; z-index: 1; }
+.slide.hero.finale { justify-content: flex-start; padding-top: 150px; }
+.bridge { position: absolute; right: 0; bottom: 0; width: 1250px; height: auto; z-index: 0; opacity: .5;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 25%);
+  mask-image: linear-gradient(to right, transparent, #000 25%); }
+.bridge path { fill: none; stroke: #9CC3EC; stroke-width: 3; stroke-linecap: round; }
+.bridge .thin { stroke-width: 1.4; opacity: .7; }
+.bridge .cable { stroke-width: 4; }
+.bridge .hill { fill: rgba(156,195,236,.08); stroke-width: 1.5; opacity: .6; }
+.bridge .water { stroke-width: 1.5; opacity: .45; }
+.slide.finale h1 { font-size: 128px; line-height: 1.08; letter-spacing: -3px; }
+.slide.finale .lead { font-size: 38px; }
+.pill { display: inline-block; color: var(--gold); font: 700 var(--small)/1.2 var(--font); letter-spacing: 3px; text-transform: uppercase; }
+.meta { display: flex; flex-wrap: wrap; gap: 40px 110px; list-style: none; margin-top: 12px; }
+.meta li { display: flex; align-items: flex-start; gap: 26px; color: rgba(255,255,255,.88); font-size: 32px; line-height: 1.4; }
+.meta svg { width: 54px; height: 54px; flex-shrink: 0; margin-top: 6px; color: #fff; }
+.meta strong { display: block; font-size: 42px; color: #fff; }
+.meta small { display: block; font-size: 32px; }
+.slide.hero .foot { border-top-color: rgba(255,255,255,.18); color: rgba(255,255,255,.75); text-align: left; }
+.slide.hero .foot b { color: #fff; }
+.slide.hero .foot .tag { color: var(--gold); }
+
+/* Keynote intro: portrait beside the talk */
+.speaker { display: grid; grid-template-columns: 440px minmax(0, 1fr); gap: 80px; align-items: center; text-align: left; max-width: 1640px; }
+.speaker img { width: 440px; height: 440px; border-radius: 50%; object-fit: cover; border: 10px solid rgba(255,255,255,.9); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+.speaker .talk { display: flex; flex-direction: column; gap: 28px; align-items: flex-start; }
+.slide.hero .speaker h2 { font-size: 66px; line-height: 1.15; }
+.speaker .who, .speaker .chair, .slide.hero .lead, .meta li { text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+.speaker .who { font-size: 44px; color: #fff; }
+.speaker .who b { font-weight: 700; }
+.speaker .who span { color: rgba(255,255,255,.8); }
+.speaker .chair { font-size: 32px; color: rgba(255,255,255,.75); }
+
+/* Cards */
+.cards { display: grid; gap: 32px; }
+.cards.c3 { grid-template-columns: repeat(3, 1fr); }
+.cards.c4 { grid-template-columns: repeat(4, 1fr); }
+.cards.c2 { grid-template-columns: repeat(2, 1fr); }
+.card { background: var(--card); border: 2px solid var(--line); border-radius: 24px; padding: 40px 44px; box-shadow: 0 2px 4px rgba(15,25,50,.04); }
+.card.top { border-top: 6px solid var(--accent); }
+.card h3 { font: 700 40px/1.25 var(--font); color: var(--heading); margin-bottom: 20px; }
+.card ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.card li { font-size: 30px; line-height: 1.35; padding-left: 30px; position: relative; color: var(--text); }
+.card li::before { content: ""; position: absolute; left: 0; top: 15px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.card p { font-size: 32px; }
+.card .k { font: 700 var(--small)/1.2 var(--font); letter-spacing: 2px; text-transform: uppercase; color: var(--soft); margin-bottom: 14px; }
+
+/* Numbers */
+.stat { text-align: left; }
+.stat b { display: block; font: 700 150px/1 var(--font); letter-spacing: -4px; color: var(--accent); margin-bottom: 18px; }
+.stat span { font-size: 36px; color: var(--heading); font-weight: 600; }
+
+/* Day at a glance */
+.agenda { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--card); border: 2px solid var(--line); border-radius: 20px; overflow: hidden; font-size: 30px; }
+.agenda td { padding: 15px 32px; border-bottom: 2px solid var(--line); vertical-align: middle; }
+.agenda tr:last-child td { border-bottom: 0; }
+.agenda td:first-child { width: 300px; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--muted); }
+.agenda td:last-child { width: 260px; text-align: right; color: var(--muted); white-space: nowrap; }
+.agenda tr.key td { background: var(--pale-2); }
+.agenda tr.key td:first-child { box-shadow: inset 8px 0 0 var(--accent); color: var(--heading); font-weight: 700; }
+.agenda tr.key td:nth-child(2) { color: var(--heading); font-weight: 600; }
+.agenda small { display: block; font-size: 24px; color: var(--muted); font-weight: 400; }
+
+/* Placeholders that must be filled in before the day */
+.tba { display: inline-block; padding: 2px 16px; border: 3px dashed #D9822B; border-radius: 10px; background: #FFF4E5; color: #8A4B0F; font-weight: 600; }
+
+/* Breaks */
+.slide.pause { justify-content: center; align-items: center; text-align: center; gap: 28px; }
+.slide.pause h2 { font-size: 110px; padding-bottom: 36px; }
+.slide.pause h2::after { left: 50%; margin-left: -60px; width: 120px; }
+.back { font-size: 56px; color: var(--heading); }
+.back b { color: var(--accent); }
+.until { font-size: 40px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Q&A: the speaker card, as on the website */
+.qa-card { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 72px; align-items: center; padding: 64px 72px; margin-bottom: 20px; }
+.qa-card img { width: 380px; height: 380px; border-radius: 50%; object-fit: cover; border: 8px solid #F6F8FB; box-shadow: 0 0 0 2px var(--line), 0 8px 28px rgba(23,56,94,.12); }
+.qa-card .qa-title { font: 700 56px/1.2 var(--font); letter-spacing: -1px; color: var(--heading); text-wrap: balance; }
+.qa-card .qa-who { font-size: 40px; color: var(--muted); margin-top: 28px; }
+.qa-card .qa-who b { color: var(--heading); font-weight: 600; }
+.qa-card .qa-chair { font-size: 32px; color: var(--muted); margin-top: 12px; }
+
+/* Oral talks */
+.slot { font: 700 44px/1.2 var(--font); color: var(--accent); font-variant-numeric: tabular-nums; }
+.paper-title { font: 700 72px/1.2 var(--font); letter-spacing: -1.5px; color: var(--heading); max-width: 1600px; text-wrap: balance; }
+.paper-authors { font-size: 40px; color: var(--muted); max-width: 1600px; }
+.progress-dots { display: flex; gap: 14px; }
+.progress-dots i { width: 22px; height: 22px; border-radius: 50%; background: var(--line); }
+.progress-dots i.on { background: var(--accent); }
+.progress-dots i.done { background: var(--accent-light); }
+
+/* Poster list */
+.posters { columns: 2; column-gap: 72px; }
+.posters li { break-inside: avoid; list-style: none; display: grid; grid-template-columns: 56px 1fr; gap: 4px 12px; margin-bottom: 22px; }
+.posters li b { grid-row: span 2; font: 700 26px/1.4 var(--font); color: var(--soft); text-align: right; font-variant-numeric: tabular-nums; }
+.posters .t { font: 600 26px/1.3 var(--font); color: var(--heading); }
+.posters .a { font-size: 22px; line-height: 1.3; color: var(--muted); }
+
+/* Overview card with the Budapest line-art (website intro) */
+.overview { position: relative; overflow: hidden; isolation: isolate; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 36px;
+  padding: 80px 88px; background: #fff; border: 2px solid var(--line); border-radius: 28px; }
+.overview h2 { font-size: 76px; line-height: 1.2; padding-bottom: 0; max-width: 1400px; text-wrap: balance; }
+.overview h2::after { display: none; }
+.overview p { max-width: 1150px; font-size: 40px; line-height: 1.5; }
+.overview > :not(img) { position: relative; z-index: 1; }
+.overview .welcome { font: 600 34px/1.2 var(--font); letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
+.overview .welcome b { color: var(--heading); }
+.overview img { position: absolute; right: 0; bottom: 0; width: 68%; height: auto; z-index: 0; opacity: .35; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 18%, #000 94%, transparent), linear-gradient(to bottom, transparent, #000 22%, #000 88%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 18%, #000 94%, transparent), linear-gradient(to bottom, transparent, #000 22%, #000 88%, transparent);
+  mask-composite: intersect; }
+
+/* Schedule timeline (website agenda) */
+.timeline { list-style: none; background: #fff; border: 2px solid var(--line); border-radius: 28px; padding: 28px 52px; }
+.timeline li { position: relative; display: grid; grid-template-columns: 270px minmax(0,1fr) 230px; gap: 24px; align-items: start; padding: 0 0 14px 60px; font-size: 27px; line-height: 1.3; }
+.timeline li::before { content: ''; position: absolute; left: 13px; top: 30px; bottom: -14px; width: 4px; background: #C5D8F0; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li:last-child::before { display: none; }
+.timeline li::after { content: ''; position: absolute; left: 0; top: 14px; width: 30px; height: 30px; border: 4px solid var(--accent); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px #fff; }
+.timeline li.break::after { background: #fff; }
+.timeline .time { padding-top: 7px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.timeline .event { padding: 7px 22px; border: 2px solid #EDF2F8; border-radius: 10px; color: var(--heading); font-weight: 600; }
+.timeline .break .event { background: var(--pale-2); border-color: var(--pale-2); font-weight: 400; }
+.timeline .event small { display: block; font-size: 21px; font-weight: 400; color: var(--muted); margin-top: 2px; }
+.timeline .room { padding-top: 7px; font-size: 24px; font-weight: 600; color: var(--accent); white-space: nowrap; text-align: left; }
+
+/* Accepted papers: one count, two sessions */
+.papers-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 32px; align-items: stretch; margin-bottom: 20px; }
+.papers-count { display: flex; flex-direction: column; justify-content: center; padding: 56px 64px; }
+.papers-count b { font: 700 200px/1 var(--font); letter-spacing: -2px; color: var(--accent); }
+.papers-count span { font: 700 48px/1.2 var(--font); color: var(--heading); margin-top: 16px; }
+.papers-count p { font-size: 32px; color: var(--muted); margin-top: 14px; }
+.papers-sessions { display: flex; flex-direction: column; justify-content: center; padding: 56px 64px; }
+.papers-sessions .k { margin-bottom: 28px; }
+.timeline.mini { border: 0; padding: 0; border-radius: 0; }
+.timeline.mini li { grid-template-columns: 250px minmax(0, 1fr); font-size: 36px; padding-bottom: 36px; }
+.timeline.mini li::before { top: 36px; bottom: -6px; }
+.timeline.mini li::after { top: 18px; }
+.timeline.mini .time { padding-top: 12px; }
+.timeline.mini .event { padding: 12px 28px; }
+.timeline.mini .event small { font-size: 26px; margin-top: 4px; }
+
+/* Invited talk cards (opening) */
+.talk-card { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 36px 40px; }
+.talk-card img { width: 210px; height: 210px; border-radius: 50%; object-fit: cover; border: 6px solid #fff; box-shadow: 0 0 0 2px var(--line), 0 8px 24px rgba(15,25,50,.1); margin-bottom: 8px; }
+.talk-when { font-size: 30px; color: var(--heading); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.talk-when .room { font-size: 24px; font-weight: 600; color: var(--accent); background: var(--pale); border-radius: 8px; padding: 4px 16px; }
+.talk-title { font: 700 32px/1.3 var(--font); color: var(--heading); }
+.talk-who { font-size: 26px; color: var(--muted); margin-top: auto; }
+
+/* Thank you: 2 x 2 grid, number beside its label */
+.thanks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, 1fr); align-self: center; width: 100%; max-width: 1600px; padding: 0; margin: 0 auto 20px; }
+.thanks > div { display: grid; grid-template-columns: 230px minmax(0, 1fr); align-items: center; gap: 36px; padding: 44px 48px; }
+.thanks > div:nth-child(odd) { border-right: 2px solid var(--line); }
+.thanks > div:nth-child(-n+2) { border-bottom: 2px solid var(--line); }
+.thanks b { font: 700 160px/1 var(--font); letter-spacing: -2px; color: var(--accent); text-align: right; font-variant-numeric: tabular-nums; }
+.thanks span { font: 600 40px/1.25 var(--font); color: var(--heading); }
+
+/* Organizers: 4 x 2 grid, photo above name; contact as a separate panel */
+.orgs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-content: center; gap: 36px 40px; margin-bottom: 12px; }
+.org { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; min-width: 0; }
+.org img { width: 196px; height: 196px; flex-shrink: 0; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,.9); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.org b { display: block; font: 700 32px/1.2 var(--font); color: #fff; white-space: nowrap; }
+.org span { display: block; font-size: 24px; line-height: 1.3; color: var(--muted); margin-top: 4px; }
+.org.contact { align-self: center; align-items: flex-start; text-align: left; gap: 0; padding: 40px 40px 36px;
+  border: 2px solid rgba(230,184,92,.55); border-radius: 24px; background: rgba(230,184,92,.07); }
+.contact-label { display: flex; align-items: center; gap: 12px; font: 700 22px/1 var(--font); letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.contact-label svg { width: 30px; height: 30px; }
+.contact-mail { margin-top: 22px; font: 700 34px/1.2 var(--font); color: #fff; white-space: nowrap; }
+.contact-name { margin-top: 8px; font-size: 26px; color: var(--muted); }
+
+/* Program committee names */
+.pc { list-style: none; columns: 5; column-gap: 40px; font-size: 22px; line-height: 1.55; color: var(--heading); }
+.pc li { break-inside: avoid; }
+
+.slide h2.posters-title { font-size: 52px; }
+.slide:has(.posters-title) .foot { left: 128px; right: 128px; }
+.posters.readable { column-gap: 56px; padding: 0; --ps: 22px; }
+.posters.readable li { grid-template-columns: 36px 1fr; gap: 0 10px; margin-bottom: 9px; }
+.posters.readable li b { grid-row: auto; font-size: var(--ps); line-height: 1.24; color: var(--accent); }
+.posters.readable .t { font: 500 var(--ps)/1.24 var(--font); color: rgba(255,255,255,.92); }
+.posters.readable .t strong { font-weight: 800; color: #fff; }
+
+/* Organizers */
+.people { display: grid; grid-template-columns: repeat(7, 1fr); gap: 24px; }
+.person { text-align: center; }
+.person img { width: 190px; height: 190px; border-radius: 50%; object-fit: cover; border: 6px solid #fff; box-shadow: 0 0 0 2px var(--line), 0 8px 24px rgba(15,25,50,.1); margin-bottom: 18px; }
+.person b { display: block; font-size: 28px; color: var(--heading); line-height: 1.25; }
+.person span { display: block; font-size: 22px; color: var(--muted); line-height: 1.35; margin-top: 6px; }
+.thanks-pc { text-align: center; font-size: 36px; color: var(--heading); }
+.thanks-pc b { color: var(--accent); }
+
+/* Build steps: revealed one at a time with → / space */
+.step { opacity: 0; transform: translateY(14px); transition: opacity .4s ease, transform .4s ease; }
+.step.shown { opacity: 1; transform: none; }
+body.grid .step { opacity: 1; transform: none; }
+
+/* Chrome */
+.chrome { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; transition: opacity .3s; }
+body.idle .chrome { opacity: 0; }
+body.grid .chrome { opacity: 1; }
+.progress { height: 4px; background: rgba(255,255,255,.12); }
+.progress i { display: block; height: 100%; background: var(--accent); transition: width .3s; }
+.bar { display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: rgba(255,255,255,.96); border-top: 1px solid var(--line); }
+.bar .count { font: 14px var(--font); color: var(--muted); margin-right: auto; }
+.bar button { font: 13px var(--font); color: var(--heading); background: #fff; border: 1px solid #CBD5E1; border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+.bar button:hover { background: var(--pale); }
+.bar kbd { font: 11px ui-monospace, monospace; color: var(--muted); margin-left: 6px; }
+.help { position: fixed; inset: 0; z-index: 20; display: none; place-items: center; background: rgba(10,18,40,.5); }
+.help.open { display: grid; }
+.help div { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 28px 36px; font-size: 16px; line-height: 2; color: var(--heading); }
+.help kbd { font: 600 14px ui-monospace, monospace; background: var(--pale); border-radius: 4px; padding: 2px 8px; margin-right: 10px; }
+aside.notes { display: none; }
+
+/* ===== Dark theme for body slides: the final slide's look ===== */
+.slide:not(.hero) {
+  --heading: #FFFFFF;
+  --text: rgba(255,255,255,.86);
+  --muted: rgba(255,255,255,.66);
+  --soft: rgba(255,255,255,.5);
+  --line: rgba(255,255,255,.14);
+  --accent: var(--gold);
+  --accent-2: var(--sky);
+  --pale: rgba(156,195,236,.14);
+  --pale-2: rgba(230,184,92,.10);
+  --card: transparent;
+  color: var(--text);
+  background: radial-gradient(ellipse at 85% 95%, rgba(230,184,92,.14) 0%, rgba(230,184,92,0) 55%),
+    radial-gradient(ellipse at 15% 0%, rgba(46,109,164,.28) 0%, rgba(46,109,164,0) 55%),
+    linear-gradient(160deg, #0C162D 0%, #1A2A4A 100%);
+}
+.slide:not(.hero) h2 { color: #fff; padding-bottom: 0; text-shadow: 0 2px 16px rgba(0,0,0,.35); }
+.slide:not(.hero) h2::after { display: none; }
+.slide:not(.hero) .eyebrow { color: var(--accent); }
+.slide:not(.hero) .card { background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+
+/* Welcome */
+.overview { background: transparent; border: 0; border-radius: 0; padding: 0; gap: 40px; }
+.overview h2 { font-size: 96px; line-height: 1.08; letter-spacing: -2px; max-width: none; }
+.overview h2 span { color: var(--accent); }
+.overview .welcome { color: #fff; font-size: 30px; }
+.overview .welcome b { color: #fff; }
+.overview p:not(.welcome) { color: var(--text); max-width: 1100px; }
+
+/* Invited talks: three columns split by thin lines */
+.talk-card { padding: 8px 48px; border-left: 2px solid var(--line) !important; }
+.talk-card:first-child { border-left: 0 !important; padding-left: 0; }
+.talk-card .talk-who { margin-top: 6px; }
+.slide:has(.talk-card) .cards.c3 { align-content: center; align-items: start; margin-bottom: 20px; }
+.talk-card img { border-color: rgba(255,255,255,.9); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.talk-when .room { background: var(--pale); color: var(--accent-2); }
+
+/* Schedule: open timeline, no container */
+.timeline { background: transparent; border: 0; border-radius: 0; padding: 0; }
+.timeline li::before { background: rgba(156,195,236,.35); }
+.slide:not(.hero) .timeline .room { color: var(--accent-2); }
+.timeline li::after { box-shadow: 0 0 0 6px #10203D; }
+.timeline li.break::after { background: #10203D; }
+.timeline .event { border-color: var(--line); }
+
+/* Accepted papers */
+.papers-split { gap: 0; }
+.papers-count { padding: 0 64px 0 0; border-right: 2px solid var(--line) !important; }
+.papers-sessions { padding: 0 0 0 80px; }
+.papers-count b { font-size: 240px; }
+
+/* Q&A: no box */
+.qa-card { padding: 0; }
+.qa-card img { border-color: rgba(255,255,255,.9); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+
+/* Thank you: numbers on the background */
+
+/* People and lists */
+.person img { border-color: rgba(255,255,255,.9); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.thanks-pc b { color: var(--accent); }
+
+/* Talk countdown, top-right corner */
+.countdown { position: absolute; top: 56px; right: 128px; z-index: 2; display: flex; align-items: baseline; gap: 14px;
+  padding: 12px 26px; border-radius: 14px; background: rgba(10,18,40,.55); border: 2px solid rgba(230,184,92,.35);
+  font: 600 26px/1.1 var(--font); color: rgba(255,255,255,.75); font-variant-numeric: tabular-nums; }
+.countdown:empty { display: none; }
+.countdown b { font-size: 48px; font-weight: 700; color: var(--gold); letter-spacing: -1px; }
+.countdown.warn { border-color: rgba(242,139,107,.6); }
+.countdown.warn b { color: #F28B6B; }
+.countdown.over { border-color: rgba(242,139,107,.6); color: #F28B6B; }
+
+@media (prefers-reduced-motion: reduce) {
+  .step, .progress i { transition: none !important; }
+}
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { overflow: visible; height: auto; background: #fff; }
+  .chrome, .help { display: none !important; }
+  .deck { position: static; display: block; }
+  .frame { display: block !important; width: 1920px; height: 1080px; break-after: page; outline: none !important; box-shadow: none; }
+  .frame .label { display: none !important; }
+  .slide { transform: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .step { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<!-- ============ START ============ -->
+
+<section class="slide hero" data-title="Doors open" data-session="doors">
+  <span class="pill">EMNLP 2026 Workshop</span>
+  <h1>The 11th Workshop on<br>Natural User-generated Text <span class="acr line">(W-NUT)</span></h1>
+  <ul class="meta">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h3v3H8z"/></svg><span><strong>Oct 28, 2026</strong><small>collocated with EMNLP 2026</small></span></li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><span><strong>Room G15-16</strong><small>HUNGEXPO Budapest Congress &amp; Exhibition Center<br>Budapest, Hungary</small></span></li>
+  </ul>
+  <p class="lead">Today's program: <b>09:00 – 17:30</b><span data-until="09:00" data-sep=" · "></span></p>
+  <aside class="notes">Leave this on screen while people arrive. The countdown follows this laptop's clock; check it is set to Budapest time.</aside>
+</section>
+
+<section class="slide" data-title="Welcome" data-session="opening">
+  <div class="overview">
+    <p class="welcome">Welcome to <b>W-NUT 2026</b> · 11th edition</p>
+    <h2>From Noisy Text to<br><span>Real-World Applications of LLMs</span></h2>
+    <p>The WNUT workshop on language by people. We focus on language as it occurs in the real world, from noisy text to real-world applications of LLMs.</p>
+  </div>
+  <aside class="notes">Welcome everyone to the 11th Workshop on Natural User-generated Text, collocated with EMNLP 2026. Introduce yourself and the organizing team. Today: three invited talks, an oral session and a poster session. The heading and description are the workshop's tagline, as on the website.</aside>
+</section>
+
+<section class="slide" data-title="Invited Talks" data-session="opening">
+  <div class="head"><p class="eyebrow">W-NUT 2026</p><h2>Invited Talks</h2></div>
+  <div class="cards c3 grow">
+    <div class="card talk-card">
+      <img src="../image/Hinrich_Schütze.jpg" alt="">
+      <p class="talk-when"><b>09:30 – 10:30</b> <span class="room">Room G15-16</span></p>
+      <p class="talk-title">Language Identification in the (Pretraining) Data Processing Pipeline – State of the Art and Open Problems</p>
+      <p class="talk-who">Hinrich Schütze · University of Munich</p>
+    </div>
+    <div class="card talk-card">
+      <img src="../image/haneul_yoo.jpg" alt="">
+      <p class="talk-when"><b>14:00 – 15:00</b> <span class="room">Room G15-16</span></p>
+      <p class="talk-title">Enhancing Multilingual LLMs with Code-Switching</p>
+      <p class="talk-who">Haneul Yoo · New York University</p>
+    </div>
+    <div class="card talk-card">
+      <img src="../image/Maria_Antoniak.jpg" alt="">
+      <p class="talk-when"><b>16:00 – 17:00</b> <span class="room">Room G15-16</span></p>
+      <p class="talk-title">When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</p>
+      <p class="talk-who">Maria Antoniak · University of Colorado Boulder</p>
+    </div>
+  </div>
+  <aside class="notes">Three invited talks today, in this order.</aside>
+</section>
+
+<section class="slide" data-title="Accepted Papers" data-session="opening">
+  <div class="head"><p class="eyebrow">W-NUT 2026</p><h2>Accepted Papers</h2></div>
+  <div class="papers-split grow">
+    <div class="card papers-count">
+      <b>26</b>
+      <span>accepted papers</span>
+      <p>presented today as oral talks and posters</p>
+    </div>
+    <div class="card papers-sessions">
+      <p class="k">Where to see them</p>
+      <ol class="timeline mini">
+        <li><span class="time">11:00 – 12:30</span><span class="event">Oral presentations</span></li>
+        <li><span class="time">15:00 – 16:00</span><span class="event">Poster session</span></li>
+      </ol>
+    </div>
+  </div>
+  <aside class="notes">26 accepted papers this year, presented in the oral session before lunch and the poster session in the afternoon. Add submission and acceptance numbers here if you want to share them.</aside>
+</section>
+
+<section class="slide" data-title="Workshop Schedule" data-session="opening" style="gap:28px">
+  <div class="head"><p class="eyebrow">Wednesday, October 28, 2026</p><h2>Workshop Schedule</h2></div>
+  <ol class="timeline">
+    <li class="break"><span class="time">09:00 – 09:30</span><span class="event">Welcome</span><span class="room"></span></li>
+    <li><span class="time">09:30 – 10:30</span><span class="event">Keynote 1 · Hinrich Schütze<small>Language Identification in the (Pretraining) Data Processing Pipeline</small></span><span class="room">Room G15-16</span></li>
+    <li class="break"><span class="time">10:30 – 11:00</span><span class="event">Coffee break &amp; networking</span><span class="room"></span></li>
+    <li><span class="time">11:00 – 12:30</span><span class="event">Oral presentations</span><span class="room"></span></li>
+    <li class="break"><span class="time">12:30 – 14:00</span><span class="event">Lunch</span><span class="room"></span></li>
+    <li><span class="time">14:00 – 15:00</span><span class="event">Keynote 2 · Haneul Yoo<small>Enhancing Multilingual LLMs with Code-Switching</small></span><span class="room">Room G15-16</span></li>
+    <li><span class="time">15:00 – 16:00</span><span class="event">Poster session · coffee from 15:30</span><span class="room"></span></li>
+    <li><span class="time">16:00 – 17:00</span><span class="event">Keynote 3 · Maria Antoniak<small>When Noise Is the Point</small></span><span class="room">Room G15-16</span></li>
+    <li><span class="time">17:00 – 17:30</span><span class="event">Closing &amp; next steps</span><span class="room"></span></li>
+  </ol>
+  <aside class="notes">Same times as the website schedule. The website lists Poster 15:00–16:00 and Coffee 15:30–16:00 as overlapping; this slide shows coffee during the second half of the poster session. Confirm before the day.</aside>
+</section>
+
+<!-- ============ KEYNOTE 1 ============ -->
+
+<section class="slide hero" data-title="Keynote 1 · Schütze" data-session="k1">
+  <p class="countdown" data-from="09:30" data-to="10:30" aria-live="off"></p>
+  <div class="speaker">
+    <img src="../image/Hinrich_Schütze.jpg" alt="Hinrich Schütze">
+    <div class="talk">
+      <span class="pill">Keynote 1</span>
+      <h2>Language Identification in the (Pretraining) Data Processing Pipeline – State of the Art and Open Problems</h2>
+      <p class="who"><b>Hinrich Schütze</b> <span>· University of Munich</span></p>
+      <p class="chair">Chair: JinYeong Bak</p>
+    </div>
+  </div>
+  <aside class="notes">Introduction (from the speaker's bio): Hinrich Schütze is Professor for Computational Linguistics and co-director of the Center for Information and Language Processing at LMU Munich. He received his PhD from Stanford in 1995 for early research on embeddings, which won the ACL Test-of-Time Paper Award. He worked at Xerox PARC, several Silicon Valley startups and Google. He co-authored Foundations of Statistical Natural Language Processing and Introduction to Information Retrieval, received an ERC Advanced Grant in 2017, and was ACL president in 2020. He is a member of Academia Europaea and a fellow of ACL, ELLIS, ELIZA and HessianAI. Abstract: to be announced.</aside>
+</section>
+
+<section class="slide qa" data-title="Q&A · Schütze" data-session="k1">
+  <p class="countdown" data-from="09:30" data-to="10:30" aria-live="off"></p>
+  <div class="head"><p class="eyebrow">Keynote 1 · Q&amp;A</p><h2>Questions &amp; discussion</h2></div>
+  <div class="card qa-card grow">
+    <img src="../image/Hinrich_Schütze.jpg" alt="">
+    <div>
+      <p class="qa-title">Language Identification in the (Pretraining) Data Processing Pipeline – State of the Art and Open Problems</p>
+      <p class="qa-who"><b>Hinrich Schütze</b> · University of Munich</p>
+      <p class="qa-chair">Chair: JinYeong Bak</p>
+    </div>
+  </div>
+  <aside class="notes">Q&amp;A runs until 10:30. Then thank the speaker and announce the coffee break; we are back at 11:00 for the oral session.</aside>
+</section>
+
+<section class="slide pause" data-title="Coffee break" data-session="coffee1">
+  <p class="eyebrow">10:30 – 11:00</p>
+  <h2>Coffee break</h2>
+  <p class="back">Back at <b>11:00</b> for the oral presentations</p>
+  <p class="until" data-until="11:00"></p>
+  <aside class="notes">Leave on screen during the break.</aside>
+</section>
+
+<!-- ============ ORAL SESSION ============ -->
+
+<section class="slide hero" data-title="Oral presentations" data-session="oral">
+  <h1>Oral presentations</h1>
+  <aside class="notes">Talks follow on the next slides in order. To add one slide per talk, set oral: 1, 2, 3 … on those papers in the PAPERS list and ORAL_MINUTES to the slot length.</aside>
+</section>
+
+<section data-generate="orals"></section>
+
+<section class="slide pause" data-title="Lunch" data-session="lunch">
+  <p class="eyebrow">12:30 – 14:00</p>
+  <h2>Lunch</h2>
+  <p class="back">Back at <b>14:00</b> for Keynote 2 · Haneul Yoo</p>
+  <p class="until" data-until="14:00"></p>
+  <aside class="notes">Remind poster presenters to put up their posters during lunch.</aside>
+</section>
+
+<!-- ============ KEYNOTE 2 ============ -->
+
+<section class="slide hero" data-title="Keynote 2 · Yoo" data-session="k2">
+  <p class="countdown" data-from="14:00" data-to="15:00" aria-live="off"></p>
+  <div class="speaker">
+    <img src="../image/haneul_yoo.jpg" alt="Haneul Yoo">
+    <div class="talk">
+      <span class="pill">Keynote 2</span>
+      <h2>Enhancing Multilingual LLMs with Code-Switching</h2>
+      <p class="who"><b>Haneul Yoo</b> <span>· New York University</span></p>
+      <p class="chair">Chair: Weerayut Buaphet</p>
+    </div>
+  </div>
+  <aside class="notes">Introduction (from the speaker's bio): Haneul Yoo is an Assistant Professor/Faculty Fellow in the Department of Computer Science, Courant Institute, New York University, and a Research Fellow with the United Nations Department of Peace Operations. She received her PhD from KAIST. Her work covers language models that generalize across languages, resources and evaluation for underrepresented languages and cultures, and AI for social good. She has published at ACL, EMNLP and NAACL, was named a Rising Star at KAIST exploreCSR, and has co-organized the MELT workshop at COLM 2025, the WiML symposium at ICML 2026, and GenAI4World at COLM 2026. Talk: reframes code-switching as a linguistic signal across evaluation, training and inference: output language alignment (OLA), code-switching red-teaming (CSRT), curriculum learning (CSCL) and in-context learning (CSICL).</aside>
+</section>
+
+<section class="slide qa" data-title="Q&A · Yoo" data-session="k2">
+  <p class="countdown" data-from="14:00" data-to="15:00" aria-live="off"></p>
+  <div class="head"><p class="eyebrow">Keynote 2 · Q&amp;A</p><h2>Questions &amp; discussion</h2></div>
+  <div class="card qa-card grow">
+    <img src="../image/haneul_yoo.jpg" alt="">
+    <div>
+      <p class="qa-title">Enhancing Multilingual LLMs with Code-Switching</p>
+      <p class="qa-who"><b>Haneul Yoo</b> · New York University</p>
+      <p class="qa-chair">Chair: Weerayut Buaphet</p>
+    </div>
+  </div>
+  <aside class="notes">Q&amp;A runs until 15:00. Then thank the speaker and open the poster session.</aside>
+</section>
+
+<!-- ============ POSTERS ============ -->
+
+<section class="slide pause" data-title="Poster session" data-session="posters">
+  <p class="eyebrow">15:00 – 16:00</p>
+  <h2>Poster session</h2>
+  <p class="back">Coffee from <b>15:30</b></p>
+  <p class="until">Back here at 16:00 for Keynote 3 · Maria Antoniak</p>
+  <aside class="notes">The poster list follows on the next slides.</aside>
+</section>
+
+<section data-generate="posters"></section>
+
+<!-- ============ KEYNOTE 3 ============ -->
+
+<section class="slide hero" data-title="Keynote 3 · Antoniak" data-session="k3">
+  <p class="countdown" data-from="16:00" data-to="17:00" aria-live="off"></p>
+  <div class="speaker">
+    <img src="../image/Maria_Antoniak.jpg" alt="Maria Antoniak">
+    <div class="talk">
+      <span class="pill">Keynote 3</span>
+      <h2>When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</h2>
+      <p class="who"><b>Maria Antoniak</b> <span>· University of Colorado Boulder</span></p>
+      <p class="chair">Chair: Alan Ramponi</p>
+    </div>
+  </div>
+  <aside class="notes">Introduction (from the speaker's bio): Maria Antoniak is an Assistant Professor of Computer Science at the University of Colorado Boulder, affiliated with the Department of Information Science and the Boulder NLP Group. Previously she was a Young Investigator at the Allen Institute for AI and a postdoc at the Pioneer Centre for AI, University of Copenhagen. She completed her PhD in Information Science at Cornell and her master's in Computational Linguistics at the University of Washington. Her research is in NLP and cultural analytics. Talk: three settings where humanistic data frustrates standard pipelines (creative requests in WildChat, narrative annotation of web pretraining data, and poetry formatting lost in linearization), and why what counts as noise depends on who is reading.</aside>
+</section>
+
+<section class="slide qa" data-title="Q&A · Antoniak" data-session="k3">
+  <p class="countdown" data-from="16:00" data-to="17:00" aria-live="off"></p>
+  <div class="head"><p class="eyebrow">Keynote 3 · Q&amp;A</p><h2>Questions &amp; discussion</h2></div>
+  <div class="card qa-card grow">
+    <img src="../image/Maria_Antoniak.jpg" alt="">
+    <div>
+      <p class="qa-title">When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</p>
+      <p class="qa-who"><b>Maria Antoniak</b> · University of Colorado Boulder</p>
+      <p class="qa-chair">Chair: Alan Ramponi</p>
+    </div>
+  </div>
+  <aside class="notes">Q&amp;A runs until 17:00. Then thank the speaker and move to closing.</aside>
+</section>
+
+<!-- ============ END ============ -->
+
+<section class="slide" data-title="Thank you" data-session="closing">
+  <div class="head"><p class="eyebrow">Closing</p><h2>Thank you</h2></div>
+  <div class="card thanks grow">
+    <div><b>3</b><span>invited speakers</span></div>
+    <div><b>26</b><span>papers and their authors</span></div>
+    <div><b>7</b><span>organizers</span></div>
+    <div><b>86</b><span>program committee members</span></div>
+  </div>
+  <aside class="notes">Thank the speakers, authors, organizers, reviewers and everyone who attended. The next two slides show the organizers and the program committee.</aside>
+</section>
+
+<section class="slide" data-title="Organizers" data-session="closing">
+  <div class="head"><p class="eyebrow">Thank you</p><h2>Organizers</h2></div>
+  <div class="orgs grow">
+    <div class="org"><img src="../image/JinYeong.jpg" alt=""><div><b>JinYeong Bak</b><span>SungKyunKwan University</span></div></div>
+    <div class="org"><img src="../image/rob.jpg" alt=""><div><b>Rob van der Goot</b><span>IT University of Copenhagen</span></div></div>
+    <div class="org"><img src="../image/hyeju_2020.png" alt=""><div><b>Hyeju Jang</b><span>Indiana University Indianapolis</span></div></div>
+    <div class="org"><img src="../image/Weerayut.png" alt=""><div><b>Weerayut Buaphet</b><span>Cariva</span></div></div>
+    <div class="org"><img src="../image/alan.jpg" alt=""><div><b>Alan Ramponi</b><span>Fondazione Bruno Kessler</span></div></div>
+    <div class="org"><img src="../image/weixu_profile_square.png" alt=""><div><b>Wei Xu</b><span>Georgia Institute of Technology</span></div></div>
+    <div class="org"><img src="../image/ritter_profile_square.png" alt=""><div><b>Alan Ritter</b><span>Georgia Institute of Technology</span></div></div>
+    <div class="org contact">
+      <p class="contact-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Contact</p>
+      <p class="contact-mail">jy.bak@skku.edu</p>
+      <p class="contact-name">JinYeong Bak</p>
+    </div>
+  </div>
+  <aside class="notes">Thank the organizing team. For follow-up questions, email JinYeong Bak.</aside>
+</section>
+
+<section class="slide" data-title="Program Committee" data-session="closing">
+  <div class="head"><p class="eyebrow">Thank you</p><h2>Program Committee</h2></div>
+  <ul class="pc"><li>Aditya Jain</li><li>Advitya Gemawat</li><li>Alba Pérez-Montero</li><li>Albina Sarymsakova</li><li>Alexander Mehler</li><li>Alistair Plum</li><li>Anay Abhijit Dombe</li><li>Ankit Bhattacharjee</li><li>Antonios Anastasopoulos</li><li>Ashfaq Ali Shafin</li><li>Avinash Goutham Aluguvelly</li><li>Bitan Majumder</li><li>Bogdan Savelyev</li><li>Bolei Ma</li><li>Chao Jiang</li><li>Claire Wang</li><li>Cooper Ballard</li><li>Danae Sanchez Villegas</li><li>Danilo Croce</li><li>Danni Liu</li><li>Diana Inkpen</li><li>Eduardo Blanco</li><li>Emily Allaway</li><li>Eshaan Jain</li><li>Fayeq Jeelani Syed</li><li>Federico Ruggeri</li><li>Gianmarco Pappacoda</li><li>Günter Neumann</li><li>Hari Kang</li><li>HyunJin Kim</li><li>Iñaki San Vicente</li><li>Ishan Jindal</li><li>Jaehyeok Lee</li><li>Jane Arleth dela Cruz</li><li>Julia Mendelsohn</li><li>Julina Maharjan</li><li>Khandaker Mamun Ahmed</li><li>Krityapriya Bhaumik</li><li>Linsey C. Yang</li><li>Lucy H. Lin</li><li>Manuel Montes</li><li>Manuel R. Ciosici</li><li>Maria Antoniak</li><li>Mariët Theune</li><li>Marko Haralovic</li><li>Markus J. Hofmann</li><li>Mike Zhang</li><li>Mirco Schönfeld</li><li>Monica Hegde</li><li>Muhammad Mubashir Hassan</li><li>Naoki Otani</li><li>Nathanael Chambers</li><li>Nelu D. Radpour</li><li>Nikola Ljubešić</li><li>Nils Schwager</li><li>Noor Mairukh Khan Arnob</li><li>Onat Dogan Akca</li><li>Phuong-Anh Nguyen-Le</li><li>Piyush Agarwal</li><li>Raghvi Baloni</li><li>Rajeel Ahmad Ansari</li><li>Rajveer Singh Pall</li><li>Richard Sproat</li><li>Ruslana Margova</li><li>Sai P Vallurupalli</li><li>Sai Tulasi Kolapudi</li><li>Saman Rahbar</li><li>Sangmin Song</li><li>Seongwoo Choi</li><li>Shreyash Rawat</li><li>Sivaraaman Balakrishnan</li><li>Souvik Das</li><li>Suhyeon Park</li><li>Tanmoy Mazumder</li><li>Tanvir Ahmed Sijan</li><li>Ted Zhang</li><li>Vincent Ng</li><li>Xiliang Zhu</li><li>Xinyu Li</li><li>Xuanjing Chen</li><li>Yangfeng Ji</li><li>Yashdeep Thorat</li><li>Yasuhide Miura</li><li>YeongJun Hwang</li><li>Yuval Pinter</li><li>Zihao Zheng</li></ul>
+  <aside class="notes">Thank the 86 program committee members for their reviews. Names as listed on the website, alphabetically by first name.</aside>
+</section>
+
+<section class="slide hero finale" data-title="See you at W-NUT 2027" data-session="end">
+  <svg class="bridge" viewBox="0 0 1400 600" aria-hidden="true"><path class="hill" d="M0 470 C120 360 260 340 360 430 L360 520 L0 520 Z"/><path class="hill" d="M1080 520 L1080 450 C1160 400 1240 380 1400 410 L1400 520 Z"/><path d="M0 430 H1400 M0 446 H1400"/><path class="thin" d="M0 430 V446"/><path class="thin" d="M40 430 V446"/><path class="thin" d="M80 430 V446"/><path class="thin" d="M120 430 V446"/><path class="thin" d="M160 430 V446"/><path class="thin" d="M200 430 V446"/><path class="thin" d="M240 430 V446"/><path class="thin" d="M280 430 V446"/><path class="thin" d="M320 430 V446"/><path class="thin" d="M360 430 V446"/><path class="thin" d="M400 430 V446"/><path class="thin" d="M440 430 V446"/><path class="thin" d="M480 430 V446"/><path class="thin" d="M520 430 V446"/><path class="thin" d="M560 430 V446"/><path class="thin" d="M600 430 V446"/><path class="thin" d="M640 430 V446"/><path class="thin" d="M680 430 V446"/><path class="thin" d="M720 430 V446"/><path class="thin" d="M760 430 V446"/><path class="thin" d="M800 430 V446"/><path class="thin" d="M840 430 V446"/><path class="thin" d="M880 430 V446"/><path class="thin" d="M920 430 V446"/><path class="thin" d="M960 430 V446"/><path class="thin" d="M1000 430 V446"/><path class="thin" d="M1040 430 V446"/><path class="thin" d="M1080 430 V446"/><path class="thin" d="M1120 430 V446"/><path class="thin" d="M1160 430 V446"/><path class="thin" d="M1200 430 V446"/><path class="thin" d="M1240 430 V446"/><path class="thin" d="M1280 430 V446"/><path class="thin" d="M1320 430 V446"/><path class="thin" d="M1360 430 V446"/><path class="thin" d="M1400 430 V446"/><path d="M386 110 V520 M406 110 V520"/><path d="M434 110 V520 M454 110 V520"/><path d="M386 110 H454 M386 124 H454"/><path d="M386 180 H454 M386 194 H454"/><path d="M386 260 H454 M386 274 H454"/><path d="M386 335 H454 M386 349 H454"/><path d="M386 390 H454 M386 404 H454"/><path d="M376 520 H464"/><path d="M946 110 V520 M966 110 V520"/><path d="M994 110 V520 M1014 110 V520"/><path d="M946 110 H1014 M946 124 H1014"/><path d="M946 180 H1014 M946 194 H1014"/><path d="M946 260 H1014 M946 274 H1014"/><path d="M946 335 H1014 M946 349 H1014"/><path d="M946 390 H1014 M946 404 H1014"/><path d="M936 520 H1024"/><path class="cable" d="M0 400 Q210 330 420 118"/><path class="cable" d="M420 118 Q700 700 980 118"/><path class="cable" d="M980 118 Q1190 330 1400 400"/><path class="thin" d="M15.0 394.8 V430"/><path class="thin" d="M30.0 389.3 V430"/><path class="thin" d="M45.0 383.4 V430"/><path class="thin" d="M60.0 377.1 V430"/><path class="thin" d="M75.0 370.5 V430"/><path class="thin" d="M90.0 363.5 V430"/><path class="thin" d="M105.0 356.1 V430"/><path class="thin" d="M120.0 348.4 V430"/><path class="thin" d="M135.0 340.3 V430"/><path class="thin" d="M150.0 331.9 V430"/><path class="thin" d="M165.0 323.1 V430"/><path class="thin" d="M180.0 313.9 V430"/><path class="thin" d="M195.0 304.4 V430"/><path class="thin" d="M210.0 294.5 V430"/><path class="thin" d="M225.0 284.2 V430"/><path class="thin" d="M240.0 273.6 V430"/><path class="thin" d="M255.0 262.7 V430"/><path class="thin" d="M270.0 251.3 V430"/><path class="thin" d="M285.0 239.6 V430"/><path class="thin" d="M300.0 227.6 V430"/><path class="thin" d="M315.0 215.1 V430"/><path class="thin" d="M330.0 202.3 V430"/><path class="thin" d="M345.0 189.2 V430"/><path class="thin" d="M360.0 175.7 V430"/><path class="thin" d="M375.0 161.8 V430"/><path class="thin" d="M390.0 147.6 V430"/><path class="thin" d="M405.0 133.0 V430"/><path class="thin" d="M440.0 158.1 V430"/><path class="thin" d="M460.0 195.2 V430"/><path class="thin" d="M480.0 229.4 V430"/><path class="thin" d="M500.0 260.5 V430"/><path class="thin" d="M520.0 288.7 V430"/><path class="thin" d="M540.0 314.0 V430"/><path class="thin" d="M560.0 336.2 V430"/><path class="thin" d="M580.0 355.6 V430"/><path class="thin" d="M600.0 371.9 V430"/><path class="thin" d="M620.0 385.2 V430"/><path class="thin" d="M640.0 395.6 V430"/><path class="thin" d="M660.0 403.1 V430"/><path class="thin" d="M680.0 407.5 V430"/><path class="thin" d="M700.0 409.0 V430"/><path class="thin" d="M720.0 407.5 V430"/><path class="thin" d="M740.0 403.1 V430"/><path class="thin" d="M760.0 395.6 V430"/><path class="thin" d="M780.0 385.2 V430"/><path class="thin" d="M800.0 371.9 V430"/><path class="thin" d="M820.0 355.6 V430"/><path class="thin" d="M840.0 336.2 V430"/><path class="thin" d="M860.0 314.0 V430"/><path class="thin" d="M880.0 288.7 V430"/><path class="thin" d="M900.0 260.5 V430"/><path class="thin" d="M920.0 229.4 V430"/><path class="thin" d="M940.0 195.2 V430"/><path class="thin" d="M960.0 158.1 V430"/><path class="thin" d="M995.0 133.0 V430"/><path class="thin" d="M1010.0 147.6 V430"/><path class="thin" d="M1025.0 161.8 V430"/><path class="thin" d="M1040.0 175.7 V430"/><path class="thin" d="M1055.0 189.2 V430"/><path class="thin" d="M1070.0 202.3 V430"/><path class="thin" d="M1085.0 215.1 V430"/><path class="thin" d="M1100.0 227.6 V430"/><path class="thin" d="M1115.0 239.6 V430"/><path class="thin" d="M1130.0 251.3 V430"/><path class="thin" d="M1145.0 262.7 V430"/><path class="thin" d="M1160.0 273.6 V430"/><path class="thin" d="M1175.0 284.2 V430"/><path class="thin" d="M1190.0 294.5 V430"/><path class="thin" d="M1205.0 304.4 V430"/><path class="thin" d="M1220.0 313.9 V430"/><path class="thin" d="M1235.0 323.1 V430"/><path class="thin" d="M1250.0 331.9 V430"/><path class="thin" d="M1265.0 340.3 V430"/><path class="thin" d="M1280.0 348.4 V430"/><path class="thin" d="M1295.0 356.1 V430"/><path class="thin" d="M1310.0 363.5 V430"/><path class="thin" d="M1325.0 370.5 V430"/><path class="thin" d="M1340.0 377.1 V430"/><path class="thin" d="M1355.0 383.4 V430"/><path class="thin" d="M1370.0 389.3 V430"/><path class="thin" d="M1385.0 394.8 V430"/><path class="water" d="M0 520 H1400"/><path class="water" d="M120 546 H1300"/><path class="water" d="M300 570 H1150"/></svg>
+  <span class="pill">Thank you for joining W-NUT 2026</span>
+  <h1>See you at <span class="acr">W-NUT 2027</span><br>@ NAACL 2027</h1>
+  <p class="lead">The 12th Workshop on Natural User-generated Text</p>
+  <ul class="meta">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><span><strong>San Francisco, USA</strong></span></li>
+  </ul>
+  <aside class="notes">Thank everyone for coming and announce W-NUT 2027 at NAACL 2027. Leave this on screen while people leave. Add the dates once they are announced.</aside>
+</section>
+
+</main>
+
+<div class="chrome" id="chrome">
+  <div class="progress"><i id="progress"></i></div>
+  <div class="bar">
+    <span class="count" id="count"></span>
+    <button id="b-grid">Grid<kbd>G</kbd></button>
+    <button id="b-notes">Notes<kbd>N</kbd></button>
+    <button id="b-full">Full screen<kbd>F</kbd></button>
+    <button id="b-pdf">Download PDF</button>
+    <button id="b-help">?</button>
+  </div>
+</div>
+<div class="help" id="help"><div>
+  <p><kbd>→</kbd><kbd>Space</kbd>next step or slide</p>
+  <p><kbd>←</kbd>previous</p>
+  <p><kbd>Home</kbd><kbd>End</kbd>first / last slide</p>
+  <p><kbd>G</kbd>slide grid · <kbd>N</kbd>chair notes · <kbd>F</kbd>full screen</p>
+  <p><kbd>?</kbd>this help · <kbd>Esc</kbd>close</p>
+</div></div>
+
+<script>
+// Day data. Edit here: sessions drive the Now / Next footer; papers drive the oral and poster slides.
+(() => {
+  const SESSIONS = [
+    { id: 'doors',    label: 'Doors open',                         time: 'until 09:00' },
+    { id: 'opening',  label: 'Welcome',                            time: '09:00 – 09:30' },
+    { id: 'k1',       label: 'Keynote 1 · Hinrich Schütze',        time: '09:30 – 10:30' },
+    { id: 'coffee1',  label: 'Coffee break',                       time: '10:30 – 11:00' },
+    { id: 'oral',     label: 'Oral presentations',                 time: '11:00 – 12:30' },
+    { id: 'lunch',    label: 'Lunch',                              time: '12:30 – 14:00' },
+    { id: 'k2',       label: 'Keynote 2 · Haneul Yoo',             time: '14:00 – 15:00' },
+    { id: 'posters',  label: 'Poster session',                     time: '15:00 – 16:00' },
+    { id: 'k3',       label: 'Keynote 3 · Maria Antoniak',         time: '16:00 – 17:00' },
+    { id: 'closing',  label: 'Closing & next steps',               time: '17:00 – 17:30' },
+    { id: 'end',      label: 'See you at W-NUT 2027 @ NAACL 2027', time: '' },
+  ];
+
+  // Oral talks: set `oral` to the talk's position (1, 2, 3 …). Unmarked papers are listed as posters.
+  const ORAL_START = '11:00', ORAL_MINUTES = 15;
+  const PAPERS = [
+    { title: "A Precision-First Whitespace Restoration Pipeline for Noisy Urdu Tafseer Text", authors: "Muhammad Mubashir Hassan" },
+    { title: "Are More Emotion Theories Better? Joint Prompting Improves Emotion Categorization Robustness", authors: "Albina Sarymsakova, Roman Klinger" },
+    { title: "Beyond Clean Text: Evaluating Encoder and Decoder Robustness for Bangla Event Detection in Noisy Text", authors: "Tanvir Ahmed Sijan, S M Golam Rifat, Nayeemul Islam, Md Musfique Anwar" },
+    { title: "CrisisKD: Five-Stage Knowledge Distillation for Aspect-Level Sentiment and Emotion Analysis in Crisis Discourse", authors: "Marko Haralovic, Onat Dogan Akca, Salih Eren Yücetürk, Minsi Li, Mariët Theune" },
+    { title: "Discourse-Structural Noise in LLM-Generated Explanations", authors: "Raghvi Baloni, Achim Rettinger" },
+    { title: "Do LLMs Give Consistent Opinions? Evaluating Response Reliability Under Varying Likert-Scale Formulations in Survey-Style MCQA", authors: "Martin Kandlinger, Bolei Ma, Anna-Carolina Haensch, Matthias Aßenmacher" },
+    { title: "Evaluating Token Probabilities as Confidence Estimators in Human Behavior Simulations: A Case Study in Luxembourgish Next Like Prediction", authors: "Nils Schwager, Simon Münker, Alistair Plum, Achim Rettinger" },
+    { title: "From Errors to Precision: A Taxonomy-Guided Approach for LLM Flood Cause Extraction", authors: "Jane Arleth dela Cruz, Iris Hendrickx, Martha Larson" },
+    { title: "GeNERscore: Semantic Alignment Metrics for Generative Named Entity Recognition", authors: "Gianmarco Pappacoda, Federico Ruggeri, Paolo Torroni" },
+    { title: "How Noisy is Automatic Annotation? Characterizing Label Noise from Generative Models in Multi-Dimensional Spanish Subjectivity Annotation", authors: "Alba Pérez-Montero, Elena Lloret, Paloma Moreda Pozo" },
+    { title: "Increasing the Robustness of the Fine-tuned Multilingual Machine-Generated Text Detectors", authors: "Dominik Macko, Robert Moro, Ivan Srba" },
+    { title: "LLMs are Easily Startled: Fragility Testing with Lookalike Character Noise", authors: "Peter deJonge, Nathanael Chambers" },
+    { title: "Multi-author style detection with stylistic embeddings", authors: "Man-Ling Sung, Chak-Fai Li, Damianos Karakos, Frederick E. Bernardin III, Brian Ulicny" },
+    { title: "NERQual: Evaluating the Robustness of Named Entity Recognition Models to Data Quality Issues", authors: "Denis Trautner, Philippe Thomas" },
+    { title: "Not All Duplicates Are Coordination: Generic vs. Non-Generic Duplicate Campaigns in Information Operations", authors: "Ashfaq Ali Shafin, Khandaker Mamun Ahmed" },
+    { title: "Personalized Emotion Analysis via Prompting Large Language Models with Writer Information", authors: "Kentaro Hanafusa, Daisuke Maekawa, Tomoyuki Kajiwara" },
+    { title: "Predicting Steering Vectors and Adapter Weights for Few-Shot Author-Style Transfer", authors: "Leonard Popp, Danni Liu, Supriti Sinhamahapatra, Jan Niehues" },
+    { title: "QueryDiagramEval: Evaluating and Benchmarking LLM Diagram Generation under Noisy Conditions", authors: "Ted Zhang, Souvik Das, Kai Ni, Aditya Agrawal, Xin Guo, Denis Kochedykov" },
+    { title: "Robust Dual-Signal Fusion: Hybrid Neuro-Symbolic Gating with Compressed Chain-of-Thought Refinement for Irony Detection in Social Media Texts", authors: "Ankit Bhattacharjee, Krityapriya Bhaumik" },
+    { title: "RSPC: A Benchmark for Modeling Stress and Psychiatric Conditions in Digitally Mediated Relationships using Psychiatrist Annotations", authors: "Parmitha Vangapandu, Sai Ganesh M, Sathwik Narkedimilli, MSVPJ Sathvik, Timothy Liu, Simon See, Johannes C Eichstaedt" },
+    { title: "Spoiler Court: Interpretable Spoiler Detection via Adversarial Multi-Agent LLM Judgement", authors: "Sangmin Song, Hari Kang, Suhyeon Park, Seongwoo Choi, Sungkyun Im, Sangoh Lee" },
+    { title: "The Curse of Multilinguality in Lexical Normalization", authors: "Saman Rahbar" },
+    { title: "Topic Matching in the Wild: Benchmark and Lessons from Real-World ASR Transcripts", authors: "Saman Rahbar, Xiliang Zhu, Irvin Cardoza, David Rossouw" },
+    { title: "TurEngMix: A Text Corpus and Benchmark for Turkish-English Code-Mixed Language Identification and Named Entity Recognition", authors: "Ilayda Dogan, Phuong-Anh Nguyen-Le, Julia Mendelsohn" },
+    { title: "When Noise Fabricates Bias: The Fragility of LLM-as-a-Judge Bias Measurement under Noisy Text", authors: "DongHyun Ryu, Jaehyeok Lee, YeongJun Hwang, JinYeong Bak" },
+    { title: "Where Does Noise Robustness Live? Evidence from Ablation, Role Swaps, and Cross-Lingual Transfer in Code-Mixed Banking NLU", authors: "Piyush Agarwal" },
+  ];
+
+  const esc = v => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const deck = document.getElementById('deck');
+  const make = html => { const t = document.createElement('template'); t.innerHTML = html.trim(); return [...t.content.children]; };
+  const addMin = (hhmm, m) => { const [h, mm] = hhmm.split(':').map(Number), t = h * 60 + mm + m; return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
+
+  const orals = PAPERS.filter(p => p.oral).sort((a, b) => a.oral - b.oral);
+  const posters = PAPERS.filter(p => !p.oral);
+
+  const oralSlides = orals.length
+    ? orals.map((p, i) => {
+        const from = addMin(ORAL_START, i * ORAL_MINUTES), to = addMin(from, ORAL_MINUTES);
+        const dots = orals.map((_, k) => `<i class="${k < i ? 'done' : k === i ? 'on' : ''}"></i>`).join('');
+        return `<section class="slide" data-title="Oral ${i + 1}" data-session="oral" style="justify-content:center">
+          <p class="countdown" data-from="${from}" data-to="${to}"></p>
+          <p class="eyebrow">Oral presentation ${i + 1} of ${orals.length}</p>
+          <p class="slot">${from} – ${to}</p>
+          <p class="paper-title">${esc(p.title)}</p>
+          <p class="paper-authors">${esc(p.authors)}</p>
+          <div class="progress-dots">${dots}</div>
+          <aside class="notes">Introduce: “${esc(p.title)}” by ${esc(p.authors)}. ${ORAL_MINUTES} minutes including questions.</aside>
+        </section>`;
+      })
+    : [];
+
+  // All posters on one slide; the short name before a colon or question mark is set in bold.
+  const perSlide = 26, pages = Math.ceil(posters.length / perSlide);
+  const titleHtml = t => { const m = t.match(/^(.{3,60}?[:?]) (.+)$/); return m ? `<strong>${esc(m[1])}</strong> ${esc(m[2])}` : esc(t); };
+  const posterSlides = Array.from({ length: pages }, (_, k) => {
+    const chunk = posters.slice(k * perSlide, (k + 1) * perSlide);
+    return `<section class="slide" data-title="${pages > 1 ? `Posters ${k + 1}/${pages}` : 'Posters'}" data-session="posters" style="gap:20px;padding:56px 88px 150px">
+      <div class="head">${pages > 1 ? `<p class="eyebrow">${k + 1} of ${pages}</p>` : ''}<h2 class="posters-title">Posters</h2></div>
+      <ol class="posters readable">${chunk.map((p, j) => `<li><b>${k * perSlide + j + 1}</b><span class="t">${titleHtml(p.title)}</span></li>`).join('')}</ol>
+      <aside class="notes">Numbers are list positions, not board numbers. ${orals.length ? '' : 'No oral papers are marked yet, so all accepted papers are listed. '}Authors: ${chunk.map((p, j) => `${k * perSlide + j + 1}. ${esc(p.authors)}`).join(' · ')}</aside>
+    </section>`;
+  });
+
+  for (const [key, list] of [['orals', oralSlides], ['posters', posterSlides]]) {
+    const slot = deck.querySelector(`[data-generate="${key}"]`);
+    slot.replaceWith(...list.flatMap(make));
+  }
+
+  // Now / Next footer on every slide.
+  const index = Object.fromEntries(SESSIONS.map((s, i) => [s.id, i]));
+  deck.querySelectorAll('.slide[data-session]').forEach(slide => {
+    if (slide.dataset.session === 'end' || slide.classList.contains('pause')) return;
+    const i = index[slide.dataset.session], now = SESSIONS[i], next = SESSIONS[i + 1];
+    const foot = document.createElement('div');
+    foot.className = 'foot';
+    foot.innerHTML = `<span><span class="tag">Now</span><b>${esc(now.label)}</b>${now.time ? ' · ' + now.time : ''}</span>`
+      + (next ? `<span><span class="tag">Next</span><b>${esc(next.label)}</b>${next.time ? ' · ' + next.time.split(' – ')[0] : ''}</span>` : '<span></span>');
+    slide.append(foot);
+  });
+
+  // Live countdowns: "in 12 min" until an HH:MM on this computer's clock.
+  function tickUntil() {
+    const now = new Date(), mins = now.getHours() * 60 + now.getMinutes();
+    document.querySelectorAll('[data-until]').forEach(el => {
+      const [h, m] = el.dataset.until.split(':').map(Number), left = h * 60 + m - mins;
+      const text = left > 60 ? '' : left > 1 ? `starts in ${left} minutes` : left === 1 ? 'starts in 1 minute' : 'starting now';
+      el.textContent = text && (el.dataset.sep || '') + text;
+    });
+  }
+  tickUntil();
+  setInterval(tickUntil, 15000);
+
+  // Talk countdowns: time left in the slot, from this computer's clock.
+  const toSec = hhmm => { const [h, m] = hhmm.split(':').map(Number); return h * 3600 + m * 60; };
+  const two = n => String(n).padStart(2, '0');
+  function tickTalks() {
+    const d = new Date(), now = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+    document.querySelectorAll('.countdown[data-to]').forEach(el => {
+      const from = toSec(el.dataset.from), to = toSec(el.dataset.to);
+      el.classList.remove('warn', 'over');
+      if (now < from) {
+        const mins = Math.ceil((from - now) / 60);
+        el.innerHTML = mins > 60 ? '' : `Starts in <b>${mins} min</b>`;
+      } else if (now < to) {
+        const left = to - now;
+        el.innerHTML = `<b>${two(Math.floor(left / 60))}:${two(left % 60)}</b> left`;
+        if (left <= 300) el.classList.add('warn');
+      } else {
+        el.textContent = "Time's up";
+        el.classList.add('over');
+      }
+    });
+  }
+  tickTalks();
+  setInterval(tickTalks, 1000);
+})();
+
+(() => {
+  const DECK_TITLE = document.querySelector('title').textContent;
+  const deck = document.getElementById('deck');
+  const slides = [...deck.querySelectorAll('.slide')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+
+  // Wrap each slide in a scaled frame.
+  slides.forEach((s, i) => {
+    const f = document.createElement('div');
+    f.className = 'frame';
+    s.replaceWith(f);
+    f.append(s);
+    const label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = `${i + 1} · ${s.dataset.title || ''}`;
+    f.append(label);
+    f.addEventListener('click', () => { if (document.body.classList.contains('grid')) { go(i, Infinity); toggleGrid(false); } });
+  });
+  const frames = slides.map(s => s.parentElement);
+  const stepsOf = i => [...slides[i].querySelectorAll('.step')];
+
+  let cur = 0, step = 0, slideStarted = Date.now();
+  const parse = () => {
+    const m = location.hash.match(/^#(\d+)(?:\.(\d+))?$/);
+    if (!m) return [0, 0];
+    const i = Math.min(Math.max(+m[1] - 1, 0), slides.length - 1);
+    return [i, Math.min(+(m[2] || 0), stepsOf(i).length)];
+  };
+
+  function fit() {
+    if (document.body.classList.contains('grid')) {
+      const cols = innerWidth > 1400 ? 4 : innerWidth > 900 ? 3 : innerWidth > 560 ? 2 : 1;
+      root.style.setProperty('--s', ((innerWidth - 80 - (cols - 1) * 28) / cols / 1920).toFixed(4));
+    } else {
+      root.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080).toFixed(4));
+    }
+  }
+
+  function countUp(el) {
+    const end = +el.dataset.count;
+    if (reduce || !end) { el.textContent = end; return; }
+    const t0 = performance.now(), dur = 900;
+    const tick = t => {
+      const p = Math.min((t - t0) / dur, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function render(enter) {
+    frames.forEach((f, i) => f.classList.toggle('active', i === cur));
+    stepsOf(cur).forEach((el, k) => el.classList.toggle('shown', k < step));
+    if (enter) { slides[cur].querySelectorAll('[data-count]').forEach(countUp); slideStarted = Date.now(); }
+    const hash = `#${cur + 1}${step ? '.' + step : ''}`;
+    if (location.hash !== hash) history.replaceState(null, '', hash);
+    document.getElementById('count').textContent = `${cur + 1} / ${slides.length} · ${slides[cur].dataset.title || ''}`;
+    document.getElementById('progress').style.width = `${((cur + 1) / slides.length) * 100}%`;
+    document.title = `${cur + 1}. ${slides[cur].dataset.title} · ${DECK_TITLE}`;
+    updateNotes();
+  }
+
+  function go(i, s = 0) {
+    i = Math.min(Math.max(i, 0), slides.length - 1);
+    const enter = i !== cur;
+    cur = i;
+    step = Math.min(s, stepsOf(i).length);
+    render(enter);
+  }
+  const next = () => step < stepsOf(cur).length ? (step++, render(false)) : go(cur + 1);
+  const prev = () => step > 0 ? (step--, render(false)) : go(cur - 1, Infinity);
+
+  function toggleGrid(on = !document.body.classList.contains('grid')) {
+    document.body.classList.toggle('grid', on);
+    fit();
+    if (on) frames[cur].scrollIntoView({ block: 'center' });
+  }
+  const toggleFull = () => document.fullscreenElement ? document.exitFullscreen() : root.requestFullscreen?.();
+  const help = document.getElementById('help');
+
+  // Chair notes window: current slide notes, next slide, clock and time on this slide.
+  let notesWin = null;
+  function openNotes() {
+    notesWin = window.open('', 'deck-notes', 'width=960,height=720');
+    if (!notesWin) return;
+    const d = notesWin.document;
+    d.open();
+    d.write(`<!doctype html><title>Chair notes</title><style>
+      body{margin:0;padding:32px;background:#F8FAFC;color:#374151;font:20px/1.55 Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
+      .top{display:flex;justify-content:space-between;font:600 18px ui-monospace,monospace;color:#52657A}
+      h1{font-size:34px;margin:18px 0 6px;color:#1A2A4A} #step{color:#2E6DA4;font:16px ui-monospace,monospace}
+      #notes{font-size:24px;margin:22px 0;max-width:62ch} .next{border-top:1px solid #DFE5ED;padding-top:16px;color:#52657A}
+      #timer{color:#2E6DA4}</style>
+      <div class="top"><span id="pos"></span><span>on this slide <span id="timer"></span> · <span id="clock"></span></span></div>
+      <h1 id="cur"></h1><div id="step"></div><p id="notes"></p><p class="next">Next: <b id="next"></b></p>`);
+    d.close();
+    d.addEventListener('keydown', onKey);
+    updateNotes();
+  }
+  function updateNotes() {
+    if (!notesWin || notesWin.closed) return;
+    const d = notesWin.document, $ = id => d.getElementById(id);
+    if (!$('cur')) return;
+    const n = stepsOf(cur).length;
+    $('pos').textContent = `Slide ${cur + 1} of ${slides.length}`;
+    $('cur').textContent = slides[cur].dataset.title;
+    $('step').textContent = n ? `Build ${step} of ${n}` : '';
+    $('notes').textContent = slides[cur].querySelector('aside.notes')?.textContent.trim() || '(no notes)';
+    $('next').textContent = slides[cur + 1]?.dataset.title || 'End';
+  }
+  setInterval(() => {
+    if (!notesWin || notesWin.closed) return;
+    const d = notesWin.document, e = Math.floor((Date.now() - slideStarted) / 1000);
+    const c = d.getElementById('clock'), t = d.getElementById('timer');
+    if (c) c.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    if (t) t.textContent = `${String(Math.floor(e / 60)).padStart(2, '0')}:${String(e % 60).padStart(2, '0')}`;
+  }, 1000);
+
+  function onKey(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if (help.classList.contains('open') && k !== '?') { help.classList.remove('open'); return; }
+    if (['ArrowRight', 'ArrowDown', ' ', 'PageDown', 'Enter'].includes(k)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(k)) { e.preventDefault(); prev(); }
+    else if (k === 'Home') go(0);
+    else if (k === 'End') go(slides.length - 1, Infinity);
+    else if (k === 'g' || k === 'G') toggleGrid();
+    else if (k === 'f' || k === 'F') toggleFull();
+    else if (k === 'n' || k === 'N') openNotes();
+    else if (k === '?') help.classList.toggle('open');
+    else if (k === 'Escape') toggleGrid(false);
+  }
+  document.addEventListener('keydown', onKey);
+
+  // Swipe on touch screens.
+  let tx = null, ty = null;
+  addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  addEventListener('touchend', e => {
+    if (tx === null || document.body.classList.contains('grid')) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) (dx < 0 ? next : prev)();
+    tx = null;
+  });
+
+  // Hide the toolbar while presenting.
+  let idle;
+  addEventListener('mousemove', () => {
+    document.body.classList.remove('idle');
+    clearTimeout(idle);
+    idle = setTimeout(() => document.body.classList.add('idle'), 2200);
+  });
+
+  document.getElementById('b-grid').onclick = () => toggleGrid();
+  document.getElementById('b-notes').onclick = openNotes;
+  document.getElementById('b-full').onclick = toggleFull;
+  document.getElementById('b-pdf').onclick = () => window.print();
+  document.getElementById('b-help').onclick = () => help.classList.toggle('open');
+  help.onclick = () => help.classList.remove('open');
+
+  // Print: every slide on its own page with builds and counters finished.
+  addEventListener('beforeprint', () => {
+    root.style.setProperty('--s', 1);
+    deck.querySelectorAll('[data-count]').forEach(el => el.textContent = el.dataset.count);
+  });
+  addEventListener('afterprint', fit);
+  addEventListener('resize', fit);
+  addEventListener('hashchange', () => { const [i, s] = parse(); if (i !== cur || s !== step) go(i, s); });
+
+  fit();
+  const [i0, s0] = parse();
+  cur = -1;
+  go(i0, s0);
+  idle = setTimeout(() => document.body.classList.add('idle'), 2200);
+})();
+</script>
+</body>
+</html>
