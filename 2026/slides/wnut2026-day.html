@@ -168,8 +168,8 @@ p { font-size: var(--body); line-height: 1.4; }
 .until { font-size: 40px; color: var(--muted); font-variant-numeric: tabular-nums; }
 
 /* Q&A: the speaker card, as on the website */
-.qa-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 72px; align-items: center; padding: 64px 72px; margin-bottom: 20px; }
-.qa-card img { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 8px solid #F6F8FB; box-shadow: 0 0 0 2px var(--line), 0 8px 28px rgba(23,56,94,.12); }
+.qa-card { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 72px; align-items: center; padding: 64px 72px; margin-bottom: 20px; }
+.qa-card img { width: 380px; height: 380px; border-radius: 50%; object-fit: cover; border: 8px solid #F6F8FB; box-shadow: 0 0 0 2px var(--line), 0 8px 28px rgba(23,56,94,.12); }
 .qa-card .qa-title { font: 700 56px/1.2 var(--font); letter-spacing: -1px; color: var(--heading); text-wrap: balance; }
 .qa-card .qa-who { font-size: 40px; color: var(--muted); margin-top: 28px; }
 .qa-card .qa-who b { color: var(--heading); font-weight: 600; }
@@ -208,8 +208,8 @@ p { font-size: var(--body); line-height: 1.4; }
 
 /* Schedule timeline (website agenda) */
 .timeline { list-style: none; background: #fff; border: 2px solid var(--line); border-radius: 28px; padding: 28px 52px; }
-.timeline li { position: relative; display: grid; grid-template-columns: 270px minmax(0,1fr) 230px; gap: 24px; align-items: start; padding: 0 0 6px 60px; font-size: 27px; line-height: 1.3; }
-.timeline li::before { content: ''; position: absolute; left: 13px; top: 30px; bottom: -18px; width: 4px; background: #C5D8F0; }
+.timeline li { position: relative; display: grid; grid-template-columns: 270px minmax(0,1fr) 230px; gap: 24px; align-items: start; padding: 0 0 14px 60px; font-size: 27px; line-height: 1.3; }
+.timeline li::before { content: ''; position: absolute; left: 13px; top: 30px; bottom: -14px; width: 4px; background: #C5D8F0; }
 .timeline li:last-child { padding-bottom: 0; }
 .timeline li:last-child::before { display: none; }
 .timeline li::after { content: ''; position: absolute; left: 0; top: 14px; width: 30px; height: 30px; border: 4px solid var(--accent); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px #fff; }
@@ -238,18 +238,32 @@ p { font-size: var(--body); line-height: 1.4; }
 
 /* Invited talk cards (opening) */
 .talk-card { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 36px 40px; }
-.talk-card img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 6px solid #fff; box-shadow: 0 0 0 2px var(--line), 0 8px 24px rgba(15,25,50,.1); margin-bottom: 8px; }
+.talk-card img { width: 210px; height: 210px; border-radius: 50%; object-fit: cover; border: 6px solid #fff; box-shadow: 0 0 0 2px var(--line), 0 8px 24px rgba(15,25,50,.1); margin-bottom: 8px; }
 .talk-when { font-size: 30px; color: var(--heading); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .talk-when .room { font-size: 24px; font-weight: 600; color: var(--accent); background: var(--pale); border-radius: 8px; padding: 4px 16px; }
 .talk-title { font: 700 32px/1.3 var(--font); color: var(--heading); }
 .talk-who { font-size: 26px; color: var(--muted); margin-top: auto; }
 
-/* Thank you: four numbers in one card */
-.thanks { display: grid; grid-template-columns: repeat(4, 1fr); align-items: start; align-content: center; padding: 0; margin-bottom: 20px; }
-.thanks > div { display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; min-height: 290px; padding: 0 56px; border-left: 2px solid var(--line); }
-.thanks > div:first-child { border-left: 0; }
-.thanks b { font: 700 150px/1 var(--font); letter-spacing: -2px; color: var(--accent); }
-.thanks span { font: 600 36px/1.3 var(--font); color: var(--heading); }
+/* Thank you: 2 x 2 grid, number beside its label */
+.thanks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, 1fr); align-self: center; width: 100%; max-width: 1600px; padding: 0; margin: 0 auto 20px; }
+.thanks > div { display: grid; grid-template-columns: 230px minmax(0, 1fr); align-items: center; gap: 36px; padding: 44px 48px; }
+.thanks > div:nth-child(odd) { border-right: 2px solid var(--line); }
+.thanks > div:nth-child(-n+2) { border-bottom: 2px solid var(--line); }
+.thanks b { font: 700 160px/1 var(--font); letter-spacing: -2px; color: var(--accent); text-align: right; font-variant-numeric: tabular-nums; }
+.thanks span { font: 600 40px/1.25 var(--font); color: var(--heading); }
+
+/* Organizers: 4 x 2 grid, photo above name; contact as a separate panel */
+.orgs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-content: center; gap: 36px 40px; margin-bottom: 12px; }
+.org { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; min-width: 0; }
+.org img { width: 196px; height: 196px; flex-shrink: 0; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,.9); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.org b { display: block; font: 700 32px/1.2 var(--font); color: #fff; white-space: nowrap; }
+.org span { display: block; font-size: 24px; line-height: 1.3; color: var(--muted); margin-top: 4px; }
+.org.contact { align-self: center; align-items: flex-start; text-align: left; gap: 0; padding: 40px 40px 36px;
+  border: 2px solid rgba(230,184,92,.55); border-radius: 24px; background: rgba(230,184,92,.07); }
+.contact-label { display: flex; align-items: center; gap: 12px; font: 700 22px/1 var(--font); letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.contact-label svg { width: 30px; height: 30px; }
+.contact-mail { margin-top: 22px; font: 700 34px/1.2 var(--font); color: #fff; white-space: nowrap; }
+.contact-name { margin-top: 8px; font-size: 26px; color: var(--muted); }
 
 /* Program committee names */
 .pc { list-style: none; columns: 5; column-gap: 40px; font-size: 22px; line-height: 1.55; color: var(--heading); }
@@ -328,6 +342,7 @@ aside.notes { display: none; }
 .talk-card { padding: 8px 48px; border-left: 2px solid var(--line) !important; }
 .talk-card:first-child { border-left: 0 !important; padding-left: 0; }
 .talk-card .talk-who { margin-top: 6px; }
+.slide:has(.talk-card) .cards.c3 { align-content: center; align-items: start; margin-bottom: 20px; }
 .talk-card img { border-color: rgba(255,255,255,.9); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
 .talk-when .room { background: var(--pale); color: var(--accent-2); }
 
@@ -350,12 +365,20 @@ aside.notes { display: none; }
 .qa-card img { border-color: rgba(255,255,255,.9); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
 
 /* Thank you: numbers on the background */
-.thanks > div:first-child { padding-left: 0; }
-.thanks b { font-size: 180px; }
 
 /* People and lists */
 .person img { border-color: rgba(255,255,255,.9); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
 .thanks-pc b { color: var(--accent); }
+
+/* Talk countdown, top-right corner */
+.countdown { position: absolute; top: 56px; right: 128px; z-index: 2; display: flex; align-items: baseline; gap: 14px;
+  padding: 12px 26px; border-radius: 14px; background: rgba(10,18,40,.55); border: 2px solid rgba(230,184,92,.35);
+  font: 600 26px/1.1 var(--font); color: rgba(255,255,255,.75); font-variant-numeric: tabular-nums; }
+.countdown:empty { display: none; }
+.countdown b { font-size: 48px; font-weight: 700; color: var(--gold); letter-spacing: -1px; }
+.countdown.warn { border-color: rgba(242,139,107,.6); }
+.countdown.warn b { color: #F28B6B; }
+.countdown.over { border-color: rgba(242,139,107,.6); color: #F28B6B; }
 
 @media (prefers-reduced-motion: reduce) {
   .step, .progress i { transition: none !important; }
@@ -460,10 +483,11 @@ aside.notes { display: none; }
 <!-- ============ KEYNOTE 1 ============ -->
 
 <section class="slide hero" data-title="Keynote 1 · Schütze" data-session="k1">
+  <p class="countdown" data-from="09:30" data-to="10:30" aria-live="off"></p>
   <div class="speaker">
     <img src="../image/Hinrich_Schütze.jpg" alt="Hinrich Schütze">
     <div class="talk">
-      <span class="pill">Keynote 1 · 09:30 – 10:30</span>
+      <span class="pill">Keynote 1</span>
       <h2>Language Identification in the (Pretraining) Data Processing Pipeline – State of the Art and Open Problems</h2>
       <p class="who"><b>Hinrich Schütze</b> <span>· University of Munich</span></p>
       <p class="chair">Chair: JinYeong Bak</p>
@@ -473,7 +497,8 @@ aside.notes { display: none; }
 </section>
 
 <section class="slide qa" data-title="Q&A · Schütze" data-session="k1">
-  <div class="head"><p class="eyebrow">Keynote 1 · Q&amp;A until 10:30</p><h2>Questions &amp; discussion</h2></div>
+  <p class="countdown" data-from="09:30" data-to="10:30" aria-live="off"></p>
+  <div class="head"><p class="eyebrow">Keynote 1 · Q&amp;A</p><h2>Questions &amp; discussion</h2></div>
   <div class="card qa-card grow">
     <img src="../image/Hinrich_Schütze.jpg" alt="">
     <div>
@@ -496,7 +521,6 @@ aside.notes { display: none; }
 <!-- ============ ORAL SESSION ============ -->
 
 <section class="slide hero" data-title="Oral presentations" data-session="oral">
-  <span class="pill">11:00 – 12:30</span>
   <h1>Oral presentations</h1>
   <aside class="notes">Talks follow on the next slides in order. To add one slide per talk, set oral: 1, 2, 3 … on those papers in the PAPERS list and ORAL_MINUTES to the slot length.</aside>
 </section>
@@ -514,10 +538,11 @@ aside.notes { display: none; }
 <!-- ============ KEYNOTE 2 ============ -->
 
 <section class="slide hero" data-title="Keynote 2 · Yoo" data-session="k2">
+  <p class="countdown" data-from="14:00" data-to="15:00" aria-live="off"></p>
   <div class="speaker">
     <img src="../image/haneul_yoo.jpg" alt="Haneul Yoo">
     <div class="talk">
-      <span class="pill">Keynote 2 · 14:00 – 15:00</span>
+      <span class="pill">Keynote 2</span>
       <h2>Enhancing Multilingual LLMs with Code-Switching</h2>
       <p class="who"><b>Haneul Yoo</b> <span>· New York University</span></p>
       <p class="chair">Chair: Weerayut Buaphet</p>
@@ -527,7 +552,8 @@ aside.notes { display: none; }
 </section>
 
 <section class="slide qa" data-title="Q&A · Yoo" data-session="k2">
-  <div class="head"><p class="eyebrow">Keynote 2 · Q&amp;A until 15:00</p><h2>Questions &amp; discussion</h2></div>
+  <p class="countdown" data-from="14:00" data-to="15:00" aria-live="off"></p>
+  <div class="head"><p class="eyebrow">Keynote 2 · Q&amp;A</p><h2>Questions &amp; discussion</h2></div>
   <div class="card qa-card grow">
     <img src="../image/haneul_yoo.jpg" alt="">
     <div>
@@ -554,10 +580,11 @@ aside.notes { display: none; }
 <!-- ============ KEYNOTE 3 ============ -->
 
 <section class="slide hero" data-title="Keynote 3 · Antoniak" data-session="k3">
+  <p class="countdown" data-from="16:00" data-to="17:00" aria-live="off"></p>
   <div class="speaker">
     <img src="../image/Maria_Antoniak.jpg" alt="Maria Antoniak">
     <div class="talk">
-      <span class="pill">Keynote 3 · 16:00 – 17:00</span>
+      <span class="pill">Keynote 3</span>
       <h2>When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</h2>
       <p class="who"><b>Maria Antoniak</b> <span>· University of Colorado Boulder</span></p>
       <p class="chair">Chair: Alan Ramponi</p>
@@ -567,7 +594,8 @@ aside.notes { display: none; }
 </section>
 
 <section class="slide qa" data-title="Q&A · Antoniak" data-session="k3">
-  <div class="head"><p class="eyebrow">Keynote 3 · Q&amp;A until 17:00</p><h2>Questions &amp; discussion</h2></div>
+  <p class="countdown" data-from="16:00" data-to="17:00" aria-live="off"></p>
+  <div class="head"><p class="eyebrow">Keynote 3 · Q&amp;A</p><h2>Questions &amp; discussion</h2></div>
   <div class="card qa-card grow">
     <img src="../image/Maria_Antoniak.jpg" alt="">
     <div>
@@ -586,24 +614,28 @@ aside.notes { display: none; }
   <div class="card thanks grow">
     <div><b>3</b><span>invited speakers</span></div>
     <div><b>26</b><span>papers and their authors</span></div>
-    <div><b>86</b><span>program committee members</span></div>
     <div><b>7</b><span>organizers</span></div>
+    <div><b>86</b><span>program committee members</span></div>
   </div>
-  <aside class="notes">Thank the speakers, authors, reviewers, chairs and everyone who attended.</aside>
+  <aside class="notes">Thank the speakers, authors, organizers, reviewers and everyone who attended. The next two slides show the organizers and the program committee.</aside>
 </section>
 
 <section class="slide" data-title="Organizers" data-session="closing">
   <div class="head"><p class="eyebrow">Thank you</p><h2>Organizers</h2></div>
-  <div class="people grow" style="align-content:center">
-    <div class="person"><img src="../image/JinYeong.jpg" alt=""><b>JinYeong Bak</b><span>SungKyunKwan University</span></div>
-    <div class="person"><img src="../image/rob.jpg" alt=""><b>Rob van der Goot</b><span>IT University of Copenhagen</span></div>
-    <div class="person"><img src="../image/hyeju_2020.png" alt=""><b>Hyeju Jang</b><span>Indiana University Indianapolis</span></div>
-    <div class="person"><img src="../image/Weerayut.png" alt=""><b>Weerayut Buaphet</b><span>Cariva</span></div>
-    <div class="person"><img src="../image/alan.jpg" alt=""><b>Alan Ramponi</b><span>Fondazione Bruno Kessler</span></div>
-    <div class="person"><img src="../image/weixu_profile_square.png" alt=""><b>Wei Xu</b><span>Georgia Institute of Technology</span></div>
-    <div class="person"><img src="../image/ritter_profile_square.png" alt=""><b>Alan Ritter</b><span>Georgia Institute of Technology</span></div>
+  <div class="orgs grow">
+    <div class="org"><img src="../image/JinYeong.jpg" alt=""><div><b>JinYeong Bak</b><span>SungKyunKwan University</span></div></div>
+    <div class="org"><img src="../image/rob.jpg" alt=""><div><b>Rob van der Goot</b><span>IT University of Copenhagen</span></div></div>
+    <div class="org"><img src="../image/hyeju_2020.png" alt=""><div><b>Hyeju Jang</b><span>Indiana University Indianapolis</span></div></div>
+    <div class="org"><img src="../image/Weerayut.png" alt=""><div><b>Weerayut Buaphet</b><span>Cariva</span></div></div>
+    <div class="org"><img src="../image/alan.jpg" alt=""><div><b>Alan Ramponi</b><span>Fondazione Bruno Kessler</span></div></div>
+    <div class="org"><img src="../image/weixu_profile_square.png" alt=""><div><b>Wei Xu</b><span>Georgia Institute of Technology</span></div></div>
+    <div class="org"><img src="../image/ritter_profile_square.png" alt=""><div><b>Alan Ritter</b><span>Georgia Institute of Technology</span></div></div>
+    <div class="org contact">
+      <p class="contact-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Contact</p>
+      <p class="contact-mail">jy.bak@skku.edu</p>
+      <p class="contact-name">JinYeong Bak</p>
+    </div>
   </div>
-  <p class="thanks-pc">Contact: <b>JinYeong Bak</b> · jy.bak@skku.edu</p>
   <aside class="notes">Thank the organizing team. For follow-up questions, email JinYeong Bak.</aside>
 </section>
 
@@ -706,6 +738,7 @@ aside.notes { display: none; }
         const from = addMin(ORAL_START, i * ORAL_MINUTES), to = addMin(from, ORAL_MINUTES);
         const dots = orals.map((_, k) => `<i class="${k < i ? 'done' : k === i ? 'on' : ''}"></i>`).join('');
         return `<section class="slide" data-title="Oral ${i + 1}" data-session="oral" style="justify-content:center">
+          <p class="countdown" data-from="${from}" data-to="${to}"></p>
           <p class="eyebrow">Oral presentation ${i + 1} of ${orals.length}</p>
           <p class="slot">${from} – ${to}</p>
           <p class="paper-title">${esc(p.title)}</p>
@@ -736,7 +769,7 @@ aside.notes { display: none; }
   // Now / Next footer on every slide.
   const index = Object.fromEntries(SESSIONS.map((s, i) => [s.id, i]));
   deck.querySelectorAll('.slide[data-session]').forEach(slide => {
-    if (slide.dataset.session === 'end') return;
+    if (slide.dataset.session === 'end' || slide.classList.contains('pause')) return;
     const i = index[slide.dataset.session], now = SESSIONS[i], next = SESSIONS[i + 1];
     const foot = document.createElement('div');
     foot.className = 'foot';
@@ -756,6 +789,30 @@ aside.notes { display: none; }
   }
   tickUntil();
   setInterval(tickUntil, 15000);
+
+  // Talk countdowns: time left in the slot, from this computer's clock.
+  const toSec = hhmm => { const [h, m] = hhmm.split(':').map(Number); return h * 3600 + m * 60; };
+  const two = n => String(n).padStart(2, '0');
+  function tickTalks() {
+    const d = new Date(), now = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+    document.querySelectorAll('.countdown[data-to]').forEach(el => {
+      const from = toSec(el.dataset.from), to = toSec(el.dataset.to);
+      el.classList.remove('warn', 'over');
+      if (now < from) {
+        const mins = Math.ceil((from - now) / 60);
+        el.innerHTML = mins > 60 ? '' : `Starts in <b>${mins} min</b>`;
+      } else if (now < to) {
+        const left = to - now;
+        el.innerHTML = `<b>${two(Math.floor(left / 60))}:${two(left % 60)}</b> left`;
+        if (left <= 300) el.classList.add('warn');
+      } else {
+        el.textContent = "Time's up";
+        el.classList.add('over');
+      }
+    });
+  }
+  tickTalks();
+  setInterval(tickTalks, 1000);
 })();
 
 (() => {
