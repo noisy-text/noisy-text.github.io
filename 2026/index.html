@@ -60,9 +60,9 @@
     /* Hero banner */
     .hero-banner {
       width: 100%;
-      min-height: 320px;
-      padding: 32px 20px;
-      background: linear-gradient(rgba(15, 25, 50, 0.45), rgba(15, 25, 50, 0.45)),
+      min-height: 400px;
+      padding: 64px 20px 56px;
+      background: linear-gradient(180deg, rgba(12, 22, 45, 0.55) 0%, rgba(12, 22, 45, 0.82) 100%),
         url('image/background.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
@@ -70,28 +70,77 @@
       text-align: center;
     }
 
-    .hero-banner h1 {
-      font-size: 2em;
-      font-weight: bold;
+    .hero-copy {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      margin: 0 0 16px;
+      padding: 4px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
       color: #fff;
-      line-height: 1.3;
-      margin: 0 0 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .hero-banner h1 { text-wrap: balance; }
-
-    @media (min-width: 1200px) {
-      .hero-banner h1 {
-        font-size: clamp(24px, 2.1vw, 32px);
-        white-space: nowrap;
-      }
+    .hero-banner h1 {
+      font-size: clamp(28px, 3.4vw, 44px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      text-wrap: balance;
     }
-    .workshop-acronym { white-space: nowrap; }
 
-    .hero-banner p {
-      color: rgba(255, 255, 255, 0.85);
+    .workshop-acronym { white-space: nowrap; color: #9cc3ec; }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 12px;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .hero-meta li {
       margin: 0;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 15px;
+      line-height: 1.5;
     }
+
+    .hero-meta strong { color: #fff; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .hero-actions a {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .hero-actions a:first-child { background: #fff; border-color: #fff; color: #1a2a4a; }
+    .hero-actions a:hover { text-decoration: none; opacity: 0.9; }
 
     .intro-section {
       padding-top: 24px;
@@ -102,16 +151,10 @@
     .intro-section h3 {
       font-weight: bold;
       font-size: 1.5em;
-      margin-bottom: 0.3em;
-    }
-
-    .hero-copy {
-      width: 100%;
-      max-width: 1280px;
-      background: rgba(10, 18, 40, 0.65);
-      padding: 24px 32px;
-      border-radius: 12px;
-      backdrop-filter: blur(2px);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: #1a2a4a;
+      margin-bottom: 0.5em;
     }
 
 
@@ -168,9 +211,24 @@
       border-radius: 6px;
     }
 
+    .section-nav a {
+      border-left: 2px solid transparent;
+      border-radius: 0 6px 6px 0;
+      color: #52657a;
+    }
+
     .section-nav a:hover,
     .section-nav a:focus {
       background: #e8eff7;
+      color: #1a2a4a;
+      text-decoration: none;
+    }
+
+    .section-nav a.is-active {
+      border-left-color: #2e6da4;
+      background: #e8eff7;
+      color: #1a2a4a;
+      font-weight: 600;
     }
 
     .content {
@@ -183,13 +241,25 @@
     }
 
     .content h2 {
+      position: relative;
       scroll-margin-top: 24px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       padding-bottom: 12px;
-      margin-bottom: 20px;
-      font-weight: bold;
-      font-size: 1.35em;
-      color: #37477c;
+      margin-bottom: 24px;
+      font-weight: 700;
+      font-size: 1.5em;
+      letter-spacing: -0.01em;
+      color: #1a2a4a;
+    }
+
+    .content h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      border-radius: 2px;
+      background: #2e6da4;
     }
 
     .content .table-responsive {
@@ -287,7 +357,20 @@
     .directory-meta { font-size: 15px; line-height: 1.5; color: #52657a; margin: 0; }
     #accepted-papers-panel > h2 { padding-bottom: 8px; margin-bottom: 8px; }
     .papers-summary { font-size: 14px; color: #52657a; margin-bottom: 10px; }
-    .papers-list .directory-item { padding: 7px 0; border-bottom: 0; }
+    .papers-list { counter-reset: paper; }
+    .papers-list .directory-item { position: relative; padding: 8px 0 8px 40px; border-bottom: 0; counter-increment: paper; }
+    .papers-list .directory-item::before {
+      content: counter(paper);
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 28px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #8a9bb0;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
     .papers-list .directory-title { font-size: 16px; line-height: 1.4; margin-bottom: 2px; }
     .papers-list .directory-meta { font-size: 14px; line-height: 1.4; }
 
@@ -338,7 +421,9 @@
       body { font-size: 16px; }
       .container { padding: 0 20px; }
       .hero-copy { padding: 20px; }
+      .hero-banner { min-height: 0; padding: 40px 16px 36px; }
       .hero-banner h1 { font-size: 1.7em; }
+      .hero-meta li { font-size: 14px; }
       .content-section { margin-bottom: 36px; }
       .content .table { font-size: 14px; }
       .content .table > thead > tr > th,
@@ -394,20 +479,29 @@
 
     .organizer-card .org-name {
       margin-bottom: 4px;
+      font-size: 1.1em;
+      font-weight: 600;
     }
+
+    .organizer-card .org-name a { color: #1a2a4a; }
+    .organizer-card .org-name a:hover { color: #2e6da4; }
+    .organizer-card .org-meta { color: #52657a; line-height: 1.5; }
 
     /* Invited talks */
     .talk-list { list-style: none; padding: 0; margin: 0; }
+    .talk-list { display: grid; gap: 16px; }
     .talk-card {
       display: grid;
       grid-template-columns: 120px minmax(0, 1fr);
-      gap: 24px;
+      gap: 28px;
       margin: 0;
-      padding: 24px 0;
-      border-bottom: 1px solid #dfe5ed;
+      padding: 28px;
+      border: 1px solid #dfe5ed;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(15, 25, 50, 0.04);
       scroll-margin-top: 24px;
     }
-    .talk-card:first-child { padding-top: 4px; }
     .talk-card img {
       width: 120px;
       height: 120px;
@@ -424,11 +518,13 @@
     .talk-bio summary { display: list-item; cursor: pointer;color: #2e6da4; font-size: 15px; font-weight: 600; }
     .talk-bio p { font-size: 15px; line-height: 1.6; color: #52657a; margin: 8px 0 0; }
     .schedule-date { margin-bottom: 12px; }
+    .content .table-striped > tbody > tr.is-talk > td { background: #eef4fb; }
+    .content .table > tbody > tr.is-talk > td:first-child { box-shadow: inset 3px 0 0 #2e6da4; font-weight: 600; color: #1a2a4a; }
     .content .table > tbody > tr > td.schedule-room { white-space: nowrap; color: #52657a; }
     .schedule-talk { display: block; font-size: 13px; color: #52657a; }
 
     @media (max-width: 767px) {
-      .talk-card { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+      .talk-card { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 20px; }
       .talk-card img { width: 96px; height: 96px; }
     }
 
@@ -475,9 +571,9 @@
     }
     .content .next-edition h2 {
       color: #fff;
-      border-bottom-color: rgba(255, 255, 255, 0.2);
       font-size: 1.6em;
     }
+    .content .next-edition h2::after { left: 50%; margin-left: -20px; background: #9cc3ec; }
     .next-edition-subtitle { color: #fff; font-weight: 600; margin-bottom: 4px; }
     .next-edition-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
     .next-edition-actions a {
@@ -494,6 +590,19 @@
     @media (max-width: 767px) {
       .next-edition { padding: 24px 20px; }
     }
+
+    .contact-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding: 12px 20px;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .contact-label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #8a9bb0; }
+    .contact-card a { font-weight: 600; }
 
     /* Footer */
     .page-footer {
@@ -526,9 +635,16 @@
 
   <div class="hero-banner">
     <div class="hero-copy">
+      <p class="hero-eyebrow">EMNLP 2026 Workshop</p>
       <h1>The 11th Workshop on Natural User-generated Text <span class="workshop-acronym">(W-NUT)</span></h1>
-      <p>Oct 28, 2026 &mdash; collocated with <strong>EMNLP 2026</strong></p>
-      <p>Room G15-16, HUNGEXPO Budapest Congress & Exhibition Center, Budapest, Hungary</p>
+      <ul class="hero-meta">
+        <li><strong>Oct 28, 2026</strong> &middot; collocated with EMNLP 2026</li>
+        <li>Room G15-16, HUNGEXPO Budapest Congress &amp; Exhibition Center, Budapest, Hungary</li>
+      </ul>
+      <div class="hero-actions">
+        <a href="#schedule">Workshop schedule</a>
+        <a href="#papers">Accepted papers</a>
+      </div>
     </div>
   </div>
 
@@ -720,7 +836,7 @@
                   <td>Welcome</td>
                   <td class="schedule-room"></td>
                 </tr>
-                <tr>
+                <tr class="is-talk">
                   <td style="white-space: nowrap;">09:30 - 10:30</td>
                   <td><a href="#talk-schuetze">Invited Talk: Hinrich Schütze</a>
                     <span class="schedule-talk">Language Identification in the (Pretraining) Data Processing Pipeline</span></td>
@@ -741,7 +857,7 @@
                   <td>Lunch</td>
                   <td class="schedule-room"></td>
                 </tr>
-                <tr>
+                <tr class="is-talk">
                   <td style="white-space: nowrap;">14:00 - 15:00</td>
                   <td><a href="#talk-yoo">Invited Talk: Haneul Yoo</a>
                     <span class="schedule-talk">Enhancing Multilingual LLMs with Code-Switching</span></td>
@@ -757,7 +873,7 @@
                   <td>Coffee Break &amp; Networking</td>
                   <td class="schedule-room"></td>
                 </tr>
-                <tr>
+                <tr class="is-talk">
                   <td style="white-space: nowrap;">16:00 - 17:00</td>
                   <td><a href="#talk-antoniak">Invited Talk: Maria Antoniak</a>
                     <span class="schedule-talk">When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</span></td>
@@ -1014,7 +1130,8 @@
 
       <section class="content-section" aria-labelledby="contact">
         <h2 id="contact">Contact</h2>
-        <a href="mailto:jy.bak@skku.edu">jy.bak@skku.edu</a>
+        <p class="contact-card"><span class="contact-label">Email</span>
+          <a href="mailto:jy.bak@skku.edu">jy.bak@skku.edu</a></p>
 
 
 
@@ -1459,6 +1576,25 @@
     });
 
     const sectionNav = document.querySelector('.section-nav');
+    const navLinks = Array.from(sectionNav.querySelectorAll('a[href^="#"]'));
+    const navTargets = navLinks.map(function (link) {
+      return { link: link, target: document.getElementById(link.hash.slice(1)) };
+    }).filter(function (item) { return item.target; });
+    let spyQueued = false;
+    function updateActiveNav() {
+      spyQueued = false;
+      let current = null;
+      navTargets.forEach(function (item) {
+        if (item.target.offsetParent !== null && item.target.getBoundingClientRect().top <= 140) current = item;
+      });
+      navLinks.forEach(function (link) {
+        link.classList.toggle('is-active', current !== null && link === current.link);
+      });
+    }
+    window.addEventListener('scroll', function () {
+      if (!spyQueued) { spyQueued = true; requestAnimationFrame(updateActiveNav); }
+    }, { passive: true });
+    updateActiveNav();
     const sectionToggle = document.querySelector('.section-nav-toggle');
     sectionToggle.addEventListener('click', function () {
       const expanded = sectionNav.classList.toggle('is-open');
