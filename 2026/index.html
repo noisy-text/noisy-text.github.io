@@ -60,9 +60,10 @@
     /* Hero banner */
     .hero-banner {
       width: 100%;
-      min-height: 320px;
-      padding: 32px 20px;
-      background: linear-gradient(rgba(15, 25, 50, 0.45), rgba(15, 25, 50, 0.45)),
+      min-height: 0;
+      padding: 44px 20px 40px;
+      background: radial-gradient(ellipse at center, rgba(10, 18, 40, 0.55) 0%, rgba(10, 18, 40, 0) 70%),
+        linear-gradient(180deg, rgba(10, 18, 40, 0.72) 0%, rgba(10, 18, 40, 0.88) 100%),
         url('image/background.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
@@ -70,48 +71,94 @@
       text-align: center;
     }
 
-    .hero-banner h1 {
-      font-size: 2em;
-      font-weight: bold;
+    .hero-copy {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 4px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
       color: #fff;
-      line-height: 1.3;
-      margin: 0 0 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(10, 18, 40, 0.45);
     }
 
-    .hero-banner h1 { text-wrap: balance; }
-
-    @media (min-width: 1200px) {
-      .hero-banner h1 {
-        font-size: clamp(24px, 2.1vw, 32px);
-        white-space: nowrap;
-      }
+    .hero-banner h1 {
+      font-size: clamp(28px, 3.4vw, 44px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+      text-wrap: balance;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
     }
-    .workshop-acronym { white-space: nowrap; }
 
-    .hero-banner p {
-      color: rgba(255, 255, 255, 0.85);
+    .workshop-acronym { white-space: nowrap; color: #b9d6f5; }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 12px;
       margin: 0;
+      padding: 0;
+      list-style: none;
     }
+
+    .hero-meta li {
+      margin: 0;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      background: rgba(10, 18, 40, 0.6);
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .hero-meta strong { color: #fff; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .hero-actions a {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .hero-actions a:first-child { background: #fff; border-color: #fff; color: #1a2a4a; }
+    .hero-actions a:hover { text-decoration: none; opacity: 0.9; }
 
     .intro-section {
-      padding-top: 24px;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 32px;
     }
 
     .intro-section h3 {
       font-weight: bold;
       font-size: 1.5em;
-      margin-bottom: 0.3em;
-    }
-
-    .hero-copy {
-      width: 100%;
-      max-width: 1280px;
-      background: rgba(10, 18, 40, 0.65);
-      padding: 24px 32px;
-      border-radius: 12px;
-      backdrop-filter: blur(2px);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: #1a2a4a;
+      margin-bottom: 0.5em;
     }
 
 
@@ -124,10 +171,10 @@
 
     .page-layout {
       display: grid;
-      grid-template-columns: 200px minmax(0, 1fr);
-      gap: 48px;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 36px;
       align-items: start;
-      padding-top: 32px;
+      padding-top: 28px;
     }
 
     /* Keep Bootstrap's clearfix pseudo-elements out of the grid. */
@@ -142,7 +189,7 @@
       top: 24px;
       max-height: calc(100vh - 48px);
       overflow-y: auto;
-      padding: 20px 0;
+      padding: 0;
       font-size: 15px;
     }
 
@@ -168,9 +215,24 @@
       border-radius: 6px;
     }
 
+    .section-nav a {
+      border-left: 2px solid transparent;
+      border-radius: 0 6px 6px 0;
+      color: #52657a;
+    }
+
     .section-nav a:hover,
     .section-nav a:focus {
       background: #e8eff7;
+      color: #1a2a4a;
+      text-decoration: none;
+    }
+
+    .section-nav a.is-active {
+      border-left-color: #2e6da4;
+      background: #e8eff7;
+      color: #1a2a4a;
+      font-weight: 600;
     }
 
     .content {
@@ -179,17 +241,29 @@
     }
 
     .content-section {
-      margin-bottom: 48px;
+      margin-bottom: 36px;
     }
 
     .content h2 {
+      position: relative;
       scroll-margin-top: 24px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-      font-weight: bold;
-      font-size: 1.35em;
-      color: #37477c;
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+      font-weight: 700;
+      font-size: 1.5em;
+      letter-spacing: -0.01em;
+      color: #1a2a4a;
+    }
+
+    .content h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      border-radius: 2px;
+      background: #2e6da4;
     }
 
     .content .table-responsive {
@@ -220,10 +294,7 @@
     }
 
     .event-tables {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 28px;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .event-tables .content-section {
@@ -244,23 +315,17 @@
       padding: 8px 12px;
     }
 
-    @media (min-width: 1200px) {
-      .event-tables {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-        gap: 24px;
-        align-items: start;
-      }
-    }
-
     #papers,
-    #call {
+    #call,
+    #schedule,
+    #dates {
       scroll-margin-top: 130px;
     }
 
     .paper-tabs {
       display: flex;
       gap: 8px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       border-bottom: 1px solid #cbd5e1;
     }
 
@@ -294,9 +359,21 @@
     .directory-item { margin: 0; padding: 16px 0; border-bottom: 1px solid #dfe5ed; }
     .directory-title { font-size: 17px; line-height: 1.5; font-weight: 600; color: #263b59; margin: 0 0 5px; }
     .directory-meta { font-size: 15px; line-height: 1.5; color: #52657a; margin: 0; }
-    #accepted-papers-panel > h2 { padding-bottom: 8px; margin-bottom: 8px; }
     .papers-summary { font-size: 14px; color: #52657a; margin-bottom: 10px; }
-    .papers-list .directory-item { padding: 7px 0; border-bottom: 0; }
+    .papers-list { counter-reset: paper; }
+    .papers-list .directory-item { position: relative; padding: 8px 0 8px 40px; border-bottom: 0; counter-increment: paper; }
+    .papers-list .directory-item::before {
+      content: counter(paper);
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 28px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #8a9bb0;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
     .papers-list .directory-title { font-size: 16px; line-height: 1.4; margin-bottom: 2px; }
     .papers-list .directory-meta { font-size: 14px; line-height: 1.4; }
 
@@ -347,7 +424,9 @@
       body { font-size: 16px; }
       .container { padding: 0 20px; }
       .hero-copy { padding: 20px; }
+      .hero-banner { padding: 32px 16px 28px; }
       .hero-banner h1 { font-size: 1.7em; }
+      .hero-meta li { font-size: 14px; }
       .content-section { margin-bottom: 36px; }
       .content .table { font-size: 14px; }
       .content .table > thead > tr > th,
@@ -376,8 +455,8 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1em;
-      margin-top: 24px;
+      gap: 24px 8px;
+      margin-top: 8px;
     }
 
     .organizer-card {
@@ -385,8 +464,8 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      flex: 0 1 220px;
-      padding: 12px 4px;
+      flex: 0 1 200px;
+      padding: 0 4px;
     }
 
     .organizer-card {
@@ -394,21 +473,215 @@
     }
 
     .organizer-card img {
-      width: 160px;
-      height: 160px;
+      width: 136px;
+      height: 136px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 10px;
+      border: 4px solid #fff;
+      box-shadow: 0 0 0 1px #dfe5ed, 0 4px 12px rgba(15, 25, 50, 0.08);
     }
 
     .organizer-card .org-name {
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+      font-size: 1.1em;
+      line-height: 1.4;
+      font-weight: 600;
     }
+
+    .organizer-card .org-name a { color: #1a2a4a; }
+    .organizer-card .org-name a:hover { color: #2e6da4; }
+    .organizer-card .org-meta { color: #52657a; line-height: 1.5; }
+
+    /* Invited talks */
+    .talk-list { list-style: none; padding: 0; margin: 0; }
+    .talk-list { display: grid; gap: 12px; }
+    .talk-card {
+      display: grid;
+      grid-template-columns: 104px minmax(0, 1fr);
+      gap: 24px;
+      margin: 0;
+      padding: 24px;
+      border: 1px solid #dfe5ed;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(15, 25, 50, 0.04);
+      scroll-margin-top: 24px;
+    }
+    .talk-card img {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 1px #dfe5ed, 0 4px 12px rgba(15, 25, 50, 0.08);
+    }
+    .talk-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 14px; line-height: 1.5; color: #52657a; margin: 0 0 6px; }
+    .talk-time { font-size: 16px; font-weight: 700; color: #1a2a4a; }
+    .talk-room { padding: 1px 10px; border-radius: 999px; background: #e8eff7; color: #2e6da4; font-weight: 600; }
+    .talk-title { font-size: 1.1em; line-height: 1.45; font-weight: 600; color: #263b59; margin: 0 0 4px; }
+    .talk-speaker { font-size: 16px; margin: 0 0 10px; }
+    .talk-abstract { font-size: 16px; line-height: 1.65; }
+    .talk-abstract.is-pending { color: #52657a; font-style: italic; }
+    .talk-bio summary { display: list-item; cursor: pointer;color: #2e6da4; font-size: 15px; font-weight: 600; }
+    .talk-bio p { font-size: 15px; line-height: 1.6; color: #52657a; margin: 8px 0 0; }
+    .schedule-date { margin-bottom: 12px; }
+    .content .table-striped > tbody > tr.is-talk > td { background: #eef4fb; }
+    .content .table > tbody > tr.is-talk > td:first-child { box-shadow: inset 3px 0 0 #2e6da4; font-weight: 600; color: #1a2a4a; }
+    .content .table > tbody > tr > td.schedule-room { white-space: nowrap; color: #52657a; }
+    .schedule-talk { display: block; font-size: 13px; color: #52657a; }
+
+    @media (max-width: 767px) {
+      .talk-card { display: block; padding: 20px; }
+      .talk-card::after { content: ""; display: table; clear: both; }
+      .talk-card img { float: left; width: 72px; height: 72px; margin: 2px 14px 8px 0; }
+    }
+
+    /* W-NUT 2027 announcement */
+    .next-edition-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 8px 10px 16px;
+      max-width: calc(100vw - 24px);
+      border-radius: 12px;
+      background: #1a2a4a;
+      box-shadow: 0 6px 18px rgba(15, 25, 50, 0.25);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .next-edition-float[hidden] { display: none; }
+    .next-edition-float a { color: #fff; font-weight: 600; }
+    .next-edition-float small { display: block; margin-top: 3px; color: #d4e2f2; font-size: 12px; font-weight: 400; }
+    .next-edition-float a:hover { color: #fff; }
+    .next-edition-float-close {
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+      line-height: 1;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+    .next-edition-float-close:hover { color: #fff; }
+
+    @media (max-width: 767px) {
+      .next-edition-float { right: 12px; bottom: 12px; }
+    }
+    .next-edition {
+      scroll-margin-top: 24px;
+      background: #1a2a4a;
+      color: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .content .next-edition h2 {
+      color: #fff;
+      font-size: 1.6em;
+    }
+    .content .next-edition h2::after { left: 50%; margin-left: -20px; background: #9cc3ec; }
+    .next-edition-subtitle { color: #fff; font-weight: 600; margin-bottom: 4px; }
+    .next-edition-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
+    .next-edition-actions a {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      color: #fff;
+      font-weight: 600;
+    }
+    .next-edition-actions a:first-child { background: #fff; color: #1a2a4a; border-color: #fff; }
+    .next-edition-actions a:hover { text-decoration: none; opacity: 0.9; }
+
+    @media (max-width: 767px) {
+      .next-edition { padding: 24px 20px; }
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 16px;
+      margin: 8px 0 24px;
+    }
+    .topic-card {
+      padding: 20px 22px;
+      border: 1px solid #dfe5ed;
+      border-top: 3px solid #2e6da4;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .content .topic-card h4 {
+      margin: 0 0 10px;
+      padding: 0;
+      border: 0;
+      font-size: 17px;
+      line-height: 1.4;
+      color: #1a2a4a;
+    }
+    .content .topic-card h4 + ul {
+      margin: 0;
+      padding-left: 1.1em;
+      border: 0;
+      list-style-position: outside;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #374151;
+    }
+    .topic-card li { margin-bottom: 6px; }
+
+    .cfp-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+    .button-primary,
+    .button-secondary {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid #1a2a4a;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .button-primary { background: #1a2a4a; color: #fff; }
+    .button-secondary { background: #fff; color: #1a2a4a; }
+    .button-primary:hover,
+    .button-primary:focus { background: #2e6da4; border-color: #2e6da4; color: #fff; text-decoration: none; }
+    .button-secondary:hover,
+    .button-secondary:focus { background: #e8eff7; color: #1a2a4a; text-decoration: none; }
+
+    .feature-card {
+      padding: 24px 28px;
+      border: 1px solid #dfe5ed;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .feature-card p:last-child { margin-bottom: 0; }
+    .feature-card .cfp-actions { margin-top: 16px; }
+
+    .content .table > tbody > tr.is-past > td { color: #8a9bb0; }
+
+    .contact-card {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 12px;
+      margin: 0;
+      padding: 12px 20px;
+      border: 1px solid #dfe5ed;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .contact-card a { font-weight: 600; }
+    .contact-name { font-weight: 600; color: #1a2a4a; white-space: nowrap; }
+    .contact-name::after { content: "\00b7"; margin-left: 12px; color: #8a9bb0; font-weight: 400; }
 
     /* Footer */
     .page-footer {
-      margin-top: 3em;
-      padding: 1.5em 0;
+      margin-top: 1.5em;
+      padding: 1.25em 0;
       border-top: 1px solid rgba(0, 0, 0, 0.08);
       text-align: center;
       font-size: 0.85em;
@@ -423,19 +696,34 @@
       color: #2e6da4;
     }
   </style>
+  <link href="./dist/css/conference.css" rel="stylesheet">
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
 
 
+  <aside class="next-edition-float" id="next-edition-float" aria-label="W-NUT 2027 announcement">
+    <a href="#wnut-2027">W-NUT 2027 @ NAACL 2027 &rarr;
+      <small>San Francisco, USA</small>
+    </a>
+    <button type="button" class="next-edition-float-close" aria-label="Dismiss announcement">&times;</button>
+  </aside>
+
+  <header class="conference-header" id="home">
   <div class="hero-banner">
     <div class="hero-copy">
-      <h1>The 11th Workshop on Natural User-generated Text <span class="workshop-acronym">(W-NUT)</span></h1>
-      <p>Oct 28, 2026 &mdash; collocated with <strong>EMNLP 2026</strong></p>
-      <p>Room G15-16, HUNGEXPO Budapest Congress & Exhibition Center, Budapest, Hungary</p>
+      <p class="hero-eyebrow">EMNLP 2026 Workshop</p>
+      <h1>The 11th Workshop on<br class="hero-title-break"> Natural User-generated Text <span class="workshop-acronym">(W-NUT)</span></h1>
+      <ul class="hero-meta">
+        <li><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h3v3H8z"/></svg><span><strong>Oct 28, 2026</strong><small>collocated with EMNLP 2026</small></span></li>
+        <li><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><span><strong>Room G15-16</strong><small>HUNGEXPO Budapest Congress &amp; Exhibition Center<br>Budapest, Hungary</small></span></li>
+      </ul>
     </div>
   </div>
+
+  </header>
 
   <div class="container page-layout">
 
@@ -444,58 +732,133 @@
       <button class="section-nav-toggle" type="button" aria-expanded="false"
         aria-controls="section-links">On this page <span aria-hidden="true">▾</span></button>
       <ul id="section-links">
-        <li><a href="#shared-task">Shared Task</a></li>
-        <li><a href="#talks">Invited Speakers</a></li>
-        <li><a href="#dates">Important Dates</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#talks">Invited Talks</a></li>
         <li><a href="#schedule">Workshop Schedule</a></li>
+        <li><a href="#dates">Important Dates</a></li>
         <li><a href="#papers">Accepted Papers</a></li>
         <li><a href="#call">Call for Papers</a></li>
+        <li><a href="#shared-task">Shared Task</a></li>
         <li><a href="#organizers">Organizers</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#committee">Program Committee</a></li>
+        <li><a href="#wnut-2027">W-NUT 2027</a></li>
         <li><a href="../history/">Previous Editions</a></li>
       </ul>
     </nav>
-    <main class="content">
+    <main class="content" id="main-content" tabindex="-1">
 
-      <div class="intro-section">
+      <div class="intro-section" id="overview">
+        <img class="intro-illustration" src="image/bud.png" alt="" width="2172" height="724" decoding="async">
         <h3>From Noisy Text to Real-World Applications of LLMs</h3>
         <p>The WNUT workshop on language by people. We focus on language as it occurs in the real world, from noisy text
           to real-world applications of LLMs.</p>
+        <div class="intro-actions"><a class="button-primary" href="#papers">Accepted Papers</a><a class="button-secondary" href="#schedule">View Schedule</a></div>
       </div>
 
-      <section class="content-section" aria-labelledby="shared-task">
-        <h2 id="shared-task">Shared Task</h2>
-        <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non
-          Indo-european languages. After the success of our first MultiLexNorm shared task held in <a
-            href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more
-          varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
-      </section>
 
       <section class="content-section" aria-labelledby="talks">
-        <h2 id="talks">Invited Speakers</h2>
-        <div class="organizer-grid">
-          <div class="organizer-card">
-            <img src="image/haneul_yoo.jpg" alt="Haneul Yoo">
-            <div class="org-name"><a href="https://haneul-yoo.github.io/">Haneul Yoo</a></div>
-            <div class="org-meta">Assistant Professor/Faculty Fellow<br>New York University</div>
-          </div>
-          <div class="organizer-card">
+        <h2 id="talks">Invited Talks</h2>
+        <ul class="talk-list">
+          <li class="talk-card" id="talk-schuetze">
             <img src="image/Hinrich_Schütze.jpg" alt="Hinrich Schütze">
-            <div class="org-name"><a href="https://cisnlp.github.io/about/">Hinrich Schütze</a></div>
-            <div class="org-meta">Professor<br>University of Munich</div>
-          </div>
-          <div class="organizer-card">
+            <div>
+              <p class="talk-meta"><span class="talk-time">09:30 &ndash; 10:30</span> <span class="talk-room">Room G15-16</span> Chair: JinYeong Bak</p>
+              <h3 class="talk-title">Language Identification in the (Pretraining) Data Processing Pipeline &ndash; State of the Art and Open Problems</h3>
+              <p class="talk-speaker"><a href="https://cisnlp.github.io/about/">Hinrich Schütze</a> &middot; Professor, University of Munich</p>
+              <p class="talk-abstract is-pending">Abstract to be announced.</p>
+              <details class="talk-bio">
+                <summary>Speaker bio</summary>
+                <p>Hinrich Schütze is Professor for Computational Linguistics and co-director of the Center for Information
+                  and Language Processing at the University of Munich (LMU Munich). He received his PhD from Stanford in 1995
+                  for his early research on embeddings (ACL Test-of-Time Paper Award). He then worked on natural language
+                  processing and information retrieval technology at Xerox PARC, at several Silicon Valley startups and at
+                  Google 1995-2004 and 2008/9. Hinrich is a coauthor of Foundations of Statistical Natural Language Processing
+                  (with Chris Manning) and Introduction to Information Retrieval (with Chris Manning and Prabhakar Raghavan).
+                  He was awarded a European Research Council Advanced Grant in 2017. Hinrich served as president of the
+                  Association for Computational Linguistics in 2020. He is a member of Academia Europaea and a fellow of ACL,
+                  ELLIS, ELIZA and HessianAI.</p>
+              </details>
+            </div>
+          </li>
+          <li class="talk-card" id="talk-yoo">
+            <img src="image/haneul_yoo.jpg" alt="Haneul Yoo">
+            <div>
+              <p class="talk-meta"><span class="talk-time">14:00 &ndash; 15:00</span> <span class="talk-room">Room G15-16</span> Chair: Weerayut Buaphet</p>
+              <h3 class="talk-title">Enhancing Multilingual LLMs with Code-Switching</h3>
+              <p class="talk-speaker"><a href="https://haneul-yoo.github.io/">Haneul Yoo</a> &middot; Assistant Professor/Faculty Fellow, New York University</p>
+              <p class="talk-abstract">Despite recent advances, large language models (LLMs) exhibit uneven performance across
+                languages and often struggle with code-switching&mdash;the natural alternation between multiple languages.
+                While code-switching is a common and meaningful mode of human communication, LLMs remain brittle to
+                code-switching inputs, treating them as noise. This talk reframes code-switching as a valuable linguistic
+                signal, exploring how it can be leveraged across the LLM lifecycle, from evaluation, to training, to
+                inference. I will begin with output language alignment (OLA), highlighting systematic failures to respond in
+                the expected language in code-switching contexts. I will also introduce code-switching red-teaming (CSRT),
+                which reveals vulnerabilities in safety and multilingual understanding. I will then present code-switching
+                curriculum learning (CSCL), a data-efficient approach to cross-lingual transfer inspired by human
+                second-language learning. Finally, I will introduce code-switching in-context learning (CSICL), which uses
+                gradual transitions from a target language to English to improve multilingual generalization without
+                additional training.</p>
+              <details class="talk-bio">
+                <summary>Speaker bio</summary>
+                <p>Haneul Yoo is an Assistant Professor/Faculty Fellow in the Department of Computer Science, Courant
+                  Institute School of Mathematics, Computing, and Data Science at New York University. She is also a Research
+                  Fellow with the Social Innovation and Special Projects Team in the Division of Policy, Evaluation and
+                  Training, Department of Peace Operations at the United Nations. She received her PhD from the School of
+                  Computing at KAIST. With a background in machine learning (ML) and natural language processing (NLP), she
+                  has worked on (1) developing language models and methods to improve generalization across languages, (2)
+                  designing resources and evaluation frameworks for underrepresented languages and cultures, and (3) applying
+                  AI in high-stakes, real-world domains for social good. She has published papers in major NLP conferences,
+                  including ACL, EMNLP, and NAACL, and has been named a Rising Star at KAIST exploreCSR supported by Google.
+                  She has served as a Social Chair at NeurIPS 2026 and co-organized the Multilingual and Equitable Language
+                  Technologies (MELT) workshop at COLM 2025, the Women in Machine Learning (WiML) symposium at ICML 2026, and
+                  the Generative AI for the World (GenAI4World) workshop at COLM 2026.</p>
+              </details>
+            </div>
+          </li>
+          <li class="talk-card" id="talk-antoniak">
             <img src="image/Maria_Antoniak.jpg" alt="Maria Antoniak">
-            <div class="org-name"><a href="https://maria-antoniak.github.io/">Maria Antoniak</a></div>
-            <div class="org-meta">Assistant Professor<br>University of Colorado Boulder</div>
-          </div>
-        </div>
+            <div>
+              <p class="talk-meta"><span class="talk-time">16:00 &ndash; 17:00</span> <span class="talk-room">Room G15-16</span> Chair: Alan Ramponi</p>
+              <h3 class="talk-title">When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</h3>
+              <p class="talk-speaker"><a href="https://maria-antoniak.github.io/">Maria Antoniak</a> &middot; Assistant Professor, University of Colorado Boulder</p>
+              <p class="talk-abstract">In computational studies of humanistic tasks such as storytelling and poetry, we often
+                encounter datasets whose features frustrate standard NLP pipelines. In this talk, I'll draw on three settings
+                where my collaborators and I have run into this friction. First, I'll discuss user&ndash;chatbot
+                conversations like WildChat, where creative requests are long, detailed, and frequently revised, making these
+                logs a rich but also complicated view of how people write with chatbots. Second, I'll describe our
+                development of a fine-grained narrative annotation scheme for very large-scale, heterogeneous web text in
+                pretraining data, where operationalizing a humanities concept is complicated by data diversity. Third, I'll
+                turn to poetry, where the linearization systems used to build training corpora routinely flatten or delete
+                formatting that poets use deliberately. Across these cases, I'll argue that what counts as noise depends on
+                who is reading and for what purpose, and that taking humanistic perspectives seriously can help us build
+                data practices, annotation schemes, and evaluations that better reflect how people actually use
+                language.</p>
+              <details class="talk-bio">
+                <summary>Speaker bio</summary>
+                <p>Maria Antoniak is an Assistant Professor of Computer Science at the University of Colorado Boulder where
+                  she is also affiliated with the Department of Information Science and a member of the Boulder NLP Group.
+                  Previously, she was a Young Investigator at the Allen Institute for AI and a postdoc at the Pioneer Centre
+                  for AI at the University of Copenhagen. She completed her PhD in Information Science at Cornell University
+                  and her master&rsquo;s degree in Computational Linguistics at the University of Washington. She has also
+                  spent time at places like ETH Zürich, Microsoft Research FATE, Twitter Cortex, and Facebook Core Data
+                  Science. Her research is in natural language processing and cultural analytics.</p>
+              </details>
+            </div>
+          </li>
+        </ul>
       </section>
 
       <div class="event-tables">
-        <section class="content-section" aria-labelledby="dates">
-          <h2 id="dates">Important Dates</h2>
+        <h2>Workshop Schedule</h2>
+        <div class="paper-tabs" role="tablist" aria-label="Workshop information">
+          <button type="button" id="schedule-tab" role="tab" aria-selected="true"
+            aria-controls="schedule" tabindex="0">Workshop Schedule</button>
+          <button type="button" id="dates-tab" role="tab" aria-selected="false"
+            aria-controls="dates" tabindex="-1">Important Dates</button>
+        </div>
+        <section id="dates" class="content-section paper-panel" role="tabpanel"
+          aria-labelledby="dates-tab" tabindex="0" hidden>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -505,27 +868,27 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr class="is-past">
                   <td style="white-space: nowrap;">July 25th</td>
                   <td>Submission Deadline (anytime on earth; dual-submission allowed)</td>
                 </tr>
-                <tr>
+                <tr class="is-past">
                   <td style="white-space: nowrap;">August 22nd</td>
                   <td>ARR Commitment Date</td>
                 </tr>
-                <tr>
+                <tr class="is-past">
                   <td style="white-space: nowrap;">August 25th</td>
                   <td>Acceptance Notification</td>
                 </tr>
-                <tr>
+                <tr class="is-past">
                   <td style="white-space: nowrap;">September 6th</td>
                   <td>Camera-Ready Deadline</td>
                 </tr>
-                <tr>
+                <tr class="is-past">
                   <td style="white-space: nowrap;">September 11th</td>
                   <td>EMNLP 2026 Findings Deadline</td>
                 </tr>
-                <tr>
+                <tr class="is-talk">
                   <td style="white-space: nowrap;">October 28th</td>
                   <td>Workshop Day</td>
                 </tr>
@@ -534,72 +897,35 @@
           </div>
         </section>
 
-        <section class="content-section" aria-labelledby="schedule">
-          <h2 id="schedule">Workshop Schedule</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Time</th>
-                  <th scope="col">Name</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="white-space: nowrap;">09:00 - 09:30</td>
-                  <td>Welcome</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">09:30 - 10:30</td>
-                  <td>Keynote 1 (TBA)</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">10:30 - 11:00</td>
-                  <td>Coffee Break &amp; Networking</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">11:00 - 12:30</td>
-                  <td>Oral Presentation</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">12:30 - 14:00</td>
-                  <td>Lunch</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">14:00 - 15:00</td>
-                  <td>Keynote 2 (TBA)</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">15:00 - 16:00</td>
-                  <td>Poster Presentation</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">15:30 - 16:00</td>
-                  <td>Coffee Break &amp; Networking</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">16:00 - 17:00</td>
-                  <td>Keynote 3 (TBA)</td>
-                </tr>
-                <tr>
-                  <td style="white-space: nowrap;">17:00 - 17:30</td>
-                  <td>Closing &amp; Next Steps</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <section id="schedule" class="content-section paper-panel" role="tabpanel"
+          aria-labelledby="schedule-tab" tabindex="0">
+          <p class="schedule-date">Wednesday, October 28, 2026</p>
+          <ol class="schedule-timeline">
+            <li class="timeline-item timeline-break"><span class="timeline-time">09:00 &ndash; 09:30</span><div class="timeline-event">Welcome</div></li>
+            <li class="timeline-item"><span class="timeline-time">09:30 &ndash; 10:30</span><div class="timeline-event"><a href="#talk-schuetze">Invited Talk: Hinrich Schütze</a>
+                    <span class="schedule-talk">Language Identification in the (Pretraining) Data Processing Pipeline</span><span class="timeline-room">Room G15-16</span></div></li>
+            <li class="timeline-item timeline-break"><span class="timeline-time">10:30 &ndash; 11:00</span><div class="timeline-event">Coffee Break &amp; Networking</div></li>
+            <li class="timeline-item"><span class="timeline-time">11:00 &ndash; 12:30</span><div class="timeline-event">Oral Presentation</div></li>
+            <li class="timeline-item timeline-break"><span class="timeline-time">12:30 &ndash; 14:00</span><div class="timeline-event">Lunch</div></li>
+            <li class="timeline-item"><span class="timeline-time">14:00 &ndash; 15:00</span><div class="timeline-event"><a href="#talk-yoo">Invited Talk: Haneul Yoo</a>
+                    <span class="schedule-talk">Enhancing Multilingual LLMs with Code-Switching</span><span class="timeline-room">Room G15-16</span></div></li>
+            <li class="timeline-item"><span class="timeline-time">15:00 &ndash; 16:00</span><div class="timeline-event">Poster Presentation</div></li>
+            <li class="timeline-item timeline-break"><span class="timeline-time">15:30 &ndash; 16:00</span><div class="timeline-event">Coffee Break &amp; Networking</div></li>
+            <li class="timeline-item"><span class="timeline-time">16:00 &ndash; 17:00</span><div class="timeline-event"><a href="#talk-antoniak">Invited Talk: Maria Antoniak</a>
+                    <span class="schedule-talk">When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</span><span class="timeline-room">Room G15-16</span></div></li>
+            <li class="timeline-item"><span class="timeline-time">17:00 &ndash; 17:30</span><div class="timeline-event">Closing &amp; Next Steps</div></li>
+          </ol>
         </section>
       </div>
 
       <div class="paper-tabs" role="tablist" aria-label="Papers">
         <button type="button" id="papers-tab" role="tab" aria-selected="true"
-          aria-controls="accepted-papers-panel" tabindex="0">Accepted Papers</button>
+          aria-controls="papers" tabindex="0">Accepted Papers</button>
         <button type="button" id="call-tab" role="tab" aria-selected="false"
-          aria-controls="call-for-papers-panel" tabindex="-1">Call for Papers</button>
+          aria-controls="call" tabindex="-1">Call for Papers</button>
       </div>
-      <section id="accepted-papers-panel" class="content-section paper-panel" role="tabpanel"
+      <section id="papers" class="content-section paper-panel" role="tabpanel"
         aria-labelledby="papers-tab" tabindex="0">
-        <h2 id="papers">Accepted Papers</h2>
         <p class="papers-summary">26 accepted papers, listed alphabetically by title.</p>
         <div class="directory">
           <ul id="papers-list" class="directory-list papers-list">
@@ -711,50 +1037,55 @@
         </div>
       </section>
 
-      <section id="call-for-papers-panel" class="content-section paper-panel" role="tabpanel"
+      <section id="call" class="content-section paper-panel" role="tabpanel"
         aria-labelledby="call-tab" tabindex="0" hidden>
-        <h2 id="call">Call for Papers</h2>
         <p>We seek submissions of <strong>long and short papers on original and unpublished work (same page limit as the
             EMNLP 2026 main conference)</strong>. All accepted submissions will be presented as talks and/or posters at
           the workshop, following the EMNLP 2026 main conference.</p>
         <p>We welcome submissions addressing (but not limited to) the following areas:</p>
 
-        <h4>Classical NLP Tasks on Noisy Text</h4>
-        <ul>
-          <li>NLP of noisy text, e.g., POS and NER tagging, parsing</li>
-          <li>Text normalization and error correction</li>
-          <li>Paraphrase identification and semantic similarity of short text or noisy text</li>
-          <li>Extracting user demographics, profiles, and major life events</li>
-          <li>Machine translation and multilingual NLP over noisy text</li>
-          <li>Information extraction from noisy text and event extraction</li>
-          <li>Colloquial language, e.g., idiom detection</li>
-          <li>Domain adaptation to user-generated text</li>
-          <li>Detecting rumors, contradictory information, sarcasm, and humor on social media</li>
-          <li>Sentiment analysis</li>
-          <li>Temporal aspects of user-generated content (resolving time expressions, concept drift, etc.)</li>
-          <li>Representing and mining language variation in user-generated content</li>
-        </ul>
-
-        <h4>LLMs and Noisy Text</h4>
-        <ul>
-          <li>Robustness of LLMs to noisy, ungrammatical, or informal input</li>
-          <li>Training and fine-tuning of LLMs on user-generated text</li>
-          <li>Evaluation methodologies for LLMs on noisy text</li>
-          <li>Domain adaptation of LLMs to specific user-generated text domains</li>
-          <li>LLM-generated noisy text: detection, characteristics, and implications</li>
-          <li>Instruction-following in LLMs when faced with noisy or ambiguous prompts</li>
-          <li>Retrieval-augmented generation (RAG) with noisy documents</li>
-        </ul>
-
-        <h4>Real-World LLM Applications</h4>
-        <ul>
-          <li>LLM performance on text from social media, forums, and messaging platforms</li>
-          <li>Handling code-switching, slang, and emerging language in LLMs</li>
-          <li>LLMs for content moderation and safety in user-generated contexts</li>
-          <li>Multilingual and cross-lingual LLM applications on informal text</li>
-          <li>LLMs for assisting language learners and processing learner text</li>
-          <li>Bias, fairness, and representation in LLMs trained on user-generated text</li>
-        </ul>
+        <div class="topic-grid">
+          <div class="topic-card">
+          <h4>Classical NLP Tasks on Noisy Text</h4>
+          <ul>
+            <li>NLP of noisy text, e.g., POS and NER tagging, parsing</li>
+            <li>Text normalization and error correction</li>
+            <li>Paraphrase identification and semantic similarity of short text or noisy text</li>
+            <li>Extracting user demographics, profiles, and major life events</li>
+            <li>Machine translation and multilingual NLP over noisy text</li>
+            <li>Information extraction from noisy text and event extraction</li>
+            <li>Colloquial language, e.g., idiom detection</li>
+            <li>Domain adaptation to user-generated text</li>
+            <li>Detecting rumors, contradictory information, sarcasm, and humor on social media</li>
+            <li>Sentiment analysis</li>
+            <li>Temporal aspects of user-generated content (resolving time expressions, concept drift, etc.)</li>
+            <li>Representing and mining language variation in user-generated content</li>
+          </ul>
+          </div>
+          <div class="topic-card">
+          <h4>LLMs and Noisy Text</h4>
+          <ul>
+            <li>Robustness of LLMs to noisy, ungrammatical, or informal input</li>
+            <li>Training and fine-tuning of LLMs on user-generated text</li>
+            <li>Evaluation methodologies for LLMs on noisy text</li>
+            <li>Domain adaptation of LLMs to specific user-generated text domains</li>
+            <li>LLM-generated noisy text: detection, characteristics, and implications</li>
+            <li>Instruction-following in LLMs when faced with noisy or ambiguous prompts</li>
+            <li>Retrieval-augmented generation (RAG) with noisy documents</li>
+          </ul>
+          </div>
+          <div class="topic-card">
+          <h4>Real-World LLM Applications</h4>
+          <ul>
+            <li>LLM performance on text from social media, forums, and messaging platforms</li>
+            <li>Handling code-switching, slang, and emerging language in LLMs</li>
+            <li>LLMs for content moderation and safety in user-generated contexts</li>
+            <li>Multilingual and cross-lingual LLM applications on informal text</li>
+            <li>LLMs for assisting language learners and processing learner text</li>
+            <li>Bias, fairness, and representation in LLMs trained on user-generated text</li>
+          </ul>
+          </div>
+        </div>
 
         <p>We particularly encourage submissions that address multilingual challenges, low-resource languages,
           cross-platform variations, and the unique characteristics of user-generated text across different communities.
@@ -762,22 +1093,32 @@
         <p>Submissions should conform to the <a href="https://github.com/acl-org/acl-style-files">ACL style
             guidelines</a>. Long and short paper submissions must be anonymized. Please submit your papers via:
         </p>
-        <p class="text-center">
-          <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/WNUT" class="btn btn-primary" style="margin-right: 10px;">Submit via OpenReview</a>
-          <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/WNUT_ARR_Commitment" class="btn btn-default">Commit via ARR</a>
-
+        <p class="cfp-actions">
+          <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/WNUT" class="button-primary">Submit via OpenReview</a>
+          <a href="https://openreview.net/group?id=EMNLP/2026/Workshop/WNUT_ARR_Commitment" class="button-secondary">Commit via ARR</a>
         </p>
         <p><strong>Double Submission Policy:</strong> Papers that have been or will be submitted to other meetings or
           publications must indicate at submission time. Authors of a paper accepted for presentation must notify the
           workshop organizers by the camera-ready deadline as to whether the paper will be presented or withdrawn.</p>
 
-        <p><strong>EMNLP 2026 Findings:</strong>If you would like to present your EMNLP findings paper at WNUT, please fill out the following <a href="https://forms.gle/n8Dr5T99U3ZDqxeG9">form</a> by TBA.</p>
+        <p><strong>EMNLP 2026 Findings:</strong> If you would like to present your EMNLP findings paper at WNUT, please fill out the following <a href="https://forms.gle/n8Dr5T99U3ZDqxeG9">form</a> by TBA.</p>
 
 
 
 
 
 
+      </section>
+
+      <section class="content-section" aria-labelledby="shared-task">
+        <h2 id="shared-task">Shared Task</h2>
+        <div class="feature-card">
+        <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non
+          Indo-european languages. After the success of our first MultiLexNorm shared task held in <a
+            href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more
+          varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
+        <p class="cfp-actions"><a href="multi-lexnorm.html" class="button-primary">MultiLexNorm2026 details &rarr;</a></p>
+        </div>
       </section>
 
       <section class="content-section" aria-labelledby="organizers">
@@ -823,7 +1164,8 @@
 
       <section class="content-section" aria-labelledby="contact">
         <h2 id="contact">Contact</h2>
-        <a href="mailto:jy.bak@skku.edu">jy.bak@skku.edu</a>
+        <p class="contact-card"><span class="contact-name">JinYeong Bak</span>
+          <a href="mailto:jy.bak@skku.edu">jy.bak@skku.edu</a></p>
 
 
 
@@ -1182,7 +1524,17 @@
         </div>
       </section>
 
-
+      <section class="content-section next-edition" id="wnut-2027" aria-labelledby="wnut-2027-title">
+        <h2 id="wnut-2027-title">See you at W-NUT 2027 @ NAACL 2027</h2>
+        <p class="next-edition-subtitle">The 12th Workshop on Natural User-generated Text</p>
+        <p>Dates and location to be announced.</p>
+        <p>Thank you to all speakers, authors, reviewers and attendees of W-NUT 2026. We look forward to continuing the
+          conversation on noisy, user-generated text and real-world applications of LLMs at NAACL 2027.</p>
+        <div class="next-edition-actions">
+          <a href="mailto:jy.bak@skku.edu">Contact us</a>
+          <a href="../history/">Previous editions</a>
+        </div>
+      </section>
 
       <div class="page-footer">
         <a href="https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy">ACL Anti-Harassment Policy</a>
@@ -1194,10 +1546,11 @@
   </div>
 
   <script>
-    const paperTabs = Array.from(document.querySelectorAll('.paper-tabs [role="tab"]'));
+    const tabHashes = ['#papers', '#call', '#schedule', '#dates'];
 
     function selectPaperTab(tab) {
-      paperTabs.forEach(function (item) {
+      const groupTabs = Array.from(tab.closest('.paper-tabs').querySelectorAll('[role="tab"]'));
+      groupTabs.forEach(function (item) {
         const selected = item === tab;
         item.setAttribute('aria-selected', String(selected));
         item.tabIndex = selected ? 0 : -1;
@@ -1206,45 +1559,84 @@
     }
 
     function showPaperTabForHash() {
-      if (window.location.hash === '#call' || window.location.hash === '#papers') {
+      if (tabHashes.includes(window.location.hash)) {
         selectPaperTab(document.getElementById(window.location.hash.slice(1) + '-tab'));
       }
     }
 
-    paperTabs.forEach(function (tab, index) {
-      tab.addEventListener('click', function () {
-        selectPaperTab(tab);
-      });
-      tab.addEventListener('keydown', function (event) {
-        let nextIndex;
-        if (event.key === 'ArrowRight') nextIndex = (index + 1) % paperTabs.length;
-        else if (event.key === 'ArrowLeft') nextIndex = (index + paperTabs.length - 1) % paperTabs.length;
-        else if (event.key === 'Home') nextIndex = 0;
-        else if (event.key === 'End') nextIndex = paperTabs.length - 1;
-        else return;
-        event.preventDefault();
-        paperTabs[nextIndex].focus();
-        paperTabs[nextIndex].click();
+    document.querySelectorAll('.paper-tabs').forEach(function (group) {
+      const groupTabs = Array.from(group.querySelectorAll('[role="tab"]'));
+      groupTabs.forEach(function (tab, index) {
+        tab.addEventListener('click', function () {
+          selectPaperTab(tab);
+        });
+        tab.addEventListener('keydown', function (event) {
+          let nextIndex;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % groupTabs.length;
+          else if (event.key === 'ArrowLeft') nextIndex = (index + groupTabs.length - 1) % groupTabs.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = groupTabs.length - 1;
+          else return;
+          event.preventDefault();
+          groupTabs[nextIndex].focus();
+          groupTabs[nextIndex].click();
+        });
       });
     });
 
-    document.querySelectorAll('a[href="#papers"], a[href="#call"]').forEach(function (link) {
+    document.querySelectorAll(tabHashes.map(function (hash) { return 'a[href="' + hash + '"]'; }).join(', ')).forEach(function (link) {
       link.addEventListener('click', function () {
         selectPaperTab(document.getElementById(link.hash.slice(1) + '-tab'));
       });
     });
     window.addEventListener('hashchange', function () {
       showPaperTabForHash();
-      if (window.location.hash === '#call' || window.location.hash === '#papers') {
+      if (tabHashes.includes(window.location.hash)) {
         document.querySelector(window.location.hash).scrollIntoView();
       }
     });
     selectPaperTab(document.getElementById('papers-tab'));
-    if (window.location.hash === '#call') {
-      history.replaceState(null, '', '#papers');
+    selectPaperTab(document.getElementById('schedule-tab'));
+    showPaperTabForHash();
+    if (tabHashes.includes(window.location.hash)) {
+      document.querySelector(window.location.hash).scrollIntoView();
     }
 
+    const nextEditionFloat = document.getElementById('next-edition-float');
+    try {
+      if (localStorage.getItem('wnut2027-float-dismissed') === '1') nextEditionFloat.hidden = true;
+    } catch (e) {}
+    nextEditionFloat.querySelector('.next-edition-float-close').addEventListener('click', function () {
+      nextEditionFloat.hidden = true;
+      try { localStorage.setItem('wnut2027-float-dismissed', '1'); } catch (e) {}
+    });
+    nextEditionFloat.querySelector('a').addEventListener('click', function () {
+      nextEditionFloat.hidden = true;
+    });
+
     const sectionNav = document.querySelector('.section-nav');
+    const navLinks = Array.from(sectionNav.querySelectorAll('a[href^="#"]'));
+    const navTargets = navLinks.map(function (link) {
+      return { link: link, target: document.getElementById(link.hash.slice(1)) };
+    }).filter(function (item) { return item.target; });
+    let spyQueued = false;
+    function updateActiveNav() {
+      spyQueued = false;
+      let current = navTargets[0] || null;
+      navTargets.forEach(function (item) {
+        if (item.target.offsetParent !== null && item.target.getBoundingClientRect().top <= 140) current = item;
+      });
+      navLinks.forEach(function (link) {
+        const active = current !== null && link === current.link;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }
+    window.addEventListener('scroll', function () {
+      if (!spyQueued) { spyQueued = true; requestAnimationFrame(updateActiveNav); }
+    }, { passive: true });
+    updateActiveNav();
     const sectionToggle = document.querySelector('.section-nav-toggle');
     sectionToggle.addEventListener('click', function () {
       const expanded = sectionNav.classList.toggle('is-open');
