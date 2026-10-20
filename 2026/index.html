@@ -220,10 +220,7 @@
     }
 
     .event-tables {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 28px;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
 
     .event-tables .content-section {
@@ -244,16 +241,10 @@
       padding: 8px 12px;
     }
 
-    @media (min-width: 1200px) {
-      .event-tables {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-        gap: 24px;
-        align-items: start;
-      }
-    }
-
     #papers,
-    #call {
+    #call,
+    #schedule,
+    #dates {
       scroll-margin-top: 130px;
     }
 
@@ -405,6 +396,105 @@
       margin-bottom: 4px;
     }
 
+    /* Invited talks */
+    .talk-list { list-style: none; padding: 0; margin: 0; }
+    .talk-card {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 24px;
+      margin: 0;
+      padding: 24px 0;
+      border-bottom: 1px solid #dfe5ed;
+      scroll-margin-top: 24px;
+    }
+    .talk-card:first-child { padding-top: 4px; }
+    .talk-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .talk-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 14px; line-height: 1.5; color: #52657a; margin: 0 0 8px; }
+    .talk-time { font-size: 16px; font-weight: 700; color: #1a2a4a; }
+    .talk-room { padding: 1px 10px; border-radius: 999px; background: #e8eff7; color: #2e6da4; font-weight: 600; }
+    .talk-title { font-size: 1.1em; line-height: 1.45; font-weight: 600; color: #263b59; margin: 0 0 4px; }
+    .talk-speaker { font-size: 16px; margin: 0 0 12px; }
+    .talk-abstract { font-size: 16px; line-height: 1.65; }
+    .talk-abstract.is-pending { color: #52657a; font-style: italic; }
+    .talk-bio summary { display: list-item; cursor: pointer;color: #2e6da4; font-size: 15px; font-weight: 600; }
+    .talk-bio p { font-size: 15px; line-height: 1.6; color: #52657a; margin: 8px 0 0; }
+    .schedule-date { margin-bottom: 12px; }
+    .content .table > tbody > tr > td.schedule-room { white-space: nowrap; color: #52657a; }
+    .schedule-talk { display: block; font-size: 13px; color: #52657a; }
+
+    @media (max-width: 767px) {
+      .talk-card { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+      .talk-card img { width: 96px; height: 96px; }
+    }
+
+    /* W-NUT 2027 announcement */
+    .next-edition-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 6px 6px 14px;
+      border-radius: 999px;
+      background: #1a2a4a;
+      box-shadow: 0 6px 18px rgba(15, 25, 50, 0.25);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .next-edition-float[hidden] { display: none; }
+    .next-edition-float a { color: #fff; font-weight: 600; white-space: nowrap; }
+    .next-edition-float a:hover { color: #fff; }
+    .next-edition-float-close {
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+      line-height: 1;
+      padding: 2px 6px;
+      cursor: pointer;
+    }
+    .next-edition-float-close:hover { color: #fff; }
+
+    @media (max-width: 767px) {
+      .next-edition-float { right: 12px; bottom: 12px; }
+    }
+    .next-edition {
+      scroll-margin-top: 24px;
+      background: #1a2a4a;
+      color: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .content .next-edition h2 {
+      color: #fff;
+      border-bottom-color: rgba(255, 255, 255, 0.2);
+      font-size: 1.6em;
+    }
+    .next-edition-subtitle { color: #fff; font-weight: 600; margin-bottom: 4px; }
+    .next-edition-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
+    .next-edition-actions a {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      color: #fff;
+      font-weight: 600;
+    }
+    .next-edition-actions a:first-child { background: #fff; color: #1a2a4a; border-color: #fff; }
+    .next-edition-actions a:hover { text-decoration: none; opacity: 0.9; }
+
+    @media (max-width: 767px) {
+      .next-edition { padding: 24px 20px; }
+    }
+
     /* Footer */
     .page-footer {
       margin-top: 3em;
@@ -429,6 +519,11 @@
 
 
 
+  <aside class="next-edition-float" id="next-edition-float" aria-label="W-NUT 2027 announcement">
+    <a href="#wnut-2027">W-NUT 2027 @ NAACL 2027 &rarr;</a>
+    <button type="button" class="next-edition-float-close" aria-label="Dismiss announcement">&times;</button>
+  </aside>
+
   <div class="hero-banner">
     <div class="hero-copy">
       <h1>The 11th Workshop on Natural User-generated Text <span class="workshop-acronym">(W-NUT)</span></h1>
@@ -444,15 +539,16 @@
       <button class="section-nav-toggle" type="button" aria-expanded="false"
         aria-controls="section-links">On this page <span aria-hidden="true">▾</span></button>
       <ul id="section-links">
-        <li><a href="#shared-task">Shared Task</a></li>
-        <li><a href="#talks">Invited Speakers</a></li>
-        <li><a href="#dates">Important Dates</a></li>
+        <li><a href="#talks">Invited Talks</a></li>
         <li><a href="#schedule">Workshop Schedule</a></li>
+        <li><a href="#dates">Important Dates</a></li>
         <li><a href="#papers">Accepted Papers</a></li>
         <li><a href="#call">Call for Papers</a></li>
+        <li><a href="#shared-task">Shared Task</a></li>
         <li><a href="#organizers">Organizers</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#committee">Program Committee</a></li>
+        <li><a href="#wnut-2027">W-NUT 2027</a></li>
         <li><a href="../history/">Previous Editions</a></li>
       </ul>
     </nav>
@@ -464,37 +560,108 @@
           to real-world applications of LLMs.</p>
       </div>
 
-      <section class="content-section" aria-labelledby="shared-task">
-        <h2 id="shared-task">Shared Task</h2>
-        <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non
-          Indo-european languages. After the success of our first MultiLexNorm shared task held in <a
-            href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more
-          varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
-      </section>
 
       <section class="content-section" aria-labelledby="talks">
-        <h2 id="talks">Invited Speakers</h2>
-        <div class="organizer-grid">
-          <div class="organizer-card">
-            <img src="image/haneul_yoo.jpg" alt="Haneul Yoo">
-            <div class="org-name"><a href="https://haneul-yoo.github.io/">Haneul Yoo</a></div>
-            <div class="org-meta">Assistant Professor/Faculty Fellow<br>New York University</div>
-          </div>
-          <div class="organizer-card">
+        <h2 id="talks">Invited Talks</h2>
+        <ul class="talk-list">
+          <li class="talk-card" id="talk-schuetze">
             <img src="image/Hinrich_Schütze.jpg" alt="Hinrich Schütze">
-            <div class="org-name"><a href="https://cisnlp.github.io/about/">Hinrich Schütze</a></div>
-            <div class="org-meta">Professor<br>University of Munich</div>
-          </div>
-          <div class="organizer-card">
+            <div>
+              <p class="talk-meta"><span class="talk-time">09:30 &ndash; 10:30</span> <span class="talk-room">Room G15-16</span> Chair: JinYeong Bak</p>
+              <h3 class="talk-title">Language Identification in the (Pretraining) Data Processing Pipeline &ndash; State of the Art and Open Problems</h3>
+              <p class="talk-speaker"><a href="https://cisnlp.github.io/about/">Hinrich Schütze</a> &middot; Professor, University of Munich</p>
+              <p class="talk-abstract is-pending">Abstract to be announced.</p>
+              <details class="talk-bio">
+                <summary>Speaker bio</summary>
+                <p>Hinrich Schütze is Professor for Computational Linguistics and co-director of the Center for Information
+                  and Language Processing at the University of Munich (LMU Munich). He received his PhD from Stanford in 1995
+                  for his early research on embeddings (ACL Test-of-Time Paper Award). He then worked on natural language
+                  processing and information retrieval technology at Xerox PARC, at several Silicon Valley startups and at
+                  Google 1995-2004 and 2008/9. Hinrich is a coauthor of Foundations of Statistical Natural Language Processing
+                  (with Chris Manning) and Introduction to Information Retrieval (with Chris Manning and Prabhakar Raghavan).
+                  He was awarded a European Research Council Advanced Grant in 2017. Hinrich served as president of the
+                  Association for Computational Linguistics in 2020. He is a member of Academia Europaea and a fellow of ACL,
+                  ELLIS, ELIZA and HessianAI.</p>
+              </details>
+            </div>
+          </li>
+          <li class="talk-card" id="talk-yoo">
+            <img src="image/haneul_yoo.jpg" alt="Haneul Yoo">
+            <div>
+              <p class="talk-meta"><span class="talk-time">14:00 &ndash; 15:00</span> <span class="talk-room">Room G15-16</span> Chair: Weerayut Buaphet</p>
+              <h3 class="talk-title">Enhancing Multilingual LLMs with Code-Switching</h3>
+              <p class="talk-speaker"><a href="https://haneul-yoo.github.io/">Haneul Yoo</a> &middot; Assistant Professor/Faculty Fellow, New York University</p>
+              <p class="talk-abstract">Despite recent advances, large language models (LLMs) exhibit uneven performance across
+                languages and often struggle with code-switching&mdash;the natural alternation between multiple languages.
+                While code-switching is a common and meaningful mode of human communication, LLMs remain brittle to
+                code-switching inputs, treating them as noise. This talk reframes code-switching as a valuable linguistic
+                signal, exploring how it can be leveraged across the LLM lifecycle, from evaluation, to training, to
+                inference. I will begin with output language alignment (OLA), highlighting systematic failures to respond in
+                the expected language in code-switching contexts. I will also introduce code-switching red-teaming (CSRT),
+                which reveals vulnerabilities in safety and multilingual understanding. I will then present code-switching
+                curriculum learning (CSCL), a data-efficient approach to cross-lingual transfer inspired by human
+                second-language learning. Finally, I will introduce code-switching in-context learning (CSICL), which uses
+                gradual transitions from a target language to English to improve multilingual generalization without
+                additional training.</p>
+              <details class="talk-bio">
+                <summary>Speaker bio</summary>
+                <p>Haneul Yoo is an Assistant Professor/Faculty Fellow in the Department of Computer Science, Courant
+                  Institute School of Mathematics, Computing, and Data Science at New York University. She is also a Research
+                  Fellow with the Social Innovation and Special Projects Team in the Division of Policy, Evaluation and
+                  Training, Department of Peace Operations at the United Nations. She received her PhD from the School of
+                  Computing at KAIST. With a background in machine learning (ML) and natural language processing (NLP), she
+                  has worked on (1) developing language models and methods to improve generalization across languages, (2)
+                  designing resources and evaluation frameworks for underrepresented languages and cultures, and (3) applying
+                  AI in high-stakes, real-world domains for social good. She has published papers in major NLP conferences,
+                  including ACL, EMNLP, and NAACL, and has been named a Rising Star at KAIST exploreCSR supported by Google.
+                  She has served as a Social Chair at NeurIPS 2026 and co-organized the Multilingual and Equitable Language
+                  Technologies (MELT) workshop at COLM 2025, the Women in Machine Learning (WiML) symposium at ICML 2026, and
+                  the Generative AI for the World (GenAI4World) workshop at COLM 2026.</p>
+              </details>
+            </div>
+          </li>
+          <li class="talk-card" id="talk-antoniak">
             <img src="image/Maria_Antoniak.jpg" alt="Maria Antoniak">
-            <div class="org-name"><a href="https://maria-antoniak.github.io/">Maria Antoniak</a></div>
-            <div class="org-meta">Assistant Professor<br>University of Colorado Boulder</div>
-          </div>
-        </div>
+            <div>
+              <p class="talk-meta"><span class="talk-time">16:00 &ndash; 17:00</span> <span class="talk-room">Room G15-16</span> Chair: Alan Ramponi</p>
+              <h3 class="talk-title">When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</h3>
+              <p class="talk-speaker"><a href="https://maria-antoniak.github.io/">Maria Antoniak</a> &middot; Assistant Professor, University of Colorado Boulder</p>
+              <p class="talk-abstract">In computational studies of humanistic tasks such as storytelling and poetry, we often
+                encounter datasets whose features frustrate standard NLP pipelines. In this talk, I'll draw on three settings
+                where my collaborators and I have run into this friction. First, I'll discuss user&ndash;chatbot
+                conversations like WildChat, where creative requests are long, detailed, and frequently revised, making these
+                logs a rich but also complicated view of how people write with chatbots. Second, I'll describe our
+                development of a fine-grained narrative annotation scheme for very large-scale, heterogeneous web text in
+                pretraining data, where operationalizing a humanities concept is complicated by data diversity. Third, I'll
+                turn to poetry, where the linearization systems used to build training corpora routinely flatten or delete
+                formatting that poets use deliberately. Across these cases, I'll argue that what counts as noise depends on
+                who is reading and for what purpose, and that taking humanistic perspectives seriously can help us build
+                data practices, annotation schemes, and evaluations that better reflect how people actually use
+                language.</p>
+              <details class="talk-bio">
+                <summary>Speaker bio</summary>
+                <p>Maria Antoniak is an Assistant Professor of Computer Science at the University of Colorado Boulder where
+                  she is also affiliated with the Department of Information Science and a member of the Boulder NLP Group.
+                  Previously, she was a Young Investigator at the Allen Institute for AI and a postdoc at the Pioneer Centre
+                  for AI at the University of Copenhagen. She completed her PhD in Information Science at Cornell University
+                  and her master&rsquo;s degree in Computational Linguistics at the University of Washington. She has also
+                  spent time at places like ETH Zürich, Microsoft Research FATE, Twitter Cortex, and Facebook Core Data
+                  Science. Her research is in natural language processing and cultural analytics.</p>
+              </details>
+            </div>
+          </li>
+        </ul>
       </section>
 
       <div class="event-tables">
-        <section class="content-section" aria-labelledby="dates">
+        <div class="paper-tabs" role="tablist" aria-label="Workshop information">
+          <button type="button" id="schedule-tab" role="tab" aria-selected="true"
+            aria-controls="schedule-panel" tabindex="0">Workshop Schedule</button>
+          <button type="button" id="dates-tab" role="tab" aria-selected="false"
+            aria-controls="dates-panel" tabindex="-1">Important Dates</button>
+        </div>
+        <section id="dates-panel" class="content-section paper-panel" role="tabpanel"
+          aria-labelledby="dates-tab" tabindex="0" hidden>
           <h2 id="dates">Important Dates</h2>
           <div class="table-responsive">
             <table class="table table-striped">
@@ -534,56 +701,72 @@
           </div>
         </section>
 
-        <section class="content-section" aria-labelledby="schedule">
+        <section id="schedule-panel" class="content-section paper-panel" role="tabpanel"
+          aria-labelledby="schedule-tab" tabindex="0">
           <h2 id="schedule">Workshop Schedule</h2>
+          <p class="talk-meta schedule-date"><span class="talk-time">Wednesday, October 28, 2026</span></p>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">Time</th>
                   <th scope="col">Name</th>
+                  <th scope="col">Room</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td style="white-space: nowrap;">09:00 - 09:30</td>
                   <td>Welcome</td>
+                  <td class="schedule-room"></td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">09:30 - 10:30</td>
-                  <td>Keynote 1 (TBA)</td>
+                  <td><a href="#talk-schuetze">Invited Talk: Hinrich Schütze</a>
+                    <span class="schedule-talk">Language Identification in the (Pretraining) Data Processing Pipeline</span></td>
+                  <td class="schedule-room">Room G15-16</td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">10:30 - 11:00</td>
                   <td>Coffee Break &amp; Networking</td>
+                  <td class="schedule-room"></td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">11:00 - 12:30</td>
                   <td>Oral Presentation</td>
+                  <td class="schedule-room"></td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">12:30 - 14:00</td>
                   <td>Lunch</td>
+                  <td class="schedule-room"></td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">14:00 - 15:00</td>
-                  <td>Keynote 2 (TBA)</td>
+                  <td><a href="#talk-yoo">Invited Talk: Haneul Yoo</a>
+                    <span class="schedule-talk">Enhancing Multilingual LLMs with Code-Switching</span></td>
+                  <td class="schedule-room">Room G15-16</td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">15:00 - 16:00</td>
                   <td>Poster Presentation</td>
+                  <td class="schedule-room"></td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">15:30 - 16:00</td>
                   <td>Coffee Break &amp; Networking</td>
+                  <td class="schedule-room"></td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">16:00 - 17:00</td>
-                  <td>Keynote 3 (TBA)</td>
+                  <td><a href="#talk-antoniak">Invited Talk: Maria Antoniak</a>
+                    <span class="schedule-talk">When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines</span></td>
+                  <td class="schedule-room">Room G15-16</td>
                 </tr>
                 <tr>
                   <td style="white-space: nowrap;">17:00 - 17:30</td>
                   <td>Closing &amp; Next Steps</td>
+                  <td class="schedule-room"></td>
                 </tr>
               </tbody>
             </table>
@@ -778,6 +961,14 @@
 
 
 
+      </section>
+
+      <section class="content-section" aria-labelledby="shared-task">
+        <h2 id="shared-task">Shared Task</h2>
+        <p>This year, we host MultiLexNorm2026: a shared task on multi-lingual lexical normalization with a focus on non
+          Indo-european languages. After the success of our first MultiLexNorm shared task held in <a
+            href="https://noisy-text.github.io/2021/multi-lexnorm.html">2021</a>, we have extended our benchmark to more
+          varied languages. More information about <a href="multi-lexnorm.html">MultiLexNorm2026</a>.</p>
       </section>
 
       <section class="content-section" aria-labelledby="organizers">
@@ -1174,7 +1365,17 @@
         </div>
       </section>
 
-
+      <section class="content-section next-edition" id="wnut-2027" aria-labelledby="wnut-2027-title">
+        <h2 id="wnut-2027-title">See you at W-NUT 2027 @ NAACL 2027</h2>
+        <p class="next-edition-subtitle">The 12th Workshop on Natural User-generated Text</p>
+        <p>Dates and location to be announced.</p>
+        <p>Thank you to all speakers, authors, reviewers and attendees of W-NUT 2026. We look forward to continuing the
+          conversation on noisy, user-generated text and real-world applications of LLMs at NAACL 2027.</p>
+        <div class="next-edition-actions">
+          <a href="mailto:jy.bak@skku.edu">Contact us</a>
+          <a href="../history/">Previous editions</a>
+        </div>
+      </section>
 
       <div class="page-footer">
         <a href="https://www.aclweb.org/adminwiki/index.php?title=Anti-Harassment_Policy">ACL Anti-Harassment Policy</a>
@@ -1186,10 +1387,11 @@
   </div>
 
   <script>
-    const paperTabs = Array.from(document.querySelectorAll('.paper-tabs [role="tab"]'));
+    const tabHashes = ['#papers', '#call', '#schedule', '#dates'];
 
     function selectPaperTab(tab) {
-      paperTabs.forEach(function (item) {
+      const groupTabs = Array.from(tab.closest('.paper-tabs').querySelectorAll('[role="tab"]'));
+      groupTabs.forEach(function (item) {
         const selected = item === tab;
         item.setAttribute('aria-selected', String(selected));
         item.tabIndex = selected ? 0 : -1;
@@ -1198,43 +1400,63 @@
     }
 
     function showPaperTabForHash() {
-      if (window.location.hash === '#call' || window.location.hash === '#papers') {
+      if (tabHashes.includes(window.location.hash)) {
         selectPaperTab(document.getElementById(window.location.hash.slice(1) + '-tab'));
       }
     }
 
-    paperTabs.forEach(function (tab, index) {
-      tab.addEventListener('click', function () {
-        selectPaperTab(tab);
-      });
-      tab.addEventListener('keydown', function (event) {
-        let nextIndex;
-        if (event.key === 'ArrowRight') nextIndex = (index + 1) % paperTabs.length;
-        else if (event.key === 'ArrowLeft') nextIndex = (index + paperTabs.length - 1) % paperTabs.length;
-        else if (event.key === 'Home') nextIndex = 0;
-        else if (event.key === 'End') nextIndex = paperTabs.length - 1;
-        else return;
-        event.preventDefault();
-        paperTabs[nextIndex].focus();
-        paperTabs[nextIndex].click();
+    document.querySelectorAll('.paper-tabs').forEach(function (group) {
+      const groupTabs = Array.from(group.querySelectorAll('[role="tab"]'));
+      groupTabs.forEach(function (tab, index) {
+        tab.addEventListener('click', function () {
+          selectPaperTab(tab);
+        });
+        tab.addEventListener('keydown', function (event) {
+          let nextIndex;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % groupTabs.length;
+          else if (event.key === 'ArrowLeft') nextIndex = (index + groupTabs.length - 1) % groupTabs.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = groupTabs.length - 1;
+          else return;
+          event.preventDefault();
+          groupTabs[nextIndex].focus();
+          groupTabs[nextIndex].click();
+        });
       });
     });
 
-    document.querySelectorAll('a[href="#papers"], a[href="#call"]').forEach(function (link) {
+    document.querySelectorAll(tabHashes.map(function (hash) { return 'a[href="' + hash + '"]'; }).join(', ')).forEach(function (link) {
       link.addEventListener('click', function () {
         selectPaperTab(document.getElementById(link.hash.slice(1) + '-tab'));
       });
     });
     window.addEventListener('hashchange', function () {
       showPaperTabForHash();
-      if (window.location.hash === '#call' || window.location.hash === '#papers') {
+      if (tabHashes.includes(window.location.hash)) {
         document.querySelector(window.location.hash).scrollIntoView();
       }
     });
     selectPaperTab(document.getElementById('papers-tab'));
+    selectPaperTab(document.getElementById('schedule-tab'));
     if (window.location.hash === '#call') {
       history.replaceState(null, '', '#papers');
     }
+    if (window.location.hash === '#dates') {
+      selectPaperTab(document.getElementById('dates-tab'));
+      document.getElementById('dates').scrollIntoView();
+    }
+
+    const nextEditionFloat = document.getElementById('next-edition-float');
+    try {
+      if (localStorage.getItem('wnut2027-float-dismissed') === '1') nextEditionFloat.hidden = true;
+    } catch (e) {}
+    nextEditionFloat.querySelector('.next-edition-float-close').addEventListener('click', function () {
+      nextEditionFloat.hidden = true;
+      try { localStorage.setItem('wnut2027-float-dismissed', '1'); } catch (e) {}
+    });
+    nextEditionFloat.querySelector('a').addEventListener('click', function () {
+      nextEditionFloat.hidden = true;
+    });
 
     const sectionNav = document.querySelector('.section-nav');
     const sectionToggle = document.querySelector('.section-nav-toggle');
