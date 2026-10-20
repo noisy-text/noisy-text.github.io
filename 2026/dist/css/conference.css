@@ -132,3 +132,31 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
   .timeline-time { font-size: 13px; }
   .timeline-event { padding: 8px 10px; }
 }
+
+/* Keep past submission information accessible, but visually secondary. */
+.section-nav a[href="#dates"],
+.section-nav a[href="#call"],
+#dates-tab[aria-selected="false"],
+#call-tab[aria-selected="false"] {
+  color: #687586;
+  font-weight: 400;
+}
+.section-nav a[href="#dates"]:hover,
+.section-nav a[href="#call"]:hover,
+.section-nav a[href="#dates"]:focus-visible,
+.section-nav a[href="#call"]:focus-visible,
+.section-nav a[href="#dates"].is-active,
+.section-nav a[href="#call"].is-active {
+  color: var(--ink);
+}
+#dates, #call { color: #606c7c; }
+#call .button-primary {
+  background: #edf1f5;
+  border-color: #cbd5e1;
+  color: #52657a;
+}
+#call .button-primary:hover,
+#call .button-primary:focus-visible {
+  background: #e2e8f0;
+  color: var(--ink);
+}
