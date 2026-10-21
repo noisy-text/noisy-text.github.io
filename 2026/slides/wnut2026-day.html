@@ -354,6 +354,65 @@ aside.notes { display: none; }
 .timeline li.break::after { background: #10203D; }
 .timeline .event { border-color: var(--line); }
 
+/* Live agenda: the running item sits in the middle as a large card; the list slides to keep it there */
+.agenda-view { position: relative; flex: 1; min-height: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent); }
+.timeline.live { position: relative; transition: transform .9s cubic-bezier(.3,.7,.2,1); }
+.timeline.live li { grid-template-columns: 270px minmax(0,1fr) 340px; font-size: 32px; padding-bottom: 18px; transition: opacity .6s ease; }
+.timeline.live li::before { bottom: -18px; }
+.timeline.live .status { padding-top: 7px; text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.timeline.live .status b { color: var(--gold); font-weight: 700; }
+.timeline.live li.past { opacity: .4; }
+.timeline.live .event small { display: inline; font: inherit; color: inherit; margin: 0; }
+/* Only the item in focus (running, or next up) is shown large, with the one after it as "Up next" */
+.timeline.live li:not(.focus):not(.next) { opacity: 0; }
+.timeline.live li.next { padding-top: 20px; }
+.timeline.live li.next::before { display: none; }
+.timeline.live li.next::after { display: none; }
+.timeline.live li.next .time::before { content: 'Up next'; display: block; margin: -34px 0 8px; font: 700 20px/1 var(--font); letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.timeline.live li.focus { grid-template-columns: minmax(0,1fr) auto; grid-template-areas: "time status" "event event"; align-items: center; gap: 8px 24px; padding-bottom: 34px; }
+.timeline.live li.focus::after { top: 40px; }
+.timeline.live li.focus::before { display: none; }
+.timeline.live li.focus .time { grid-area: time; padding-top: 0; font-size: 44px; font-weight: 600; color: #fff; }
+.timeline.live li.focus .status { grid-area: status; padding-top: 0; font-size: 40px; line-height: 1; color: rgba(255,255,255,.75); }
+.timeline.live li.focus .status b { font-size: 110px; letter-spacing: -3px; }
+.timeline.live li.focus .status strong { font-size: 64px; font-weight: 700; color: #fff; letter-spacing: -1px; }
+.timeline.live li.focus .event { grid-area: event; padding: 16px 32px; font-size: 96px; line-height: 1.15; font-weight: 700; letter-spacing: -2px;
+  white-space: nowrap; overflow: hidden; }
+.timeline.live li.now .event { border-color: var(--gold); background: var(--gold-soft); }
+.timeline.live li.now::after { border-color: var(--gold); background: var(--gold); }
+.timeline.live li.focus .event small { font-size: 44px; font-weight: 600; letter-spacing: 0; }
+.timeline.live li.focus > span { animation: card-in .8s ease both; }
+/* While an item runs, the agenda shows it full screen in the keynote style: a keynote's own slide,
+   or a title card for the other items, with the time and what's next along the bottom */
+.slide.spot-mode { background: linear-gradient(90deg, rgba(12,22,45,.9) 0%, rgba(12,22,45,.78) 45%, rgba(12,22,45,.5) 100%),
+    url('../image/background.jpg') center 55% / cover no-repeat; }
+.agenda-view, .agenda-spot { transition: opacity .8s ease; }
+.slide.spot-mode .agenda-view { opacity: 0; }
+.agenda-spot { position: absolute; inset: 0; padding: 140px 128px 72px; display: flex; flex-direction: column; justify-content: center; gap: 56px; opacity: 0; pointer-events: none; }
+.slide.spot-mode .agenda-spot { opacity: 1; }
+.agenda-spot .speaker h2 { font-size: 64px; line-height: 1.15; padding-bottom: 0; color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,.45); }
+.agenda-spot .speaker h2::after { display: none; }
+.agenda-spot .speaker img { width: 400px; height: 400px; }
+.agenda-spot .speaker { grid-template-columns: 400px minmax(0, 1fr); }
+.kn-bar { display: flex; justify-content: space-between; align-items: flex-end; gap: 48px; padding-top: 32px; border-top: 2px solid rgba(255,255,255,.18); }
+.kn-left { font: 600 40px/1 var(--font); color: rgba(255,255,255,.8); white-space: nowrap; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+.kn-left b, .kn-left strong { font-size: 120px; font-weight: 700; letter-spacing: -3px; color: var(--gold); font-variant-numeric: tabular-nums; margin-right: 12px; }
+.kn-next { text-align: right; font-size: 36px; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+.kn-next .kn-label { display: block; margin-bottom: 10px; font: 700 20px/1 var(--font); letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.kn-next span { color: rgba(255,255,255,.75); }
+.kn-next small { font: inherit; }
+.spot .pill { margin-bottom: 28px; }
+.spot h1 { font-size: 128px; line-height: 1.05; letter-spacing: -3px; color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,.45); }
+.spot .lead { margin-top: 36px; font-size: 44px; line-height: 1.35; color: rgba(255,255,255,.88); text-shadow: 0 2px 12px rgba(0,0,0,.6); max-width: 1400px; }
+/* Agenda buttons, bottom centre; they fade out with the deck toolbar when the mouse is idle */
+.agenda-ctl { position: absolute; left: 50%; bottom: 84px; z-index: 3; display: flex; gap: 12px; transform: translateX(-50%); transition: opacity .3s; }
+.agenda-ctl button { font: 600 24px/1 var(--font); color: #fff; background: rgba(10,18,40,.6); border: 2px solid rgba(255,255,255,.25); border-radius: 999px; padding: 12px 28px; cursor: pointer; }
+.agenda-ctl button:hover { border-color: var(--gold); }
+.agenda-ctl button.on { background: var(--gold); border-color: var(--gold); color: #10203D; }
+body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
+@keyframes card-in { from { opacity: 0; transform: translateY(16px) scale(.97); } }
+
 /* Accepted papers */
 .papers-split { gap: 0; }
 .papers-count { padding: 0 64px 0 0; border-right: 2px solid var(--line) !important; }
@@ -370,23 +429,29 @@ aside.notes { display: none; }
 .person img { border-color: rgba(255,255,255,.9); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
 .thanks-pc b { color: var(--accent); }
 
-/* Talk countdown, top-right corner */
-.countdown { position: absolute; top: 56px; right: 128px; z-index: 2; display: flex; align-items: baseline; gap: 14px;
+/* Top-right corner: talk countdown (keynotes) beside the live clock */
+.corner { position: absolute; top: 56px; right: 128px; z-index: 2; display: flex; align-items: center; gap: 16px; }
+.clock { font: 700 56px/1 var(--font); letter-spacing: -1px; color: #fff; font-variant-numeric: tabular-nums; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
+.clock span { margin-left: 2px; font-size: .6em; font-weight: 600; letter-spacing: 0; color: var(--gold); }
+.slide.finale > .corner { position: absolute; }
+.slide:has(.posters-title) .corner { top: 36px; right: 88px; }
+.slide:has(.posters-title) .clock { font-size: 36px; }
+.countdown { display: flex; align-items: baseline; gap: 14px;
   padding: 12px 26px; border-radius: 14px; background: rgba(10,18,40,.55); border: 2px solid rgba(230,184,92,.35);
   font: 600 26px/1.1 var(--font); color: rgba(255,255,255,.75); font-variant-numeric: tabular-nums; }
 .countdown:empty { display: none; }
 .countdown b { font-size: 48px; font-weight: 700; color: var(--gold); letter-spacing: -1px; }
 .countdown.warn { border-color: rgba(242,139,107,.6); }
 .countdown.warn b { color: #F28B6B; }
-.countdown.over { border-color: rgba(242,139,107,.6); color: #F28B6B; }
 
 @media (prefers-reduced-motion: reduce) {
+  .timeline.live, .timeline.live li, .timeline.live li * { transition: none !important; animation: none !important; }
   .step, .progress i { transition: none !important; }
 }
 @media print {
   @page { size: 1920px 1080px; margin: 0; }
   html, body { overflow: visible; height: auto; background: #fff; }
-  .chrome, .help { display: none !important; }
+  .chrome, .help, .clock, .agenda-ctl { display: none !important; }
   .deck { position: static; display: block; }
   .frame { display: block !important; width: 1920px; height: 1080px; break-after: page; outline: none !important; box-shadow: none; }
   .frame .label { display: none !important; }
@@ -420,6 +485,25 @@ aside.notes { display: none; }
   <aside class="notes">Welcome everyone to the 11th Workshop on Natural User-generated Text, collocated with EMNLP 2026. Introduce yourself and the organizing team. Today: three invited talks, an oral session and a poster session. The heading and description are the workshop's tagline, as on the website.</aside>
 </section>
 
+<section class="slide" data-title="Accepted Papers" data-session="opening">
+  <div class="head"><p class="eyebrow">W-NUT 2026</p><h2>Accepted Papers</h2></div>
+  <div class="papers-split grow">
+    <div class="card papers-count">
+      <b>26</b>
+      <span>accepted papers</span>
+      <p>presented today as oral talks and posters</p>
+    </div>
+    <div class="card papers-sessions">
+      <p class="k">Where to see them</p>
+      <ol class="timeline mini">
+        <li><span class="time">11:00 – 12:30</span><span class="event">Oral presentations</span></li>
+        <li><span class="time">15:00 – 16:00</span><span class="event">Poster session</span></li>
+      </ol>
+    </div>
+  </div>
+  <aside class="notes">26 accepted papers this year, presented in the oral session before lunch and the poster session in the afternoon. Add submission and acceptance numbers here if you want to share them.</aside>
+</section>
+
 <section class="slide" data-title="Invited Talks" data-session="opening">
   <div class="head"><p class="eyebrow">W-NUT 2026</p><h2>Invited Talks</h2></div>
   <div class="cards c3 grow">
@@ -443,25 +527,6 @@ aside.notes { display: none; }
     </div>
   </div>
   <aside class="notes">Three invited talks today, in this order.</aside>
-</section>
-
-<section class="slide" data-title="Accepted Papers" data-session="opening">
-  <div class="head"><p class="eyebrow">W-NUT 2026</p><h2>Accepted Papers</h2></div>
-  <div class="papers-split grow">
-    <div class="card papers-count">
-      <b>26</b>
-      <span>accepted papers</span>
-      <p>presented today as oral talks and posters</p>
-    </div>
-    <div class="card papers-sessions">
-      <p class="k">Where to see them</p>
-      <ol class="timeline mini">
-        <li><span class="time">11:00 – 12:30</span><span class="event">Oral presentations</span></li>
-        <li><span class="time">15:00 – 16:00</span><span class="event">Poster session</span></li>
-      </ol>
-    </div>
-  </div>
-  <aside class="notes">26 accepted papers this year, presented in the oral session before lunch and the poster session in the afternoon. Add submission and acceptance numbers here if you want to share them.</aside>
 </section>
 
 <section class="slide" data-title="Workshop Schedule" data-session="opening" style="gap:28px">
@@ -656,6 +721,25 @@ aside.notes { display: none; }
   <aside class="notes">Thank everyone for coming and announce W-NUT 2027 at NAACL 2027. Leave this on screen while people leave. Add the dates once they are announced.</aside>
 </section>
 
+<section class="slide" data-title="Agenda · live" data-test-time style="gap:28px;padding-bottom:60px">
+  <div class="agenda-spot" aria-hidden="true"></div>
+  <div class="agenda-ctl"><button data-step="-1">‹ Prev</button><button data-step="0">Auto</button><button data-step="1">Next ›</button></div>
+  <div class="agenda-view">
+  <ol class="timeline live">
+    <li class="break" data-kind="Opening" data-title="Welcome to W-NUT 2026" data-note="The 11th Workshop on Natural User-generated Text" data-from="09:00" data-to="09:30"><span class="time">09:00 – 09:30</span><span class="event">Welcome</span><span class="status"></span></li>
+    <li class="keynote" data-slide="Keynote 1 · Schütze" data-from="09:30" data-to="10:30"><span class="time">09:30 – 10:30</span><span class="event">Keynote 1 · Hinrich Schütze</span><span class="status"></span></li>
+    <li class="break" data-kind="Break" data-note="Back at 11:00 for the oral presentations" data-from="10:30" data-to="11:00"><span class="time">10:30 – 11:00</span><span class="event">Coffee break &amp; networking</span><span class="status"></span></li>
+    <li data-kind="Session" data-note="Talks from this year&#39;s accepted papers" data-from="11:00" data-to="12:30"><span class="time">11:00 – 12:30</span><span class="event">Oral presentations</span><span class="status"></span></li>
+    <li class="break" data-kind="Break" data-note="Back at 14:00 for Keynote 2 · Haneul Yoo" data-from="12:30" data-to="14:00"><span class="time">12:30 – 14:00</span><span class="event">Lunch</span><span class="status"></span></li>
+    <li class="keynote" data-slide="Keynote 2 · Yoo" data-from="14:00" data-to="15:00"><span class="time">14:00 – 15:00</span><span class="event">Keynote 2 · Haneul Yoo</span><span class="status"></span></li>
+    <li data-kind="Session" data-title="Poster session" data-note="Coffee from 15:30 · back here at 16:00 for Keynote 3 · Maria Antoniak" data-from="15:00" data-to="16:00"><span class="time">15:00 – 16:00</span><span class="event">Poster session <small>· coffee from 15:30</small></span><span class="status"></span></li>
+    <li class="keynote" data-slide="Keynote 3 · Antoniak" data-from="16:00" data-to="17:00"><span class="time">16:00 – 17:00</span><span class="event">Keynote 3 · Maria Antoniak</span><span class="status"></span></li>
+    <li data-kind="Closing" data-note="See you at W-NUT 2027 @ NAACL 2027" data-from="17:00" data-to="17:30"><span class="time">17:00 – 17:30</span><span class="event">Closing &amp; next steps</span><span class="status"></span></li>
+  </ol>
+  </div>
+  <aside class="notes">Keep this on a second screen or show it between sessions. Each row counts down from this laptop's clock: done, time left now, or time until it starts. The buttons at the bottom (move the mouse to show them) step through the items by hand; Auto follows the clock again. To rehearse, set AGENDA_DEMO in the script to play the day in fast forward.</aside>
+</section>
+
 </main>
 
 <div class="chrome" id="chrome">
@@ -778,6 +862,17 @@ aside.notes { display: none; }
     slide.append(foot);
   });
 
+  // Live clock in the top-right corner of every slide, after the talk countdown if there is one.
+  deck.querySelectorAll('.slide').forEach(slide => {
+    const corner = document.createElement('div'), clock = document.createElement('span');
+    corner.className = 'corner';
+    clock.className = 'clock';
+    const countdown = slide.querySelector('.countdown');
+    if (countdown) corner.append(countdown);
+    corner.append(clock);
+    slide.append(corner);
+  });
+
   // Live countdowns: "in 12 min" until an HH:MM on this computer's clock.
   function tickUntil() {
     const now = new Date(), mins = now.getHours() * 60 + now.getMinutes();
@@ -790,14 +885,31 @@ aside.notes { display: none; }
   tickUntil();
   setInterval(tickUntil, 15000);
 
+  // Demo time for the live agenda only: it plays the day from `from` to `to`, jumping `step`
+  // minutes every five seconds, then starts over. Set AGENDA_DEMO = null for the real clock.
+  const AGENDA_DEMO = null; // e.g. { from: '08:50', to: '17:40', step: 10 } to test
+  const testNow = AGENDA_DEMO && (() => {
+    const t0 = Date.now(), at = hhmm => { const [h, m] = hhmm.split(':').map(Number); return new Date(2026, 9, 28, h, m).getTime(); };
+    const from = at(AGENDA_DEMO.from), to = at(AGENDA_DEMO.to), step = AGENDA_DEMO.step * 60000, jumps = Math.ceil((to - from) / step) + 1;
+    return () => {
+      const ran = Date.now() - t0;
+      return new Date(Math.min(from + (Math.floor(ran / 5000) % jumps) * step + ran % 5000, to));
+    };
+  })();
+  const nowFor = el => (testNow && el.closest('[data-test-time]') ? testNow() : new Date());
+
   // Talk countdowns: time left in the slot, from this computer's clock.
   const toSec = hhmm => { const [h, m] = hhmm.split(':').map(Number); return h * 3600 + m * 60; };
   const two = n => String(n).padStart(2, '0');
   function tickTalks() {
     const d = new Date(), now = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+    document.querySelectorAll('.clock').forEach(el => {
+      const t = nowFor(el);
+      el.innerHTML = `${two(t.getHours())}:${two(t.getMinutes())}<span>:${two(t.getSeconds())}</span>`;
+    });
     document.querySelectorAll('.countdown[data-to]').forEach(el => {
       const from = toSec(el.dataset.from), to = toSec(el.dataset.to);
-      el.classList.remove('warn', 'over');
+      el.classList.remove('warn');
       if (now < from) {
         const mins = Math.ceil((from - now) / 60);
         el.innerHTML = mins > 60 ? '' : `Starts in <b>${mins} min</b>`;
@@ -806,13 +918,102 @@ aside.notes { display: none; }
         el.innerHTML = `<b>${two(Math.floor(left / 60))}:${two(left % 60)}</b> left`;
         if (left <= 300) el.classList.add('warn');
       } else {
-        el.textContent = "Time's up";
-        el.classList.add('over');
+        el.textContent = '';
       }
     });
   }
   tickTalks();
   setInterval(tickTalks, 1000);
+
+  // The focused item's name is set large; shrink it until it fits on one line.
+  function fitEvent(li) {
+    const ev = li.querySelector('.event');
+    if (!li.classList.contains('focus')) { ev.style.fontSize = ''; delete li.dataset.fit; return; }
+    if (li.dataset.fit || !ev.clientWidth) return;
+    const probe = ev.cloneNode(true), cs = getComputedStyle(ev);
+    probe.style.cssText = 'position:absolute;visibility:hidden;animation:none;white-space:nowrap;padding:0;font-size:96px';
+    li.append(probe);
+    const room = ev.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    let size = 96;
+    while (probe.scrollWidth > room && size > 56) probe.style.fontSize = (size -= 2) + 'px';
+    probe.remove();
+    ev.style.fontSize = size + 'px';
+    li.dataset.fit = '1';
+  }
+
+  // Slide the list so the focused item and the one after it sit in the middle of the slide.
+  function centerAgenda(list, target) {
+    const view = list.parentElement, last = target.nextElementSibling || target;
+    if (!view.clientHeight) return;
+    const middle = view.closest('.slide').offsetHeight / 2 - view.offsetTop;
+    const y = (target.offsetTop + last.offsetTop + last.offsetHeight) / 2 - middle;
+    list.style.transform = `translateY(${-y}px)`;
+  }
+
+  // While an item runs (or is picked with the buttons), the agenda shows it full screen: a copy of the
+  // keynote's slide, or a title card built from the row's data-kind / data-title / data-note.
+  function showSpotlight(list, focus) {
+    const slide = list.closest('.slide'), box = slide.querySelector('.agenda-spot');
+    const on = focus.classList.contains('now') || 'pick' in list.dataset;
+    slide.classList.toggle('spot-mode', on);
+    if (!on) return;
+    if (box.dataset.for !== focus.dataset.from) {
+      const src = focus.dataset.slide && [...document.querySelectorAll('.slide')].find(sl => sl.dataset.title === focus.dataset.slide);
+      const next = focus.nextElementSibling;
+      box.innerHTML = src ? '' : `<div class="spot"><span class="pill">${esc(focus.dataset.kind || '')}</span>
+        <h1>${focus.dataset.title ? esc(focus.dataset.title) : focus.querySelector('.event').innerHTML}</h1>
+        ${focus.dataset.note ? `<p class="lead">${esc(focus.dataset.note)}</p>` : ''}</div>`;
+      if (src) box.append(src.querySelector('.speaker').cloneNode(true));
+      box.insertAdjacentHTML('beforeend', `<div class="kn-bar"><p class="kn-left"></p>${next
+        ? `<p class="kn-next"><small class="kn-label">Up next</small>${next.querySelector('.event').innerHTML} <span>· ${next.dataset.from}</span></p>` : ''}</div>`);
+      box.dataset.for = focus.dataset.from;
+    }
+    box.querySelector('.kn-left').innerHTML = focus.querySelector('.status').innerHTML;
+  }
+
+  // Live agenda: each row is done, running or upcoming (time until it starts). A running
+  // keynote counts down; other running items show when they end.
+  function tickAgenda() {
+    document.querySelectorAll('.timeline.live').forEach(list => { const rows = [...list.children]; rows.forEach(li => {
+      const d = nowFor(li), now = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+      const from = toSec(li.dataset.from), to = toSec(li.dataset.to), status = li.querySelector('.status');
+      li.classList.toggle('past', now >= to);
+      li.classList.toggle('now', now >= from && now < to);
+      if (now >= to) status.textContent = 'Done';
+      else if (now >= from && !li.classList.contains('keynote')) status.innerHTML = `until <strong>${li.dataset.to}</strong>`;
+      else if (now >= from) {
+        const left = to - now, mmss = `${two(Math.floor(left / 60))}:${two(left % 60)}`, b = status.querySelector('b');
+        if (b) b.textContent = mmss; else status.innerHTML = `<b>${mmss}</b> left`;
+      }
+      else {
+        const mins = Math.ceil((from - now) / 60), h = Math.floor(mins / 60);
+        status.textContent = `in ${h ? `${h} h ${two(mins % 60)} min` : `${mins} min`}`;
+      }
+    });
+    // Focus: the item picked with the buttons, else the running item, else the next one, else the last.
+    const focus = rows[list.dataset.pick] || list.querySelector('li.now') || rows.find(li => !li.classList.contains('past')) || rows[rows.length - 1];
+    list.closest('.slide').querySelector('.agenda-ctl [data-step="0"]').classList.toggle('on', !('pick' in list.dataset));
+    rows.forEach(li => { li.classList.toggle('focus', li === focus); li.classList.toggle('next', li === focus.nextElementSibling); fitEvent(li); });
+    centerAgenda(list, focus);
+    showSpotlight(list, focus);
+    });
+  }
+  tickAgenda();
+  setInterval(tickAgenda, 1000);
+
+  // Agenda buttons: step to the previous / next item by hand, or go back to following the clock.
+  document.querySelectorAll('.agenda-ctl').forEach(ctl => {
+    const list = ctl.closest('.slide').querySelector('.timeline.live');
+    ctl.addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      b.blur();
+      const step = Number(b.dataset.step), rows = [...list.children];
+      if (!step) delete list.dataset.pick;
+      else list.dataset.pick = Math.max(0, Math.min(rows.length - 1, rows.indexOf(list.querySelector('li.focus')) + step));
+      tickAgenda();
+    });
+  });
 })();
 
 (() => {
