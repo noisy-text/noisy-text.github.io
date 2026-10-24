@@ -1,9 +1,18 @@
+- title: "When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines"
+  abstract_file: invited3.tex
+  speaker_name: Maria Antoniak
+  institution: University of Colorado Boulder
+  bio_file: invited3_bio.tex
+  date: 2026-10-28 09:30:00
+  location: Room G15-16
+  chair: Alan Ramponi
+
 - title: Language Identification in the (Pretraining) Data Processing Pipeline -- State of the Art and Open Problems
   abstract_file: invited1.tex
   speaker_name: Hinrich Schütze
   institution: University of Munich
   bio_file: invited1_bio.tex
-  date: 2026-10-28 09:30:00
+  date: 2026-10-28 14:00:00
   location: Room G15-16
   chair: JinYeong Bak
 
@@ -12,15 +21,6 @@
   speaker_name: Haneul Yoo
   institution: New York University
   bio_file: invited2_bio.tex
-  date: 2026-10-28 14:00:00
-  location: Room G15-16
-  chair: Weerayut Buaphet
-
-- title: "When Noise Is the Point: What Humanistic Tasks Reveal About Our Data Pipelines"
-  abstract_file: invited3.tex
-  speaker_name: Maria Antoniak
-  institution: University of Colorado Boulder
-  bio_file: invited3_bio.tex
   date: 2026-10-28 16:00:00
   location: Room G15-16
-  chair: Alan Ramponi
+  chair: Weerayut Buaphet
