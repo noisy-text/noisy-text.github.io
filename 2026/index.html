@@ -830,7 +830,20 @@
               <p class="talk-meta"><span class="talk-time">14:00 &ndash; 15:00</span> <span class="talk-room">Room G15-16</span> Chair: JinYeong Bak</p>
               <h3 class="talk-title">Language Identification in the (Pretraining) Data Processing Pipeline &ndash; State of the Art and Open Problems</h3>
               <p class="talk-speaker"><a href="https://cisnlp.github.io/about/">Hinrich Schütze</a> &middot; Professor, University of Munich</p>
-              <p class="talk-abstract is-pending">Abstract to be announced.</p>
+              <p class="talk-abstract">The first step in training a broad-coverage multilingual language
+                model is to run a pipeline that produces its pretraining data. We address the problem of
+                language identification (LID) in such a pipeline. Many challenges in this setting are inherent
+                in the complexities of multilinguality: thousands of classes, many of which are hard to
+                distinguish in pretraining data (e.g., Malay vs Indonesian). Other challenges are due to a
+                severe mismatch between the training data available for LID and the pretraining data. This
+                mismatch also applies to evaluation: it is often not feasible to directly evaluate the
+                multilingual quality of the trained language model (the quantity we care about). LID measures
+                like F1 and false positive rate on held-out validation data may not be strongly correlated
+                with LM quality. Finally, I will present GlotLID, our LID model for creating multilingual
+                pretraining data, including our design decisions for addressing some of the challenges of the
+                problem. This includes separate "language class" labels for different noise categories,
+                introducing composite labels (ISO-639 and script), reducing the number of confusable labels
+                and optimizing the speed-accuracy tradeoff for pretraining data generation.</p>
               <details class="talk-bio">
                 <summary>Speaker bio</summary>
                 <p>Hinrich Schütze is Professor for Computational Linguistics and co-director of the Center for Information
