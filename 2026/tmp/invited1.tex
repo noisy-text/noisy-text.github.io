@@ -1,1 +1,25 @@
-TBA
+Language Identification in the (Pretraining) Data Processing
+Pipeline – State of the Art and Open Problems
+
+The first step in training a broad-coverage multilingual
+language model is to run a pipeline that produces its
+pretraining data.  We address the problem of language
+identification (LID) in such a pipeline.  Many challenges in
+this setting are inherent in the complexities of
+multilinguality: thousands of classes, many of which are hard
+to distinguish in pretraining data (e.g., Malay vs
+Indonesian).  Other challenges are due to a severe mismatch
+between the training data available for LID and the
+pretraining data. This mismatch also applies to evaluation:
+it is often not feasible to directly evaluate the
+multilingual quality of the trained language model (the
+quantity we care about). LID measures like F1 and false
+positive rate on held-out validation data may not be
+strongly correlated with LM quality. Finally, I will present
+GlotLID, our LID model for creating multilingual pretraining
+data, including our design decisions for addressing some of
+the challenges of the problem. This includes separate
+"language class" labels for different noise categories,
+introducing composite labels  (ISO-639 and script),
+reducing the number of confusable labels and optimizing the
+speed-accuracy tradeoff for pretraining data generation.
