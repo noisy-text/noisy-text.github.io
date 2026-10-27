@@ -126,6 +126,11 @@ p { font-size: var(--body); line-height: 1.4; }
 .speaker .who span { color: rgba(255,255,255,.8); }
 .speaker .chair { font-size: 32px; color: rgba(255,255,255,.75); }
 
+/* Best paper awards: keynote-style opener without a portrait */
+.slide.award { gap: 44px; }
+.slide.award h2 { font-size: 72px; line-height: 1.15; max-width: 1600px; }
+.slide.award .who { font-size: 44px; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+
 /* Cards */
 .cards { display: grid; gap: 32px; }
 .cards.c3 { grid-template-columns: repeat(3, 1fr); }
@@ -682,7 +687,21 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
     <div><b>7</b><span>organizers</span></div>
     <div><b>86</b><span>program committee members</span></div>
   </div>
-  <aside class="notes">Thank the speakers, authors, organizers, reviewers and everyone who attended. The next two slides show the organizers and the program committee.</aside>
+  <aside class="notes">Thank the speakers, authors, organizers, reviewers and everyone who attended. The next two slides announce the best paper awards, then the organizers and the program committee.</aside>
+</section>
+
+<section class="slide hero award" data-title="Best Paper 1" data-session="closing">
+  <span class="pill">Best Paper Award</span>
+  <h2>LLMs are Easily Startled: Fragility Testing with Lookalike Character Noise</h2>
+  <p class="who">Peter deJonge, Nathanael Chambers</p>
+  <aside class="notes">Best paper award 1 of 2: “LLMs are Easily Startled: Fragility Testing with Lookalike Character Noise” by Peter deJonge, Nathanael Chambers. Invite the authors up to receive the award.</aside>
+</section>
+
+<section class="slide hero award" data-title="Best Paper 2" data-session="closing">
+  <span class="pill">Best Paper Award</span>
+  <h2>The Curse of Multilinguality in Lexical Normalization</h2>
+  <p class="who">Saman Rahbar</p>
+  <aside class="notes">Best paper award 2 of 2: “The Curse of Multilinguality in Lexical Normalization” by Saman Rahbar. Invite the author up to receive the award.</aside>
 </section>
 
 <section class="slide" data-title="Organizers" data-session="closing">
