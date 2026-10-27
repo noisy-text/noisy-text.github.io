@@ -126,10 +126,19 @@ p { font-size: var(--body); line-height: 1.4; }
 .speaker .who span { color: rgba(255,255,255,.8); }
 .speaker .chair { font-size: 32px; color: rgba(255,255,255,.75); }
 
-/* Best paper awards: keynote-style opener without a portrait */
-.slide.award { gap: 44px; }
-.slide.award h2 { font-size: 72px; line-height: 1.15; max-width: 1600px; }
-.slide.award .who { font-size: 44px; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+/* Best paper awards: centred, gold on deep navy, set apart from the photo openers */
+.slide.hero.award {
+  align-items: center; text-align: center; gap: 40px; padding-bottom: 96px;
+  background: radial-gradient(ellipse at 50% 38%, rgba(230,184,92,.32) 0%, rgba(230,184,92,0) 55%),
+    linear-gradient(160deg, #0C162D 0%, #14213D 55%, #0C162D 100%);
+}
+.slide.award::before { content: ""; position: absolute; inset: 24px; border: 2px solid rgba(230,184,92,.45); border-radius: 18px; pointer-events: none; }
+.slide.award .medal { width: 150px; height: 150px; color: var(--gold); filter: drop-shadow(0 6px 24px rgba(230,184,92,.45)); }
+.slide.award .pill { display: flex; align-items: center; gap: 28px; font-size: 34px; letter-spacing: 8px; }
+.slide.award .pill::before, .slide.award .pill::after { content: ""; width: 120px; height: 2px; background: var(--gold); opacity: .7; }
+.slide.award h2 { font-size: 72px; line-height: 1.15; max-width: 1550px; text-wrap: balance; }
+.slide.award .who { font-size: 44px; color: var(--gold); font-weight: 600; }
+.slide.award .foot { display: none; }
 
 /* Cards */
 .cards { display: grid; gap: 32px; }
@@ -691,6 +700,7 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
 </section>
 
 <section class="slide hero award" data-title="Best Paper 1" data-session="closing">
+  <svg class="medal" viewBox="0 0 64 64" aria-hidden="true"><path d="M22 4h8l4 14h-8zM42 4h-8l-4 14h8z" fill="currentColor" opacity=".55"/><circle cx="32" cy="40" r="20" fill="none" stroke="currentColor" stroke-width="3"/><path d="M32 28l3.5 7.2 7.9 1.1-5.7 5.6 1.4 7.9L32 46.1l-7.1 3.7 1.4-7.9-5.7-5.6 7.9-1.1z" fill="currentColor"/></svg>
   <span class="pill">Best Paper Award</span>
   <h2>LLMs are Easily Startled: Fragility Testing with Lookalike Character Noise</h2>
   <p class="who">Peter deJonge, Nathanael Chambers</p>
@@ -698,6 +708,7 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
 </section>
 
 <section class="slide hero award" data-title="Best Paper 2" data-session="closing">
+  <svg class="medal" viewBox="0 0 64 64" aria-hidden="true"><path d="M22 4h8l4 14h-8zM42 4h-8l-4 14h8z" fill="currentColor" opacity=".55"/><circle cx="32" cy="40" r="20" fill="none" stroke="currentColor" stroke-width="3"/><path d="M32 28l3.5 7.2 7.9 1.1-5.7 5.6 1.4 7.9L32 46.1l-7.1 3.7 1.4-7.9-5.7-5.6 7.9-1.1z" fill="currentColor"/></svg>
   <span class="pill">Best Paper Award</span>
   <h2>The Curse of Multilinguality in Lexical Normalization</h2>
   <p class="who">Saman Rahbar</p>
