@@ -129,15 +129,15 @@ p { font-size: var(--body); line-height: 1.4; }
 /* Best paper awards: centred, gold on deep navy, set apart from the photo openers */
 .slide.hero.award {
   align-items: center; text-align: center; gap: 40px; padding-bottom: 96px;
-  background: radial-gradient(ellipse at 50% 38%, rgba(230,184,92,.32) 0%, rgba(230,184,92,0) 55%),
+  background: radial-gradient(ellipse at 50% 38%, rgba(230,184,92,.12) 0%, rgba(230,184,92,0) 55%),
     linear-gradient(160deg, #0C162D 0%, #14213D 55%, #0C162D 100%);
 }
-.slide.award::before { content: ""; position: absolute; inset: 24px; border: 2px solid rgba(230,184,92,.45); border-radius: 18px; pointer-events: none; }
-.slide.award .medal { width: 150px; height: 150px; color: var(--gold); filter: drop-shadow(0 6px 24px rgba(230,184,92,.45)); }
-.slide.award .pill { display: flex; align-items: center; gap: 28px; font-size: 34px; letter-spacing: 8px; }
-.slide.award .pill::before, .slide.award .pill::after { content: ""; width: 120px; height: 2px; background: var(--gold); opacity: .7; }
+.slide.award::before { content: ""; position: absolute; inset: 24px; border: 1px solid rgba(230,184,92,.2); border-radius: 18px; pointer-events: none; }
+.slide.award .medal { width: 96px; height: 96px; color: var(--gold); opacity: .85; }
+.slide.award .pill { display: flex; align-items: center; gap: 20px; }
+.slide.award .pill::before, .slide.award .pill::after { content: ""; width: 64px; height: 1px; background: var(--gold); opacity: .45; }
 .slide.award h2 { font-size: 72px; line-height: 1.15; max-width: 1550px; text-wrap: balance; }
-.slide.award .who { font-size: 44px; color: var(--gold); font-weight: 600; }
+.slide.award .who { font-size: 40px; color: rgba(255,255,255,.8); }
 .slide.award .foot { display: none; }
 
 /* Cards */
