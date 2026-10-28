@@ -837,7 +837,7 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
   const addMin = (hhmm, m) => { const [h, mm] = hhmm.split(':').map(Number), t = h * 60 + mm + m; return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
 
   const orals = PAPERS.filter(p => p.oral).sort((a, b) => a.oral - b.oral);
-  const posters = PAPERS.filter(p => !p.oral);
+  const posters = PAPERS; // oral papers also present a poster
 
   const oralEnd = addMin(ORAL_START, orals.length * ORAL_MINUTES);
   const oralSlides = orals.length
