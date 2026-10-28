@@ -188,14 +188,9 @@ p { font-size: var(--body); line-height: 1.4; }
 .qa-card .qa-who b { color: var(--heading); font-weight: 600; }
 .qa-card .qa-chair { font-size: 32px; color: var(--muted); margin-top: 12px; }
 
-/* Oral talks */
-.slot { font: 700 44px/1.2 var(--font); color: var(--accent); font-variant-numeric: tabular-nums; }
-.paper-title { font: 700 72px/1.2 var(--font); letter-spacing: -1.5px; color: var(--heading); max-width: 1600px; text-wrap: balance; }
-.paper-authors { font-size: 40px; color: var(--muted); max-width: 1600px; }
-.progress-dots { display: flex; gap: 14px; }
-.progress-dots i { width: 22px; height: 22px; border-radius: 50%; background: var(--line); }
-.progress-dots i.on { background: var(--accent); }
-.progress-dots i.done { background: var(--accent-light); }
+/* Oral talks: all on one slide, schedule-style without the room column */
+.timeline.orals li { grid-template-columns: 220px minmax(0,1fr); font-size: 26px; padding-bottom: 12px; }
+.timeline.orals .event small { font-size: 21px; }
 
 /* Poster list */
 .posters { columns: 2; column-gap: 72px; }
@@ -282,8 +277,8 @@ p { font-size: var(--body); line-height: 1.4; }
 .pc { list-style: none; columns: 5; column-gap: 40px; font-size: 22px; line-height: 1.55; color: var(--heading); }
 .pc li { break-inside: avoid; }
 
-.slide h2.posters-title { font-size: 52px; }
-.slide:has(.posters-title) .foot { left: 128px; right: 128px; }
+.slide h2.posters-title, .slide h2.orals-title { font-size: 52px; }
+.slide:has(.posters-title) .foot, .slide:has(.orals-title) .foot { left: 128px; right: 128px; }
 .posters.readable { column-gap: 56px; padding: 0; --ps: 22px; }
 .posters.readable li { grid-template-columns: 36px 1fr; gap: 0 10px; margin-bottom: 9px; }
 .posters.readable li b { grid-row: auto; font-size: var(--ps); line-height: 1.24; color: var(--accent); }
@@ -447,8 +442,8 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
 .clock { font: 700 56px/1 var(--font); letter-spacing: -1px; color: #fff; font-variant-numeric: tabular-nums; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
 .clock span { margin-left: 2px; font-size: .6em; font-weight: 600; letter-spacing: 0; color: var(--gold); }
 .slide.finale > .corner { position: absolute; }
-.slide:has(.posters-title) .corner { top: 36px; right: 88px; }
-.slide:has(.posters-title) .clock { font-size: 36px; }
+.slide:has(.posters-title) .corner, .slide:has(.orals-title) .corner { top: 36px; right: 88px; }
+.slide:has(.posters-title) .clock, .slide:has(.orals-title) .clock { font-size: 36px; }
 .countdown { display: flex; align-items: baseline; gap: 14px;
   padding: 12px 26px; border-radius: 14px; background: rgba(10,18,40,.55); border: 2px solid rgba(230,184,92,.35);
   font: 600 26px/1.1 var(--font); color: rgba(255,255,255,.75); font-variant-numeric: tabular-nums; }
@@ -600,7 +595,7 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
 
 <section class="slide hero" data-title="Oral presentations" data-session="oral">
   <h1>Oral presentations</h1>
-  <aside class="notes">[Session chair] Welcome back. This is our oral session: seven talks from this year's accepted papers, 12 minutes each including questions. Speakers, please keep to time. The countdown in the corner shows how long is left. We break for lunch at 12:30.</aside>
+  <aside class="notes">[Session chair] Welcome back. This is our oral session: seven talks from this year's accepted papers, 12 minutes each including questions. Speakers, please keep to time. The running order is on the next slide. We break for lunch at 12:30.</aside>
 </section>
 
 <section data-generate="orals"></section>
@@ -844,20 +839,17 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
   const orals = PAPERS.filter(p => p.oral).sort((a, b) => a.oral - b.oral);
   const posters = PAPERS.filter(p => !p.oral);
 
+  const oralEnd = addMin(ORAL_START, orals.length * ORAL_MINUTES);
   const oralSlides = orals.length
-    ? orals.map((p, i) => {
-        const from = addMin(ORAL_START, i * ORAL_MINUTES), to = addMin(from, ORAL_MINUTES);
-        const dots = orals.map((_, k) => `<i class="${k < i ? 'done' : k === i ? 'on' : ''}"></i>`).join('');
-        return `<section class="slide" data-title="Oral ${i + 1}" data-session="oral" style="justify-content:center">
-          <p class="countdown" data-from="${from}" data-to="${to}"></p>
-          <p class="eyebrow">Oral presentation ${i + 1} of ${orals.length}</p>
-          <p class="slot">${from} – ${to}</p>
-          <p class="paper-title">${esc(p.title)}</p>
-          <p class="paper-authors">${esc(p.authors)}</p>
-          <div class="progress-dots">${dots}</div>
-          <aside class="notes">Our ${i === 0 ? 'first' : i === orals.length - 1 ? 'last' : 'next'} talk is “${esc(p.title)}” by ${esc(p.authors)}. [${ORAL_MINUTES} minutes including questions, until ${to}.]</aside>
-        </section>`;
-      })
+    ? [`<section class="slide" data-title="Oral talks" data-session="oral" style="gap:20px;padding:56px 88px 150px">
+        <p class="countdown" data-from="${ORAL_START}" data-to="${oralEnd}"></p>
+        <div class="head"><p class="eyebrow">${ORAL_START} – ${oralEnd} · ${ORAL_MINUTES} minutes each, including questions</p><h2 class="orals-title">Oral presentations</h2></div>
+        <ol class="timeline orals">${orals.map((p, i) => {
+          const from = addMin(ORAL_START, i * ORAL_MINUTES), to = addMin(from, ORAL_MINUTES);
+          return `<li><span class="time">${from} – ${to}</span><span class="event">${esc(p.title)}<small>${esc(p.authors)}</small></span></li>`;
+        }).join('')}</ol>
+        <aside class="notes">${orals.map((p, i) => `${addMin(ORAL_START, i * ORAL_MINUTES)}: ${i === 0 ? 'Our first' : i === orals.length - 1 ? 'Our last' : 'Next'} talk is “${esc(p.title)}” by ${esc(p.authors)}.`).join(' ')} [${ORAL_MINUTES} minutes each including questions; keep this slide on screen for the whole session.]</aside>
+      </section>`]
     : [];
 
   // All posters on one slide; the short name before a colon or question mark is set in bold.
