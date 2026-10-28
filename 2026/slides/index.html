@@ -600,7 +600,7 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
 
 <section class="slide hero" data-title="Oral presentations" data-session="oral">
   <h1>Oral presentations</h1>
-  <aside class="notes">[Session chair] Welcome back. This is our oral session, with talks from this year's accepted papers. Speakers, please keep to time so there's room for questions. [Introduce each talk by title and presenter.] We break for lunch at 12:30.</aside>
+  <aside class="notes">[Session chair] Welcome back. This is our oral session: seven talks from this year's accepted papers, 12 minutes each including questions. Speakers, please keep to time. The countdown in the corner shows how long is left. We break for lunch at 12:30.</aside>
 </section>
 
 <section data-generate="orals"></section>
@@ -806,20 +806,20 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
   ];
 
   // Oral talks: set `oral` to the talk's position (1, 2, 3 …). Unmarked papers are listed as posters.
-  const ORAL_START = '11:00', ORAL_MINUTES = 15;
+  const ORAL_START = '11:00', ORAL_MINUTES = 12;
   const PAPERS = [
     { title: "A Precision-First Whitespace Restoration Pipeline for Noisy Urdu Tafseer Text", authors: "Muhammad Mubashir Hassan" },
     { title: "Are More Emotion Theories Better? Joint Prompting Improves Emotion Categorization Robustness", authors: "Albina Sarymsakova, Roman Klinger" },
-    { title: "Beyond Clean Text: Evaluating Encoder and Decoder Robustness for Bangla Event Detection in Noisy Text", authors: "Tanvir Ahmed Sijan, S M Golam Rifat, Nayeemul Islam, Md Musfique Anwar" },
+    { oral: 1, title: "Beyond Clean Text: Evaluating Encoder and Decoder Robustness for Bangla Event Detection in Noisy Text", authors: "Tanvir Ahmed Sijan, S M Golam Rifat, Nayeemul Islam, Md Musfique Anwar" },
     { title: "CrisisKD: Five-Stage Knowledge Distillation for Aspect-Level Sentiment and Emotion Analysis in Crisis Discourse", authors: "Marko Haralovic, Onat Dogan Akca, Salih Eren Yücetürk, Minsi Li, Mariët Theune" },
-    { title: "Discourse-Structural Noise in LLM-Generated Explanations", authors: "Raghvi Baloni, Achim Rettinger" },
+    { oral: 2, title: "Discourse-Structural Noise in LLM-Generated Explanations", authors: "Raghvi Baloni, Achim Rettinger" },
     { title: "Do LLMs Give Consistent Opinions? Evaluating Response Reliability Under Varying Likert-Scale Formulations in Survey-Style MCQA", authors: "Martin Kandlinger, Bolei Ma, Anna-Carolina Haensch, Matthias Aßenmacher" },
     { title: "Evaluating Token Probabilities as Confidence Estimators in Human Behavior Simulations: A Case Study in Luxembourgish Next Like Prediction", authors: "Nils Schwager, Simon Münker, Alistair Plum, Achim Rettinger" },
     { title: "From Errors to Precision: A Taxonomy-Guided Approach for LLM Flood Cause Extraction", authors: "Jane Arleth dela Cruz, Iris Hendrickx, Martha Larson" },
     { title: "GeNERscore: Semantic Alignment Metrics for Generative Named Entity Recognition", authors: "Gianmarco Pappacoda, Federico Ruggeri, Paolo Torroni" },
     { title: "How Noisy is Automatic Annotation? Characterizing Label Noise from Generative Models in Multi-Dimensional Spanish Subjectivity Annotation", authors: "Alba Pérez-Montero, Elena Lloret, Paloma Moreda Pozo" },
     { title: "Increasing the Robustness of the Fine-tuned Multilingual Machine-Generated Text Detectors", authors: "Dominik Macko, Robert Moro, Ivan Srba" },
-    { title: "LLMs are Easily Startled: Fragility Testing with Lookalike Character Noise", authors: "Peter deJonge, Nathanael Chambers" },
+    { oral: 3, title: "LLMs are Easily Startled: Fragility Testing with Lookalike Character Noise", authors: "Peter deJonge, Nathanael Chambers" },
     { title: "Multi-author style detection with stylistic embeddings", authors: "Man-Ling Sung, Chak-Fai Li, Damianos Karakos, Frederick E. Bernardin III, Brian Ulicny" },
     { title: "NERQual: Evaluating the Robustness of Named Entity Recognition Models to Data Quality Issues", authors: "Denis Trautner, Philippe Thomas" },
     { title: "Not All Duplicates Are Coordination: Generic vs. Non-Generic Duplicate Campaigns in Information Operations", authors: "Ashfaq Ali Shafin, Khandaker Mamun Ahmed" },
@@ -829,11 +829,11 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
     { title: "Robust Dual-Signal Fusion: Hybrid Neuro-Symbolic Gating with Compressed Chain-of-Thought Refinement for Irony Detection in Social Media Texts", authors: "Ankit Bhattacharjee, Krityapriya Bhaumik" },
     { title: "RSPC: A Benchmark for Modeling Stress and Psychiatric Conditions in Digitally Mediated Relationships using Psychiatrist Annotations", authors: "Parmitha Vangapandu, Sai Ganesh M, Sathwik Narkedimilli, MSVPJ Sathvik, Timothy Liu, Simon See, Johannes C Eichstaedt" },
     { title: "Spoiler Court: Interpretable Spoiler Detection via Adversarial Multi-Agent LLM Judgement", authors: "Sangmin Song, Hari Kang, Suhyeon Park, Seongwoo Choi, Sungkyun Im, Sangoh Lee" },
-    { title: "The Curse of Multilinguality in Lexical Normalization", authors: "Saman Rahbar" },
-    { title: "Topic Matching in the Wild: Benchmark and Lessons from Real-World ASR Transcripts", authors: "Saman Rahbar, Xiliang Zhu, Irvin Cardoza, David Rossouw" },
-    { title: "TurEngMix: A Text Corpus and Benchmark for Turkish-English Code-Mixed Language Identification and Named Entity Recognition", authors: "Ilayda Dogan, Phuong-Anh Nguyen-Le, Julia Mendelsohn" },
+    { oral: 4, title: "The Curse of Multilinguality in Lexical Normalization", authors: "Saman Rahbar" },
+    { oral: 5, title: "Topic Matching in the Wild: Benchmark and Lessons from Real-World ASR Transcripts", authors: "Saman Rahbar, Xiliang Zhu, Irvin Cardoza, David Rossouw" },
+    { oral: 6, title: "TurEngMix: A Text Corpus and Benchmark for Turkish-English Code-Mixed Language Identification and Named Entity Recognition", authors: "Ilayda Dogan, Phuong-Anh Nguyen-Le, Julia Mendelsohn" },
     { title: "When Noise Fabricates Bias: The Fragility of LLM-as-a-Judge Bias Measurement under Noisy Text", authors: "DongHyun Ryu, Jaehyeok Lee, YeongJun Hwang, JinYeong Bak" },
-    { title: "Where Does Noise Robustness Live? Evidence from Ablation, Role Swaps, and Cross-Lingual Transfer in Code-Mixed Banking NLU", authors: "Piyush Agarwal" },
+    { oral: 7, title: "Where Does Noise Robustness Live? Evidence from Ablation, Role Swaps, and Cross-Lingual Transfer in Code-Mixed Banking NLU", authors: "Piyush Agarwal" },
   ];
 
   const esc = v => String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -855,7 +855,7 @@ body.idle .agenda-ctl { opacity: 0; pointer-events: none; }
           <p class="paper-title">${esc(p.title)}</p>
           <p class="paper-authors">${esc(p.authors)}</p>
           <div class="progress-dots">${dots}</div>
-          <aside class="notes">Introduce: “${esc(p.title)}” by ${esc(p.authors)}. ${ORAL_MINUTES} minutes including questions.</aside>
+          <aside class="notes">Our ${i === 0 ? 'first' : i === orals.length - 1 ? 'last' : 'next'} talk is “${esc(p.title)}” by ${esc(p.authors)}. [${ORAL_MINUTES} minutes including questions, until ${to}.]</aside>
         </section>`;
       })
     : [];
